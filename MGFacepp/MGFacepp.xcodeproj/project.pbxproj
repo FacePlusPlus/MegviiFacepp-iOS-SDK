@@ -1,0 +1,383 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14FFF2EB1E24D8C400A5A7EF /* MGAlgorithmInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FFF2D91E24D8C400A5A7EF /* MGAlgorithmInfo.m */; };
+		14FFF2ED1E24D8C400A5A7EF /* MGFaceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FFF2DE1E24D8C400A5A7EF /* MGFaceInfo.m */; };
+		14FFF2EE1E24D8C400A5A7EF /* MGFacepp.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FFF2E11E24D8C400A5A7EF /* MGFacepp.m */; };
+		14FFF2EF1E24D8C400A5A7EF /* MGFaceppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FFF2E41E24D8C400A5A7EF /* MGFaceppConfig.m */; };
+		14FFF2F01E24D8C400A5A7EF /* MGImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FFF2E61E24D8C400A5A7EF /* MGImageData.m */; };
+		14FFF2F11E24D8D500A5A7EF /* MGAlgorithmInfo.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2D81E24D8C400A5A7EF /* MGAlgorithmInfo.h */; };
+		14FFF2F21E24D8E100A5A7EF /* MGFaceInfo.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2DD1E24D8C400A5A7EF /* MGFaceInfo.h */; };
+		14FFF2F31E24D8E300A5A7EF /* MGFacepp.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E01E24D8C400A5A7EF /* MGFacepp.h */; };
+		14FFF2F41E24D8E600A5A7EF /* MGFaceppCommon.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E21E24D8C400A5A7EF /* MGFaceppCommon.h */; };
+		14FFF2F51E24D8EA00A5A7EF /* MGFaceppConfig.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E31E24D8C400A5A7EF /* MGFaceppConfig.h */; };
+		14FFF2F61E24D8EB00A5A7EF /* MGImageData.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E51E24D8C400A5A7EF /* MGImageData.h */; };
+		14FFF2FC1E24DFAB00A5A7EF /* libMegviiFacepp-0.3.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FFF2F81E24DFAB00A5A7EF /* libMegviiFacepp-0.3.3.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		146C288A1D7E5F4D00124368 /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				14FFF2F11E24D8D500A5A7EF /* MGAlgorithmInfo.h in Copy Files */,
+				14FFF2F21E24D8E100A5A7EF /* MGFaceInfo.h in Copy Files */,
+				14FFF2F41E24D8E600A5A7EF /* MGFaceppCommon.h in Copy Files */,
+				14FFF2F61E24D8EB00A5A7EF /* MGImageData.h in Copy Files */,
+				14FFF2F31E24D8E300A5A7EF /* MGFacepp.h in Copy Files */,
+				14FFF2F51E24D8EA00A5A7EF /* MGFaceppConfig.h in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		146C28A81D7E5FA300124368 /* Copy bundle */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			name = "Copy bundle";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		146C288C1D7E5F4D00124368 /* libMGFacepp-0.3.3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libMGFacepp-0.3.3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		14FFF2D81E24D8C400A5A7EF /* MGAlgorithmInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlgorithmInfo.h; sourceTree = "<group>"; };
+		14FFF2D91E24D8C400A5A7EF /* MGAlgorithmInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGAlgorithmInfo.m; sourceTree = "<group>"; };
+		14FFF2DA1E24D8C400A5A7EF /* MGAlgorithmInfo_Creat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlgorithmInfo_Creat.h; sourceTree = "<group>"; };
+		14FFF2DD1E24D8C400A5A7EF /* MGFaceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceInfo.h; sourceTree = "<group>"; };
+		14FFF2DE1E24D8C400A5A7EF /* MGFaceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceInfo.m; sourceTree = "<group>"; };
+		14FFF2DF1E24D8C400A5A7EF /* MGFaceInfo_Creat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceInfo_Creat.h; sourceTree = "<group>"; };
+		14FFF2E01E24D8C400A5A7EF /* MGFacepp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFacepp.h; sourceTree = "<group>"; };
+		14FFF2E11E24D8C400A5A7EF /* MGFacepp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFacepp.m; sourceTree = "<group>"; };
+		14FFF2E21E24D8C400A5A7EF /* MGFaceppCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceppCommon.h; sourceTree = "<group>"; };
+		14FFF2E31E24D8C400A5A7EF /* MGFaceppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceppConfig.h; sourceTree = "<group>"; };
+		14FFF2E41E24D8C400A5A7EF /* MGFaceppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceppConfig.m; sourceTree = "<group>"; };
+		14FFF2E51E24D8C400A5A7EF /* MGImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGImageData.h; sourceTree = "<group>"; };
+		14FFF2E61E24D8C400A5A7EF /* MGImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGImageData.m; sourceTree = "<group>"; };
+		14FFF2F81E24DFAB00A5A7EF /* libMegviiFacepp-0.3.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMegviiFacepp-0.3.3.a"; sourceTree = "<group>"; };
+		14FFF2F91E24DFAB00A5A7EF /* megviifacepp_0_3_3_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_3_3_model; sourceTree = "<group>"; };
+		14FFF2FA1E24DFAB00A5A7EF /* MG_Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MG_Common.h; sourceTree = "<group>"; };
+		14FFF2FB1E24DFAB00A5A7EF /* MG_Facepp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MG_Facepp.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		146C28891D7E5F4D00124368 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14FFF2FC1E24DFAB00A5A7EF /* libMegviiFacepp-0.3.3.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		146C28831D7E5F4D00124368 = {
+			isa = PBXGroup;
+			children = (
+				14FFF2F71E24DFAB00A5A7EF /* MegviiFacepp_C_SDK */,
+				14FFF2D71E24D8C400A5A7EF /* MGFacepp */,
+				146C288D1D7E5F4D00124368 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		146C288D1D7E5F4D00124368 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				146C288C1D7E5F4D00124368 /* libMGFacepp-0.3.3.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14FFF2D71E24D8C400A5A7EF /* MGFacepp */ = {
+			isa = PBXGroup;
+			children = (
+				14FFF2D81E24D8C400A5A7EF /* MGAlgorithmInfo.h */,
+				14FFF2D91E24D8C400A5A7EF /* MGAlgorithmInfo.m */,
+				14FFF2DA1E24D8C400A5A7EF /* MGAlgorithmInfo_Creat.h */,
+				14FFF2DD1E24D8C400A5A7EF /* MGFaceInfo.h */,
+				14FFF2DE1E24D8C400A5A7EF /* MGFaceInfo.m */,
+				14FFF2DF1E24D8C400A5A7EF /* MGFaceInfo_Creat.h */,
+				14FFF2E01E24D8C400A5A7EF /* MGFacepp.h */,
+				14FFF2E11E24D8C400A5A7EF /* MGFacepp.m */,
+				14FFF2E21E24D8C400A5A7EF /* MGFaceppCommon.h */,
+				14FFF2E31E24D8C400A5A7EF /* MGFaceppConfig.h */,
+				14FFF2E41E24D8C400A5A7EF /* MGFaceppConfig.m */,
+				14FFF2E51E24D8C400A5A7EF /* MGImageData.h */,
+				14FFF2E61E24D8C400A5A7EF /* MGImageData.m */,
+			);
+			path = MGFacepp;
+			sourceTree = "<group>";
+		};
+		14FFF2F71E24DFAB00A5A7EF /* MegviiFacepp_C_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				14FFF2F81E24DFAB00A5A7EF /* libMegviiFacepp-0.3.3.a */,
+				14FFF2F91E24DFAB00A5A7EF /* megviifacepp_0_3_3_model */,
+				14FFF2FA1E24DFAB00A5A7EF /* MG_Common.h */,
+				14FFF2FB1E24DFAB00A5A7EF /* MG_Facepp.h */,
+			);
+			path = MegviiFacepp_C_SDK;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		146C288B1D7E5F4D00124368 /* MGFacepp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 146C28951D7E5F4D00124368 /* Build configuration list for PBXNativeTarget "MGFacepp" */;
+			buildPhases = (
+				146C28881D7E5F4D00124368 /* Sources */,
+				146C28891D7E5F4D00124368 /* Frameworks */,
+				146C288A1D7E5F4D00124368 /* Copy Files */,
+				146C28A81D7E5FA300124368 /* Copy bundle */,
+				1475F5061D8E3CC4008B3E21 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MGFacepp;
+			productName = MGLandMark;
+			productReference = 146C288C1D7E5F4D00124368 /* libMGFacepp-0.3.3.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		146C28841D7E5F4D00124368 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = megvii;
+				TargetAttributes = {
+					146C288B1D7E5F4D00124368 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 146C28871D7E5F4D00124368 /* Build configuration list for PBXProject "MGFacepp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 146C28831D7E5F4D00124368;
+			productRefGroup = 146C288D1D7E5F4D00124368 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				146C288B1D7E5F4D00124368 /* MGFacepp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1475F5061D8E3CC4008B3E21 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		146C28881D7E5F4D00124368 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14FFF2EE1E24D8C400A5A7EF /* MGFacepp.m in Sources */,
+				14FFF2ED1E24D8C400A5A7EF /* MGFaceInfo.m in Sources */,
+				14FFF2EF1E24D8C400A5A7EF /* MGFaceppConfig.m in Sources */,
+				14FFF2EB1E24D8C400A5A7EF /* MGAlgorithmInfo.m in Sources */,
+				14FFF2F01E24D8C400A5A7EF /* MGImageData.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		146C28931D7E5F4D00124368 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		146C28941D7E5F4D00124368 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		146C28961D7E5F4D00124368 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 0.3.3;
+				DEPLOYMENT_POSTPROCESSING = NO;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BaseSDK",
+					"$(PROJECT_DIR)/FaceSDk\\ ",
+					"$(PROJECT_DIR)/FaceSDk\\ ",
+					"$(PROJECT_DIR)/FaceSDk\\ ",
+					"$(PROJECT_DIR)/FaceSDk\\ ",
+					"$(PROJECT_DIR)/FaceSDk\\ ",
+					"$(PROJECT_DIR)/FaceSDK",
+					"$(PROJECT_DIR)/MegviiFacepp_C_SDK",
+				);
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = "";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)-${CURRENT_PROJECT_VERSION}";
+				PRODUCT_NAME = "$(TARGET_NAME)-${CURRENT_PROJECT_VERSION}";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		146C28971D7E5F4D00124368 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 0.3.3;
+				DEPLOYMENT_POSTPROCESSING = NO;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BaseSDK",
+					"$(PROJECT_DIR)/FaceSDk\\ ",
+					"$(PROJECT_DIR)/FaceSDk\\ ",
+					"$(PROJECT_DIR)/FaceSDk\\ ",
+					"$(PROJECT_DIR)/FaceSDk\\ ",
+					"$(PROJECT_DIR)/FaceSDk\\ ",
+					"$(PROJECT_DIR)/FaceSDK",
+					"$(PROJECT_DIR)/MegviiFacepp_C_SDK",
+				);
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = "";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)-${CURRENT_PROJECT_VERSION}";
+				PRODUCT_NAME = "$(TARGET_NAME)-${CURRENT_PROJECT_VERSION}";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		146C28871D7E5F4D00124368 /* Build configuration list for PBXProject "MGFacepp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				146C28931D7E5F4D00124368 /* Debug */,
+				146C28941D7E5F4D00124368 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		146C28951D7E5F4D00124368 /* Build configuration list for PBXNativeTarget "MGFacepp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				146C28961D7E5F4D00124368 /* Debug */,
+				146C28971D7E5F4D00124368 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 146C28841D7E5F4D00124368 /* Project object */;
+}

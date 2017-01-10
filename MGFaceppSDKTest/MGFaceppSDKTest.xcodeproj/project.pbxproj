@@ -1,0 +1,357 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1432EE161E24C1EB00131E39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1432EE151E24C1EB00131E39 /* main.m */; };
+		1432EE191E24C1EB00131E39 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1432EE181E24C1EB00131E39 /* AppDelegate.m */; };
+		1432EE1C1E24C1EB00131E39 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1432EE1B1E24C1EB00131E39 /* ViewController.mm */; };
+		1432EE1F1E24C1EB00131E39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE1D1E24C1EB00131E39 /* Main.storyboard */; };
+		1432EE211E24C1EB00131E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE201E24C1EB00131E39 /* Assets.xcassets */; };
+		1432EE241E24C1EB00131E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE221E24C1EB00131E39 /* LaunchScreen.storyboard */; };
+		1432EE2E1E24C32800131E39 /* libMGFacepp-0.3.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1432EE2D1E24C32800131E39 /* libMGFacepp-0.3.3.a */; };
+		14FFF2791E24C3C600A5A7EF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FFF2781E24C3C600A5A7EF /* CoreMedia.framework */; };
+		14FFF27B1E24C3C900A5A7EF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FFF27A1E24C3C900A5A7EF /* AVFoundation.framework */; };
+		14FFF27E1E24C45400A5A7EF /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 14FFF27C1E24C45400A5A7EF /* 2.png */; };
+		14FFF27F1E24C45400A5A7EF /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14FFF27D1E24C45400A5A7EF /* 3.jpg */; };
+		14FFF2811E24C48E00A5A7EF /* megviifacepp_0_3_3_model in Resources */ = {isa = PBXBuildFile; fileRef = 14FFF2801E24C48E00A5A7EF /* megviifacepp_0_3_3_model */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1432EE111E24C1EB00131E39 /* MGFaceppSDKTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGFaceppSDKTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1432EE151E24C1EB00131E39 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1432EE171E24C1EB00131E39 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1432EE181E24C1EB00131E39 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1432EE1A1E24C1EB00131E39 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1432EE1B1E24C1EB00131E39 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		1432EE1E1E24C1EB00131E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1432EE201E24C1EB00131E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1432EE231E24C1EB00131E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1432EE251E24C1EB00131E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1432EE2D1E24C32800131E39 /* libMGFacepp-0.3.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGFacepp-0.3.3.a"; path = "../../../Library/Developer/Xcode/DerivedData/MGFacepp-bsfynpjekizkhsfbxhfhdlxyqlky/Build/Products/Debug-iphoneos/libMGFacepp-0.3.3.a"; sourceTree = "<group>"; };
+		14FFF2781E24C3C600A5A7EF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		14FFF27A1E24C3C900A5A7EF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		14FFF27C1E24C45400A5A7EF /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		14FFF27D1E24C45400A5A7EF /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		14FFF2801E24C48E00A5A7EF /* megviifacepp_0_3_3_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_3_3_model; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1432EE0E1E24C1EB00131E39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14FFF27B1E24C3C900A5A7EF /* AVFoundation.framework in Frameworks */,
+				14FFF2791E24C3C600A5A7EF /* CoreMedia.framework in Frameworks */,
+				1432EE2E1E24C32800131E39 /* libMGFacepp-0.3.3.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1432EE081E24C1EB00131E39 = {
+			isa = PBXGroup;
+			children = (
+				14FFF2801E24C48E00A5A7EF /* megviifacepp_0_3_3_model */,
+				1432EE131E24C1EB00131E39 /* SDKTest */,
+				1432EE121E24C1EB00131E39 /* Products */,
+				1432EE2C1E24C32800131E39 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1432EE121E24C1EB00131E39 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1432EE111E24C1EB00131E39 /* MGFaceppSDKTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1432EE131E24C1EB00131E39 /* SDKTest */ = {
+			isa = PBXGroup;
+			children = (
+				1432EE171E24C1EB00131E39 /* AppDelegate.h */,
+				1432EE181E24C1EB00131E39 /* AppDelegate.m */,
+				1432EE1A1E24C1EB00131E39 /* ViewController.h */,
+				1432EE1B1E24C1EB00131E39 /* ViewController.mm */,
+				1432EE1D1E24C1EB00131E39 /* Main.storyboard */,
+				1432EE201E24C1EB00131E39 /* Assets.xcassets */,
+				1432EE221E24C1EB00131E39 /* LaunchScreen.storyboard */,
+				1432EE251E24C1EB00131E39 /* Info.plist */,
+				1432EE141E24C1EB00131E39 /* Supporting Files */,
+			);
+			path = SDKTest;
+			sourceTree = "<group>";
+		};
+		1432EE141E24C1EB00131E39 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				14FFF27C1E24C45400A5A7EF /* 2.png */,
+				14FFF27D1E24C45400A5A7EF /* 3.jpg */,
+				1432EE151E24C1EB00131E39 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1432EE2C1E24C32800131E39 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14FFF27A1E24C3C900A5A7EF /* AVFoundation.framework */,
+				14FFF2781E24C3C600A5A7EF /* CoreMedia.framework */,
+				1432EE2D1E24C32800131E39 /* libMGFacepp-0.3.3.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1432EE101E24C1EB00131E39 /* MGFaceppSDKTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1432EE281E24C1EB00131E39 /* Build configuration list for PBXNativeTarget "MGFaceppSDKTest" */;
+			buildPhases = (
+				1432EE0D1E24C1EB00131E39 /* Sources */,
+				1432EE0E1E24C1EB00131E39 /* Frameworks */,
+				1432EE0F1E24C1EB00131E39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MGFaceppSDKTest;
+			productName = SDKTest;
+			productReference = 1432EE111E24C1EB00131E39 /* MGFaceppSDKTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1432EE091E24C1EB00131E39 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = megvii;
+				TargetAttributes = {
+					1432EE101E24C1EB00131E39 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = F4LXZEHY23;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 1432EE0C1E24C1EB00131E39 /* Build configuration list for PBXProject "MGFaceppSDKTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1432EE081E24C1EB00131E39;
+			productRefGroup = 1432EE121E24C1EB00131E39 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1432EE101E24C1EB00131E39 /* MGFaceppSDKTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1432EE0F1E24C1EB00131E39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14FFF27F1E24C45400A5A7EF /* 3.jpg in Resources */,
+				14FFF2811E24C48E00A5A7EF /* megviifacepp_0_3_3_model in Resources */,
+				1432EE241E24C1EB00131E39 /* LaunchScreen.storyboard in Resources */,
+				1432EE211E24C1EB00131E39 /* Assets.xcassets in Resources */,
+				14FFF27E1E24C45400A5A7EF /* 2.png in Resources */,
+				1432EE1F1E24C1EB00131E39 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1432EE0D1E24C1EB00131E39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1432EE1C1E24C1EB00131E39 /* ViewController.mm in Sources */,
+				1432EE191E24C1EB00131E39 /* AppDelegate.m in Sources */,
+				1432EE161E24C1EB00131E39 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1432EE1D1E24C1EB00131E39 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1432EE1E1E24C1EB00131E39 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1432EE221E24C1EB00131E39 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1432EE231E24C1EB00131E39 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1432EE261E24C1EB00131E39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1432EE271E24C1EB00131E39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1432EE291E24C1EB00131E39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = F4LXZEHY23;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = SDKTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.megvii.MGFaceppSDKTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "aa2b8f25-b101-4b18-bf0a-115db1a8bfd8";
+				PROVISIONING_PROFILE_SPECIFIER = Megvii_wildcard;
+			};
+			name = Debug;
+		};
+		1432EE2A1E24C1EB00131E39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = F4LXZEHY23;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = SDKTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.megvii.MGFaceppSDKTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "371dd0af-e542-4120-9ee7-d0bd9b22a8b5";
+				PROVISIONING_PROFILE_SPECIFIER = "Megvii InHouse Wildcard";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1432EE0C1E24C1EB00131E39 /* Build configuration list for PBXProject "MGFaceppSDKTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1432EE261E24C1EB00131E39 /* Debug */,
+				1432EE271E24C1EB00131E39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1432EE281E24C1EB00131E39 /* Build configuration list for PBXNativeTarget "MGFaceppSDKTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1432EE291E24C1EB00131E39 /* Debug */,
+				1432EE2A1E24C1EB00131E39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1432EE091E24C1EB00131E39 /* Project object */;
+}

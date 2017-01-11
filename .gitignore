@@ -63,3 +63,8 @@ iOSInjectionProject/
 
 megviifacepp*model
 *.a
+
+# net account
+
+MGNetAccount.h
+

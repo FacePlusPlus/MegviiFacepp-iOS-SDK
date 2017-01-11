@@ -148,6 +148,14 @@
 /** 获取版本号 */
 + (NSString *)getVersion;
 
+
+/**
+ 获取SDK授权时间，只有联网授权版本，该SDK可用
+
+ @return 授权时间
+ */
++ (NSDate *)getApiExpiration;
+
 /**
  获取 SDK 相关信息
 

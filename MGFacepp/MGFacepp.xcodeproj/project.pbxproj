@@ -18,7 +18,8 @@
 		14FFF2F41E24D8E600A5A7EF /* MGFaceppCommon.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E21E24D8C400A5A7EF /* MGFaceppCommon.h */; };
 		14FFF2F51E24D8EA00A5A7EF /* MGFaceppConfig.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E31E24D8C400A5A7EF /* MGFaceppConfig.h */; };
 		14FFF2F61E24D8EB00A5A7EF /* MGImageData.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E51E24D8C400A5A7EF /* MGImageData.h */; };
-		14FFF2FC1E24DFAB00A5A7EF /* libMegviiFacepp-0.3.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FFF2F81E24DFAB00A5A7EF /* libMegviiFacepp-0.3.3.a */; };
+		14FFF3141E261CBD00A5A7EF /* libMegviiFacepp-0.3.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FFF3121E261CBD00A5A7EF /* libMegviiFacepp-0.3.4.a */; };
+		14FFF3151E261CC500A5A7EF /* megviifacepp_0_3_4_model in Copy bundle */ = {isa = PBXBuildFile; fileRef = 14FFF3131E261CBD00A5A7EF /* megviifacepp_0_3_4_model */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +45,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 7;
 			files = (
+				14FFF3151E261CC500A5A7EF /* megviifacepp_0_3_4_model in Copy bundle */,
 			);
 			name = "Copy bundle";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,7 +53,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		146C288C1D7E5F4D00124368 /* libMGFacepp-0.3.3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libMGFacepp-0.3.3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		146C288C1D7E5F4D00124368 /* libMGFacepp-0.3.4.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libMGFacepp-0.3.4.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14FFF2D81E24D8C400A5A7EF /* MGAlgorithmInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlgorithmInfo.h; sourceTree = "<group>"; };
 		14FFF2D91E24D8C400A5A7EF /* MGAlgorithmInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGAlgorithmInfo.m; sourceTree = "<group>"; };
 		14FFF2DA1E24D8C400A5A7EF /* MGAlgorithmInfo_Creat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlgorithmInfo_Creat.h; sourceTree = "<group>"; };
@@ -65,10 +67,10 @@
 		14FFF2E41E24D8C400A5A7EF /* MGFaceppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceppConfig.m; sourceTree = "<group>"; };
 		14FFF2E51E24D8C400A5A7EF /* MGImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGImageData.h; sourceTree = "<group>"; };
 		14FFF2E61E24D8C400A5A7EF /* MGImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGImageData.m; sourceTree = "<group>"; };
-		14FFF2F81E24DFAB00A5A7EF /* libMegviiFacepp-0.3.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMegviiFacepp-0.3.3.a"; sourceTree = "<group>"; };
-		14FFF2F91E24DFAB00A5A7EF /* megviifacepp_0_3_3_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_3_3_model; sourceTree = "<group>"; };
 		14FFF2FA1E24DFAB00A5A7EF /* MG_Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MG_Common.h; sourceTree = "<group>"; };
 		14FFF2FB1E24DFAB00A5A7EF /* MG_Facepp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MG_Facepp.h; sourceTree = "<group>"; };
+		14FFF3121E261CBD00A5A7EF /* libMegviiFacepp-0.3.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMegviiFacepp-0.3.4.a"; sourceTree = "<group>"; };
+		14FFF3131E261CBD00A5A7EF /* megviifacepp_0_3_4_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_3_4_model; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14FFF2FC1E24DFAB00A5A7EF /* libMegviiFacepp-0.3.3.a in Frameworks */,
+				14FFF3141E261CBD00A5A7EF /* libMegviiFacepp-0.3.4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +97,7 @@
 		146C288D1D7E5F4D00124368 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				146C288C1D7E5F4D00124368 /* libMGFacepp-0.3.3.a */,
+				146C288C1D7E5F4D00124368 /* libMGFacepp-0.3.4.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,8 +125,8 @@
 		14FFF2F71E24DFAB00A5A7EF /* MegviiFacepp_C_SDK */ = {
 			isa = PBXGroup;
 			children = (
-				14FFF2F81E24DFAB00A5A7EF /* libMegviiFacepp-0.3.3.a */,
-				14FFF2F91E24DFAB00A5A7EF /* megviifacepp_0_3_3_model */,
+				14FFF3121E261CBD00A5A7EF /* libMegviiFacepp-0.3.4.a */,
+				14FFF3131E261CBD00A5A7EF /* megviifacepp_0_3_4_model */,
 				14FFF2FA1E24DFAB00A5A7EF /* MG_Common.h */,
 				14FFF2FB1E24DFAB00A5A7EF /* MG_Facepp.h */,
 			);
@@ -150,7 +152,7 @@
 			);
 			name = MGFacepp;
 			productName = MGLandMark;
-			productReference = 146C288C1D7E5F4D00124368 /* libMGFacepp-0.3.3.a */;
+			productReference = 146C288C1D7E5F4D00124368 /* libMGFacepp-0.3.4.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -305,7 +307,7 @@
 		146C28961D7E5F4D00124368 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 0.3.3;
+				CURRENT_PROJECT_VERSION = 0.3.4;
 				DEPLOYMENT_POSTPROCESSING = NO;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -332,7 +334,7 @@
 		146C28971D7E5F4D00124368 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 0.3.3;
+				CURRENT_PROJECT_VERSION = 0.3.4;
 				DEPLOYMENT_POSTPROCESSING = NO;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

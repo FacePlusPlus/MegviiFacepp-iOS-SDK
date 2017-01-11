@@ -324,6 +324,15 @@
    NSUInteger result = (NSUInteger)mg_facepp.GetApiVersion;
     return result;
 }
+
++ (NSDate *)getApiExpiration{
+
+    NSUInteger result = (NSUInteger)mg_facepp.GetApiExpiration();
+    NSData *date = [NSDate dateWithTimeIntervalSince1970:result];
+
+    return date;
+}
+
 /** 获取版本号 */
 + (NSString *)getVersion{
     const char *tempStr = mg_facepp.GetApiVersion();
@@ -332,26 +341,32 @@
 }
 
 + (MGAlgorithmInfo *)getSDKAlgorithmInfoWithModel:(NSData *)modelData{
-    
-    MGAlgorithmInfo *infoModel = [[MGAlgorithmInfo alloc] init];
-
-    const void *modelBytes = modelData.bytes;
-    MG_ALGORITHMINFO info;
-    MG_RETCODE sucessCode = mg_facepp.GetAlgorithmInfo((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &info);
-    
-    if (sucessCode != MG_RETCODE_OK) {
+    if (modelData) {
+        MGAlgorithmInfo *infoModel = [[MGAlgorithmInfo alloc] init];
+        
+        const void *modelBytes = modelData.bytes;
+        MG_ALGORITHMINFO info;
+        MG_RETCODE sucessCode = mg_facepp.GetAlgorithmInfo((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &info);
+        
+        if (sucessCode != MG_RETCODE_OK) {
+            NSLog(@"[initWithModel:] 初始化失败，modelData 与 SDK 不匹配！，请检查后重试！errorCode:%zi", sucessCode);
+            return nil;
+        }
+        
+        BOOL needLicense = (info.auth_type == MG_ONLINE_AUTH? YES : NO);
+        NSString *version = [self getVersion];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:info.expire_time];
+        
+        [infoModel setAbility:info.ability];
+        [infoModel setDate:date];
+        [infoModel setLicense:needLicense];
+        [infoModel setVersionCode:version];
+        
+        return infoModel;
+    }else{
+        NSLog(@"[initWithModel:] 初始化失败，无法读取 modelData，请检查！");
         return nil;
     }
-    BOOL needLicense = (info.auth_type == MG_ONLINE_AUTH? YES : NO);
-    NSString *version = [self getVersion];
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:info.expire_time];
-    
-    [infoModel setAbility:info.ability];
-    [infoModel setDate:date];
-    [infoModel setLicense:needLicense];
-    [infoModel setVersionCode:version];
-    
-    return infoModel;
 }
 
 @end

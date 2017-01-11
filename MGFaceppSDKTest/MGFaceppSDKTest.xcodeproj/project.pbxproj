@@ -13,12 +13,12 @@
 		1432EE1F1E24C1EB00131E39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE1D1E24C1EB00131E39 /* Main.storyboard */; };
 		1432EE211E24C1EB00131E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE201E24C1EB00131E39 /* Assets.xcassets */; };
 		1432EE241E24C1EB00131E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE221E24C1EB00131E39 /* LaunchScreen.storyboard */; };
-		1432EE2E1E24C32800131E39 /* libMGFacepp-0.3.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1432EE2D1E24C32800131E39 /* libMGFacepp-0.3.3.a */; };
 		14FFF2791E24C3C600A5A7EF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FFF2781E24C3C600A5A7EF /* CoreMedia.framework */; };
 		14FFF27B1E24C3C900A5A7EF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FFF27A1E24C3C900A5A7EF /* AVFoundation.framework */; };
 		14FFF27E1E24C45400A5A7EF /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 14FFF27C1E24C45400A5A7EF /* 2.png */; };
 		14FFF27F1E24C45400A5A7EF /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14FFF27D1E24C45400A5A7EF /* 3.jpg */; };
-		14FFF2811E24C48E00A5A7EF /* megviifacepp_0_3_3_model in Resources */ = {isa = PBXBuildFile; fileRef = 14FFF2801E24C48E00A5A7EF /* megviifacepp_0_3_3_model */; };
+		14FFF3111E261CB300A5A7EF /* megviifacepp_0_3_4_model in Resources */ = {isa = PBXBuildFile; fileRef = 14FFF3101E261CB300A5A7EF /* megviifacepp_0_3_4_model */; };
+		14FFF3171E261D1200A5A7EF /* libMGFacepp-0.3.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FFF3161E261D1200A5A7EF /* libMGFacepp-0.3.4.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,12 +32,12 @@
 		1432EE201E24C1EB00131E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1432EE231E24C1EB00131E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1432EE251E24C1EB00131E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1432EE2D1E24C32800131E39 /* libMGFacepp-0.3.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGFacepp-0.3.3.a"; path = "../../../Library/Developer/Xcode/DerivedData/MGFacepp-bsfynpjekizkhsfbxhfhdlxyqlky/Build/Products/Debug-iphoneos/libMGFacepp-0.3.3.a"; sourceTree = "<group>"; };
 		14FFF2781E24C3C600A5A7EF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		14FFF27A1E24C3C900A5A7EF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		14FFF27C1E24C45400A5A7EF /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		14FFF27D1E24C45400A5A7EF /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
-		14FFF2801E24C48E00A5A7EF /* megviifacepp_0_3_3_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_3_3_model; sourceTree = "<group>"; };
+		14FFF3101E261CB300A5A7EF /* megviifacepp_0_3_4_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_3_4_model; sourceTree = "<group>"; };
+		14FFF3161E261D1200A5A7EF /* libMGFacepp-0.3.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGFacepp-0.3.4.a"; path = "../MGFacepp/build/Debug-iphoneos/libMGFacepp-0.3.4.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,9 +45,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14FFF3171E261D1200A5A7EF /* libMGFacepp-0.3.4.a in Frameworks */,
 				14FFF27B1E24C3C900A5A7EF /* AVFoundation.framework in Frameworks */,
 				14FFF2791E24C3C600A5A7EF /* CoreMedia.framework in Frameworks */,
-				1432EE2E1E24C32800131E39 /* libMGFacepp-0.3.3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +57,7 @@
 		1432EE081E24C1EB00131E39 = {
 			isa = PBXGroup;
 			children = (
-				14FFF2801E24C48E00A5A7EF /* megviifacepp_0_3_3_model */,
+				14FFF3101E261CB300A5A7EF /* megviifacepp_0_3_4_model */,
 				1432EE131E24C1EB00131E39 /* SDKTest */,
 				1432EE121E24C1EB00131E39 /* Products */,
 				1432EE2C1E24C32800131E39 /* Frameworks */,
@@ -101,9 +101,9 @@
 		1432EE2C1E24C32800131E39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				14FFF3161E261D1200A5A7EF /* libMGFacepp-0.3.4.a */,
 				14FFF27A1E24C3C900A5A7EF /* AVFoundation.framework */,
 				14FFF2781E24C3C600A5A7EF /* CoreMedia.framework */,
-				1432EE2D1E24C32800131E39 /* libMGFacepp-0.3.3.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -167,8 +167,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14FFF3111E261CB300A5A7EF /* megviifacepp_0_3_4_model in Resources */,
 				14FFF27F1E24C45400A5A7EF /* 3.jpg in Resources */,
-				14FFF2811E24C48E00A5A7EF /* megviifacepp_0_3_3_model in Resources */,
 				1432EE241E24C1EB00131E39 /* LaunchScreen.storyboard in Resources */,
 				1432EE211E24C1EB00131E39 /* Assets.xcassets in Resources */,
 				14FFF27E1E24C45400A5A7EF /* 2.png in Resources */,

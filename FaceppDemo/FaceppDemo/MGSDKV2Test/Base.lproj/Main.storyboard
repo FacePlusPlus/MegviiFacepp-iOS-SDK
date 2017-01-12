@@ -103,39 +103,60 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0F-tg-AZW">
-                                <rect key="frame" x="56.5" y="150" width="262.5" height="50"/>
+                                <rect key="frame" x="56.5" y="124" width="262.5" height="50"/>
+                                <color key="backgroundColor" red="0.1624471073" green="0.73251554360000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="G8Q-yt-H3m"/>
                                 </constraints>
-                                <state key="normal" title="实时视频监测"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="实时视频检测">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="Iqr-L5-DRh" kind="show" id="hJR-xU-kAd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0h-Nz-MPi">
-                                <rect key="frame" x="56.5" y="230" width="262.5" height="50"/>
-                                <state key="normal" title="单张图片检测"/>
+                                <rect key="frame" x="56.5" y="204" width="262.5" height="50"/>
+                                <color key="backgroundColor" red="0.1624471073" green="0.73251554360000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="单张图片测试">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="1Mj-XB-sVJ" kind="show" id="qFU-lw-s2m"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgV-yD-fyP">
+                                <rect key="frame" x="56" y="304" width="263" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="s0h-Nz-MPi" firstAttribute="height" secondItem="z0F-tg-AZW" secondAttribute="height" id="610-NW-EjK"/>
-                            <constraint firstItem="z0F-tg-AZW" firstAttribute="top" secondItem="QEK-91-NHe" secondAttribute="bottom" constant="86" id="DoW-yC-rrm"/>
+                            <constraint firstItem="z0F-tg-AZW" firstAttribute="top" secondItem="QEK-91-NHe" secondAttribute="bottom" constant="60" id="DoW-yC-rrm"/>
+                            <constraint firstItem="LgV-yD-fyP" firstAttribute="centerX" secondItem="Igo-dm-kn0" secondAttribute="centerX" id="Fh7-Zo-uM9"/>
                             <constraint firstItem="s0h-Nz-MPi" firstAttribute="top" secondItem="z0F-tg-AZW" secondAttribute="bottom" constant="30" id="Myx-ux-eYS"/>
+                            <constraint firstItem="wBl-hQ-DIr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LgV-yD-fyP" secondAttribute="bottom" constant="50" id="aai-hZ-H6E"/>
                             <constraint firstItem="z0F-tg-AZW" firstAttribute="leading" secondItem="Igo-dm-kn0" secondAttribute="centerXWithinMargins" multiplier="0.3" id="cJa-mw-BVm"/>
+                            <constraint firstItem="LgV-yD-fyP" firstAttribute="leading" secondItem="Igo-dm-kn0" secondAttribute="leadingMargin" constant="40" id="iyz-J4-oPw"/>
                             <constraint firstItem="z0F-tg-AZW" firstAttribute="centerX" secondItem="Igo-dm-kn0" secondAttribute="centerX" id="jrq-C0-Qne"/>
                             <constraint firstItem="s0h-Nz-MPi" firstAttribute="centerX" secondItem="z0F-tg-AZW" secondAttribute="centerX" id="mPC-cr-dDX"/>
+                            <constraint firstItem="LgV-yD-fyP" firstAttribute="top" secondItem="s0h-Nz-MPi" secondAttribute="bottom" constant="50" id="qcC-90-QwX"/>
                             <constraint firstItem="s0h-Nz-MPi" firstAttribute="width" secondItem="z0F-tg-AZW" secondAttribute="width" id="tYd-Fi-Stz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ccd-Xh-4w0"/>
+                    <connections>
+                        <outlet property="messageView" destination="LgV-yD-fyP" id="aZu-ZV-GWd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzs-hF-DQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="926" y="751"/>
+            <point key="canvasLocation" x="925.60000000000002" y="750.67466266866575"/>
         </scene>
         <!--Detect One View Controller-->
         <scene sceneID="RPQ-Hw-elR">

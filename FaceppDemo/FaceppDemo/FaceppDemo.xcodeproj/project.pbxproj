@@ -185,6 +185,7 @@
 		1432EDF81E24BAC400131E39 /* MGOpenGLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOpenGLRenderer.h; sourceTree = "<group>"; };
 		1432EDF91E24BAC400131E39 /* MGOpenGLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOpenGLRenderer.m; sourceTree = "<group>"; };
 		1433D0BB1E26429100814ADD /* IMG_2393.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_2393.JPG; sourceTree = "<group>"; };
+		1433D0C41E27326C00814ADD /* MGNetAccount_example.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGNetAccount_example.h; sourceTree = "<group>"; };
 		144731B81DD1A656004E3B60 /* DetectOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectOneViewController.h; sourceTree = "<group>"; };
 		144731B91DD1A656004E3B60 /* DetectOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetectOneViewController.m; sourceTree = "<group>"; };
 		146C28DC1D7E8EF200124368 /* FacePointColor.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FacePointColor.glsl; sourceTree = "<group>"; };
@@ -366,6 +367,7 @@
 				1432EDF11E24BA9700131E39 /* MGFaceLicenseHandle.h */,
 				1432EDF21E24BA9700131E39 /* MGFaceLicenseHandle.m */,
 				1432EDF31E24BA9700131E39 /* MGNetAccount.h */,
+				1433D0C41E27326C00814ADD /* MGNetAccount_example.h */,
 			);
 			path = MGLicenseHander;
 			sourceTree = "<group>";

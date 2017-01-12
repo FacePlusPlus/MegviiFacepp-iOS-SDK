@@ -9,7 +9,11 @@
 #import "MainViewController.h"
 #import "MGFaceLicenseHandle.h"
 
+#import "MGFacepp.h"
+
 @interface MainViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *messageView;
 
 @end
 
@@ -17,20 +21,56 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     
+#if MG_USE_ONLINE_AUTH
+
     /** 进行联网授权版本判断，联网授权就需要进行网络授权 */
     BOOL needLicense = [MGFaceLicenseHandle getNeedNetLicense];
     
     if (needLicense) {
         [MGFaceLicenseHandle licenseForNetwokrFinish:^(bool License, NSDate *sdkDate) {
-            
             NSLog(@"本次联网授权是否成功 %d, SDK 过期时间：%@", License, sdkDate);
         }];
-    }else{
-        NSDate *date = [MGFaceLicenseHandle getLicenseDate];
-        NSLog(@"SDK 为非联网授权版本！过期时间为:%@", date);
     }
+#else
+    NSLog(@"SDK 为非联网授权版本！");
+#endif
+    
+    NSDictionary *tempDic = @{@"0":@"Track",
+                              @"1":@"Detect",
+                              @"2":@"Pose3d",
+                              @"3":@"EyeStatus",
+                              @"4":@"MouseStatus",
+                              @"5":@"Minority",
+                              @"6":@"Blurness",
+                              @"7":@"AgeGender",
+                              @"8":@"ExtractFeature",};
+    
+    
+    NSString *modelPath = [[NSBundle mainBundle] pathForResource:KMGFACEMODELNAME ofType:@""];
+    NSData *modelData = [NSData dataWithContentsOfFile:modelPath];
+    
+    MGAlgorithmInfo *sdkInfo = [MGFacepp getSDKAlgorithmInfoWithModel:modelData];
+    
+    NSMutableString *tempString = [NSMutableString stringWithString:@""];
+    
+    [tempString appendFormat:@"\n是否需要联网授权: %d", sdkInfo.needNetLicense];
+    [tempString appendFormat:@"\n版本号: %@", sdkInfo.version];
+    [tempString appendFormat:@"\nSDK支持功能: {\n"];
+    
+    for (int i = 0; i < sdkInfo.SDKAbility.count; i++) {
+        NSNumber *tempValue = (NSNumber *)sdkInfo.SDKAbility[i];
+        NSInteger function = [tempValue integerValue];
+        
+        NSString *temp = [tempDic valueForKey:[NSString stringWithFormat:@"%zi", function]];
+        [tempString appendFormat:@"    %@", temp];
+        [tempString appendString:@",\n"];
+    }
+    [tempString appendString:@"}"];
+
+    [self.messageView setText:tempString];
+
+    
     
 }
 

@@ -21,9 +21,9 @@
  *
  *  @param license license
  *
- *  @return 0 为成功，其余为失败
+ *  @return 成功或失败
  */
-+ (int)setLicense:(NSString*) license;
++ (BOOL)setLicense:(NSString*) license;
 
 
 

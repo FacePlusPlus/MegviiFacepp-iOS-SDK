@@ -12,6 +12,10 @@
 
 @implementation MGFaceLicenseHandle
 
+
+#if MG_USE_ONLINE_AUTH
+
+
 + (BOOL)getLicense{
     NSDate *sdkDate = [self getLicenseDate];
     return [self compareSDKDate:sdkDate];
@@ -37,7 +41,7 @@
                                                 UUID:uuid
                                            candidate:@[facelicenSDK]
                                               apiKey:MG_LICENSE_KEY
-                                           apiSecret:MG_LICENSE_SECRE
+                                           apiSecret:MG_LICENSE_SECRET
                                               finish:^(BOOL License, NSError *error) {
                                                   
                                                   if (License) {
@@ -90,5 +94,8 @@
     return sdkInfo.needNetLicense;
 }
 
+#else
+
+#endif
 
 @end

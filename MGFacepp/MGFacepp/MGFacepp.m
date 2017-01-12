@@ -118,7 +118,7 @@
             model = MG_FPP_DETECTIONMODE_TRACKING;
             break;
         case MGFppDetectionModeTrackingSmooth:
-            model = MG_FPP_DETECTIONMODE_TRACKING;
+            model = MG_FPP_DETECTIONMODE_TRACKING_SMOOTH;
             break;
         default:
             break;

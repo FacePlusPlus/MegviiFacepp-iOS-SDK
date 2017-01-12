@@ -35,7 +35,6 @@
 #else
     NSLog(@"SDK 为非联网授权版本！");
 #endif
-    
     NSDictionary *tempDic = @{@"0":@"Track",
                               @"1":@"Detect",
                               @"2":@"Pose3d",

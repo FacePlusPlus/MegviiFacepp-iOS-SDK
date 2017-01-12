@@ -173,13 +173,13 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                   config.minFaceSize = faceSize;
                                                   config.interval = internal;
                                                   config.orientation = 90;
-                                                  config.detectionMode = MGFppDetectionModeTracking;
+                                                  config.detectionMode = MGFppDetectionModeTrackingSmooth;
                                                   config.detectROI = detectROI;
                                               }];
     
     
     AVCaptureDevicePosition device = [self getCamera:camera.boolValue];
-    MGVideoManager *videoManager = [MGVideoManager videoPreset:AVCaptureSessionPresetPhoto
+    MGVideoManager *videoManager = [MGVideoManager videoPreset:size.videoPreset
                                                 devicePosition:device
                                                    videoRecord:recording
                                                     videoSound:NO];

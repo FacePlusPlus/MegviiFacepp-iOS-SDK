@@ -44,8 +44,11 @@
                                            apiSecret:MG_LICENSE_SECRET
                                               finish:^(BOOL License, NSError *error) {
                                                   
+                                                  NSLog(@"%@", error);
+                                                  
                                                   if (License) {
                                                       NSDate  *nowSDKDate = [self getLicenseDate];
+                                                      
                                                       if (finish) {
                                                           finish(License, nowSDKDate);
                                                       }

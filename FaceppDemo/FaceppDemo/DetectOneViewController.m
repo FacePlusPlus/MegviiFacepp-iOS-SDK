@@ -44,7 +44,6 @@
     UIImage *image = [UIImage imageNamed:@"IMG_2393.JPG"];
     self.detectImage.image = image;
     
-    
     MGImageData *imageData = [[MGImageData alloc] initWithImage:image];
     
     [self.markManager beginDetectionFrame];
@@ -60,8 +59,6 @@
         NSLog(@"IMG_2393.JPG 未检测到人脸");
     }
     [self.markManager endDetectionFrame];
-    
-    
     
     NSString *tempString = @"";
     if (faceArray.count > 0) {

@@ -68,8 +68,6 @@
 		1433D0F51E275EC900814ADD /* BaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1433D0E71E275EC900814ADD /* BaseCell.xib */; };
 		1433D0F61E275EC900814ADD /* BaseCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1433D0E91E275EC900814ADD /* BaseCollectionCell.m */; };
 		1433D0F71E275EC900814ADD /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1433D0EB1E275EC900814ADD /* BaseModel.m */; };
-		1433D1071E2770A800814ADD /* libMGFacepp-0.4.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1433D1051E2770A800814ADD /* libMGFacepp-0.4.1.a */; };
-		1433D1081E2770A800814ADD /* megviifacepp_0_4_1_model in Resources */ = {isa = PBXBuildFile; fileRef = 1433D1061E2770A800814ADD /* megviifacepp_0_4_1_model */; };
 		144731BA1DD1A656004E3B60 /* DetectOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144731B91DD1A656004E3B60 /* DetectOneViewController.m */; };
 		146C28E01D7E8EF200124368 /* FacePointColor.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 146C28DC1D7E8EF200124368 /* FacePointColor.glsl */; };
 		146C28E11D7E8EF200124368 /* VideoFrag.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 146C28DD1D7E8EF200124368 /* VideoFrag.glsl */; };
@@ -77,6 +75,8 @@
 		146C28E31D7E8EF200124368 /* FacePointSize.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 146C28DF1D7E8EF200124368 /* FacePointSize.glsl */; };
 		1494B9D11D7ED24400E00B70 /* Face3DFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 1494B9CF1D7ED24400E00B70 /* Face3DFragment.glsl */; };
 		1494B9D21D7ED24400E00B70 /* Face3DVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 1494B9D01D7ED24400E00B70 /* Face3DVertex.glsl */; };
+		14D9D1041E3096CC0087D22F /* libMGFacepp-0.4.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D9D1021E3096CC0087D22F /* libMGFacepp-0.4.2.a */; };
+		14D9D1051E3096CC0087D22F /* megviifacepp_0_4_2_model in Resources */ = {isa = PBXBuildFile; fileRef = 14D9D1031E3096CC0087D22F /* megviifacepp_0_4_2_model */; };
 		14FFF3011E25FB6100A5A7EF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FFF3001E25FB6100A5A7EF /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -171,8 +171,6 @@
 		1433D0EA1E275EC900814ADD /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		1433D0EB1E275EC900814ADD /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		1433D0F31E275EC900814ADD /* YTMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTMacro.h; sourceTree = "<group>"; };
-		1433D1051E2770A800814ADD /* libMGFacepp-0.4.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGFacepp-0.4.1.a"; sourceTree = "<group>"; };
-		1433D1061E2770A800814ADD /* megviifacepp_0_4_1_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_4_1_model; sourceTree = "<group>"; };
 		144731B81DD1A656004E3B60 /* DetectOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectOneViewController.h; sourceTree = "<group>"; };
 		144731B91DD1A656004E3B60 /* DetectOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetectOneViewController.m; sourceTree = "<group>"; };
 		146C28DC1D7E8EF200124368 /* FacePointColor.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FacePointColor.glsl; sourceTree = "<group>"; };
@@ -181,6 +179,8 @@
 		146C28DF1D7E8EF200124368 /* FacePointSize.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FacePointSize.glsl; sourceTree = "<group>"; };
 		1494B9CF1D7ED24400E00B70 /* Face3DFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DFragment.glsl; sourceTree = "<group>"; };
 		1494B9D01D7ED24400E00B70 /* Face3DVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DVertex.glsl; sourceTree = "<group>"; };
+		14D9D1021E3096CC0087D22F /* libMGFacepp-0.4.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGFacepp-0.4.2.a"; sourceTree = "<group>"; };
+		14D9D1031E3096CC0087D22F /* megviifacepp_0_4_2_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_4_2_model; sourceTree = "<group>"; };
 		14FFF2FF1E25FB6100A5A7EF /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		14FFF3001E25FB6100A5A7EF /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,8 +191,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1432ED641E24B27500131E39 /* CoreMotion.framework in Frameworks */,
-				1433D1071E2770A800814ADD /* libMGFacepp-0.4.1.a in Frameworks */,
 				140FF1191D8E602100013A3E /* AVFoundation.framework in Frameworks */,
+				14D9D1041E3096CC0087D22F /* libMGFacepp-0.4.2.a in Frameworks */,
 				140FF1181D8E601D00013A3E /* CoreMedia.framework in Frameworks */,
 				140FF1161D8E601800013A3E /* MGBaseKit.framework in Frameworks */,
 			);
@@ -204,8 +204,8 @@
 		140605001D8E5F1000D71080 /* MGFaceppSDK */ = {
 			isa = PBXGroup;
 			children = (
-				1433D1051E2770A800814ADD /* libMGFacepp-0.4.1.a */,
-				1433D1061E2770A800814ADD /* megviifacepp_0_4_1_model */,
+				14D9D1021E3096CC0087D22F /* libMGFacepp-0.4.2.a */,
+				14D9D1031E3096CC0087D22F /* megviifacepp_0_4_2_model */,
 				1432ED411E24B02000131E39 /* MGAlgorithmInfo.h */,
 				1432ED421E24B02000131E39 /* MGFaceppCommon.h */,
 				1432ED431E24B02000131E39 /* MGFaceppSet.h */,
@@ -515,7 +515,6 @@
 				1433D0DB1E275DE200814ADD /* Main.storyboard in Resources */,
 				1432EDD81E24B51B00131E39 /* pw.png in Resources */,
 				1432EDCE1E24B51B00131E39 /* card_front.png in Resources */,
-				1433D1081E2770A800814ADD /* megviifacepp_0_4_1_model in Resources */,
 				1432EDDC1E24B51B00131E39 /* screen-1.png in Resources */,
 				1432EDCD1E24B51B00131E39 /* area-1.png in Resources */,
 				1432ED9B1E24B51300131E39 /* TextCell.xib in Resources */,
@@ -533,6 +532,7 @@
 				1433D0D91E275DE200814ADD /* Assets.xcassets in Resources */,
 				1432EDE11E24B51B00131E39 /* textrec-0.png in Resources */,
 				1432EDD31E24B51B00131E39 /* faceLogo.png in Resources */,
+				14D9D1051E3096CC0087D22F /* megviifacepp_0_4_2_model in Resources */,
 				1432EDD21E24B51B00131E39 /* faceinfo-1.png in Resources */,
 				146C28E21D7E8EF200124368 /* VideoVert.glsl in Resources */,
 				1432EDC21E24B51B00131E39 /* 81-0.png in Resources */,

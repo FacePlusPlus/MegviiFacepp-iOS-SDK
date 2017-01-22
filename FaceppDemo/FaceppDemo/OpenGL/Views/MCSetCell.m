@@ -79,7 +79,7 @@
                 [self.imageView setHidden:NO];
                 [self.textView setHidden:YES];
                 
-                NSString *tempImageName = [NSString stringWithFormat:@"%.0f*%.0f",dataModel.sizeValue.height, dataModel.sizeValue.width];
+                NSString *tempImageName = [NSString stringWithFormat:@"%.0f_%.0f",dataModel.sizeValue.height, dataModel.sizeValue.width];
                 UIImage *tempImage = [UIImage imageNamed:tempImageName];
                 [self.imageView setImage:tempImage];
                 

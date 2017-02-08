@@ -156,6 +156,10 @@
     @synchronized (self) {
         NSMutableArray *returnArray = [NSMutableArray arrayWithCapacity:1];
         
+        if (nil == imagedata) {
+            return returnArray;
+        }
+        
         int width = imagedata.width;
         int height = imagedata.height;
         

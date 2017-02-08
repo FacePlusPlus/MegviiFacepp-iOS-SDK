@@ -32,11 +32,17 @@
     }
     return self;
 }
+
 -(instancetype)initWithSampleBuffer:(CMSampleBufferRef)sampleBuffer{
     self = [super init];
     if (self) {
         _isUIImage = NO;
         self.sampleBuffer = sampleBuffer;
+        
+        if (sampleBuffer == NULL) {
+            NSLog(@"[initWithSampleBuffer:] 初始化失败，sampleBuffer 为空");
+            return nil;
+        }
     }
     return self;
 }
@@ -46,6 +52,11 @@
     if (self) {
         _isUIImage = YES;
         self.image = image;
+        
+        if (image == nil) {
+            NSLog(@"[initWithImage:] 初始化失败，image 为空");
+            return nil;
+        }
     }
     return self;
 }
@@ -179,7 +190,7 @@
                                                  bitsPerComponent,
                                                  bytesPerRow,
                                                  colorSpace,
-                                                 kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+                                                 kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedLast);
     
     CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
     

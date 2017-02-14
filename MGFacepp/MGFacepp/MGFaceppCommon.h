@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define KMGFACEMODELNAME @"megviifacepp_0_4_2_model"
+#define KMGFACEMODELNAME @"megviifacepp_0_4_1_model"
 #define KMGFACEMODELTYPE @""
 
 

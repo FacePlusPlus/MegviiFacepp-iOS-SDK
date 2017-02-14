@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14D9D0FC1E3096050087D22F /* libMegviiFacepp-0.4.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D9D0FA1E3096050087D22F /* libMegviiFacepp-0.4.2.a */; };
-		14D9D0FF1E30962A0087D22F /* megviifacepp_0_4_2_model in Copy bundle */ = {isa = PBXBuildFile; fileRef = 14D9D0FB1E3096050087D22F /* megviifacepp_0_4_2_model */; };
+		14F5070E1E4D59430034B17C /* libMegviiFacepp-0.4.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F5070C1E4D59430034B17C /* libMegviiFacepp-0.4.1.a */; };
 		14FFF2EB1E24D8C400A5A7EF /* MGAlgorithmInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FFF2D91E24D8C400A5A7EF /* MGAlgorithmInfo.m */; };
 		14FFF2ED1E24D8C400A5A7EF /* MGFaceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FFF2DE1E24D8C400A5A7EF /* MGFaceInfo.m */; };
 		14FFF2EE1E24D8C400A5A7EF /* MGFacepp.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FFF2E11E24D8C400A5A7EF /* MGFacepp.m */; };
@@ -45,7 +44,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 7;
 			files = (
-				14D9D0FF1E30962A0087D22F /* megviifacepp_0_4_2_model in Copy bundle */,
 			);
 			name = "Copy bundle";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,8 +52,8 @@
 
 /* Begin PBXFileReference section */
 		146C288C1D7E5F4D00124368 /* libMGFacepp-0.4.2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libMGFacepp-0.4.2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		14D9D0FA1E3096050087D22F /* libMegviiFacepp-0.4.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMegviiFacepp-0.4.2.a"; sourceTree = "<group>"; };
-		14D9D0FB1E3096050087D22F /* megviifacepp_0_4_2_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_4_2_model; sourceTree = "<group>"; };
+		14F5070C1E4D59430034B17C /* libMegviiFacepp-0.4.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMegviiFacepp-0.4.1.a"; sourceTree = "<group>"; };
+		14F5070D1E4D59430034B17C /* megviifacepp_0_4_1_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_4_1_model; sourceTree = "<group>"; };
 		14FFF2D81E24D8C400A5A7EF /* MGAlgorithmInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlgorithmInfo.h; sourceTree = "<group>"; };
 		14FFF2D91E24D8C400A5A7EF /* MGAlgorithmInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGAlgorithmInfo.m; sourceTree = "<group>"; };
 		14FFF2DA1E24D8C400A5A7EF /* MGAlgorithmInfo_Creat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlgorithmInfo_Creat.h; sourceTree = "<group>"; };
@@ -78,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14D9D0FC1E3096050087D22F /* libMegviiFacepp-0.4.2.a in Frameworks */,
+				14F5070E1E4D59430034B17C /* libMegviiFacepp-0.4.1.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,8 +123,8 @@
 		14FFF2F71E24DFAB00A5A7EF /* MegviiFacepp_C_SDK */ = {
 			isa = PBXGroup;
 			children = (
-				14D9D0FA1E3096050087D22F /* libMegviiFacepp-0.4.2.a */,
-				14D9D0FB1E3096050087D22F /* megviifacepp_0_4_2_model */,
+				14F5070C1E4D59430034B17C /* libMegviiFacepp-0.4.1.a */,
+				14F5070D1E4D59430034B17C /* megviifacepp_0_4_1_model */,
 				14FFF2FA1E24DFAB00A5A7EF /* MG_Common.h */,
 				14FFF2FB1E24DFAB00A5A7EF /* MG_Facepp.h */,
 			);
@@ -307,7 +305,7 @@
 		146C28961D7E5F4D00124368 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 0.4.2;
+				CURRENT_PROJECT_VERSION = 0.4.1;
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DYLIB_CURRENT_VERSION = "${CURRENT_PROJECT_VERSION}";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
@@ -335,7 +333,7 @@
 		146C28971D7E5F4D00124368 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 0.4.2;
+				CURRENT_PROJECT_VERSION = 0.4.1;
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DYLIB_CURRENT_VERSION = "${CURRENT_PROJECT_VERSION}";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";

@@ -33,7 +33,7 @@
     
     MGFacepp *facePP = [[MGFacepp alloc] initWithModel:modelData
                                          faceppSetting:^(MGFaceppConfig *config) {
-                                             [config setOrientation:0];
+                                             [config setOrientation:90];
                                          }];
     
     self.markManager = facePP;
@@ -47,7 +47,7 @@
 
 - (IBAction)detectAction:(id)sender {
     
-    UIImage *image = [UIImage imageNamed:@"3.jpg"];
+    UIImage *image = [UIImage imageNamed:@"IMG_2393.JPG"];
     
     
     MGImageData *imageData = [[MGImageData alloc] initWithImage:image];
@@ -59,7 +59,7 @@
     if (faceArray.count > 0) {
         NSLog(@"检测到人脸，数量:%zi", faceArray.count);
     }else{
-        NSLog(@"001.jpeg 未检测到人脸");
+        NSLog(@"IMG_2393.JPG 未检测到人脸");
     }
     
     [self.markManager endDetectionFrame];
@@ -68,8 +68,7 @@
 
 - (IBAction)compareAction:(id)sender {
     
-    UIImage *image = [UIImage imageNamed:@"3.jpg"];
-    UIImage *image2 = [UIImage imageNamed:@"2.png"];
+    UIImage *image = [UIImage imageNamed:@"IMG_2393.JPG"];
     
     NSData *data1, *data2;
     
@@ -81,36 +80,38 @@
     
     if (face.count > 0) {
         MGFaceInfo *faceInfo = face[0];
-        BOOL success = [self.markManager GetFeatureData:faceInfo];
-        if (success) {
-            data1 = faceInfo.featureData;
-        }
+        [self.markManager GetAttribute3D:faceInfo];
+//        BOOL success = [self.markManager GetFeatureData:faceInfo];
+//        if (success) {
+//            data1 = faceInfo.featureData;
+//        }
+        NSLog(@"%.f", faceInfo.pitch);
+
     }else{
-        NSLog(@"001.jpeg 未检测到人脸");
+        NSLog(@"IMG_2393.JPG 未检测到人脸");
     }
     [self.markManager endDetectionFrame];
     
     
+//    MGImageData *imageData2 = [[MGImageData alloc] initWithImage:image2];
+//    [self.markManager beginDetectionFrame];
+//    
+//    NSArray *face2 = [self.markManager detectWithImageData:imageData2];
+//    
+//    if (face.count > 0) {
+//        MGFaceInfo *faceInfo2 = face2[0];
+//        BOOL success = [self.markManager GetFeatureData:faceInfo2];
+//        if (success) {
+//            data2 = faceInfo2.featureData;
+//        }
+//    }else{
+//        NSLog(@"2.png 未检测到人脸");
+//    }
+//    [self.markManager endDetectionFrame];
     
-    MGImageData *imageData2 = [[MGImageData alloc] initWithImage:image2];
-    [self.markManager beginDetectionFrame];
     
-    NSArray *face2 = [self.markManager detectWithImageData:imageData2];
-    
-    if (face.count > 0) {
-        MGFaceInfo *faceInfo2 = face2[0];
-        BOOL success = [self.markManager GetFeatureData:faceInfo2];
-        if (success) {
-            data2 = faceInfo2.featureData;
-        }
-    }else{
-        NSLog(@"2.png 未检测到人脸");
-    }
-    [self.markManager endDetectionFrame];
-    
-    
-    CGFloat like = [self.markManager faceCompareWithFeatureData:data1 featureData2:data2];
-    NSLog(@"相似度：%.2f",like);
+//    CGFloat like = [self.markManager faceCompareWithFeatureData:data1 featureData2:data2];
+//    NSLog(@"相似度：%.2f",like);
 }
 
 

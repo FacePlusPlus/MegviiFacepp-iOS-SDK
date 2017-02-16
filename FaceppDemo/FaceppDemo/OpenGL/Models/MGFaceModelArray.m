@@ -52,9 +52,9 @@
     if (self.count >= 1) {
         MGFaceInfo *model = [self modelWithIndex:0];
         [conficeString appendFormat:@"\n质量:%.2f", model.confidence];
-//        [conficeString appendFormat:@"\n嘴巴:%zi", model.mouseStatus];
-//        [conficeString appendFormat:@"\n眼镜:%zi", model.eyesStatus];
-
+        [conficeString appendFormat:@"\n年龄:%.2f", model.age];
+        NSString *gender = model.gender == 1 ? @"男":@"女";
+        [conficeString appendFormat:@"\n性别:%@", gender];
     }
 
     [tempString appendString:conficeString];

@@ -97,10 +97,10 @@
 - (void)set_age_status:(float)age gender:(MG_GENDER)gender{
     self.age = age;
     
-    if (gender.female > gender.male) {
-        self.gender = gender.female;
+    if (gender.female >= gender.male) {
+        self.gender = 0;
     }else{
-        self.gender = gender.male;
+        self.gender = 1;
     }
 }
 

@@ -111,9 +111,6 @@
     
     CGFloat like = [self.markManager faceCompareWithFeatureData:data1 featureData2:data2];
     NSLog(@"相似度：%.2f",like);
-    
-    
-    
 }
 
 

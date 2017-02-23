@@ -10,11 +10,11 @@
 #import "MGFacepp.h"
 #import "MGNetAccount.h"
 
+
 @implementation MGFaceLicenseHandle
 
 
 #if MG_USE_ONLINE_AUTH
-
 
 + (BOOL)getLicense{
     NSDate *sdkDate = [self getLicenseDate];

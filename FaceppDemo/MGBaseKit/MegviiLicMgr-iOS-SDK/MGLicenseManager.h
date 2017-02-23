@@ -11,7 +11,6 @@
 
 @interface MGLicenseManager : NSObject
 
-
 + (NSString*)getContextWithDuration:(MGLicenseDuration)duration
                                UUID:(NSString *)UUID
                           candidate:(NSArray <NSNumber *>*)APIName;

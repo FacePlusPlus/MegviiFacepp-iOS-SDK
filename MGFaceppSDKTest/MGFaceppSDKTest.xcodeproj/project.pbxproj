@@ -13,8 +13,8 @@
 		1432EE1F1E24C1EB00131E39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE1D1E24C1EB00131E39 /* Main.storyboard */; };
 		1432EE211E24C1EB00131E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE201E24C1EB00131E39 /* Assets.xcassets */; };
 		1432EE241E24C1EB00131E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE221E24C1EB00131E39 /* LaunchScreen.storyboard */; };
-		1433D0FF1E276ED600814ADD /* megviifacepp_0_4_1_model in Resources */ = {isa = PBXBuildFile; fileRef = 1433D0FE1E276ED600814ADD /* megviifacepp_0_4_1_model */; };
-		1433D1031E276F3100814ADD /* libMGFacepp-0.4.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1433D1021E276F3100814ADD /* libMGFacepp-0.4.1.a */; };
+		143B5D9B1E5DA803004E12B0 /* libMGFacepp-0.4.5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 143B5D9A1E5DA803004E12B0 /* libMGFacepp-0.4.5.a */; };
+		143B5D9D1E5DA89B004E12B0 /* megviifacepp_0_4_5_model in Resources */ = {isa = PBXBuildFile; fileRef = 143B5D9C1E5DA89B004E12B0 /* megviifacepp_0_4_5_model */; };
 		14FFF2791E24C3C600A5A7EF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FFF2781E24C3C600A5A7EF /* CoreMedia.framework */; };
 		14FFF27B1E24C3C900A5A7EF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FFF27A1E24C3C900A5A7EF /* AVFoundation.framework */; };
 		14FFF27E1E24C45400A5A7EF /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 14FFF27C1E24C45400A5A7EF /* 2.png */; };
@@ -32,8 +32,8 @@
 		1432EE201E24C1EB00131E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1432EE231E24C1EB00131E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1432EE251E24C1EB00131E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1433D0FE1E276ED600814ADD /* megviifacepp_0_4_1_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_4_1_model; sourceTree = "<group>"; };
-		1433D1021E276F3100814ADD /* libMGFacepp-0.4.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGFacepp-0.4.1.a"; path = "../MGFacepp/build/Release-iphoneos/libMGFacepp-0.4.1.a"; sourceTree = "<group>"; };
+		143B5D9A1E5DA803004E12B0 /* libMGFacepp-0.4.5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGFacepp-0.4.5.a"; path = "../MGFacepp/build/Debug-iphoneos/libMGFacepp-0.4.5.a"; sourceTree = "<group>"; };
+		143B5D9C1E5DA89B004E12B0 /* megviifacepp_0_4_5_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_4_5_model; sourceTree = "<group>"; };
 		14FFF2781E24C3C600A5A7EF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		14FFF27A1E24C3C900A5A7EF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		14FFF27C1E24C45400A5A7EF /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1433D1031E276F3100814ADD /* libMGFacepp-0.4.1.a in Frameworks */,
+				143B5D9B1E5DA803004E12B0 /* libMGFacepp-0.4.5.a in Frameworks */,
 				14FFF27B1E24C3C900A5A7EF /* AVFoundation.framework in Frameworks */,
 				14FFF2791E24C3C600A5A7EF /* CoreMedia.framework in Frameworks */,
 			);
@@ -57,7 +57,7 @@
 		1432EE081E24C1EB00131E39 = {
 			isa = PBXGroup;
 			children = (
-				1433D0FE1E276ED600814ADD /* megviifacepp_0_4_1_model */,
+				143B5D9C1E5DA89B004E12B0 /* megviifacepp_0_4_5_model */,
 				1432EE131E24C1EB00131E39 /* SDKTest */,
 				1432EE121E24C1EB00131E39 /* Products */,
 				1432EE2C1E24C32800131E39 /* Frameworks */,
@@ -101,7 +101,7 @@
 		1432EE2C1E24C32800131E39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1433D1021E276F3100814ADD /* libMGFacepp-0.4.1.a */,
+				143B5D9A1E5DA803004E12B0 /* libMGFacepp-0.4.5.a */,
 				14FFF27A1E24C3C900A5A7EF /* AVFoundation.framework */,
 				14FFF2781E24C3C600A5A7EF /* CoreMedia.framework */,
 			);
@@ -167,11 +167,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				143B5D9D1E5DA89B004E12B0 /* megviifacepp_0_4_5_model in Resources */,
 				14FFF27F1E24C45400A5A7EF /* 3.jpg in Resources */,
 				1432EE241E24C1EB00131E39 /* LaunchScreen.storyboard in Resources */,
 				1432EE211E24C1EB00131E39 /* Assets.xcassets in Resources */,
 				14FFF27E1E24C45400A5A7EF /* 2.png in Resources */,
-				1433D0FF1E276ED600814ADD /* megviifacepp_0_4_1_model in Resources */,
 				1432EE1F1E24C1EB00131E39 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +306,7 @@
 				DEVELOPMENT_TEAM = F4LXZEHY23;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SDKTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.megvii.MGFaceppSDKTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -322,6 +323,7 @@
 				DEVELOPMENT_TEAM = F4LXZEHY23;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SDKTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.megvii.MGFaceppSDKTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";

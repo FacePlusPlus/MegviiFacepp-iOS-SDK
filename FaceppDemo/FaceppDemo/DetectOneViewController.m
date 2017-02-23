@@ -29,10 +29,9 @@
     
     MGFacepp *markManager = [[MGFacepp alloc] initWithModel:modelData
                                               faceppSetting:^(MGFaceppConfig *config) {
-                                                  config.orientation = 90;
+                                                  config.orientation = 0;
                                               }];
     self.markManager = markManager;
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,27 +40,25 @@
 }
 
 - (IBAction)startDetect:(id)sender {
-    UIImage *image = [UIImage imageNamed:@"IMG_2393.JPG"];
+    NSString *imageName = @"IMG_0003.jpg";
+    UIImage *image = [UIImage imageNamed:imageName];
     self.detectImage.image = image;
-    
     
     MGImageData *imageData = [[MGImageData alloc] initWithImage:image];
     
     [self.markManager beginDetectionFrame];
     
     NSArray *faceArray = [self.markManager detectWithImageData:imageData];
-    
+
     if (faceArray.count > 0) {
         MGFaceInfo *faceInfo = faceArray[0];
         [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:106];
         [self.markManager GetAttribute3D:faceInfo];
 
     }else{
-        NSLog(@"IMG_2393.JPG 未检测到人脸");
+        NSLog(@"%@ 未检测到人脸", imageName);
     }
     [self.markManager endDetectionFrame];
-    
-    
     
     NSString *tempString = @"";
     if (faceArray.count > 0) {

@@ -1,7 +1,8 @@
 # MegviiFacepp-iOS-SDK
 An iOS wrapper of MegviiFacepp SDK (the mobile SDK).
 
-版本号： 0.4.2
-（此版本SDK适用于 Megvii-Facepp 0.4.2I）
+版本号： 0.4.5
+（此版本 SDK 适用于 Megvii-Facepp 0.4.5I；This version is used to Megvii-Facepp 0.4.5I）
 
 [学习如何使用 SDK](https://github.com/FacePlusPlus/MegviiFacepp-iOS-SDK/wiki/)
+[how to use SDK](https://github.com/FacePlusPlus/MegviiFacepp-iOS-SDK/wiki/)

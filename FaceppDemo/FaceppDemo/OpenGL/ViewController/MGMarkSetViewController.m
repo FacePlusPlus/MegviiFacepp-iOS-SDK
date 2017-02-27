@@ -172,7 +172,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                               faceppSetting:^(MGFaceppConfig *config) {
                                                   config.minFaceSize = faceSize;
                                                   config.interval = internal;
-                                                  config.orientation = 0;
+                                                  config.orientation = 90;
                                                   config.detectionMode = MGFppDetectionModeTrackingSmooth;
                                                   config.detectROI = detectROI;
                                                   config.pixelFormatType = PixelFormatTypeRGBA;

@@ -71,38 +71,29 @@
 -(CGFloat)width{
     if (NO == self.isUIImage) {
         
-        size_t tempWidth = 0;
-        
         CVImageBufferRef imageBuffer = self.CVImageBuffer;
         CVPixelBufferLockBaseAddress(imageBuffer, 0);
         size_t width = CVPixelBufferGetWidth(imageBuffer);
-//        size_t PerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
-//
-//        BOOL isPlenar = CVPixelBufferIsPlanar(imageBuffer);
-//        if (isPlenar) {
-//            PerRow = CVPixelBufferGetBytesPerRowOfPlane(imageBuffer, 0);
-//        }
-//        
-//        OSType type = CVPixelBufferGetPixelFormatType(imageBuffer);
-        int iBytesPerRow = (int)CVPixelBufferGetBytesPerRow(imageBuffer);
         
-        size_t left = 0, right = 0;
-        CVPixelBufferGetExtendedPixels(imageBuffer, &left, &right, nil, nil);
+        size_t tempWidth = width;
         
-        tempWidth = width + left + right;
+        bool planar = CVPixelBufferIsPlanar(imageBuffer);
+        if (NO == planar) {
+            size_t pow = CVPixelBufferGetBytesPerRow(imageBuffer);
+            
+            tempWidth = tempWidth + (pow/4-width);
+        }
         
-        NSLog(@"iBytesPerRow :%d -- %d", iBytesPerRow, tempWidth);
-
+        
+        CVPixelBufferFillExtendedPixels(imageBuffer);
+        
+        size_t left = 0, right = 0, top, bottom;
+        CVPixelBufferGetExtendedPixels(imageBuffer, &left, &right, &top, &bottom);
+        
+        tempWidth = tempWidth + left + right;
+        
         CVPixelBufferUnlockBaseAddress(imageBuffer,0);
 
-//        size_t pointSize = [MGImageData getImageBit:type];
-//        
-//        if (pointSize != 0) {
-//            tempWidth = (PerRow - width*pointSize)/pointSize + width;
-//        }else{
-//            tempWidth = width;
-//        }
-        
         return tempWidth;
     }
     return self.image.size.width;
@@ -118,9 +109,6 @@
             CVImageBufferRef imageBuffer = self.CVImageBuffer;
             CVPixelBufferLockBaseAddress(imageBuffer, 0);
             size_t height = CVPixelBufferGetHeight(imageBuffer);
-
-            int iBytesPerRow = (int)CVPixelBufferGetBytesPerRow(imageBuffer);
-            NSLog(@"iBytesPerRow :%d", iBytesPerRow);
             
             size_t top = 0, bottom = 0;
             CVPixelBufferGetExtendedPixels(imageBuffer, nil, nil, &top, &bottom);

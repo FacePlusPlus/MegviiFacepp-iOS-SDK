@@ -76,24 +76,33 @@
         CVImageBufferRef imageBuffer = self.CVImageBuffer;
         CVPixelBufferLockBaseAddress(imageBuffer, 0);
         size_t width = CVPixelBufferGetWidth(imageBuffer);
-        size_t PerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+//        size_t PerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+//
+//        BOOL isPlenar = CVPixelBufferIsPlanar(imageBuffer);
+//        if (isPlenar) {
+//            PerRow = CVPixelBufferGetBytesPerRowOfPlane(imageBuffer, 0);
+//        }
+//        
+//        OSType type = CVPixelBufferGetPixelFormatType(imageBuffer);
+        int iBytesPerRow = (int)CVPixelBufferGetBytesPerRow(imageBuffer);
         
-        BOOL isPlenar = CVPixelBufferIsPlanar(imageBuffer);
-        if (isPlenar) {
-            PerRow = CVPixelBufferGetBytesPerRowOfPlane(imageBuffer, 0);
-        }
+        size_t left = 0, right = 0;
+        CVPixelBufferGetExtendedPixels(imageBuffer, &left, &right, nil, nil);
         
-        OSType type = CVPixelBufferGetPixelFormatType(imageBuffer);
+        tempWidth = width + left + right;
+        
+        NSLog(@"iBytesPerRow :%d -- %d", iBytesPerRow, tempWidth);
+
         CVPixelBufferUnlockBaseAddress(imageBuffer,0);
 
-        size_t pointSize = [MGImageData getImageBit:type];
+//        size_t pointSize = [MGImageData getImageBit:type];
+//        
+//        if (pointSize != 0) {
+//            tempWidth = (PerRow - width*pointSize)/pointSize + width;
+//        }else{
+//            tempWidth = width;
+//        }
         
-        if (pointSize != 0) {
-            tempWidth = (PerRow - width*pointSize)/pointSize + width;
-        }else{
-            tempWidth = width;
-        }
-                
         return tempWidth;
     }
     return self.image.size.width;
@@ -102,11 +111,27 @@
 
 -(CGFloat)height{
     if (NO == self.isUIImage) {
-        CVImageBufferRef imageBuffer = self.CVImageBuffer;
-        CVPixelBufferLockBaseAddress(imageBuffer, 0);
-        size_t height = CVPixelBufferGetHeight(imageBuffer);
-        CVPixelBufferUnlockBaseAddress(imageBuffer,0);
-        return height;
+        if (NO == self.isUIImage) {
+            
+            size_t tempHeight = 0;
+            
+            CVImageBufferRef imageBuffer = self.CVImageBuffer;
+            CVPixelBufferLockBaseAddress(imageBuffer, 0);
+            size_t height = CVPixelBufferGetHeight(imageBuffer);
+
+            int iBytesPerRow = (int)CVPixelBufferGetBytesPerRow(imageBuffer);
+            NSLog(@"iBytesPerRow :%d", iBytesPerRow);
+            
+            size_t top = 0, bottom = 0;
+            CVPixelBufferGetExtendedPixels(imageBuffer, nil, nil, &top, &bottom);
+            
+            tempHeight = height + top + bottom;
+            
+            CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+            
+            return tempHeight;
+        }
+
     }
     return self.image.size.height;
 }
@@ -168,7 +193,14 @@
 + (void *)MGRawDataFromSampleBuffer:(CVImageBufferRef)imageBuffer{
     
     CVPixelBufferLockBaseAddress(imageBuffer, 0);
-    void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer);
+    OSType type = CVPixelBufferGetPixelFormatType(imageBuffer);
+    void *baseAddress;
+    if (type == 4) {
+        baseAddress = CVPixelBufferGetBaseAddress(imageBuffer);
+    }else{
+        baseAddress = CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0);
+    }
+    
     CVPixelBufferUnlockBaseAddress(imageBuffer,0);
     
     return baseAddress;

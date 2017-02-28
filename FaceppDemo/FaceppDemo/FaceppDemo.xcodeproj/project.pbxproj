@@ -60,7 +60,6 @@
 		1433D0D91E275DE200814ADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1433D0D11E275DE200814ADD /* Assets.xcassets */; };
 		1433D0DA1E275DE200814ADD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1433D0D21E275DE200814ADD /* LaunchScreen.storyboard */; };
 		1433D0DB1E275DE200814ADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1433D0D41E275DE200814ADD /* Main.storyboard */; };
-		1433D0DC1E275DE200814ADD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1433D0D61E275DE200814ADD /* Info.plist */; };
 		1433D0DD1E275DE200814ADD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1433D0D71E275DE200814ADD /* main.m */; };
 		1433D0E31E275E7D00814ADD /* MGFaceLicenseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1433D0E01E275E7D00814ADD /* MGFaceLicenseHandle.m */; };
 		1433D0F41E275EC900814ADD /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1433D0E61E275EC900814ADD /* BaseCell.m */; };
@@ -502,7 +501,7 @@
 		1419995D1D7D68270029032F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = megvii;
 				TargetAttributes = {
 					141999641D7D68270029032F = {
@@ -570,7 +569,6 @@
 				141D0FFF1E4968CF00BC80F5 /* IMG_0003.jpg in Resources */,
 				1432EDC21E24B51B00131E39 /* 81-0.png in Resources */,
 				1432EDE21E24B51B00131E39 /* textrec-1.png in Resources */,
-				1433D0DC1E275DE200814ADD /* Info.plist in Resources */,
 				1432EDD91E24B51B00131E39 /* record-0.png in Resources */,
 				14DA53B21E34996600EDC6CC /* 960_540@3x.png in Resources */,
 				146C28E01D7E8EF200124368 /* FacePointColor.glsl in Resources */,

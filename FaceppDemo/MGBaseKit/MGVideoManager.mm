@@ -192,7 +192,7 @@
         }
         
         _videoConnection = [output connectionWithMediaType:AVMediaTypeVideo];
-        //        [_videoConnection setVideoOrientation:AVCaptureVideoOrientationPortrait];
+//        [_videoConnection setVideoOrientation:AVCaptureVideoOrientationPortrait];
         self.videoOrientation = _videoConnection.videoOrientation;
         
         /* 设置声音 */

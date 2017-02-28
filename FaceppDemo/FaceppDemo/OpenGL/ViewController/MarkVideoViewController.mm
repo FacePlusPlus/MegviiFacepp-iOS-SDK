@@ -203,7 +203,7 @@
                     config.orientation = self.orientation;
                 }];
             }
-            
+
             MGImageData *imageData = [[MGImageData alloc] initWithSampleBuffer:detectSampleBufferRef];
             
             [self.markManager beginDetectionFrame];
@@ -246,6 +246,8 @@
             [self.markManager endDetectionFrame];
             
             [self displayWithfaceModel:faceModelArray SampleBuffer:detectSampleBufferRef];
+        
+
         });
     }
 }
@@ -258,7 +260,7 @@
         if (self.hasVideoFormatDescription == NO) {
             [self setupVideoPipelineWithInputFormatDescription:[self.videoManager formatDescription]];
         }
-        
+    
         [self rotateAndDetectSampleBuffer:sampleBuffer];
     }
 }

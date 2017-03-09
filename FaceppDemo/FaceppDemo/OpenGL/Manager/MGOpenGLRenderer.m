@@ -3,7 +3,6 @@
      File: RosyWriterOpenGLRenderer.m
  Abstract: The RosyWriter OpenGL effect renderer
   Version: 2.1
- 
  Copyright (C) 2014 Apple Inc. All Rights Reserved.
  */
 

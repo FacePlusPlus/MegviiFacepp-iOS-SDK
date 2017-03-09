@@ -211,7 +211,9 @@
                                                 confidence:face.confidence];
         faceModel.index = i;
         faceModel.trackID = face.track_id;
-        
+    
+        [faceModel setProperty:MG_FPP_ATTR_POSE3D MGFACE:face];
+
         [tempArray addObject:faceModel];
     }
     return tempArray;

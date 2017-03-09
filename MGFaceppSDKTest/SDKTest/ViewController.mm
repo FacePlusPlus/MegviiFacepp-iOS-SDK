@@ -49,7 +49,6 @@
     
     UIImage *image = [UIImage imageNamed:@"3.jpg"];
     
-    
     MGImageData *imageData = [[MGImageData alloc] initWithImage:image];
     
     [self.markManager beginDetectionFrame];
@@ -59,7 +58,7 @@
     if (faceArray.count > 0) {
         NSLog(@"检测到人脸，数量:%zi", faceArray.count);
     }else{
-        NSLog(@"001.jpeg 未检测到人脸");
+        NSLog(@"3.jpeg 未检测到人脸");
     }
     
     [self.markManager endDetectionFrame];
@@ -89,7 +88,6 @@
         NSLog(@"001.jpeg 未检测到人脸");
     }
     [self.markManager endDetectionFrame];
-    
     
     
     MGImageData *imageData2 = [[MGImageData alloc] initWithImage:image2];

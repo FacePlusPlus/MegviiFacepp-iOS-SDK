@@ -228,7 +228,8 @@
                 [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:self.pointsNum];
                 
                 if (self.show3D) {
-                    [self.markManager GetAttribute3D:faceInfo];
+#warning 0.4.6 以后版本不需要单独调用该方法
+//                    [self.markManager GetAttribute3D:faceInfo];
                 }
                 if (self.faceInfo && self.debug) {
                     [self.markManager GetAttributeAgeGenderStatus:faceInfo];

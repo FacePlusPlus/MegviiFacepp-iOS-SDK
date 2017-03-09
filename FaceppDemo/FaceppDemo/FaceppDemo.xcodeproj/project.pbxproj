@@ -66,8 +66,6 @@
 		1433D0F51E275EC900814ADD /* BaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1433D0E71E275EC900814ADD /* BaseCell.xib */; };
 		1433D0F61E275EC900814ADD /* BaseCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1433D0E91E275EC900814ADD /* BaseCollectionCell.m */; };
 		1433D0F71E275EC900814ADD /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1433D0EB1E275EC900814ADD /* BaseModel.m */; };
-		143B5DA01E5DA957004E12B0 /* libMGFacepp-0.4.5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 143B5D9E1E5DA957004E12B0 /* libMGFacepp-0.4.5.a */; };
-		143B5DA11E5DA957004E12B0 /* megviifacepp_0_4_5_model in Resources */ = {isa = PBXBuildFile; fileRef = 143B5D9F1E5DA957004E12B0 /* megviifacepp_0_4_5_model */; };
 		144731BA1DD1A656004E3B60 /* DetectOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144731B91DD1A656004E3B60 /* DetectOneViewController.m */; };
 		146C28E01D7E8EF200124368 /* FacePointColor.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 146C28DC1D7E8EF200124368 /* FacePointColor.glsl */; };
 		146C28E11D7E8EF200124368 /* VideoFrag.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 146C28DD1D7E8EF200124368 /* VideoFrag.glsl */; };
@@ -75,6 +73,8 @@
 		146C28E31D7E8EF200124368 /* FacePointSize.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 146C28DF1D7E8EF200124368 /* FacePointSize.glsl */; };
 		1494B9D11D7ED24400E00B70 /* Face3DFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 1494B9CF1D7ED24400E00B70 /* Face3DFragment.glsl */; };
 		1494B9D21D7ED24400E00B70 /* Face3DVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 1494B9D01D7ED24400E00B70 /* Face3DVertex.glsl */; };
+		14C962041E70F7F600EFDAC8 /* libMGFacepp-0.4.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C962021E70F7F600EFDAC8 /* libMGFacepp-0.4.6.a */; };
+		14C962051E70F7F600EFDAC8 /* megviifacepp_0_4_6_model in Resources */ = {isa = PBXBuildFile; fileRef = 14C962031E70F7F600EFDAC8 /* megviifacepp_0_4_6_model */; };
 		14DA53AF1E34996600EDC6CC /* 640_480.png in Resources */ = {isa = PBXBuildFile; fileRef = 14DA53A71E34996600EDC6CC /* 640_480.png */; };
 		14DA53B01E34996600EDC6CC /* 640_480@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14DA53A81E34996600EDC6CC /* 640_480@3x.png */; };
 		14DA53B11E34996600EDC6CC /* 960_540.png in Resources */ = {isa = PBXBuildFile; fileRef = 14DA53A91E34996600EDC6CC /* 960_540.png */; };
@@ -176,8 +176,6 @@
 		1433D0EA1E275EC900814ADD /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		1433D0EB1E275EC900814ADD /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		1433D0F31E275EC900814ADD /* YTMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTMacro.h; sourceTree = "<group>"; };
-		143B5D9E1E5DA957004E12B0 /* libMGFacepp-0.4.5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGFacepp-0.4.5.a"; sourceTree = "<group>"; };
-		143B5D9F1E5DA957004E12B0 /* megviifacepp_0_4_5_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_4_5_model; sourceTree = "<group>"; };
 		144731B81DD1A656004E3B60 /* DetectOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectOneViewController.h; sourceTree = "<group>"; };
 		144731B91DD1A656004E3B60 /* DetectOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetectOneViewController.m; sourceTree = "<group>"; };
 		146C28DC1D7E8EF200124368 /* FacePointColor.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FacePointColor.glsl; sourceTree = "<group>"; };
@@ -186,6 +184,8 @@
 		146C28DF1D7E8EF200124368 /* FacePointSize.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FacePointSize.glsl; sourceTree = "<group>"; };
 		1494B9CF1D7ED24400E00B70 /* Face3DFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DFragment.glsl; sourceTree = "<group>"; };
 		1494B9D01D7ED24400E00B70 /* Face3DVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DVertex.glsl; sourceTree = "<group>"; };
+		14C962021E70F7F600EFDAC8 /* libMGFacepp-0.4.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGFacepp-0.4.6.a"; sourceTree = "<group>"; };
+		14C962031E70F7F600EFDAC8 /* megviifacepp_0_4_6_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_4_6_model; sourceTree = "<group>"; };
 		14DA53A71E34996600EDC6CC /* 640_480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640_480.png; sourceTree = "<group>"; };
 		14DA53A81E34996600EDC6CC /* 640_480@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "640_480@3x.png"; sourceTree = "<group>"; };
 		14DA53A91E34996600EDC6CC /* 960_540.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 960_540.png; sourceTree = "<group>"; };
@@ -203,8 +203,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				143B5DA01E5DA957004E12B0 /* libMGFacepp-0.4.5.a in Frameworks */,
 				1432ED641E24B27500131E39 /* CoreMotion.framework in Frameworks */,
+				14C962041E70F7F600EFDAC8 /* libMGFacepp-0.4.6.a in Frameworks */,
 				140FF1191D8E602100013A3E /* AVFoundation.framework in Frameworks */,
 				140FF1181D8E601D00013A3E /* CoreMedia.framework in Frameworks */,
 				140FF1161D8E601800013A3E /* MGBaseKit.framework in Frameworks */,
@@ -217,8 +217,8 @@
 		140605001D8E5F1000D71080 /* MGFaceppSDK */ = {
 			isa = PBXGroup;
 			children = (
-				143B5D9E1E5DA957004E12B0 /* libMGFacepp-0.4.5.a */,
-				143B5D9F1E5DA957004E12B0 /* megviifacepp_0_4_5_model */,
+				14C962021E70F7F600EFDAC8 /* libMGFacepp-0.4.6.a */,
+				14C962031E70F7F600EFDAC8 /* megviifacepp_0_4_6_model */,
 				1432ED411E24B02000131E39 /* MGAlgorithmInfo.h */,
 				1432ED421E24B02000131E39 /* MGFaceppCommon.h */,
 				1432ED431E24B02000131E39 /* MGFaceppSet.h */,
@@ -550,7 +550,6 @@
 				142C01181D82A94100E94614 /* megviicloud logo.png in Resources */,
 				14DA53B31E34996600EDC6CC /* 1280_720.png in Resources */,
 				1432EDDB1E24B51B00131E39 /* screen-0.png in Resources */,
-				143B5DA11E5DA957004E12B0 /* megviifacepp_0_4_5_model in Resources */,
 				1432EDCC1E24B51B00131E39 /* area-0.png in Resources */,
 				1432EDC01E24B51B00131E39 /* 3D-0.png in Resources */,
 				14DA53B61E34996600EDC6CC /* 1920_1080@3x.png in Resources */,
@@ -587,6 +586,7 @@
 				1432EDDE1E24B51B00131E39 /* shader-1.png in Resources */,
 				1432EDE31E24B51B00131E39 /* user.png in Resources */,
 				1432ED981E24B51300131E39 /* MCSetCell.xib in Resources */,
+				14C962051E70F7F600EFDAC8 /* megviifacepp_0_4_6_model in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -307,9 +307,9 @@ typedef struct {
  * 记录人脸男女属性的类型，男女概率之和为 1。
  */
 typedef struct {
-    MG_SINGLE female;                           ///< 是男性人脸的概率
+    MG_SINGLE female;                           ///< 是女性人脸的概率
 
-    MG_SINGLE male;                             ///< 是女性人脸的概率
+    MG_SINGLE male;                             ///< 是男性人脸的概率
 } MG_GENDER;
 
 /**

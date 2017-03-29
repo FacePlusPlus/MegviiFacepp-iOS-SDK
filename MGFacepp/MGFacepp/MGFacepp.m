@@ -120,6 +120,12 @@
         case MGFppDetectionModeTrackingSmooth:
             model = MG_FPP_DETECTIONMODE_TRACKING_SMOOTH;
             break;
+        case MGFppDetectionModeTrackingFast:
+            model = MG_FPP_DETECTIONMODE_TRACKING_FAST;
+            break;
+        case MGFppDetectionModeTrackingRobust:
+            model = MG_FPP_DETECTIONMODE_TRACKING_ROBUST;
+            break;
         default:
             break;
     }
@@ -231,7 +237,7 @@
     }
 }
 - (BOOL)GetAttribute3D:(MGFaceInfo *)faceInfo{
-        return [self getFaceAttribute:faceInfo property:MG_FPP_ATTR_POSE3D];
+    return [self getFaceAttribute:faceInfo property:MG_FPP_ATTR_POSE3D];
 }
 - (BOOL)GetAttributeEyeStatus:(MGFaceInfo *)faceInfo{
     return [self getFaceAttribute:faceInfo property:MG_FPP_ATTR_EYESTATUS];

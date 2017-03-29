@@ -13,6 +13,11 @@
 		1432EE1F1E24C1EB00131E39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE1D1E24C1EB00131E39 /* Main.storyboard */; };
 		1432EE211E24C1EB00131E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE201E24C1EB00131E39 /* Assets.xcassets */; };
 		1432EE241E24C1EB00131E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE221E24C1EB00131E39 /* LaunchScreen.storyboard */; };
+<<<<<<< HEAD
+=======
+		14D6A9231E8BA9A700AF4B06 /* libMGFacepp-0.4.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D6A9221E8BA9A700AF4B06 /* libMGFacepp-0.4.7.a */; };
+		14D6A9251E8BAA0000AF4B06 /* megviifacepp_0_4_7_model in Resources */ = {isa = PBXBuildFile; fileRef = 14D6A9241E8BAA0000AF4B06 /* megviifacepp_0_4_7_model */; };
+>>>>>>> dev_047
 		14FFF2791E24C3C600A5A7EF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FFF2781E24C3C600A5A7EF /* CoreMedia.framework */; };
 		14FFF27B1E24C3C900A5A7EF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FFF27A1E24C3C900A5A7EF /* AVFoundation.framework */; };
 		14FFF27E1E24C45400A5A7EF /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 14FFF27C1E24C45400A5A7EF /* 2.png */; };
@@ -32,7 +37,12 @@
 		1432EE201E24C1EB00131E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1432EE231E24C1EB00131E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1432EE251E24C1EB00131E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		14C961FE1E70F68800EFDAC8 /* libMGFacepp-0.4.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGFacepp-0.4.6.a"; path = "../../../../Library/Developer/Xcode/DerivedData/MGFacepp-dffmvicyyesoopckmuwwcvfjkawl/Build/Products/Debug-iphoneos/libMGFacepp-0.4.6.a"; sourceTree = "<group>"; };
+=======
+		14D6A9221E8BA9A700AF4B06 /* libMGFacepp-0.4.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGFacepp-0.4.7.a"; path = "../MGFacepp/build/Debug-iphoneos/libMGFacepp-0.4.7.a"; sourceTree = "<group>"; };
+		14D6A9241E8BAA0000AF4B06 /* megviifacepp_0_4_7_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_4_7_model; sourceTree = "<group>"; };
+>>>>>>> dev_047
 		14FFF2781E24C3C600A5A7EF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		14FFF27A1E24C3C900A5A7EF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		14FFF27C1E24C45400A5A7EF /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
@@ -46,7 +56,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				D4F495B91E7BC5F3000B6DA8 /* libMGFacepp-0.4.7.a in Frameworks */,
+=======
+				14D6A9231E8BA9A700AF4B06 /* libMGFacepp-0.4.7.a in Frameworks */,
+>>>>>>> dev_047
 				14FFF27B1E24C3C900A5A7EF /* AVFoundation.framework in Frameworks */,
 				14FFF2791E24C3C600A5A7EF /* CoreMedia.framework in Frameworks */,
 			);
@@ -58,7 +72,11 @@
 		1432EE081E24C1EB00131E39 = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				D4F495B61E7BC5E3000B6DA8 /* megviifacepp_0_4_7_model */,
+=======
+				14D6A9241E8BAA0000AF4B06 /* megviifacepp_0_4_7_model */,
+>>>>>>> dev_047
 				1432EE131E24C1EB00131E39 /* SDKTest */,
 				1432EE121E24C1EB00131E39 /* Products */,
 				1432EE2C1E24C32800131E39 /* Frameworks */,
@@ -102,8 +120,12 @@
 		1432EE2C1E24C32800131E39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				D4F495B81E7BC5F3000B6DA8 /* libMGFacepp-0.4.7.a */,
 				14C961FE1E70F68800EFDAC8 /* libMGFacepp-0.4.6.a */,
+=======
+				14D6A9221E8BA9A700AF4B06 /* libMGFacepp-0.4.7.a */,
+>>>>>>> dev_047
 				14FFF27A1E24C3C900A5A7EF /* AVFoundation.framework */,
 				14FFF2781E24C3C600A5A7EF /* CoreMedia.framework */,
 			);
@@ -173,7 +195,11 @@
 				1432EE241E24C1EB00131E39 /* LaunchScreen.storyboard in Resources */,
 				1432EE211E24C1EB00131E39 /* Assets.xcassets in Resources */,
 				14FFF27E1E24C45400A5A7EF /* 2.png in Resources */,
+<<<<<<< HEAD
 				D4F495B71E7BC5E3000B6DA8 /* megviifacepp_0_4_7_model in Resources */,
+=======
+				14D6A9251E8BAA0000AF4B06 /* megviifacepp_0_4_7_model in Resources */,
+>>>>>>> dev_047
 				1432EE1F1E24C1EB00131E39 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -40,7 +40,7 @@
 }
 
 - (IBAction)startDetect:(id)sender {
-    NSString *imageName = @"IMG_0003.jpg";
+    NSString *imageName = @"background.png";
     UIImage *image = [UIImage imageNamed:imageName];
     self.detectImage.image = image;
     
@@ -52,9 +52,12 @@
 
     if (faceArray.count > 0) {
         MGFaceInfo *faceInfo = faceArray[0];
-        [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:106];
+        [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:81];
         [self.markManager GetAttribute3D:faceInfo];
 
+        NSLog(@"%d - %@", faceInfo.points.count ,faceInfo.points);
+        
+        
     }else{
         NSLog(@"%@ 未检测到人脸", imageName);
     }

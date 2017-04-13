@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-<<<<<<< HEAD
-=======
+		1488DA211E9F1F8500ACE032 /* megviifacepp_0_4_7_model in Copy bundle */ = {isa = PBXBuildFile; fileRef = 14D6A91F1E8BA96400AF4B06 /* megviifacepp_0_4_7_model */; };
 		14D6A9201E8BA96400AF4B06 /* libMegviiFacepp-0.4.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D6A91E1E8BA96400AF4B06 /* libMegviiFacepp-0.4.7.a */; };
->>>>>>> dev_047
 		14FFF2EB1E24D8C400A5A7EF /* MGAlgorithmInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FFF2D91E24D8C400A5A7EF /* MGAlgorithmInfo.m */; };
 		14FFF2ED1E24D8C400A5A7EF /* MGFaceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FFF2DE1E24D8C400A5A7EF /* MGFaceInfo.m */; };
 		14FFF2EE1E24D8C400A5A7EF /* MGFacepp.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FFF2E11E24D8C400A5A7EF /* MGFacepp.m */; };
@@ -22,7 +20,6 @@
 		14FFF2F41E24D8E600A5A7EF /* MGFaceppCommon.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E21E24D8C400A5A7EF /* MGFaceppCommon.h */; };
 		14FFF2F51E24D8EA00A5A7EF /* MGFaceppConfig.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E31E24D8C400A5A7EF /* MGFaceppConfig.h */; };
 		14FFF2F61E24D8EB00A5A7EF /* MGImageData.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E51E24D8C400A5A7EF /* MGImageData.h */; };
-		D4F495B51E7BC58E000B6DA8 /* libMegviiFacepp-0.4.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F495B31E7BC58E000B6DA8 /* libMegviiFacepp-0.4.7.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +45,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 7;
 			files = (
+				1488DA211E9F1F8500ACE032 /* megviifacepp_0_4_7_model in Copy bundle */,
 			);
 			name = "Copy bundle";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,11 +54,8 @@
 
 /* Begin PBXFileReference section */
 		146C288C1D7E5F4D00124368 /* libMGFacepp-0.4.7.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libMGFacepp-0.4.7.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-<<<<<<< HEAD
-=======
 		14D6A91E1E8BA96400AF4B06 /* libMegviiFacepp-0.4.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMegviiFacepp-0.4.7.a"; sourceTree = "<group>"; };
 		14D6A91F1E8BA96400AF4B06 /* megviifacepp_0_4_7_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_4_7_model; sourceTree = "<group>"; };
->>>>>>> dev_047
 		14FFF2D81E24D8C400A5A7EF /* MGAlgorithmInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlgorithmInfo.h; sourceTree = "<group>"; };
 		14FFF2D91E24D8C400A5A7EF /* MGAlgorithmInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGAlgorithmInfo.m; sourceTree = "<group>"; };
 		14FFF2DA1E24D8C400A5A7EF /* MGAlgorithmInfo_Creat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlgorithmInfo_Creat.h; sourceTree = "<group>"; };
@@ -76,8 +71,6 @@
 		14FFF2E61E24D8C400A5A7EF /* MGImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGImageData.m; sourceTree = "<group>"; };
 		14FFF2FA1E24DFAB00A5A7EF /* MG_Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MG_Common.h; sourceTree = "<group>"; };
 		14FFF2FB1E24DFAB00A5A7EF /* MG_Facepp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MG_Facepp.h; sourceTree = "<group>"; };
-		D4F495B31E7BC58E000B6DA8 /* libMegviiFacepp-0.4.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMegviiFacepp-0.4.7.a"; sourceTree = "<group>"; };
-		D4F495B41E7BC58E000B6DA8 /* megviifacepp_0_4_7_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_4_7_model; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,11 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-				D4F495B51E7BC58E000B6DA8 /* libMegviiFacepp-0.4.7.a in Frameworks */,
-=======
 				14D6A9201E8BA96400AF4B06 /* libMegviiFacepp-0.4.7.a in Frameworks */,
->>>>>>> dev_047
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,13 +125,8 @@
 		14FFF2F71E24DFAB00A5A7EF /* MegviiFacepp_C_SDK */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				D4F495B31E7BC58E000B6DA8 /* libMegviiFacepp-0.4.7.a */,
-				D4F495B41E7BC58E000B6DA8 /* megviifacepp_0_4_7_model */,
-=======
 				14D6A91E1E8BA96400AF4B06 /* libMegviiFacepp-0.4.7.a */,
 				14D6A91F1E8BA96400AF4B06 /* megviifacepp_0_4_7_model */,
->>>>>>> dev_047
 				14FFF2FA1E24DFAB00A5A7EF /* MG_Common.h */,
 				14FFF2FB1E24DFAB00A5A7EF /* MG_Facepp.h */,
 			);

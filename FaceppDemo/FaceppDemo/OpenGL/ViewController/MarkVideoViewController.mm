@@ -126,8 +126,10 @@
 
 - (void)creatView{
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    self.title = @"人脸检测";
-    UIBarButtonItem *cancenItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(stopDetect:)];
+    self.title = NSLocalizedString(@"icon_title17", nil);
+    UIBarButtonItem *cancenItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"alert_title", nil)
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self action:@selector(stopDetect:)];
     [self.navigationItem setLeftBarButtonItem:cancenItem];
     
     self.debugMessageView = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -269,7 +271,10 @@
 - (void)MGCaptureOutput:(AVCaptureOutput *)captureOutput error:(NSError *)error{
     NSLog(@"%@", error);
     if (error.code == 101) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"警告" message:@"错误的视频配置,该摄像头不支持 1080P 分辨率" delegate:nil cancelButtonTitle:@"完成" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_message2", nil)
+                                                            message:NSLocalizedString(@"alert_message2", nil)
+                                                           delegate:nil cancelButtonTitle:NSLocalizedString(@"alert_message3", nil)
+                                                  otherButtonTitles:nil, nil];
         [alertView show];
     }
     

@@ -44,20 +44,25 @@
 }
 
 - (void)freshenView:(MCSetModel *)dataModel{
-    
     if (dataModel != nil) {
         self.titleView.text = dataModel.title;
         
         switch (dataModel.type) {
             case LogoTypeImage:
             {
-                [self.imageView setHidden:NO];
-                [self.textView setHidden:YES];
-                
-                NSString *tempImageName = [NSString stringWithFormat:@"%@-%zi",dataModel.imageName, dataModel.boolValue];
-                UIImage *tempImage = [UIImage imageNamed:tempImageName];
-                [self.imageView setImage:tempImage];
-                
+                if (dataModel.status == SelectStatusBool) {
+                    [self.imageView setHidden:NO];
+                    [self.textView setHidden:YES];
+                    
+                    NSString *tempImageName = [NSString stringWithFormat:@"%@-%zi",dataModel.imageName, dataModel.boolValue];
+                    UIImage *tempImage = [UIImage imageNamed:tempImageName];
+                    [self.imageView setImage:tempImage];
+                }else if(dataModel.status == SelectStatusSting){
+                    [self.imageView setHidden:YES];
+                    [self.textView setHidden:NO];
+                    
+                    self.textView.text = dataModel.stringValue;
+                }
             }
                 break;
             case LogoTypeText:
@@ -70,18 +75,28 @@
                     showString = [NSString stringWithFormat:@"%zi", dataModel.intValue];
                 }else if (dataModel.status == SelectStatusFloat){
                     showString = [NSString stringWithFormat:@"%.2f", dataModel.floatValue];
+                }else if(dataModel.status == SelectStatusSting){
+                    showString = dataModel.stringValue;
                 }
                 self.textView.text = showString;
             }
                 break;
                 case LogoTypeSelect:
             {
-                [self.imageView setHidden:NO];
-                [self.textView setHidden:YES];
-                
-                NSString *tempImageName = [NSString stringWithFormat:@"%.0f_%.0f",dataModel.sizeValue.height, dataModel.sizeValue.width];
-                UIImage *tempImage = [UIImage imageNamed:tempImageName];
-                [self.imageView setImage:tempImage];
+                if (dataModel.status == SelectStatusSize) {
+                    [self.imageView setHidden:NO];
+                    [self.textView setHidden:YES];
+                    
+                    NSString *tempImageName = [NSString stringWithFormat:@"%.0f_%.0f",dataModel.sizeValue.height, dataModel.sizeValue.width];
+                    UIImage *tempImage = [UIImage imageNamed:tempImageName];
+                    [self.imageView setImage:tempImage];
+                    
+                }else if(dataModel.status == SelectStatusSting){
+                    [self.imageView setHidden:YES];
+                    [self.textView setHidden:NO];
+                    
+                    self.textView.text = dataModel.stringValue;
+                }
                 
             }
                 break;

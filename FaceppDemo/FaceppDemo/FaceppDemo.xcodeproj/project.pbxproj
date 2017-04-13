@@ -10,6 +10,9 @@
 		140FF1161D8E601800013A3E /* MGBaseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 140604FC1D8E5EE600D71080 /* MGBaseKit.framework */; };
 		140FF1181D8E601D00013A3E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142F341D1D7E97DA00A05A5A /* CoreMedia.framework */; };
 		140FF1191D8E602100013A3E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142F34211D7E97E200A05A5A /* AVFoundation.framework */; };
+		141150901E9CC9B70016800E /* 81_points_position.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1411508F1E9CC9B70016800E /* 81_points_position.jpg */; };
+		141150941E9DEDA40016800E /* skin.png in Resources */ = {isa = PBXBuildFile; fileRef = 141150931E9DEDA40016800E /* skin.png */; };
+		141150981E9DFB590016800E /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 141150971E9DFB590016800E /* background.png */; };
 		141D0FFF1E4968CF00BC80F5 /* IMG_0003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 141D0FF81E4968CF00BC80F5 /* IMG_0003.jpg */; };
 		141D10001E4968CF00BC80F5 /* IMG_0004.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 141D0FF91E4968CF00BC80F5 /* IMG_0004.jpg */; };
 		141D10011E4968CF00BC80F5 /* IMG_0005.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 141D0FFA1E4968CF00BC80F5 /* IMG_0005.jpg */; };
@@ -73,6 +76,7 @@
 		146C28E31D7E8EF200124368 /* FacePointSize.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 146C28DF1D7E8EF200124368 /* FacePointSize.glsl */; };
 		1494B9D11D7ED24400E00B70 /* Face3DFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 1494B9CF1D7ED24400E00B70 /* Face3DFragment.glsl */; };
 		1494B9D21D7ED24400E00B70 /* Face3DVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 1494B9D01D7ED24400E00B70 /* Face3DVertex.glsl */; };
+		14A0AACB1E9F4FEB008B9443 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 14A0AACD1E9F4FEB008B9443 /* Localizable.strings */; };
 		14D6A9331E8BAB3D00AF4B06 /* libMGFacepp-0.4.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D6A92A1E8BAB3D00AF4B06 /* libMGFacepp-0.4.7.a */; };
 		14D6A9361E8BB75000AF4B06 /* megviifacepp_0_4_7_model in Resources */ = {isa = PBXBuildFile; fileRef = 14D6A9351E8BB75000AF4B06 /* megviifacepp_0_4_7_model */; };
 		14DA53AF1E34996600EDC6CC /* 640_480.png in Resources */ = {isa = PBXBuildFile; fileRef = 14DA53A71E34996600EDC6CC /* 640_480.png */; };
@@ -88,6 +92,9 @@
 
 /* Begin PBXFileReference section */
 		140604FC1D8E5EE600D71080 /* MGBaseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MGBaseKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/V2SDKDemo-epjzkrsxflxuxtfbehqbuzoevuka/Build/Products/Debug-iphoneos/MGBaseKit.framework"; sourceTree = "<group>"; };
+		1411508F1E9CC9B70016800E /* 81_points_position.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 81_points_position.jpg; sourceTree = "<group>"; };
+		141150931E9DEDA40016800E /* skin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skin.png; sourceTree = "<group>"; };
+		141150971E9DFB590016800E /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		141999651D7D68270029032F /* FaceppDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceppDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		141D0FF81E4968CF00BC80F5 /* IMG_0003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0003.jpg; sourceTree = "<group>"; };
 		141D0FF91E4968CF00BC80F5 /* IMG_0004.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0004.jpg; sourceTree = "<group>"; };
@@ -176,6 +183,13 @@
 		146C28DF1D7E8EF200124368 /* FacePointSize.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FacePointSize.glsl; sourceTree = "<group>"; };
 		1494B9CF1D7ED24400E00B70 /* Face3DFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DFragment.glsl; sourceTree = "<group>"; };
 		1494B9D01D7ED24400E00B70 /* Face3DVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Face3DVertex.glsl; sourceTree = "<group>"; };
+		14A0AABF1E9F4E12008B9443 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		14A0AACC1E9F4FEB008B9443 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		14A0AACE1E9F4FED008B9443 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		14A0AACF1E9F600A008B9443 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		14A0AAD01E9F600A008B9443 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		14A0AAD11E9F600A008B9443 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		14A0AAD31E9F60CD008B9443 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		14D6A92A1E8BAB3D00AF4B06 /* libMGFacepp-0.4.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGFacepp-0.4.7.a"; sourceTree = "<group>"; };
 		14D6A92C1E8BAB3D00AF4B06 /* MGAlgorithmInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlgorithmInfo.h; sourceTree = "<group>"; };
 		14D6A92D1E8BAB3D00AF4B06 /* MGFaceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceInfo.h; sourceTree = "<group>"; };
@@ -350,6 +364,8 @@
 		1433D0CE1E275DE200814ADD /* FaceppDemo */ = {
 			isa = PBXGroup;
 			children = (
+				14A0AAB01E9F4C41008B9443 /* Base.lproj */,
+				14A0AAB51E9F4C41008B9443 /* en.lproj */,
 				1433D0CF1E275DE200814ADD /* AppDelegate.h */,
 				1433D0D01E275DE200814ADD /* AppDelegate.m */,
 				1433D0D11E275DE200814ADD /* Assets.xcassets */,
@@ -357,6 +373,7 @@
 				1433D0D41E275DE200814ADD /* Main.storyboard */,
 				1433D0D61E275DE200814ADD /* Info.plist */,
 				1433D0D71E275DE200814ADD /* main.m */,
+				14A0AACD1E9F4FEB008B9443 /* Localizable.strings */,
 			);
 			path = FaceppDemo;
 			sourceTree = "<group>";
@@ -389,6 +406,9 @@
 		144731B71DD072E1004E3B60 /* 单张图片检测 */ = {
 			isa = PBXGroup;
 			children = (
+				141150971E9DFB590016800E /* background.png */,
+				141150931E9DEDA40016800E /* skin.png */,
+				1411508F1E9CC9B70016800E /* 81_points_position.jpg */,
 				144731B81DD1A656004E3B60 /* DetectOneViewController.h */,
 				144731B91DD1A656004E3B60 /* DetectOneViewController.m */,
 			);
@@ -472,6 +492,20 @@
 			name = MainClass;
 			sourceTree = "<group>";
 		};
+		14A0AAB01E9F4C41008B9443 /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		14A0AAB51E9F4C41008B9443 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -515,6 +549,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 1419995C1D7D68270029032F;
 			productRefGroup = 141999661D7D68270029032F /* Products */;
@@ -538,11 +573,13 @@
 				1432EDC31E24B51B00131E39 /* 81-1.png in Resources */,
 				1433D0DB1E275DE200814ADD /* Main.storyboard in Resources */,
 				1432EDD81E24B51B00131E39 /* pw.png in Resources */,
+				141150901E9CC9B70016800E /* 81_points_position.jpg in Resources */,
 				1432EDCE1E24B51B00131E39 /* card_front.png in Resources */,
 				1432EDDC1E24B51B00131E39 /* screen-1.png in Resources */,
 				1432EDCD1E24B51B00131E39 /* area-1.png in Resources */,
 				1432ED9B1E24B51300131E39 /* TextCell.xib in Resources */,
 				1432EDDF1E24B51B00131E39 /* side-0.png in Resources */,
+				14A0AACB1E9F4FEB008B9443 /* Localizable.strings in Resources */,
 				1433D0F51E275EC900814ADD /* BaseCell.xib in Resources */,
 				141D10041E4968CF00BC80F5 /* IMG_0008.jpg in Resources */,
 				142C01181D82A94100E94614 /* megviicloud logo.png in Resources */,
@@ -562,6 +599,7 @@
 				14DA53B51E34996600EDC6CC /* 1920_1080.png in Resources */,
 				141D10031E4968CF00BC80F5 /* IMG_0007.jpg in Resources */,
 				1432EDD21E24B51B00131E39 /* faceinfo-1.png in Resources */,
+				141150941E9DEDA40016800E /* skin.png in Resources */,
 				146C28E21D7E8EF200124368 /* VideoVert.glsl in Resources */,
 				141D0FFF1E4968CF00BC80F5 /* IMG_0003.jpg in Resources */,
 				1432EDC21E24B51B00131E39 /* 81-0.png in Resources */,
@@ -578,6 +616,7 @@
 				1432EDDA1E24B51B00131E39 /* record-1.png in Resources */,
 				141D10011E4968CF00BC80F5 /* IMG_0005.jpg in Resources */,
 				1433D0BC1E26429100814ADD /* IMG_2393.JPG in Resources */,
+				141150981E9DFB590016800E /* background.png in Resources */,
 				141D10021E4968CF00BC80F5 /* IMG_0006.jpg in Resources */,
 				1494B9D11D7ED24400E00B70 /* Face3DFragment.glsl in Resources */,
 				1432EDE01E24B51B00131E39 /* side-1.png in Resources */,
@@ -639,6 +678,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				1433D0D31E275DE200814ADD /* Base */,
+				14A0AACF1E9F600A008B9443 /* zh-Hans */,
+				14A0AAD31E9F60CD008B9443 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -647,8 +688,20 @@
 			isa = PBXVariantGroup;
 			children = (
 				1433D0D51E275DE200814ADD /* Base */,
+				14A0AABF1E9F4E12008B9443 /* en */,
+				14A0AAD01E9F600A008B9443 /* zh-Hans */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		14A0AACD1E9F4FEB008B9443 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14A0AACC1E9F4FEB008B9443 /* Base */,
+				14A0AACE1E9F4FED008B9443 /* en */,
+				14A0AAD11E9F600A008B9443 /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -658,6 +711,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -704,6 +758,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

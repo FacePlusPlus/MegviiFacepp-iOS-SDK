@@ -57,9 +57,8 @@
 
         NSLog(@"%d - %@", faceInfo.points.count ,faceInfo.points);
         
-        
     }else{
-        NSLog(@"%@ 未检测到人脸", imageName);
+        NSLog(@"%@ no face", imageName);
     }
     [self.markManager endDetectionFrame];
     
@@ -72,7 +71,7 @@
         NSLog(@"%@", NSStringFromCGRect(info1.rect));
     }
     
-    NSString *faceLog = [NSString stringWithFormat:@"人脸数量:%zi\n%@", faceArray.count, tempString];
+    NSString *faceLog = [NSString stringWithFormat:@"%@:%zi\n%@",NSLocalizedString(@"debug_message7", nil) ,faceArray.count, tempString];
     self.messageView.text = faceLog;
     
     NSLog(@"%@", faceArray);

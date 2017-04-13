@@ -36,3 +36,12 @@ alert_message1 = "can not open 1080P!";
 alert_message2 = "warning";
 alert_message3 = "down";
 alert_message4 = "min 1，max 1000";
+
+
+debug_message1 = "Need Net License";
+debug_message2 = "Version";
+debug_message3 = "SDK Function";
+debug_message4 = "Landmarks";
+debug_message5 = "3D Pose";
+debug_message6 = "Confidence";
+debug_message7 = "Face Count";

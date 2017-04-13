@@ -38,3 +38,15 @@ alert_message1 = "错误的视频配置,该摄像头不支持 1080P 分辨率";
 alert_message2 = "警告";
 alert_message3 = "完成";
 alert_message4 = "最小值为 1，最大值为 1000";
+
+
+debug_message1 = "是否需要联网授权";
+debug_message2 = "版本号";
+debug_message3 = "SDK支持功能";
+debug_message4 = "关键点";
+debug_message5 = "3D角度";
+debug_message6 = "质量";
+debug_message7 = "人脸数量";
+
+
+

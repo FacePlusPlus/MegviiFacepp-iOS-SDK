@@ -44,14 +44,14 @@
 - (NSString *)getDebugString{
     
     NSMutableString *tempString = [NSMutableString string];
-    [tempString appendFormat:@"关键点:%.2f ms", self.timeUsed];
-    [tempString appendFormat:@"\n3D角度:%.2f ms", self.AttributeTimeUsed];
+    [tempString appendFormat:@"%@:%.2f ms", NSLocalizedString(@"debug_message4", nil) ,self.timeUsed];
+    [tempString appendFormat:@"\n%@:%.2f ms", NSLocalizedString(@"debug_message5", nil) ,self.AttributeTimeUsed];
     
     NSMutableString *conficeString = [NSMutableString string];
 
     if (self.count >= 1) {
         MGFaceInfo *model = [self modelWithIndex:0];
-        [conficeString appendFormat:@"\n质量:%.2f", model.confidence];
+        [conficeString appendFormat:@"\n%@:%.2f", NSLocalizedString(@"debug_message6", nil), model.confidence];
 //        [conficeString appendFormat:@"\n嘴巴:%zi", model.mouseStatus];
 //        [conficeString appendFormat:@"\n眼镜:%zi", model.eyesStatus];
 

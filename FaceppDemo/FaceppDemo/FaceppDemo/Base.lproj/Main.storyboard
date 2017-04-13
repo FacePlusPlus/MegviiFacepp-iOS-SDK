@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Qb2-5B-0BA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Qb2-5B-0BA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -90,7 +90,7 @@
             </objects>
             <point key="canvasLocation" x="1720.8" y="408.84557721139436"/>
         </scene>
-        <!--Main View Controller-->
+        <!--FACE ++-->
         <scene sceneID="73Q-0x-T0d">
             <objects>
                 <viewController id="Rwe-5N-O6W" customClass="MainViewController" sceneMemberID="viewController">
@@ -149,7 +149,7 @@
                             <constraint firstItem="s0h-Nz-MPi" firstAttribute="width" secondItem="z0F-tg-AZW" secondAttribute="width" id="tYd-Fi-Stz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Ccd-Xh-4w0"/>
+                    <navigationItem key="navigationItem" title="FACE ++" id="Ccd-Xh-4w0"/>
                     <connections>
                         <outlet property="messageView" destination="LgV-yD-fyP" id="aZu-ZV-GWd"/>
                     </connections>

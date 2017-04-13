@@ -1,0 +1,52 @@
+/*
+  InfoPlist.strings
+  FaceppDemo
+
+  Created by 张英堂 on 2017/4/13.
+  Copyright © 2017年 megvii. All rights reserved.
+*/
+
+
+icon_title1 = "录像";
+icon_title2 = "3D模型";
+icon_title3 = "调试信息";
+icon_title4 = "区域选择";
+icon_title5 = "人脸属性";
+icon_title6 = "前置摄像头";
+icon_title7 = "后置摄像头";
+icon_title8 = "最小人脸";
+icon_title9 = "显示帧率";
+icon_title10 = "检测间隔";
+icon_title11 = "关键点个数";
+icon_title12 = "相机分辨率";
+icon_title13 = "单脸跟踪";
+icon_title14 = "跟踪模式";
+icon_title17 = "检测人脸";
+icon_title18 = "返回";
+icon_title19 = "人脸识别演示";
+
+icon_title15 = "Fast";
+icon_title16 = "Robust";
+icon_title20 = "Normal";
+
+
+
+alert_title = "取消";
+alert_title2 = "请选择";
+
+alert_message1 = "错误的视频配置,该摄像头不支持 1080P 分辨率";
+alert_message2 = "警告";
+alert_message3 = "完成";
+alert_message4 = "最小值为 1，最大值为 1000";
+
+
+debug_message1 = "是否需要联网授权";
+debug_message2 = "版本号";
+debug_message3 = "SDK支持功能";
+debug_message4 = "关键点";
+debug_message5 = "3D角度";
+debug_message6 = "质量";
+debug_message7 = "人脸数量";
+
+
+

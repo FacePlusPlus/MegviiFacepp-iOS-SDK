@@ -34,7 +34,9 @@ typedef enum {
 
     MG_RETCODE_INVALID_MODEL,       ///< 传入了错误的模型（model）
 
-    MG_RETCODE_FAILED = -1          ///< 算法内部错误
+    MG_RETCODE_FAILED = -1,         ///< 算法内部错误
+    
+    MG_RETCODE_GL_CONTEXT = 201,    ///< 不在 OpenGL context 下
 } MG_RETCODE;
 
 /**
@@ -126,10 +128,8 @@ typedef int MG_BOOL;
  * @判断 SDK 使用平台
  */
 #if __APPLE__
-    #ifndef MGAPI_INTERNAL
-        #include <UIKit/UIKit.h>
-        #define MGAPI_BUILD_ON_IPHONE   1
-    #endif
+    #define MGAPI_BUILD_ON_IPHONE   1
+    
 #elif __ANDROID__
 #define MGAPI_BUILD_ON_ANDROID	1
 #include <jni.h>
@@ -307,9 +307,9 @@ typedef struct {
  * 记录人脸男女属性的类型，男女概率之和为 1。
  */
 typedef struct {
-    MG_SINGLE female;                           ///< 是男性人脸的概率
+    MG_SINGLE female;                           ///< 是女性人脸的概率
 
-    MG_SINGLE male;                             ///< 是女性人脸的概率
+    MG_SINGLE male;                             ///< 是男性人脸的概率
 } MG_GENDER;
 
 /**
@@ -401,7 +401,16 @@ typedef struct {
 
 } MG_ALGORITHMINFO;
 
-
+typedef enum {
+    MG_ROTATION_0 = 0,                              ///< 不旋转
+    
+    MG_ROTATION_90 = 90,                            ///< 图像右时针旋转 90 度
+    
+    MG_ROTATION_180 = 180,                          ///< 图像右时针旋转 180 度
+    
+    MG_ROTATION_270 = 270,                          ///< 图像右时针旋转 270 度
+} MG_ROTATION;
+    
 #ifdef __cplusplus
 }
 #endif

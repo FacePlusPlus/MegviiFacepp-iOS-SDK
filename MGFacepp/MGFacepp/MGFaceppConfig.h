@@ -34,6 +34,8 @@
 /** 设置视频流格式，默认 PixelFormatTypeRGBA */
 @property (nonatomic, assign) MGPixelFormatType pixelFormatType;
 
+@property (nonatomic, assign) BOOL oneFaceTracking;
+
 
 
 

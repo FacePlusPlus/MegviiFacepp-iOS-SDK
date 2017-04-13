@@ -1,0 +1,24 @@
+
+/* Class = "UINavigationItem"; title = "FACE ++"; ObjectID = "Ccd-Xh-4w0"; */
+"Ccd-Xh-4w0.title" = "FACE ++";
+
+/* Class = "UILabel"; text = "face info"; ObjectID = "IYs-8K-NTt"; */
+"IYs-8K-NTt.text" = "face info";
+
+/* Class = "UILabel"; text = "message"; ObjectID = "LgV-yD-fyP"; */
+"LgV-yD-fyP.text" = "message";
+
+/* Class = "UIButton"; normalTitle = "开始检测"; ObjectID = "OAZ-4Q-Yl6"; */
+"OAZ-4Q-Yl6.normalTitle" = "开始检测";
+
+/* Class = "UIButton"; normalTitle = "检测人脸"; ObjectID = "TMt-7D-evW"; */
+"TMt-7D-evW.normalTitle" = "检测人脸";
+
+/* Class = "UINavigationItem"; title = "实时人脸检测"; ObjectID = "puV-yq-SfP"; */
+"puV-yq-SfP.title" = "实时人脸检测";
+
+/* Class = "UIButton"; normalTitle = "单张图片测试"; ObjectID = "s0h-Nz-MPi"; */
+"s0h-Nz-MPi.normalTitle" = "单张图片测试";
+
+/* Class = "UIButton"; normalTitle = "实时视频检测"; ObjectID = "z0F-tg-AZW"; */
+"z0F-tg-AZW.normalTitle" = "实时视频检测";

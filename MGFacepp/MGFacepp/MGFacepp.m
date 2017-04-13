@@ -99,7 +99,8 @@
         config.rotation = self.faceppConfig.orientation;
         config.detection_mode = [self getDetectModel:self.faceppConfig.detectionMode];
         config.roi = angle;
-     
+        config.one_face_tracking = self.faceppConfig.oneFaceTracking;
+        
         MG_RETCODE code = mg_facepp.SetDetectConfig(_apiHandle, &config);
         if (code == MG_RETCODE_OK) {
             return YES;
@@ -119,6 +120,12 @@
             break;
         case MGFppDetectionModeTrackingSmooth:
             model = MG_FPP_DETECTIONMODE_TRACKING_SMOOTH;
+            break;
+        case MGFppDetectionModeTrackingFast:
+            model = MG_FPP_DETECTIONMODE_TRACKING_FAST;
+            break;
+        case MGFppDetectionModeTrackingRobust:
+            model = MG_FPP_DETECTIONMODE_TRACKING_ROBUST;
             break;
         default:
             break;
@@ -211,7 +218,9 @@
                                                 confidence:face.confidence];
         faceModel.index = i;
         faceModel.trackID = face.track_id;
-        
+    
+        [faceModel setProperty:MG_FPP_ATTR_POSE3D MGFACE:face];
+
         [tempArray addObject:faceModel];
     }
     return tempArray;
@@ -229,7 +238,7 @@
     }
 }
 - (BOOL)GetAttribute3D:(MGFaceInfo *)faceInfo{
-        return [self getFaceAttribute:faceInfo property:MG_FPP_ATTR_POSE3D];
+    return [self getFaceAttribute:faceInfo property:MG_FPP_ATTR_POSE3D];
 }
 - (BOOL)GetAttributeEyeStatus:(MGFaceInfo *)faceInfo{
     return [self getFaceAttribute:faceInfo property:MG_FPP_ATTR_EYESTATUS];

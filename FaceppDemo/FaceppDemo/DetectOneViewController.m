@@ -40,7 +40,7 @@
 }
 
 - (IBAction)startDetect:(id)sender {
-    NSString *imageName = @"IMG_0003.jpg";
+    NSString *imageName = @"background.png";
     UIImage *image = [UIImage imageNamed:imageName];
     self.detectImage.image = image;
     
@@ -52,11 +52,13 @@
 
     if (faceArray.count > 0) {
         MGFaceInfo *faceInfo = faceArray[0];
-        [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:106];
+        [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:81];
         [self.markManager GetAttribute3D:faceInfo];
 
+        NSLog(@"%d - %@", faceInfo.points.count ,faceInfo.points);
+        
     }else{
-        NSLog(@"%@ 未检测到人脸", imageName);
+        NSLog(@"%@ no face", imageName);
     }
     [self.markManager endDetectionFrame];
     
@@ -69,7 +71,7 @@
         NSLog(@"%@", NSStringFromCGRect(info1.rect));
     }
     
-    NSString *faceLog = [NSString stringWithFormat:@"人脸数量:%zi\n%@", faceArray.count, tempString];
+    NSString *faceLog = [NSString stringWithFormat:@"%@:%zi\n%@",NSLocalizedString(@"debug_message7", nil) ,faceArray.count, tempString];
     self.messageView.text = faceLog;
     
     NSLog(@"%@", faceArray);

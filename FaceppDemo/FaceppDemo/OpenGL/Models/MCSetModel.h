@@ -18,7 +18,8 @@ typedef NS_ENUM(NSInteger, SelectStatus) {
     SelectStatusBool = 1,
     SelectStatusInt,
     SelectStatusFloat,
-    SelectStatusSize
+    SelectStatusSize,
+    SelectStatusSting
 };
 
 @interface MCSetModel : BaseModel
@@ -30,6 +31,7 @@ typedef NS_ENUM(NSInteger, SelectStatus) {
 @property (nonatomic, assign) NSInteger intValue;
 @property (nonatomic, assign) CGFloat floatValue;
 @property (nonatomic, assign) CGSize sizeValue;
+@property (copy, nonatomic) NSString *stringValue;
 
 @property (copy, nonatomic) NSString *videoPreset;
 

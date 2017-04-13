@@ -1,0 +1,47 @@
+/* 
+  InfoPlist.strings
+  FaceppDemo
+
+  Created by 张英堂 on 2017/4/13.
+  Copyright © 2017年 megvii. All rights reserved.
+*/
+
+icon_title1 = "Record";
+icon_title2 = "3D Pose";
+icon_title3 = "Debug";
+icon_title4 = "ROI";
+icon_title5 = "Attributes";
+icon_title6 = "Front";
+icon_title7 = "Back";
+icon_title8 = "Min Face";
+icon_title9 = "FPS";
+icon_title10 = "Interval";
+icon_title11 = "Landmarks";
+icon_title12 = "Resolution";
+icon_title13 = "One Face Tracking";
+icon_title14 = "Tracking Mode";
+icon_title17 = "Detect Face";
+icon_title18 = "Back";
+icon_title19 = "Face++ Demo";
+
+icon_title15 = "Fast";
+icon_title16 = "Robust";
+icon_title20 = "Normal";
+
+
+alert_title = "cancel";
+alert_title2 = "select";
+
+alert_message1 = "can not open 1080P!";
+alert_message2 = "warning";
+alert_message3 = "down";
+alert_message4 = "min 1，max 1000";
+
+
+debug_message1 = "Need Net License";
+debug_message2 = "Version";
+debug_message3 = "SDK Function";
+debug_message4 = "Landmarks";
+debug_message5 = "3D Pose";
+debug_message6 = "Confidence";
+debug_message7 = "Face Count";

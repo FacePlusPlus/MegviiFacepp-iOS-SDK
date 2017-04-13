@@ -53,9 +53,9 @@
     
     NSMutableString *tempString = [NSMutableString stringWithString:@""];
     
-    [tempString appendFormat:@"\n是否需要联网授权: %d", sdkInfo.needNetLicense];
-    [tempString appendFormat:@"\n版本号: %@", sdkInfo.version];
-    [tempString appendFormat:@"\nSDK支持功能: {\n"];
+    [tempString appendFormat:@"\n%@: %@",NSLocalizedString(@"debug_message1", nil), sdkInfo.needNetLicense?@"YES":@"NO"];
+    [tempString appendFormat:@"\n%@: %@",NSLocalizedString(@"debug_message2", nil),sdkInfo.version];
+    [tempString appendFormat:@"\n%@: {\n", NSLocalizedString(@"debug_message3", nil)];
     
     for (int i = 0; i < sdkInfo.SDKAbility.count; i++) {
         NSNumber *tempValue = (NSNumber *)sdkInfo.SDKAbility[i];

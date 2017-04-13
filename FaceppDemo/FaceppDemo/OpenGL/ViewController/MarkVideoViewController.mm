@@ -126,8 +126,10 @@
 
 - (void)creatView{
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    self.title = @"人脸检测";
-    UIBarButtonItem *cancenItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(stopDetect:)];
+    self.title = NSLocalizedString(@"icon_title17", nil);
+    UIBarButtonItem *cancenItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"alert_title", nil)
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self action:@selector(stopDetect:)];
     [self.navigationItem setLeftBarButtonItem:cancenItem];
     
     self.debugMessageView = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -228,7 +230,8 @@
                 [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:self.pointsNum];
                 
                 if (self.show3D) {
-                    [self.markManager GetAttribute3D:faceInfo];
+#warning 0.4.6 以后版本不需要单独调用该方法
+//                    [self.markManager GetAttribute3D:faceInfo];
                 }
                 if (self.faceInfo && self.debug) {
                     [self.markManager GetAttributeAgeGenderStatus:faceInfo];
@@ -268,7 +271,10 @@
 - (void)MGCaptureOutput:(AVCaptureOutput *)captureOutput error:(NSError *)error{
     NSLog(@"%@", error);
     if (error.code == 101) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"警告" message:@"错误的视频配置,该摄像头不支持 1080P 分辨率" delegate:nil cancelButtonTitle:@"完成" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_message2", nil)
+                                                            message:NSLocalizedString(@"alert_message2", nil)
+                                                           delegate:nil cancelButtonTitle:NSLocalizedString(@"alert_message3", nil)
+                                                  otherButtonTitles:nil, nil];
         [alertView show];
     }
     

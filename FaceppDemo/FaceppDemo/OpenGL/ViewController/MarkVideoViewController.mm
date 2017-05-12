@@ -200,57 +200,63 @@
         /* 进入检测人脸专用线程 */
         dispatch_async(_detectImageQueue, ^{
             
-            if ([self.markManager getFaceppConfig].orientation != self.orientation) {
-                [self.markManager updateFaceppSetting:^(MGFaceppConfig *config) {
-                    config.orientation = self.orientation;
-                }];
-            }
-
-            MGImageData *imageData = [[MGImageData alloc] initWithSampleBuffer:detectSampleBufferRef];
-            
-            [self.markManager beginDetectionFrame];
-            
-            NSDate *date1, *date2, *date3;
-            date1 = [NSDate date];
-            
-            NSArray *tempArray = [self.markManager detectWithImageData:imageData];
-            
-            date2 = [NSDate date];
-            double timeUsed = [date2 timeIntervalSinceDate:date1] * 1000;
-            
-            MGFaceModelArray *faceModelArray = [[MGFaceModelArray alloc] init];
-            faceModelArray.getFaceInfo = self.faceInfo;
-            faceModelArray.faceArray = [NSMutableArray arrayWithArray:tempArray];
-            faceModelArray.timeUsed = timeUsed;
-            faceModelArray.get3DInfo = self.show3D;
-            [faceModelArray setDetectRect:self.detectRect];
-            
-            if (faceModelArray.count >= 1) {
-                MGFaceInfo *faceInfo = faceModelArray.faceArray[0];
-                [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:self.pointsNum];
+            @autoreleasepool {
                 
-                if (self.show3D) {
+                if ([self.markManager getFaceppConfig].orientation != self.orientation) {
+                    [self.markManager updateFaceppSetting:^(MGFaceppConfig *config) {
+                        config.orientation = self.orientation;
+                    }];
+                }
+                
+                MGImageData *imageData = [[MGImageData alloc] initWithSampleBuffer:detectSampleBufferRef];
+                
+                [self.markManager beginDetectionFrame];
+                
+                NSDate *date1, *date2, *date3;
+                date1 = [NSDate date];
+                
+                NSArray *tempArray = [self.markManager detectWithImageData:imageData];
+                
+                date2 = [NSDate date];
+                double timeUsed = [date2 timeIntervalSinceDate:date1] * 1000;
+                
+                MGFaceModelArray *faceModelArray = [[MGFaceModelArray alloc] init];
+                faceModelArray.getFaceInfo = self.faceInfo;
+                faceModelArray.faceArray = [NSMutableArray arrayWithArray:tempArray];
+                faceModelArray.timeUsed = timeUsed;
+                faceModelArray.get3DInfo = self.show3D;
+                [faceModelArray setDetectRect:self.detectRect];
+                
+                if (faceModelArray.count >= 1) {
+                    MGFaceInfo *faceInfo = faceModelArray.faceArray[0];
+                    [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:self.pointsNum];
+                    
+                    if (self.show3D) {
 #warning 0.4.6 以后版本不需要单独调用该方法
-//                    [self.markManager GetAttribute3D:faceInfo];
+                        //                    [self.markManager GetAttribute3D:faceInfo];
+                    }
+                    if (self.faceInfo && self.debug) {
+                        [self.markManager GetAttributeAgeGenderStatus:faceInfo];
+                        [self.markManager GetAttributeMouseStatus:faceInfo];
+                        [self.markManager GetAttributeEyeStatus:faceInfo];
+                        [self.markManager GetMinorityStatus:faceInfo];
+                        [self.markManager GetBlurnessStatus:faceInfo];
+                    }
                 }
-                if (self.faceInfo && self.debug) {
-                    [self.markManager GetAttributeAgeGenderStatus:faceInfo];
-                    [self.markManager GetAttributeMouseStatus:faceInfo];
-                    [self.markManager GetAttributeEyeStatus:faceInfo];
-                    [self.markManager GetMinorityStatus:faceInfo];
-                    [self.markManager GetBlurnessStatus:faceInfo];
-                }
+                
+                date3 = [NSDate date];
+                double timeUsed3D = [date3 timeIntervalSinceDate:date2] * 1000;
+                faceModelArray.AttributeTimeUsed = timeUsed3D;
+                
+                [self.markManager endDetectionFrame];
+                
+                
+//                [imageData releaseImageData];
+//                imageData = nil;
+                
+                [self displayWithfaceModel:faceModelArray SampleBuffer:detectSampleBufferRef];
             }
             
-            date3 = [NSDate date];
-            double timeUsed3D = [date3 timeIntervalSinceDate:date2] * 1000;
-            faceModelArray.AttributeTimeUsed = timeUsed3D;
-            
-            [self.markManager endDetectionFrame];
-            
-            [self displayWithfaceModel:faceModelArray SampleBuffer:detectSampleBufferRef];
-        
-
         });
     }
 }

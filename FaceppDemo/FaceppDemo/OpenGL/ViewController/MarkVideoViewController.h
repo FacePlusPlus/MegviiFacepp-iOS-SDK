@@ -25,6 +25,7 @@
 @property (nonatomic, assign) BOOL debug;
 @property (nonatomic, assign) BOOL show3D;
 @property (nonatomic, assign) BOOL faceInfo;
+@property (nonatomic, assign) BOOL faceContrast;
 
 
 @property (nonatomic, assign) int pointsNum;

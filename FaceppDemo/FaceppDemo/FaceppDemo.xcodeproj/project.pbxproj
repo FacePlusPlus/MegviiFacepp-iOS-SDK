@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09FDB0471ECEB997007DB8B5 /* MGFaceContrast.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FDB0461ECEB997007DB8B5 /* MGFaceContrast.storyboard */; };
+		09FDB04A1ECEB9BF007DB8B5 /* MGFaceContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB0491ECEB9BF007DB8B5 /* MGFaceContrast.m */; };
+		09FDB04D1ECEBBC2007DB8B5 /* MGFaceContrastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB04C1ECEBBC2007DB8B5 /* MGFaceContrastCell.m */; };
+		09FDB0501ECEC976007DB8B5 /* MGFaceContrastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB04F1ECEC976007DB8B5 /* MGFaceContrastModel.m */; };
+		09FDB0551ECEE4AC007DB8B5 /* faceContrast-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FDB0531ECEE4AC007DB8B5 /* faceContrast-0.png */; };
+		09FDB0561ECEE4AC007DB8B5 /* faceContrast-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FDB0541ECEE4AC007DB8B5 /* faceContrast-1.png */; };
+		09FDB0581ECEE893007DB8B5 /* regist.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FDB0571ECEE893007DB8B5 /* regist.png */; };
 		140FF1161D8E601800013A3E /* MGBaseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 140604FC1D8E5EE600D71080 /* MGBaseKit.framework */; };
 		140FF1181D8E601D00013A3E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142F341D1D7E97DA00A05A5A /* CoreMedia.framework */; };
 		140FF1191D8E602100013A3E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142F34211D7E97E200A05A5A /* AVFoundation.framework */; };
@@ -91,6 +98,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09FDB0461ECEB997007DB8B5 /* MGFaceContrast.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MGFaceContrast.storyboard; sourceTree = "<group>"; };
+		09FDB0481ECEB9BF007DB8B5 /* MGFaceContrast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceContrast.h; sourceTree = "<group>"; };
+		09FDB0491ECEB9BF007DB8B5 /* MGFaceContrast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceContrast.m; sourceTree = "<group>"; };
+		09FDB04B1ECEBBC2007DB8B5 /* MGFaceContrastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceContrastCell.h; sourceTree = "<group>"; };
+		09FDB04C1ECEBBC2007DB8B5 /* MGFaceContrastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceContrastCell.m; sourceTree = "<group>"; };
+		09FDB04E1ECEC976007DB8B5 /* MGFaceContrastModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceContrastModel.h; sourceTree = "<group>"; };
+		09FDB04F1ECEC976007DB8B5 /* MGFaceContrastModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceContrastModel.m; sourceTree = "<group>"; };
+		09FDB0531ECEE4AC007DB8B5 /* faceContrast-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceContrast-0.png"; sourceTree = "<group>"; };
+		09FDB0541ECEE4AC007DB8B5 /* faceContrast-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceContrast-1.png"; sourceTree = "<group>"; };
+		09FDB0571ECEE893007DB8B5 /* regist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = regist.png; sourceTree = "<group>"; };
 		140604FC1D8E5EE600D71080 /* MGBaseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MGBaseKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/V2SDKDemo-epjzkrsxflxuxtfbehqbuzoevuka/Build/Products/Debug-iphoneos/MGBaseKit.framework"; sourceTree = "<group>"; };
 		1411508F1E9CC9B70016800E /* 81_points_position.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 81_points_position.jpg; sourceTree = "<group>"; };
 		141150931E9DEDA40016800E /* skin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skin.png; sourceTree = "<group>"; };
@@ -321,6 +338,8 @@
 				1432ED781E24B51300131E39 /* MCSetModel.m */,
 				1432ED7B1E24B51300131E39 /* TextModel.h */,
 				1432ED7C1E24B51300131E39 /* TextModel.m */,
+				09FDB04E1ECEC976007DB8B5 /* MGFaceContrastModel.h */,
+				09FDB04F1ECEC976007DB8B5 /* MGFaceContrastModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -332,6 +351,9 @@
 				1432ED7F1E24B51300131E39 /* MarkVideoViewController.mm */,
 				1432ED801E24B51300131E39 /* MGMarkSetViewController.h */,
 				1432ED811E24B51300131E39 /* MGMarkSetViewController.m */,
+				09FDB0481ECEB9BF007DB8B5 /* MGFaceContrast.h */,
+				09FDB0491ECEB9BF007DB8B5 /* MGFaceContrast.m */,
+				09FDB0461ECEB997007DB8B5 /* MGFaceContrast.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -347,6 +369,8 @@
 				1432ED881E24B51300131E39 /* TextCell.h */,
 				1432ED891E24B51300131E39 /* TextCell.m */,
 				1432ED8A1E24B51300131E39 /* TextCell.xib */,
+				09FDB04B1ECEBBC2007DB8B5 /* MGFaceContrastCell.h */,
+				09FDB04C1ECEBBC2007DB8B5 /* MGFaceContrastCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -428,6 +452,9 @@
 		146C28DA1D7E77CE00124368 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				09FDB0571ECEE893007DB8B5 /* regist.png */,
+				09FDB0531ECEE4AC007DB8B5 /* faceContrast-0.png */,
+				09FDB0541ECEE4AC007DB8B5 /* faceContrast-1.png */,
 				1433D0BB1E26429100814ADD /* IMG_2393.JPG */,
 				14DA53A71E34996600EDC6CC /* 640_480.png */,
 				14DA53A81E34996600EDC6CC /* 640_480@3x.png */,
@@ -582,6 +609,7 @@
 				14A0AACB1E9F4FEB008B9443 /* Localizable.strings in Resources */,
 				1433D0F51E275EC900814ADD /* BaseCell.xib in Resources */,
 				141D10041E4968CF00BC80F5 /* IMG_0008.jpg in Resources */,
+				09FDB0471ECEB997007DB8B5 /* MGFaceContrast.storyboard in Resources */,
 				142C01181D82A94100E94614 /* megviicloud logo.png in Resources */,
 				14DA53B31E34996600EDC6CC /* 1280_720.png in Resources */,
 				1432EDDB1E24B51B00131E39 /* screen-0.png in Resources */,
@@ -604,7 +632,9 @@
 				141D0FFF1E4968CF00BC80F5 /* IMG_0003.jpg in Resources */,
 				1432EDC21E24B51B00131E39 /* 81-0.png in Resources */,
 				14D6A9361E8BB75000AF4B06 /* megviifacepp_0_4_7_model in Resources */,
+				09FDB0561ECEE4AC007DB8B5 /* faceContrast-1.png in Resources */,
 				1432EDE21E24B51B00131E39 /* textrec-1.png in Resources */,
+				09FDB0581ECEE893007DB8B5 /* regist.png in Resources */,
 				1432EDD91E24B51B00131E39 /* record-0.png in Resources */,
 				14DA53B21E34996600EDC6CC /* 960_540@3x.png in Resources */,
 				146C28E01D7E8EF200124368 /* FacePointColor.glsl in Resources */,
@@ -624,6 +654,7 @@
 				1432EDDE1E24B51B00131E39 /* shader-1.png in Resources */,
 				1432EDE31E24B51B00131E39 /* user.png in Resources */,
 				1432ED981E24B51300131E39 /* MCSetCell.xib in Resources */,
+				09FDB0551ECEE4AC007DB8B5 /* faceContrast-0.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +685,7 @@
 				1433D0F41E275EC900814ADD /* BaseCell.m in Sources */,
 				1433D0F61E275EC900814ADD /* BaseCollectionCell.m in Sources */,
 				1432ED991E24B51300131E39 /* MGOpenGLView.m in Sources */,
+				09FDB04D1ECEBBC2007DB8B5 /* MGFaceContrastCell.m in Sources */,
 				1432ED931E24B51300131E39 /* MGFaceModelArray.m in Sources */,
 				14FFF3011E25FB6100A5A7EF /* MainViewController.m in Sources */,
 				1433D0E31E275E7D00814ADD /* MGFaceLicenseHandle.m in Sources */,
@@ -668,6 +700,8 @@
 				1432ED961E24B51300131E39 /* MGMarkSetViewController.m in Sources */,
 				144731BA1DD1A656004E3B60 /* DetectOneViewController.m in Sources */,
 				1433D0DD1E275DE200814ADD /* main.m in Sources */,
+				09FDB0501ECEC976007DB8B5 /* MGFaceContrastModel.m in Sources */,
+				09FDB04A1ECEB9BF007DB8B5 /* MGFaceContrast.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,6 @@
 		140C47F71C2C04B600D9F9ED /* MGBaseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 140C47F61C2C03CF00D9F9ED /* MGBaseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1433D0C21E27295400814ADD /* MGLicenseCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 1433D0BF1E27295400814ADD /* MGLicenseCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1433D0C31E27295400814ADD /* MGLicenseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1433D0C01E27295400814ADD /* MGLicenseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1433D0C71E27340800814ADD /* libMGLicMgrSDK-0.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1433D0C61E27340800814ADD /* libMGLicMgrSDK-0.2.0.a */; };
 		146E12451C27F3300066616F /* MGBaseDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 146E12441C27F3300066616F /* MGBaseDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		146E133B1C2924E60066616F /* MGImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 146E13391C2924E60066616F /* MGImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		146E133C1C2924E60066616F /* MGImage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 146E133A1C2924E60066616F /* MGImage.mm */; };
@@ -33,7 +32,6 @@
 		141913111D012531007B7E89 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1433D0BF1E27295400814ADD /* MGLicenseCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLicenseCommon.h; sourceTree = "<group>"; };
 		1433D0C01E27295400814ADD /* MGLicenseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLicenseManager.h; sourceTree = "<group>"; };
-		1433D0C61E27340800814ADD /* libMGLicMgrSDK-0.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGLicMgrSDK-0.2.0.a"; sourceTree = "<group>"; };
 		146E12441C27F3300066616F /* MGBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBaseDefine.h; sourceTree = "<group>"; };
 		146E13391C2924E60066616F /* MGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGImage.h; sourceTree = "<group>"; };
 		146E133A1C2924E60066616F /* MGImage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGImage.mm; sourceTree = "<group>"; };
@@ -57,7 +55,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1433D0C71E27340800814ADD /* libMGLicMgrSDK-0.2.0.a in Frameworks */,
 				14EA456C1CAD237F00398B3B /* CoreMedia.framework in Frameworks */,
 				14EA456A1CAD237A00398B3B /* AVFoundation.framework in Frameworks */,
 			);
@@ -86,7 +83,6 @@
 		1433D0BD1E27295400814ADD /* MegviiLicMgr-iOS-SDK */ = {
 			isa = PBXGroup;
 			children = (
-				1433D0C61E27340800814ADD /* libMGLicMgrSDK-0.2.0.a */,
 				1433D0BF1E27295400814ADD /* MGLicenseCommon.h */,
 				1433D0C01E27295400814ADD /* MGLicenseManager.h */,
 			);

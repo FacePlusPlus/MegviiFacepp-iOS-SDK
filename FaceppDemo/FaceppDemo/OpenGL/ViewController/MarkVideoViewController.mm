@@ -100,6 +100,8 @@
                                                      }
                                                  }
                                              }];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -140,6 +142,22 @@
     [self.debugMessageView setFrame:CGRectMake(5, 64, 100, 160)];
     
     [self.view addSubview:self.debugMessageView];
+    
+    if (self.faceContrast) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
+        imageView.image = [UIImage imageNamed:@"regist"];
+        imageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height - imageView.frame.size.height/2 - 100);
+        [self.view addSubview:imageView];
+        
+        UIButton *btn = [[UIButton alloc] initWithFrame:imageView.bounds];
+        [btn setTitle:@"点击注册" forState:UIControlStateNormal];
+        [btn setTitle:@"点击注册" forState:UIControlStateHighlighted];
+        [btn addTarget:self action:@selector(registBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+}
+
+- (void)registBtnAction{
+
 }
 
 //加载图层预览
@@ -169,7 +187,7 @@
         __unsafe_unretained MarkVideoViewController *weakSelf = self;
         dispatch_async(_drawFaceQueue, ^{
             if (modelArray) {
-                CVPixelBufferRef renderedPixelBuffer = [weakSelf.renderer copyRenderedPixelBuffer:sampleBuffer faceModelArray:modelArray];
+                CVPixelBufferRef renderedPixelBuffer = [weakSelf.renderer copyRenderedPixelBuffer:sampleBuffer faceModelArray:modelArray drawLandmark:!self.faceContrast];
                 
                 if (renderedPixelBuffer)
                 {

@@ -12,22 +12,22 @@ static NSString *fileName = @"fileName";
 
 @implementation MGFileManager
 
-- (NSString *)filePath:(NSString *)fileName{
++ (NSString *)filePath:(NSString *)fileName{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *document = [paths lastObject];
     return [NSString stringWithFormat:@"%@/%@",document,fileName];
 }
 
-- (void)saveModels:(NSArray *)models{
++ (void)saveModels:(NSArray *)models{
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager createFileAtPath:[self filePath:fileName] contents:nil attributes:nil];
+    [fileManager createFileAtPath:[MGFileManager filePath:fileName] contents:nil attributes:nil];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:models];
-    [data writeToFile:[self filePath:fileName] atomically:NO];
+    [data writeToFile:[MGFileManager filePath:fileName] atomically:NO];
 }
 
-- (NSArray *)getModels{
++ (NSArray *)getModels{
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSData *data = [fileManager contentsAtPath:[self filePath:fileName]];
+    NSData *data = [fileManager contentsAtPath:[MGFileManager filePath:fileName]];
     return (NSArray *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 

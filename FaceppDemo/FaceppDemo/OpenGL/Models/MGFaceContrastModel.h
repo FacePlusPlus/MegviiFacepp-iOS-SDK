@@ -8,12 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "MGImageData.h"
+#import "MGFaceInfo.h"
 
 @interface MGFaceContrastModel : NSObject <NSCoding>
 
-@property (nonatomic, strong) NSString *name;
+- (instancetype)initWithSampleBuffer:(CMSampleBufferRef)sampleBuffer faceInfo:(MGFaceInfo *)faceInfo;
+
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, strong) NSData *feature;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, assign) BOOL selected;
+
+@property (nonatomic, copy) NSString *maybeName;
+@property (nonatomic, assign) CGPoint center;
+@property (nonatomic, assign) NSInteger trackID;
+
+- (void)getName;
 
 @end

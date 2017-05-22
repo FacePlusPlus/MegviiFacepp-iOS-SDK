@@ -12,6 +12,8 @@
 #import "MGFaceModelArray.h"
 #import <CoreMotion/CoreMotion.h>
 #import "MGFaceContrast.h"
+#import "MGFaceContrastModel.h"
+#import "MGFileManager.h"
 
 #define RETAINED_BUFFER_COUNT 6
 
@@ -30,6 +32,9 @@
 @property (nonatomic, strong) CMMotionManager *motionManager;
 @property (nonatomic, assign) int orientation;
 
+@property (nonatomic, strong) NSArray *models;
+@property (nonatomic, assign) BOOL showFaceContrastVC;
+@property (nonatomic, strong) NSMutableSet *labels;
 @end
 
 @implementation MarkVideoViewController
@@ -112,9 +117,15 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    _models = nil;
     [self.videoManager startRecording];
     [self setUpCameraLayer];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.motionManager stopAccelerometerUpdates];
+    [self.videoManager stopRunning];
 }
 
 - (void)stopDetect:(id)sender {
@@ -161,7 +172,14 @@
 }
 
 - (void)registBtnAction{
+    _showFaceContrastVC = YES;
+}
+
+- (void)showfaceContrastVC:(NSArray *)currentModels{
     MGFaceContrast *vc = [MGFaceContrast storyboardInstance];
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:currentModels];
+    [arr addObjectsFromArray:self.models];
+    vc.models = [NSArray arrayWithArray:arr];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -250,7 +268,8 @@
                 faceModelArray.get3DInfo = self.show3D;
                 [faceModelArray setDetectRect:self.detectRect];
                 
-                if (faceModelArray.count >= 1) {
+                NSMutableArray *mutableArr = [NSMutableArray array];
+                for (int i = 0; i < faceModelArray.count; i ++) {
                     MGFaceInfo *faceInfo = faceModelArray.faceArray[0];
                     [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:self.pointsNum];
                     
@@ -265,6 +284,74 @@
                         [self.markManager GetMinorityStatus:faceInfo];
                         [self.markManager GetBlurnessStatus:faceInfo];
                     }
+                    if (self.faceContrast) {
+                        [self.markManager GetFeatureData:faceInfo];
+                        MGFaceContrastModel *model = [[MGFaceContrastModel alloc] initWithSampleBuffer:detectSampleBufferRef faceInfo:faceInfo];
+                        [mutableArr addObject:model];
+                    }
+                }
+                if (self.faceContrast && mutableArr.count > 0) {
+                    // 与数据库对比
+                    NSMutableArray *showModels = [NSMutableArray array];
+                    for (MGFaceContrastModel *model in mutableArr) {
+                        float faceSimilarity = 0.0;
+                        MGFaceContrastModel *maybeModel;
+                        for (MGFaceContrastModel *oldModel in self.models) {
+                            float f = [self.markManager faceCompareWithFeatureData:model.feature featureData2:oldModel.feature];
+                            if (faceSimilarity < f) {
+                                faceSimilarity = f;
+                                maybeModel = oldModel;
+                            }
+                        }
+                        if (faceSimilarity > 0.7) {
+                            model.maybeName = maybeModel.name;
+                            [showModels addObject:model];
+                        }
+                    }
+                    
+                    // 在界面上显示 人名
+                    NSMutableSet *tempArr = [NSMutableSet set];
+                    for (MGFaceContrastModel *model in showModels) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            UILabel *label;
+                            for (UILabel *oldLabel in self.labels) {
+                                if (oldLabel.tag == model.trackID) {
+                                    label = oldLabel;
+                                    break;
+                                }
+                            }
+                            if (label) {
+                                label.center = model.center;
+                                [tempArr addObject:label];
+                            } else {
+                                label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 30)];
+                                label.textAlignment = NSTextAlignmentCenter;
+                                label.text = model.maybeName;
+                                label.textColor = [UIColor whiteColor];
+                                label.center = model.center;
+                                label.tag = model.trackID;
+                                [self.view addSubview:label];
+                                [tempArr addObject:label];
+                            }
+                        });
+                    }
+                    for (UILabel *oldLabel in self.labels) {
+                        if (![tempArr containsObject:oldLabel]) {
+                            [oldLabel removeFromSuperview];
+                        }
+                    }
+                    
+                    [self.labels removeAllObjects];
+                    self.labels = tempArr;
+                }
+                if (_showFaceContrastVC) {
+                    _showFaceContrastVC = NO;
+                    for (MGFaceContrastModel *model in mutableArr) {
+                        [model getName];
+                    }
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self showfaceContrastVC:mutableArr];
+                    });
                 }
                 
                 date3 = [NSDate date];
@@ -317,6 +404,26 @@
     
     [_renderer prepareForInputWithFormatDescription:inputFormatDescription
                       outputRetainedBufferCountHint:RETAINED_BUFFER_COUNT];
+}
+
+
+
+#pragma mark - getter setter -
+- (NSArray *)models{
+    if (!_models) {
+        _models = [MGFileManager getModels];
+    }
+    if (!_models) {
+        _models = @[];
+    }
+    return _models;
+}
+
+- (NSMutableSet *)labels{
+    if (!_labels) {
+        _labels = [NSMutableSet set];
+    }
+    return _labels;
 }
 
 

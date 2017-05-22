@@ -13,6 +13,8 @@
 
 - (void)nameDidEdit:(MGFaceContrastModel *)model;
 
+- (void)modelDidSelected:(MGFaceContrastModel *)model;
+
 @end
 
 @interface MGFaceContrastCell : UITableViewCell

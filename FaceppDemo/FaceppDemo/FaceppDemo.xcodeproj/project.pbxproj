@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		094C021B1ED291D7009C6085 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 094C02191ED291D7009C6085 /* selected.png */; };
 		094C021C1ED291D7009C6085 /* unSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 094C021A1ED291D7009C6085 /* unSelected.png */; };
-		094C02201ED2AB5D009C6085 /* MGFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 094C021F1ED2AB5D009C6085 /* MGFileManager.m */; };
+		094C02261ED2C3C3009C6085 /* MGFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 094C02251ED2C3C3009C6085 /* MGFileManager.m */; };
+		094C02291ED2C3D3009C6085 /* MGConvertImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 094C02281ED2C3D3009C6085 /* MGConvertImage.m */; };
 		09FDB0471ECEB997007DB8B5 /* MGFaceContrast.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FDB0461ECEB997007DB8B5 /* MGFaceContrast.storyboard */; };
 		09FDB04A1ECEB9BF007DB8B5 /* MGFaceContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB0491ECEB9BF007DB8B5 /* MGFaceContrast.m */; };
 		09FDB04D1ECEBBC2007DB8B5 /* MGFaceContrastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB04C1ECEBBC2007DB8B5 /* MGFaceContrastCell.m */; };
@@ -103,8 +104,10 @@
 /* Begin PBXFileReference section */
 		094C02191ED291D7009C6085 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
 		094C021A1ED291D7009C6085 /* unSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unSelected.png; sourceTree = "<group>"; };
-		094C021E1ED2AB5D009C6085 /* MGFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFileManager.h; sourceTree = "<group>"; };
-		094C021F1ED2AB5D009C6085 /* MGFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFileManager.m; sourceTree = "<group>"; };
+		094C02241ED2C3C3009C6085 /* MGFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFileManager.h; sourceTree = "<group>"; };
+		094C02251ED2C3C3009C6085 /* MGFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFileManager.m; sourceTree = "<group>"; };
+		094C02271ED2C3D3009C6085 /* MGConvertImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConvertImage.h; sourceTree = "<group>"; };
+		094C02281ED2C3D3009C6085 /* MGConvertImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConvertImage.m; sourceTree = "<group>"; };
 		09FDB0461ECEB997007DB8B5 /* MGFaceContrast.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MGFaceContrast.storyboard; sourceTree = "<group>"; };
 		09FDB0481ECEB9BF007DB8B5 /* MGFaceContrast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceContrast.h; sourceTree = "<group>"; };
 		09FDB0491ECEB9BF007DB8B5 /* MGFaceContrast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceContrast.m; sourceTree = "<group>"; };
@@ -251,13 +254,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		094C021D1ED2AB4F009C6085 /* MGFileManager */ = {
+		094C02231ED2C3C3009C6085 /* MGHelp */ = {
 			isa = PBXGroup;
 			children = (
-				094C021E1ED2AB5D009C6085 /* MGFileManager.h */,
-				094C021F1ED2AB5D009C6085 /* MGFileManager.m */,
+				094C02241ED2C3C3009C6085 /* MGFileManager.h */,
+				094C02251ED2C3C3009C6085 /* MGFileManager.m */,
+				094C02271ED2C3D3009C6085 /* MGConvertImage.h */,
+				094C02281ED2C3D3009C6085 /* MGConvertImage.m */,
 			);
-			path = MGFileManager;
+			path = MGHelp;
 			sourceTree = "<group>";
 		};
 		140605001D8E5F1000D71080 /* MGFaceppSDK */ = {
@@ -326,7 +331,7 @@
 		1432ED651E24B51300131E39 /* 视频流检测 */ = {
 			isa = PBXGroup;
 			children = (
-				094C021D1ED2AB4F009C6085 /* MGFileManager */,
+				094C02231ED2C3C3009C6085 /* MGHelp */,
 				1432EDF61E24BAC400131E39 /* Manager */,
 				1432ED661E24B51300131E39 /* GLUtilities */,
 				1432ED761E24B51300131E39 /* Models */,
@@ -704,6 +709,7 @@
 			files = (
 				1433D0F71E275EC900814ADD /* BaseModel.m in Sources */,
 				1433D0F41E275EC900814ADD /* BaseCell.m in Sources */,
+				094C02291ED2C3D3009C6085 /* MGConvertImage.m in Sources */,
 				1433D0F61E275EC900814ADD /* BaseCollectionCell.m in Sources */,
 				1432ED991E24B51300131E39 /* MGOpenGLView.m in Sources */,
 				09FDB04D1ECEBBC2007DB8B5 /* MGFaceContrastCell.m in Sources */,
@@ -720,8 +726,8 @@
 				1432ED971E24B51300131E39 /* MCSetCell.m in Sources */,
 				1432ED961E24B51300131E39 /* MGMarkSetViewController.m in Sources */,
 				144731BA1DD1A656004E3B60 /* DetectOneViewController.m in Sources */,
+				094C02261ED2C3C3009C6085 /* MGFileManager.m in Sources */,
 				1433D0DD1E275DE200814ADD /* main.m in Sources */,
-				094C02201ED2AB5D009C6085 /* MGFileManager.m in Sources */,
 				09FDB0501ECEC976007DB8B5 /* MGFaceContrastModel.m in Sources */,
 				09FDB04A1ECEB9BF007DB8B5 /* MGFaceContrast.m in Sources */,
 			);

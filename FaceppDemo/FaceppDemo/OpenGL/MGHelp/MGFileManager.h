@@ -10,8 +10,8 @@
 
 @interface MGFileManager : NSObject
 
-- (void)saveModels:(NSArray *)models;
++ (void)saveModels:(NSArray *)models;
 
-- (NSArray *)getModels;
++ (NSArray *)getModels;
 
 @end

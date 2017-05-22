@@ -25,8 +25,14 @@
 
 - (void)setModel:(MGFaceContrastModel *)model{
     _selectBtn.selected = model.selected;
+    if (_selectBtn.selected) {
+        [_selectBtn setBackgroundImage:[UIImage imageNamed:@"selected"] forState:UIControlStateNormal];
+    } else {
+        [_selectBtn setBackgroundImage:[UIImage imageNamed:@"unSelected"] forState:UIControlStateNormal];
+    }
     _icon.image = model.image;
     _nameLabel.text = model.name;
+    _model = model;
 }
 
 - (void)nameAction{
@@ -49,6 +55,9 @@
         [sender setBackgroundImage:[UIImage imageNamed:@"selected"] forState:UIControlStateNormal];
     } else {
         [sender setBackgroundImage:[UIImage imageNamed:@"unSelected"] forState:UIControlStateNormal];
+    }
+    if ([_delegate respondsToSelector:@selector(modelDidSelected:)]) {
+        [_delegate modelDidSelected:_model];
     }
 }
 

@@ -7,8 +7,34 @@
 //
 
 #import "MGFaceContrastModel.h"
+#import "MGConvertImage.h"
+
+static NSString *faceCount = @"MGFaceContrastModelFaceCount";
 
 @implementation MGFaceContrastModel
+
+- (instancetype)initWithSampleBuffer:(CMSampleBufferRef)sampleBuffer faceInfo:(MGFaceInfo *)faceInfo{
+    if (self = [super init]) {
+        _feature = faceInfo.featureData;
+        UIImage *image = [MGConvertImage convertSampleBufferToImage:sampleBuffer];
+        _image = [MGConvertImage imageFromImage:image inRect:faceInfo.rect];
+        CGPoint point = [faceInfo.points[33] CGPointValue];
+        _center = CGPointMake(point.y, point.x);
+        _trackID = faceInfo.trackID;
+    }
+    return self;
+}
+
+- (void)getName{
+    if (![[NSUserDefaults standardUserDefaults] integerForKey:faceCount]) {
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:faceCount];
+    }
+    NSInteger count = [[NSUserDefaults standardUserDefaults] integerForKey:faceCount];
+    count ++;
+    _name = [NSString stringWithFormat:@"user_%ld",count];
+    [[NSUserDefaults standardUserDefaults] setInteger:count forKey:faceCount];
+}
+
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.name forKey:@"name"];
@@ -28,5 +54,8 @@
     }
     return self;
 }
+
+
+
 
 @end

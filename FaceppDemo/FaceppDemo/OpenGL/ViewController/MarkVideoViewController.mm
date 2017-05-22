@@ -11,6 +11,7 @@
 #import "MGOpenGLRenderer.h"
 #import "MGFaceModelArray.h"
 #import <CoreMotion/CoreMotion.h>
+#import "MGFaceContrast.h"
 
 #define RETAINED_BUFFER_COUNT 6
 
@@ -144,20 +145,24 @@
     [self.view addSubview:self.debugMessageView];
     
     if (self.faceContrast) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 68, 68)];
         imageView.image = [UIImage imageNamed:@"regist"];
-        imageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height - imageView.frame.size.height/2 - 100);
+        imageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height - imageView.frame.size.height/2 - 80);
         [self.view addSubview:imageView];
         
         UIButton *btn = [[UIButton alloc] initWithFrame:imageView.bounds];
+        btn.center = imageView.center;
         [btn setTitle:@"点击注册" forState:UIControlStateNormal];
         [btn setTitle:@"点击注册" forState:UIControlStateHighlighted];
+        btn.titleLabel.font = [UIFont systemFontOfSize:14];
         [btn addTarget:self action:@selector(registBtnAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:btn];
     }
 }
 
 - (void)registBtnAction{
-
+    MGFaceContrast *vc = [MGFaceContrast storyboardInstance];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //加载图层预览

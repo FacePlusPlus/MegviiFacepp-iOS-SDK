@@ -19,4 +19,6 @@
 
 @property (nonatomic, weak) id <MGFaceContrastCellDelegate> delegate;
 
+@property (nonatomic, strong) MGFaceContrastModel *model;
+
 @end

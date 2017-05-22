@@ -12,7 +12,7 @@
 #import "MCSetModel.h"
 #import "MCSetCell.h"
 #import "YTMacro.h"
-#import "MGFaceContrast.h"
+
 
 static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
 #define KTrackingTag 100

@@ -8,6 +8,7 @@
 
 #import "MGFaceContrast.h"
 #import "MGFaceContrastCell.h"
+#import "MGFileManager.h"
 
 @interface MGFaceContrast () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -23,7 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,12 +44,12 @@
 
 #pragma mark - UITableViewDataSource -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return _models.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MGFaceContrastCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-
+    cell.model = _models[indexPath.row];
     
     return cell;
 }
@@ -61,5 +63,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

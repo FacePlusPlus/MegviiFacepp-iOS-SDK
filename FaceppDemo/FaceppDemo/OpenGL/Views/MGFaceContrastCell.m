@@ -19,19 +19,20 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self addNameAction];
 }
 
-- (void)addNameAction{
-    _nameTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                       action:@selector(nameAction)];
-    _nameLabel.userInteractionEnabled = YES;
-    [_nameLabel addGestureRecognizer:_nameTap];
+- (void)setModel:(MGFaceContrastModel *)model{
+    _selectBtn.selected = model.selected;
+    _icon.image = model.image;
+    _nameLabel.text = model.name;
 }
 
 - (void)nameAction{
-
+    if ([_delegate respondsToSelector:@selector(nameDidEdit:)]) {
+        [_delegate nameDidEdit:_model];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -43,15 +44,19 @@
 
 - (IBAction)selectBtnAction:(UIButton *)sender {
     sender.selected = !sender.selected;
+    _model.selected = sender.selected;
     if (sender.selected) {
-        [sender setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-        [sender setBackgroundColor:[UIColor blueColor]];
+        [sender setBackgroundImage:[UIImage imageNamed:@"selected"] forState:UIControlStateNormal];
     } else {
-        [sender setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-        [sender setBackgroundColor:[UIColor redColor]];
+        [sender setBackgroundImage:[UIImage imageNamed:@"unSelected"] forState:UIControlStateNormal];
     }
 }
 
-
+- (void)addNameAction{
+    _nameTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                       action:@selector(nameAction)];
+    _nameLabel.userInteractionEnabled = YES;
+    [_nameLabel addGestureRecognizer:_nameTap];
+}
 
 @end

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MGFaceContrastModel.h"
 
 @interface MGFaceContrast : UIViewController
 
 + (instancetype)storyboardInstance;
+
+@property (nonatomic, strong) NSArray *models;
 
 @end

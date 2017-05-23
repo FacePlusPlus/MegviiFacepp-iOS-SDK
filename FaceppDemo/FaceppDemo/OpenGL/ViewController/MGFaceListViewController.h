@@ -1,5 +1,5 @@
 //
-//  MGFaceContrast.h
+//  MGFaceListViewController.h
 //  FaceppDemo
 //
 //  Created by Li Bo on 2017/5/19.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MGFaceContrastModel.h"
 
-@interface MGFaceContrast : UIViewController
+@interface MGFaceListViewController : UIViewController
 
 + (instancetype)storyboardInstance;
 

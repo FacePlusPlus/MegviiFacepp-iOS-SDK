@@ -10,9 +10,8 @@
 		094C021B1ED291D7009C6085 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 094C02191ED291D7009C6085 /* selected.png */; };
 		094C021C1ED291D7009C6085 /* unSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 094C021A1ED291D7009C6085 /* unSelected.png */; };
 		094C02261ED2C3C3009C6085 /* MGFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 094C02251ED2C3C3009C6085 /* MGFileManager.m */; };
-		094C02291ED2C3D3009C6085 /* MGConvertImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 094C02281ED2C3D3009C6085 /* MGConvertImage.m */; };
-		09FDB0471ECEB997007DB8B5 /* MGFaceContrast.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FDB0461ECEB997007DB8B5 /* MGFaceContrast.storyboard */; };
-		09FDB04A1ECEB9BF007DB8B5 /* MGFaceContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB0491ECEB9BF007DB8B5 /* MGFaceContrast.m */; };
+		09FDB0471ECEB997007DB8B5 /* MGFaceListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FDB0461ECEB997007DB8B5 /* MGFaceListViewController.storyboard */; };
+		09FDB04A1ECEB9BF007DB8B5 /* MGFaceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB0491ECEB9BF007DB8B5 /* MGFaceListViewController.m */; };
 		09FDB04D1ECEBBC2007DB8B5 /* MGFaceContrastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB04C1ECEBBC2007DB8B5 /* MGFaceContrastCell.m */; };
 		09FDB0501ECEC976007DB8B5 /* MGFaceContrastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB04F1ECEC976007DB8B5 /* MGFaceContrastModel.m */; };
 		09FDB0551ECEE4AC007DB8B5 /* faceContrast-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FDB0531ECEE4AC007DB8B5 /* faceContrast-0.png */; };
@@ -106,11 +105,9 @@
 		094C021A1ED291D7009C6085 /* unSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unSelected.png; sourceTree = "<group>"; };
 		094C02241ED2C3C3009C6085 /* MGFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFileManager.h; sourceTree = "<group>"; };
 		094C02251ED2C3C3009C6085 /* MGFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFileManager.m; sourceTree = "<group>"; };
-		094C02271ED2C3D3009C6085 /* MGConvertImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConvertImage.h; sourceTree = "<group>"; };
-		094C02281ED2C3D3009C6085 /* MGConvertImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGConvertImage.m; sourceTree = "<group>"; };
-		09FDB0461ECEB997007DB8B5 /* MGFaceContrast.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MGFaceContrast.storyboard; sourceTree = "<group>"; };
-		09FDB0481ECEB9BF007DB8B5 /* MGFaceContrast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceContrast.h; sourceTree = "<group>"; };
-		09FDB0491ECEB9BF007DB8B5 /* MGFaceContrast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceContrast.m; sourceTree = "<group>"; };
+		09FDB0461ECEB997007DB8B5 /* MGFaceListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MGFaceListViewController.storyboard; sourceTree = "<group>"; };
+		09FDB0481ECEB9BF007DB8B5 /* MGFaceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceListViewController.h; sourceTree = "<group>"; };
+		09FDB0491ECEB9BF007DB8B5 /* MGFaceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceListViewController.m; sourceTree = "<group>"; };
 		09FDB04B1ECEBBC2007DB8B5 /* MGFaceContrastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceContrastCell.h; sourceTree = "<group>"; };
 		09FDB04C1ECEBBC2007DB8B5 /* MGFaceContrastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceContrastCell.m; sourceTree = "<group>"; };
 		09FDB04E1ECEC976007DB8B5 /* MGFaceContrastModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceContrastModel.h; sourceTree = "<group>"; };
@@ -259,8 +256,6 @@
 			children = (
 				094C02241ED2C3C3009C6085 /* MGFileManager.h */,
 				094C02251ED2C3C3009C6085 /* MGFileManager.m */,
-				094C02271ED2C3D3009C6085 /* MGConvertImage.h */,
-				094C02281ED2C3D3009C6085 /* MGConvertImage.m */,
 			);
 			path = MGHelp;
 			sourceTree = "<group>";
@@ -373,9 +368,9 @@
 				1432ED7F1E24B51300131E39 /* MarkVideoViewController.mm */,
 				1432ED801E24B51300131E39 /* MGMarkSetViewController.h */,
 				1432ED811E24B51300131E39 /* MGMarkSetViewController.m */,
-				09FDB0481ECEB9BF007DB8B5 /* MGFaceContrast.h */,
-				09FDB0491ECEB9BF007DB8B5 /* MGFaceContrast.m */,
-				09FDB0461ECEB997007DB8B5 /* MGFaceContrast.storyboard */,
+				09FDB0481ECEB9BF007DB8B5 /* MGFaceListViewController.h */,
+				09FDB0491ECEB9BF007DB8B5 /* MGFaceListViewController.m */,
+				09FDB0461ECEB997007DB8B5 /* MGFaceListViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -634,7 +629,7 @@
 				14A0AACB1E9F4FEB008B9443 /* Localizable.strings in Resources */,
 				1433D0F51E275EC900814ADD /* BaseCell.xib in Resources */,
 				141D10041E4968CF00BC80F5 /* IMG_0008.jpg in Resources */,
-				09FDB0471ECEB997007DB8B5 /* MGFaceContrast.storyboard in Resources */,
+				09FDB0471ECEB997007DB8B5 /* MGFaceListViewController.storyboard in Resources */,
 				142C01181D82A94100E94614 /* megviicloud logo.png in Resources */,
 				14DA53B31E34996600EDC6CC /* 1280_720.png in Resources */,
 				1432EDDB1E24B51B00131E39 /* screen-0.png in Resources */,
@@ -709,7 +704,6 @@
 			files = (
 				1433D0F71E275EC900814ADD /* BaseModel.m in Sources */,
 				1433D0F41E275EC900814ADD /* BaseCell.m in Sources */,
-				094C02291ED2C3D3009C6085 /* MGConvertImage.m in Sources */,
 				1433D0F61E275EC900814ADD /* BaseCollectionCell.m in Sources */,
 				1432ED991E24B51300131E39 /* MGOpenGLView.m in Sources */,
 				09FDB04D1ECEBBC2007DB8B5 /* MGFaceContrastCell.m in Sources */,
@@ -729,7 +723,7 @@
 				094C02261ED2C3C3009C6085 /* MGFileManager.m in Sources */,
 				1433D0DD1E275DE200814ADD /* main.m in Sources */,
 				09FDB0501ECEC976007DB8B5 /* MGFaceContrastModel.m in Sources */,
-				09FDB04A1ECEB9BF007DB8B5 /* MGFaceContrast.m in Sources */,
+				09FDB04A1ECEB9BF007DB8B5 /* MGFaceListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

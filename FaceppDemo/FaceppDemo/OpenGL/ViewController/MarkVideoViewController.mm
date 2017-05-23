@@ -11,9 +11,11 @@
 #import "MGOpenGLRenderer.h"
 #import "MGFaceModelArray.h"
 #import <CoreMotion/CoreMotion.h>
-#import "MGFaceContrast.h"
+#import "MGFaceListViewController.h"
 #import "MGFaceContrastModel.h"
 #import "MGFileManager.h"
+//#import "MGConvertImage.h"
+#import <MGBaseKit/MGImage.h>
 
 #define RETAINED_BUFFER_COUNT 6
 
@@ -21,6 +23,7 @@
 {
     dispatch_queue_t _detectImageQueue;
     dispatch_queue_t _drawFaceQueue;
+    dispatch_queue_t _compareQueue;
 }
 
 @property (nonatomic, strong) MGOpenGLView *previewView;
@@ -34,9 +37,11 @@
 
 @property (nonatomic, strong) NSArray *dbModels; // 数据库存储的model
 //@property (nonatomic, strong) NSMutableArray *oldModels; //
-@property (nonatomic, strong) NSMutableDictionary *oldTrackingIds; //
+@property (nonatomic, strong) NSMutableDictionary *trackId_name;
+@property (nonatomic, strong) NSMutableDictionary *trackId_label;
 @property (nonatomic, assign) BOOL showFaceContrastVC;
 @property (nonatomic, strong) NSMutableArray *labels;
+@property (nonatomic, assign) BOOL isCompareing;
 @end
 
 @implementation MarkVideoViewController
@@ -60,6 +65,7 @@
     
     _detectImageQueue = dispatch_queue_create("com.megvii.image.detect", DISPATCH_QUEUE_SERIAL);
     _drawFaceQueue = dispatch_queue_create("com.megvii.image.drawFace", DISPATCH_QUEUE_SERIAL);
+    _compareQueue = dispatch_queue_create("com.megvii.faceCompare", DISPATCH_QUEUE_SERIAL);
     
     self.renderer = [[MGOpenGLRenderer alloc] init];
     [self.renderer setShow3DView:self.show3D];
@@ -120,7 +126,10 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     _dbModels = nil;
-    [_oldTrackingIds removeAllObjects];
+    [_trackId_name removeAllObjects];
+    _trackId_name = nil;
+    [_trackId_label removeAllObjects];
+    _trackId_label = nil;
     [self.videoManager startRecording];
     [self setUpCameraLayer];
 }
@@ -129,6 +138,9 @@
     [super viewWillDisappear:animated];
     [self.motionManager stopAccelerometerUpdates];
     [self.videoManager stopRunning];
+    for (UILabel *label in self.trackId_label.allValues) {
+        [label removeFromSuperview];
+    }
 }
 
 - (void)stopDetect:(id)sender {
@@ -161,14 +173,14 @@
     if (self.faceContrast) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 68, 68)];
         imageView.image = [UIImage imageNamed:@"regist"];
-        imageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height - imageView.frame.size.height/2 - 80);
+        imageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height - imageView.frame.size.height/2 - 40);
         [self.view addSubview:imageView];
         
         UIButton *btn = [[UIButton alloc] initWithFrame:imageView.bounds];
         btn.center = imageView.center;
         [btn setTitle:@"点击注册" forState:UIControlStateNormal];
         [btn setTitle:@"点击注册" forState:UIControlStateHighlighted];
-        btn.titleLabel.font = [UIFont systemFontOfSize:14];
+        btn.titleLabel.font = [UIFont systemFontOfSize:12];
         [btn addTarget:self action:@selector(registBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:btn];
     }
@@ -179,7 +191,7 @@
 }
 
 - (void)showfaceContrastVC:(NSArray *)currentModels{
-    MGFaceContrast *vc = [MGFaceContrast storyboardInstance];
+    MGFaceListViewController *vc = [MGFaceListViewController storyboardInstance];
     NSMutableArray *arr = [NSMutableArray arrayWithArray:currentModels];
     [arr addObjectsFromArray:self.dbModels];
     vc.models = [NSArray arrayWithArray:arr];
@@ -271,7 +283,7 @@
                 faceModelArray.get3DInfo = self.show3D;
                 [faceModelArray setDetectRect:self.detectRect];
                 
-                NSMutableArray *currentModels = [NSMutableArray array];
+                NSMutableDictionary *faces = [NSMutableDictionary dictionary];
                 for (int i = 0; i < faceModelArray.count; i ++) {
                     MGFaceInfo *faceInfo = faceModelArray.faceArray[i];
                     [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:self.pointsNum];
@@ -287,99 +299,58 @@
                         [self.markManager GetMinorityStatus:faceInfo];
                         [self.markManager GetBlurnessStatus:faceInfo];
                     }
+                    
                     if (self.faceContrast) {
-                        [self.markManager GetFeatureData:faceInfo];
-                        MGFaceContrastModel *model = [[MGFaceContrastModel alloc] initWithSampleBuffer:detectSampleBufferRef faceInfo:faceInfo];
-                        [currentModels addObject:model];
+                        [faces setObject:faceInfo forKey:[NSNumber numberWithInteger:faceInfo.trackID]];
                     }
                 }
                 
-                NSMutableArray *showLabels = [NSMutableArray array];
-                if (self.faceContrast && currentModels.count > 0) {
-                    // 与数据库对比
-//                    NSMutableDictionary *currentTrackingIds = [NSMutableDictionary dictionary];
-                    NSMutableArray *showModels = [NSMutableArray array];
-                    for (MGFaceContrastModel *model in currentModels) {
-                        // 之前已经对比过，无需再次对比
-//                        if ([[self.oldTrackingIds allKeys] containsObject:[NSNumber numberWithInteger:model.trackID]]) {
-//                            model.maybeName = [self.oldTrackingIds objectForKey:[NSNumber numberWithInteger:model.trackID]];
-//                            [showModels addObject:model];
-//                            [currentTrackingIds setObject:model.maybeName forKey:[NSNumber numberWithInteger:model.trackID]];
-//                        } else {
-                            float faceSimilarity = 0.0;
-                            NSString *name = @"";
-                            for (MGFaceContrastModel *oldModel in self.dbModels) {
-                                float f = [self.markManager faceCompareWithFeatureData:model.feature featureData2:oldModel.feature];
-                                if (faceSimilarity < f) {
-                                    faceSimilarity = f;
-                                    name = oldModel.name;
-                                    NSLog(@"%f,%@",f,name);
-                                }
-                            }
-                            if (faceSimilarity > 0.7) {
-                                model.name = name;
-                                [showModels addObject:model];
-                                NSLog(@"%@",name);
-//                                [currentTrackingIds setObject:model.maybeName forKey:[NSNumber numberWithInteger:model.trackID]];
-                            }
-//                        }
-                    }
-                    NSLog(@"");
-//                    [self.oldTrackingIds removeAllObjects];
-//                    self.oldTrackingIds = [NSMutableDictionary dictionaryWithDictionary:currentTrackingIds];
+                if (self.faceContrast && faces.count > 0) {
+                    UIImage *image = [MGImage fixOrientationFromSampleBuffer:detectSampleBufferRef orientation:UIImageOrientationRightMirrored];
+//                    image = [MGImage croppedImage:image rect:<#(CGRect)#>];
+//                    image = [MGImage fixOrientationWithImage:image];
+                    [self compareFace:faces.allValues image:image];
                     
-                    // 在界面上显示 人名
-                    for (MGFaceContrastModel *model in showModels) {
-                        dispatch_sync(dispatch_get_main_queue(), ^{
-                            UILabel *label;
-                            for (UILabel *oldLabel in self.labels) {
-                                if (oldLabel.tag == model.trackID) {
-                                    label = oldLabel;
-                                    break;
-                                }
-                            }
-                            if (label) {
-                                label.text = model.name;
-                                label.center = model.center;
-                                [showLabels addObject:label];
-                                NSLog(@"%@,%f,%f",model.name,model.center.x,model.center.y);
-                            } else {
-                                label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
-//                                label.backgroundColor = [UIColor redColor];
-                                label.textAlignment = NSTextAlignmentCenter;
-                                label.text = model.name;
-                                label.textColor = [UIColor whiteColor];
-                                label.center = model.center;
-                                label.tag = model.trackID;
-                                [self.view addSubview:label];
-                                [showLabels addObject:label];
-                                NSLog(@"%@,%f,%f",model.name,model.center.x,model.center.y);
-                            }
-                        });
-                    }
-                    NSLog(@"");
-                }
-                if (self.faceContrast) {
                     dispatch_sync(dispatch_get_main_queue(), ^{
-                        for (UILabel *oldLabel in self.labels) {
-                            if (![showLabels containsObject:oldLabel]) {
-                                [oldLabel removeFromSuperview];
+                        NSMutableArray *oldIds = [NSMutableArray array];
+                        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+                        for (NSNumber *num in self.trackId_name.allKeys) {
+                            if ([self.trackId_label.allKeys containsObject:num]) {
+                                UILabel *label = [self.trackId_label objectForKey:num];
+                                [self setLabelCenter:label faceInfo:[faces objectForKey:num] image:image];
+                                label.text = [self.trackId_name objectForKey:num];
+                                [oldIds addObject:num];
+                                [dict setObject:[self.trackId_label objectForKey:num] forKey:num];
+                            } else {
+                                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+                                label.textAlignment = NSTextAlignmentCenter;
+                                label.textColor = [UIColor colorWithRed:0 green:181/255. blue:232/255. alpha:1];
+                                label.font = [UIFont systemFontOfSize:20];
+                                [self setLabelCenter:label faceInfo:[faces objectForKey:num] image:image];
+                                label.text = [self.trackId_name objectForKey:num];
+                                [self.view addSubview:label];
+                                [dict setObject:label forKey:num];
                             }
                         }
                         
-                        [self.labels removeAllObjects];
-                        self.labels = showLabels;
+                        for (NSNumber *num in oldIds) {
+                            [self.trackId_label removeObjectForKey:num];
+                        }
+                        for (UILabel *label in self.trackId_label.allValues) {
+                            [label removeFromSuperview];
+                        }
+                        [self.trackId_label removeAllObjects];
+                        self.trackId_label = dict;
+                    });
+                } else if (self.faceContrast) {
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        for (UILabel *label in self.trackId_label.allValues) {
+                            [label removeFromSuperview];
+                        }
+                        [self.trackId_label removeAllObjects];
                     });
                 }
-                if (_showFaceContrastVC) {
-                    _showFaceContrastVC = NO;
-                    for (MGFaceContrastModel *model in currentModels) {
-                        [model getName];
-                    }
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self showfaceContrastVC:currentModels];
-                    });
-                }
+                
                 
                 date3 = [NSDate date];
                 double timeUsed3D = [date3 timeIntervalSinceDate:date2] * 1000;
@@ -396,6 +367,65 @@
             
         });
     }
+}
+
+- (void)setLabelCenter:(UILabel *)label faceInfo:(MGFaceInfo *)faceInfo image:(UIImage *)image{
+    CGPoint point19 = [faceInfo.points[19] CGPointValue];
+    CGPoint point26 = [faceInfo.points[26] CGPointValue];
+    
+    CGPoint center = CGPointMake((point19.y+point26.y)/2 - 2*([UIScreen mainScreen].bounds.size.height - image.size.width),
+                                 (point19.x+point26.x)/2 - (point19.y-point26.y)*0.8);
+    label.center = center;
+}
+
+- (void)compareFace:(NSArray *)faceArray image:(UIImage *)image {
+    if (faceArray.count < 1) return;
+    if (_isCompareing) return;
+    _isCompareing = YES;
+    
+    dispatch_async(_compareQueue, ^{
+        // 检测当前帧人脸属性 和数据库人脸对比，获取用户名
+        NSMutableDictionary *currentID_name = [NSMutableDictionary dictionary];
+        NSMutableArray *currentModels = [NSMutableArray array];
+        for (int i = 0; i < faceArray.count; i ++) {
+            MGFaceInfo *faceInfo = faceArray[i];
+            [self.markManager GetFeatureData:faceInfo];
+            MGFaceContrastModel *model = [[MGFaceContrastModel alloc] initWithImage:image faceInfo:faceInfo];
+            [currentModels addObject:model];
+            
+            float faceSimilarity = 0.0;
+            NSString *name = @"";
+            for (MGFaceContrastModel *oldModel in self.dbModels) {
+                float f = [self.markManager faceCompareWithFeatureData:model.feature featureData2:oldModel.feature];
+                if (faceSimilarity < f) {
+                    faceSimilarity = f;
+                    name = oldModel.name;
+                }
+            }
+            if (faceSimilarity > 0.7) {
+                [currentID_name setObject:name forKey:[NSNumber numberWithInteger:faceInfo.trackID]];
+            }
+        }
+        
+        @synchronized(self.trackId_name){
+            [self.trackId_name removeAllObjects];
+            self.trackId_name = currentID_name;
+        }
+        
+        if (_showFaceContrastVC) {
+            _showFaceContrastVC = NO;
+            for (MGFaceContrastModel *model in currentModels) {
+                [model getName];
+            }
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self showfaceContrastVC:currentModels];
+            });
+        }
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            _isCompareing = NO;
+        });
+    });
 }
 
 
@@ -453,18 +483,18 @@
     return _labels;
 }
 
-//- (NSMutableArray *)oldModels{
-//    if (!_oldModels) {
-//        _oldModels = [NSMutableArray array];
-//    }
-//    return _oldModels;
-//}
-
-- (NSMutableDictionary *)oldTrackingIds{
-    if (!_oldTrackingIds) {
-        _oldTrackingIds = [NSMutableDictionary dictionary];
+- (NSMutableDictionary *)trackId_name{
+    if (!_trackId_name) {
+        _trackId_name = [NSMutableDictionary dictionary];
     }
-    return _oldTrackingIds;
+    return _trackId_name;
+}
+
+- (NSMutableDictionary *)trackId_label{
+    if (!_trackId_label) {
+        _trackId_label = [NSMutableDictionary dictionary];
+    }
+    return _trackId_label;
 }
 
 @end

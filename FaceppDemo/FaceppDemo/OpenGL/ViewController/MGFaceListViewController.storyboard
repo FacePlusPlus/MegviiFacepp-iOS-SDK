@@ -13,7 +13,7 @@
         <!--人脸对比设置-->
         <scene sceneID="Gz2-b0-eTz">
             <objects>
-                <viewController storyboardIdentifier="MGFaceContrast" title="人脸对比设置" id="OSn-l6-tca" customClass="MGFaceContrast" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MGFaceListViewController" title="人脸对比设置" id="OSn-l6-tca" customClass="MGFaceListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ohq-8O-l2o"/>
                         <viewControllerLayoutGuide type="bottom" id="zwY-Ig-xD9"/>
@@ -22,26 +22,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="89" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3DL-0h-ys7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3DL-0h-ys7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="89" id="17L-NU-gMc" customClass="MGFaceContrastCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="89"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="110" id="17L-NU-gMc" customClass="MGFaceContrastCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="17L-NU-gMc" id="Ldd-uM-bOO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vmX-n9-GKf">
-                                                    <rect key="frame" x="20" y="5" width="78" height="78.5"/>
-                                                    <color key="backgroundColor" red="0.29032791540000003" green="0.5615996526" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <rect key="frame" x="20" y="20" width="69" height="69.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="vmX-n9-GKf" secondAttribute="height" multiplier="1:1" id="7VW-eg-lNV"/>
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8k-Ql-ajI">
-                                                    <rect key="frame" x="325" y="29" width="30" height="30"/>
+                                                    <rect key="frame" x="325" y="40" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="N9M-pi-Wbr"/>
                                                         <constraint firstAttribute="height" constant="30" id="mcP-gg-iOa"/>
@@ -52,18 +51,18 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9r-Hc-c2H">
-                                                    <rect key="frame" x="108" y="10" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="99" y="25" width="50" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="vmX-n9-GKf" secondAttribute="bottom" constant="5" id="5ZM-f2-0Zx"/>
-                                                <constraint firstItem="g9r-Hc-c2H" firstAttribute="top" secondItem="Ldd-uM-bOO" secondAttribute="top" constant="10" id="B1Y-um-9oa"/>
+                                                <constraint firstAttribute="bottom" secondItem="vmX-n9-GKf" secondAttribute="bottom" constant="20" id="5ZM-f2-0Zx"/>
+                                                <constraint firstItem="g9r-Hc-c2H" firstAttribute="top" secondItem="Ldd-uM-bOO" secondAttribute="top" constant="25" id="B1Y-um-9oa"/>
                                                 <constraint firstAttribute="trailing" secondItem="S8k-Ql-ajI" secondAttribute="trailing" constant="20" id="GeV-b7-fj9"/>
                                                 <constraint firstItem="g9r-Hc-c2H" firstAttribute="leading" secondItem="vmX-n9-GKf" secondAttribute="trailing" constant="10" id="QPc-dD-gri"/>
-                                                <constraint firstItem="vmX-n9-GKf" firstAttribute="top" secondItem="Ldd-uM-bOO" secondAttribute="top" constant="5" id="bbt-6L-UUx"/>
+                                                <constraint firstItem="vmX-n9-GKf" firstAttribute="top" secondItem="Ldd-uM-bOO" secondAttribute="top" constant="20" id="bbt-6L-UUx"/>
                                                 <constraint firstItem="vmX-n9-GKf" firstAttribute="leading" secondItem="Ldd-uM-bOO" secondAttribute="leading" constant="20" id="ncK-9b-EBj"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="g9r-Hc-c2H" secondAttribute="trailing" constant="80" id="rgA-ZC-1dc"/>
                                                 <constraint firstItem="S8k-Ql-ajI" firstAttribute="centerY" secondItem="Ldd-uM-bOO" secondAttribute="centerY" id="wDC-t7-xCR"/>

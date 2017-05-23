@@ -20,6 +20,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    _icon.contentMode = UIViewContentModeScaleAspectFit;
     [self addNameAction];
 }
 

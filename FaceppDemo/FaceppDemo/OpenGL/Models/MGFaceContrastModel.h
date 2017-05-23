@@ -13,15 +13,13 @@
 
 @interface MGFaceContrastModel : NSObject <NSCoding>
 
-- (instancetype)initWithSampleBuffer:(CMSampleBufferRef)sampleBuffer faceInfo:(MGFaceInfo *)faceInfo;
+- (instancetype)initWithImage:(UIImage *)image faceInfo:(MGFaceInfo *)faceInfo;
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, strong) NSData *feature;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, assign) BOOL selected;
 
-//@property (nonatomic, copy) NSString *maybeName;
-@property (nonatomic, assign) CGPoint center;
 @property (nonatomic, assign) NSInteger trackID;
 
 - (void)getName;

@@ -7,20 +7,25 @@
 //
 
 #import "MGFaceContrastModel.h"
-#import "MGConvertImage.h"
+//#import "MGConvertImage.h"
+#import <MGBaseKit/MGImage.h>
 
 static NSString *faceCount = @"MGFaceContrastModelFaceCount";
 
 @implementation MGFaceContrastModel
 
-- (instancetype)initWithSampleBuffer:(CMSampleBufferRef)sampleBuffer faceInfo:(MGFaceInfo *)faceInfo{
+- (instancetype)initWithImage:(UIImage *)image faceInfo:(MGFaceInfo *)faceInfo{
     if (self = [super init]) {
         _feature = faceInfo.featureData;
-        UIImage *image = [MGConvertImage convertSampleBufferToImage:sampleBuffer];
-        _image = [MGConvertImage imageFromImage:image inRect:faceInfo.rect];
-        CGPoint point19 = [faceInfo.points[19] CGPointValue];
-        CGPoint point26 = [faceInfo.points[26] CGPointValue];
-        _center = CGPointMake((point19.y+point26.y)/2, (point19.x+point26.x)/2-30);
+        
+        // 将检测出的人脸框放大
+        float x = faceInfo.rect.origin.x;
+        float y = faceInfo.rect.origin.y;
+        float width = faceInfo.rect.size.width;
+        float height = faceInfo.rect.size.height;
+        CGRect rect = CGRectMake(x-width/2, y-height/5 , width*1.8, height*1.4);
+        
+        _image = [MGImage croppedImage:image rect:rect];
         _trackID = faceInfo.trackID;
     }
     return self;

@@ -1,26 +1,26 @@
 //
-//  MGFaceContrast.m
+//  MGFaceListViewController.m
 //  FaceppDemo
 //
 //  Created by Li Bo on 2017/5/19.
 //  Copyright © 2017年 megvii. All rights reserved.
 //
 
-#import "MGFaceContrast.h"
+#import "MGFaceListViewController.h"
 #import "MGFaceContrastCell.h"
 #import "MGFileManager.h"
 
-@interface MGFaceContrast () <UITableViewDelegate, UITableViewDataSource, MGFaceContrastCellDelegate>
+@interface MGFaceListViewController () <UITableViewDelegate, UITableViewDataSource, MGFaceContrastCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
 @end
 
-@implementation MGFaceContrast
+@implementation MGFaceListViewController
 
 + (instancetype)storyboardInstance{
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MGFaceContrast" bundle:nil];
-    return [sb instantiateViewControllerWithIdentifier:@"MGFaceContrast"];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MGFaceListViewController" bundle:nil];
+    return [sb instantiateViewControllerWithIdentifier:@"MGFaceListViewController"];
 }
 
 - (void)viewDidLoad {
@@ -36,7 +36,7 @@
 
 #pragma mark - UITableViewDelegate - 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return 110;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -109,6 +109,7 @@
         }
     }
     [MGFileManager saveModels:arr];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

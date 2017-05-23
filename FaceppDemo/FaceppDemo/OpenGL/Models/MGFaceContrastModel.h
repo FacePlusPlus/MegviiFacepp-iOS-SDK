@@ -20,7 +20,7 @@
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, assign) BOOL selected;
 
-@property (nonatomic, copy) NSString *maybeName;
+//@property (nonatomic, copy) NSString *maybeName;
 @property (nonatomic, assign) CGPoint center;
 @property (nonatomic, assign) NSInteger trackID;
 

@@ -18,8 +18,9 @@ static NSString *faceCount = @"MGFaceContrastModelFaceCount";
         _feature = faceInfo.featureData;
         UIImage *image = [MGConvertImage convertSampleBufferToImage:sampleBuffer];
         _image = [MGConvertImage imageFromImage:image inRect:faceInfo.rect];
-        CGPoint point = [faceInfo.points[33] CGPointValue];
-        _center = CGPointMake(point.y, point.x);
+        CGPoint point19 = [faceInfo.points[19] CGPointValue];
+        CGPoint point26 = [faceInfo.points[26] CGPointValue];
+        _center = CGPointMake((point19.y+point26.y)/2, (point19.x+point26.x)/2-30);
         _trackID = faceInfo.trackID;
     }
     return self;

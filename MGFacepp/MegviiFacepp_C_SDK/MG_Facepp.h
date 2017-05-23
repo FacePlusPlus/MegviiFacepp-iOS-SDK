@@ -46,7 +46,7 @@ typedef enum {
                                             ///< 此模式下人脸检测与跟踪会更平均的使用 CPU 计算资源。
     MG_FPP_DETECTIONMODE_TRACKING_FAST,     ///< 牺牲了人脸关键点的贴合度，提升了人脸跟踪的速度
     MG_FPP_DETECTIONMODE_TRACKING_ROBUST    ///< 提高了人脸关键点的贴合度，降低了人脸跟踪的速度
-} MG_FPP_DETECTIONMODE;
+} MG_FPP_DETECTIONMODE;						///< 检测人脸时只跟踪单张人脸
 
 struct _MG_FPP_API;
 /**

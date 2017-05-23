@@ -225,6 +225,7 @@
                 faceModelArray.faceArray = [NSMutableArray arrayWithArray:tempArray];
                 faceModelArray.timeUsed = timeUsed;
                 faceModelArray.get3DInfo = self.show3D;
+                faceModelArray.getFaceInfo = self.faceInfo;
                 [faceModelArray setDetectRect:self.detectRect];
                 
                 if (faceModelArray.count >= 1) {
@@ -249,10 +250,6 @@
                 faceModelArray.AttributeTimeUsed = timeUsed3D;
                 
                 [self.markManager endDetectionFrame];
-                
-                
-//                [imageData releaseImageData];
-//                imageData = nil;
                 
                 [self displayWithfaceModel:faceModelArray SampleBuffer:detectSampleBufferRef];
             }

@@ -7,10 +7,10 @@
 //
 
 #import "MGFaceListViewController.h"
-#import "MGFaceContrastCell.h"
+#import "MGFaceCompareCell.h"
 #import "MGFileManager.h"
 
-@interface MGFaceListViewController () <UITableViewDelegate, UITableViewDataSource, MGFaceContrastCellDelegate>
+@interface MGFaceListViewController () <UITableViewDelegate, UITableViewDataSource, MGFaceCompareCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
@@ -49,16 +49,16 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    MGFaceContrastCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    MGFaceCompareCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     cell.model = _models[indexPath.row];
     cell.delegate = self;
     return cell;
 }
 
 
-#pragma amrk - MGFaceContrastCellDelegate -
+#pragma amrk - MGFaceCompareCellDelegate -
 
-- (void)nameDidEdit:(MGFaceContrastModel *)model{
+- (void)nameDidEdit:(MGFaceCompareModel *)model{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"输入用户名" message:nil preferredStyle:UIAlertControllerStyleAlert];
     [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         
@@ -80,7 +80,7 @@
     
 }
 
-- (void)modelDidSelected:(MGFaceContrastModel *)model{
+- (void)modelDidSelected:(MGFaceCompareModel *)model{
     NSLog(@"");
 }
 
@@ -95,7 +95,7 @@
 */
 
 - (IBAction)cancelBtnAction:(UIButton *)sender {
-    for (MGFaceContrastModel *model in _models) {
+    for (MGFaceCompareModel *model in _models) {
         model.selected = NO;
     }
     [self.tableView reloadData];
@@ -103,7 +103,7 @@
 
 - (IBAction)okBtnAction:(UIButton *)sender {
     NSMutableArray *arr = [NSMutableArray array];
-    for (MGFaceContrastModel *model in _models) {
+    for (MGFaceCompareModel *model in _models) {
         if (model.selected == YES) {
             [arr addObject:model];
         }

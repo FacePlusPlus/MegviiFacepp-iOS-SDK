@@ -12,7 +12,7 @@
 #import "MGFaceModelArray.h"
 #import <CoreMotion/CoreMotion.h>
 #import "MGFaceListViewController.h"
-#import "MGFaceContrastModel.h"
+#import "MGFaceCompareModel.h"
 #import "MGFileManager.h"
 #import <MGBaseKit/MGImage.h>
 
@@ -38,7 +38,7 @@
 //@property (nonatomic, strong) NSMutableArray *oldModels; //
 @property (nonatomic, strong) NSMutableDictionary *trackId_name;
 @property (nonatomic, strong) NSMutableDictionary *trackId_label;
-@property (nonatomic, assign) BOOL showFaceContrastVC;
+@property (nonatomic, assign) BOOL showFaceCompareVC;
 @property (nonatomic, strong) NSMutableArray *labels;
 @property (nonatomic, assign) BOOL isCompareing;
 @end
@@ -169,7 +169,7 @@
     
     [self.view addSubview:self.debugMessageView];
     
-    if (self.faceContrast) {
+    if (self.faceCompare) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 68, 68)];
         imageView.image = [UIImage imageNamed:@"regist"];
         imageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height - imageView.frame.size.height/2 - 40);
@@ -186,10 +186,10 @@
 }
 
 - (void)registBtnAction{
-    _showFaceContrastVC = YES;
+    _showFaceCompareVC = YES;
 }
 
-- (void)showfaceContrastVC:(NSArray *)currentModels{
+- (void)showfaceCompareVC:(NSArray *)currentModels{
     MGFaceListViewController *vc = [MGFaceListViewController storyboardInstance];
     NSMutableArray *arr = [NSMutableArray arrayWithArray:currentModels];
     [arr addObjectsFromArray:self.dbModels];
@@ -224,7 +224,7 @@
         __unsafe_unretained MarkVideoViewController *weakSelf = self;
         dispatch_async(_drawFaceQueue, ^{
             if (modelArray) {
-                CVPixelBufferRef renderedPixelBuffer = [weakSelf.renderer copyRenderedPixelBuffer:sampleBuffer faceModelArray:modelArray drawLandmark:!self.faceContrast];
+                CVPixelBufferRef renderedPixelBuffer = [weakSelf.renderer copyRenderedPixelBuffer:sampleBuffer faceModelArray:modelArray drawLandmark:!self.faceCompare];
                 
                 if (renderedPixelBuffer)
                 {
@@ -299,12 +299,12 @@
                         [self.markManager GetBlurnessStatus:faceInfo];
                     }
                     
-                    if (self.faceContrast) {
+                    if (self.faceCompare) {
                         [faces setObject:faceInfo forKey:[NSNumber numberWithInteger:faceInfo.trackID]];
                     }
                 }
                 
-                if (self.faceContrast && faces.count > 0) {
+                if (self.faceCompare && faces.count > 0) {
                     UIImage *image = [MGImage imageFromSampleBuffer:detectSampleBufferRef orientation:UIImageOrientationRightMirrored];
                     [self compareFace:faces.allValues image:image];
                     
@@ -339,7 +339,7 @@
                         [self.trackId_label removeAllObjects];
                         self.trackId_label = dict;
                     });
-                } else if (self.faceContrast) {
+                } else if (self.faceCompare) {
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         for (UILabel *label in self.trackId_label.allValues) {
                             [label removeFromSuperview];
@@ -387,12 +387,12 @@
         for (int i = 0; i < faceArray.count; i ++) {
             MGFaceInfo *faceInfo = faceArray[i];
             [self.markManager GetFeatureData:faceInfo];
-            MGFaceContrastModel *model = [[MGFaceContrastModel alloc] initWithImage:image faceInfo:faceInfo];
+            MGFaceCompareModel *model = [[MGFaceCompareModel alloc] initWithImage:image faceInfo:faceInfo];
             [currentModels addObject:model];
             
             float faceSimilarity = 0.0;
             NSString *name = @"";
-            for (MGFaceContrastModel *oldModel in self.dbModels) {
+            for (MGFaceCompareModel *oldModel in self.dbModels) {
                 float f = [self.markManager faceCompareWithFeatureData:model.feature featureData2:oldModel.feature];
                 if (faceSimilarity < f) {
                     faceSimilarity = f;
@@ -409,13 +409,13 @@
             self.trackId_name = currentID_name;
         }
         
-        if (_showFaceContrastVC) {
-            _showFaceContrastVC = NO;
-            for (MGFaceContrastModel *model in currentModels) {
+        if (_showFaceCompareVC) {
+            _showFaceCompareVC = NO;
+            for (MGFaceCompareModel *model in currentModels) {
                 [model getName];
             }
             dispatch_sync(dispatch_get_main_queue(), ^{
-                [self showfaceContrastVC:currentModels];
+                [self showfaceCompareVC:currentModels];
             });
         }
         

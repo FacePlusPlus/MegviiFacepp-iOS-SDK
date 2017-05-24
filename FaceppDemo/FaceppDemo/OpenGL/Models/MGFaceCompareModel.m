@@ -1,17 +1,17 @@
 //
-//  MGFaceContrastModel.m
+//  MGFaceCompareModel.m
 //  FaceppDemo
 //
 //  Created by Li Bo on 2017/5/19.
 //  Copyright © 2017年 megvii. All rights reserved.
 //
 
-#import "MGFaceContrastModel.h"
+#import "MGFaceCompareModel.h"
 #import <MGBaseKit/MGImage.h>
 
-static NSString *faceCount = @"MGFaceContrastModelFaceCount";
+static NSString *faceCount = @"MGFaceCompareModelFaceCount";
 
-@implementation MGFaceContrastModel
+@implementation MGFaceCompareModel
 
 - (instancetype)initWithImage:(UIImage *)image faceInfo:(MGFaceInfo *)faceInfo{
     if (self = [super init]) {

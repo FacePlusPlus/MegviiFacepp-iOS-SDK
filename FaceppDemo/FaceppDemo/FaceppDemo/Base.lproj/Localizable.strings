@@ -29,7 +29,7 @@ icon_title15 = "Fast";
 icon_title16 = "Robust";
 icon_title20 = "Normal";
 
-icon_title_face_contrast = "人脸比对";
+icon_title_face_compare = "人脸比对";
 
 
 alert_title = "取消";

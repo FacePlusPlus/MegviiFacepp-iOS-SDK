@@ -1,5 +1,5 @@
 //
-//  MGFaceContrastModel.h
+//  MGFaceCompareModel.h
 //  FaceppDemo
 //
 //  Created by Li Bo on 2017/5/19.
@@ -11,7 +11,7 @@
 #import "MGImageData.h"
 #import "MGFaceInfo.h"
 
-@interface MGFaceContrastModel : NSObject <NSCoding>
+@interface MGFaceCompareModel : NSObject <NSCoding>
 
 - (instancetype)initWithImage:(UIImage *)image faceInfo:(MGFaceInfo *)faceInfo;
 

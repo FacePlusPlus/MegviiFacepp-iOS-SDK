@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MGFaceContrastModel.h"
+#import "MGFaceCompareModel.h"
 
 @interface MGFaceListViewController : UIViewController
 

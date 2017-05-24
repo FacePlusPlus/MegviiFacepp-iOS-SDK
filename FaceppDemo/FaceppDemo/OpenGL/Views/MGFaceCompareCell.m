@@ -1,21 +1,21 @@
 //
-//  MGFaceContrastCell.m
+//  MGFaceCompareCell.m
 //  FaceppDemo
 //
 //  Created by Li Bo on 2017/5/19.
 //  Copyright © 2017年 megvii. All rights reserved.
 //
 
-#import "MGFaceContrastCell.h"
+#import "MGFaceCompareCell.h"
 
-@interface MGFaceContrastCell ()
+@interface MGFaceCompareCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 @property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (nonatomic, strong) UITapGestureRecognizer *nameTap;
 @end
 
-@implementation MGFaceContrastCell
+@implementation MGFaceCompareCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -24,7 +24,7 @@
     [self addNameAction];
 }
 
-- (void)setModel:(MGFaceContrastModel *)model{
+- (void)setModel:(MGFaceCompareModel *)model{
     _selectBtn.selected = model.selected;
     if (_selectBtn.selected) {
         [_selectBtn setBackgroundImage:[UIImage imageNamed:@"selected"] forState:UIControlStateNormal];

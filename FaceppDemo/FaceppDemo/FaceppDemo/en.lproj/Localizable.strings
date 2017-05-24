@@ -28,7 +28,7 @@ icon_title15 = "Fast";
 icon_title16 = "Robust";
 icon_title20 = "Normal";
 
-icon_title_face_contrast = "contrastFace";
+icon_title_face_compare = "compareFace";
 
 alert_title = "cancel";
 alert_title2 = "select";

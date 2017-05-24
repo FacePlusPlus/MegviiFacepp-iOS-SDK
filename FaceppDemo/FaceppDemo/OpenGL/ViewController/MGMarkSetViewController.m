@@ -66,13 +66,13 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     Mode.intValue = 2;
     
     // 人脸检测
-    MCSetModel *faceContrast = [MCSetModel modelWithTitle:NSLocalizedString(@"icon_title_face_contrast", nil)
+    MCSetModel *faceCompare = [MCSetModel modelWithTitle:NSLocalizedString(@"icon_title_face_Compare", nil)
                                                      type:LogoTypeImage
                                                    status:SelectStatusBool];
-    faceContrast.boolValue = NO;
-    faceContrast.imageName = @"faceContrast";
+    faceCompare.boolValue = NO;
+    faceCompare.imageName = @"faceCompare";
     
-    self.dataArray = @[record, model3d, debug, rect, count, camera, minFace, time, info, size, Tracking, Mode, faceContrast];
+    self.dataArray = @[record, model3d, debug, rect, count, camera, minFace, time, info, size, Tracking, Mode, faceCompare];
 }
 
 - (void)viewDidLoad {
@@ -159,7 +159,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     MCSetModel *size = self.dataArray[9];
     MCSetModel *tracking = self.dataArray[10];
     MCSetModel *trackingMode = self.dataArray[11];
-    MCSetModel *faceContrast = self.dataArray[12];
+    MCSetModel *faceCompare = self.dataArray[12];
 
     int pointCount = count.boolValue == NO ? 81 : 106;
     int faceSize = (int)sizeModel.intValue;
@@ -208,7 +208,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     videoController.pointsNum = pointCount;
     videoController.show3D = face3D.boolValue;
     videoController.faceInfo = info.boolValue;
-    videoController.faceContrast = faceContrast.boolValue;
+    videoController.faceCompare = faceCompare.boolValue;
     
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:videoController];
     [self.navigationController presentViewController:navi animated:YES completion:nil];

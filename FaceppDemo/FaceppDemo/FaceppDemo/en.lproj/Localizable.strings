@@ -28,10 +28,14 @@ icon_title15 = "Fast";
 icon_title16 = "Robust";
 icon_title20 = "Normal";
 
-icon_title_face_compare = "compareFace";
+icon_title_face_compare = "Compare";
 
 alert_title = "cancel";
 alert_title2 = "select";
+alert_title_input_user_name = "Input userName";
+alert_title_no_face = "NO Face";
+
+alert_action_ok = "ok";
 
 alert_message1 = "can not open 1080P!";
 alert_message2 = "warning";
@@ -46,3 +50,9 @@ debug_message4 = "Landmarks";
 debug_message5 = "3D Pose";
 debug_message6 = "Confidence";
 debug_message7 = "Face Count";
+
+
+viewController_title_choose_face = "Choose Face";
+
+button_title_cancel_all = "cancelAll";
+button_title_register = "Register";

@@ -136,6 +136,8 @@
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="Coz-Um-t9c" id="SSo-mk-lRg"/>
+                        <outlet property="cancelBtn" destination="iy2-8f-q0T" id="OLb-57-KHN"/>
+                        <outlet property="okBtn" destination="Ce7-be-yl0" id="UGS-sW-7Rh"/>
                         <outlet property="tableView" destination="3DL-0h-ys7" id="2Ig-6Q-8PP"/>
                     </connections>
                 </viewController>

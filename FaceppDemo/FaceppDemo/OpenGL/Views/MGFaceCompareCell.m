@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 @property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
 @property (nonatomic, strong) UITapGestureRecognizer *nameTap;
 @end
 

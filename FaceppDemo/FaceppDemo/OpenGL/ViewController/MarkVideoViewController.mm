@@ -131,6 +131,9 @@
     _trackId_label = nil;
     [self.videoManager startRecording];
     [self setUpCameraLayer];
+    for (UILabel *label in self.trackId_label.allValues) {
+        [label removeFromSuperview];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -177,8 +180,8 @@
         
         UIButton *btn = [[UIButton alloc] initWithFrame:imageView.bounds];
         btn.center = imageView.center;
-        [btn setTitle:@"点击注册" forState:UIControlStateNormal];
-        [btn setTitle:@"点击注册" forState:UIControlStateHighlighted];
+        [btn setTitle:NSLocalizedString(@"button_title_register", nil) forState:UIControlStateNormal];
+        [btn setTitle:NSLocalizedString(@"button_title_register", nil) forState:UIControlStateHighlighted];
         btn.titleLabel.font = [UIFont systemFontOfSize:12];
         [btn addTarget:self action:@selector(registBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:btn];
@@ -194,6 +197,8 @@
     NSMutableArray *arr = [NSMutableArray arrayWithArray:currentModels];
     [arr addObjectsFromArray:self.dbModels];
     vc.models = [NSArray arrayWithArray:arr];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backItem;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -376,8 +381,16 @@
 }
 
 - (void)compareFace:(NSArray *)faceArray image:(UIImage *)image {
-    if (faceArray.count < 1) return;
-    if (_isCompareing) return;
+    if (faceArray.count < 1 || _isCompareing) {
+        _showFaceCompareVC = NO;
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"alert_title_no_face", nil) message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"alert_action_ok", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
     _isCompareing = YES;
     
     dispatch_async(_compareQueue, ^{

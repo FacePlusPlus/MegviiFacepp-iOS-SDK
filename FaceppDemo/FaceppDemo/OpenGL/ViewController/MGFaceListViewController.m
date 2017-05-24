@@ -13,6 +13,8 @@
 @interface MGFaceListViewController () <UITableViewDelegate, UITableViewDataSource, MGFaceCompareCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
+@property (weak, nonatomic) IBOutlet UIButton *okBtn;
 
 @end
 
@@ -25,8 +27,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = NSLocalizedString(@"viewController_title_choose_face", nil);
     _bottomView.backgroundColor = [UIColor colorWithRed:41/255. green:135/255. blue:192/255. alpha:1];
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    [_cancelBtn setTitle:NSLocalizedString(@"button_title_cancel_all", nil) forState:UIControlStateNormal];
+    [_cancelBtn setTitle:NSLocalizedString(@"button_title_cancel_all", nil) forState:UIControlStateHighlighted];
+    [_okBtn setTitle:NSLocalizedString(@"alert_action_ok", nil) forState:UIControlStateNormal];
+    [_okBtn setTitle:NSLocalizedString(@"alert_action_ok", nil) forState:UIControlStateHighlighted];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,11 +67,11 @@
 #pragma amrk - MGFaceCompareCellDelegate -
 
 - (void)nameDidEdit:(MGFaceCompareModel *)model{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"输入用户名" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"alert_title_input_user_name", nil) message:nil preferredStyle:UIAlertControllerStyleAlert];
     [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         
     }];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"alert_action_ok", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UITextField *name = alert.textFields.firstObject;
         NSString *str = name.text;
         if (str.length > 0) {
@@ -71,7 +79,7 @@
             [self.tableView reloadData];
         }
     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"alert_title", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
     }];
     [alert addAction:okAction];

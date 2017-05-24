@@ -33,6 +33,10 @@ icon_title_face_compare = "人脸比对";
 
 alert_title = "取消";
 alert_title2 = "请选择";
+alert_title_input_user_name = "输入用户名";
+alert_title_no_face = "未检测到人脸";
+
+alert_action_ok = "确定";
 
 alert_message1 = "错误的视频配置,该摄像头不支持 1080P 分辨率";
 alert_message2 = "警告";
@@ -49,4 +53,7 @@ debug_message6 = "质量";
 debug_message7 = "人脸数量";
 
 
+viewController_title_choose_face = "选择人脸";
 
+button_title_cancel_all = "全部取消";
+button_title_register = "点击注册";

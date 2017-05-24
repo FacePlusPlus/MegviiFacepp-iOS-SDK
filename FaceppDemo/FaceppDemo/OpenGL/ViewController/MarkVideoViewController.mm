@@ -41,6 +41,7 @@
 @property (nonatomic, assign) BOOL showFaceCompareVC;
 @property (nonatomic, strong) NSMutableArray *labels;
 @property (nonatomic, assign) BOOL isCompareing;
+@property (nonatomic, assign) NSInteger currentFaceCount;
 @end
 
 @implementation MarkVideoViewController
@@ -189,7 +190,17 @@
 }
 
 - (void)registBtnAction{
-    _showFaceCompareVC = YES;
+    if (_currentFaceCount == 0) {
+        _showFaceCompareVC = NO;
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"alert_title_no_face", nil) message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"alert_action_ok", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        _showFaceCompareVC = YES;
+    }
 }
 
 - (void)showfaceCompareVC:(NSArray *)currentModels{
@@ -287,6 +298,7 @@
                 faceModelArray.get3DInfo = self.show3D;
                 [faceModelArray setDetectRect:self.detectRect];
                 
+                _currentFaceCount = faceModelArray.count;
                 NSMutableDictionary *faces = [NSMutableDictionary dictionary];
                 for (int i = 0; i < faceModelArray.count; i ++) {
                     MGFaceInfo *faceInfo = faceModelArray.faceArray[i];
@@ -382,13 +394,6 @@
 
 - (void)compareFace:(NSArray *)faceArray image:(UIImage *)image {
     if (faceArray.count < 1 || _isCompareing) {
-        _showFaceCompareVC = NO;
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"alert_title_no_face", nil) message:nil preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"alert_action_ok", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        [alert addAction:action];
-        [self presentViewController:alert animated:YES completion:nil];
         return;
     }
     _isCompareing = YES;

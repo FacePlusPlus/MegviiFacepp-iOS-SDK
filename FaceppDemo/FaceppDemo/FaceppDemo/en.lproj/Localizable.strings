@@ -33,7 +33,7 @@ icon_title_face_compare = "Compare";
 alert_title = "cancel";
 alert_title2 = "select";
 alert_title_input_user_name = "Input userName";
-alert_title_no_face = "NO Face";
+alert_title_no_face = "Did not find face";
 
 alert_action_ok = "ok";
 

@@ -7,7 +7,6 @@
 //
 
 #import "MGFaceContrastModel.h"
-//#import "MGConvertImage.h"
 #import <MGBaseKit/MGImage.h>
 
 static NSString *faceCount = @"MGFaceContrastModelFaceCount";
@@ -26,6 +25,9 @@ static NSString *faceCount = @"MGFaceContrastModelFaceCount";
         CGRect rect = CGRectMake(x-width/2, y-height/5 , width*1.8, height*1.4);
         
         _image = [MGImage croppedImage:image rect:rect];
+        _image = [UIImage imageWithCGImage:[_image CGImage]
+                                     scale:[_image scale]
+                               orientation:UIImageOrientationLeftMirrored];
         _trackID = faceInfo.trackID;
     }
     return self;

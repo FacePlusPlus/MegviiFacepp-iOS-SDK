@@ -14,7 +14,6 @@
 #import "MGFaceListViewController.h"
 #import "MGFaceContrastModel.h"
 #import "MGFileManager.h"
-//#import "MGConvertImage.h"
 #import <MGBaseKit/MGImage.h>
 
 #define RETAINED_BUFFER_COUNT 6
@@ -306,9 +305,7 @@
                 }
                 
                 if (self.faceContrast && faces.count > 0) {
-                    UIImage *image = [MGImage fixOrientationFromSampleBuffer:detectSampleBufferRef orientation:UIImageOrientationRightMirrored];
-//                    image = [MGImage croppedImage:image rect:<#(CGRect)#>];
-//                    image = [MGImage fixOrientationWithImage:image];
+                    UIImage *image = [MGImage imageFromSampleBuffer:detectSampleBufferRef orientation:UIImageOrientationRightMirrored];
                     [self compareFace:faces.allValues image:image];
                     
                     dispatch_sync(dispatch_get_main_queue(), ^{
@@ -373,7 +370,7 @@
     CGPoint point19 = [faceInfo.points[19] CGPointValue];
     CGPoint point26 = [faceInfo.points[26] CGPointValue];
     
-    CGPoint center = CGPointMake((point19.y+point26.y)/2 - 2*([UIScreen mainScreen].bounds.size.height - image.size.width),
+    CGPoint center = CGPointMake((point19.y+point26.y)/2 - 1.7*([UIScreen mainScreen].bounds.size.height - image.size.height),
                                  (point19.x+point26.x)/2 - (point19.y-point26.y)*0.8);
     label.center = center;
 }

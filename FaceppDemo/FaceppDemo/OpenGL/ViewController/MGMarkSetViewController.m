@@ -66,7 +66,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     Mode.intValue = 2;
     
     // 人脸检测
-    MCSetModel *faceCompare = [MCSetModel modelWithTitle:NSLocalizedString(@"icon_title_face_Compare", nil)
+    MCSetModel *faceCompare = [MCSetModel modelWithTitle:NSLocalizedString(@"icon_title_face_compare", nil)
                                                      type:LogoTypeImage
                                                    status:SelectStatusBool];
     faceCompare.boolValue = NO;

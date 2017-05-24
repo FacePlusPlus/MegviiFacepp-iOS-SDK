@@ -399,7 +399,7 @@
                     name = oldModel.name;
                 }
             }
-            if (faceSimilarity > 0.7) {
+            if (faceSimilarity > 73) {
                 [currentID_name setObject:name forKey:[NSNumber numberWithInteger:faceInfo.trackID]];
             }
         }

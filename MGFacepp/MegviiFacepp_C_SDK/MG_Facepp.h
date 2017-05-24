@@ -364,7 +364,7 @@ typedef struct {
      */
     MG_RETCODE (*GetFeatureData)(
         MG_FPP_APIHANDLE api_handle,
-        MG_SINGLE _OUT *feature_data,
+        void _OUT *feature_data,
         MG_INT32 feature_length);
 
     /**
@@ -388,8 +388,8 @@ typedef struct {
      */
     MG_RETCODE (*FaceCompare)(
         MG_FPP_APIHANDLE api_handle,
-        const MG_SINGLE* feature_data1,
-        const MG_SINGLE* feature_data2,
+        const void* feature_data1,
+        const void* feature_data2,
         MG_INT32 feature_length,
         MG_DOUBLE _OUT *score_ptr);
 

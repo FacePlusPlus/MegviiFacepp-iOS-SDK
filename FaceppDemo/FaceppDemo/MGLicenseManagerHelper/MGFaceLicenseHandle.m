@@ -42,6 +42,7 @@
                                            candidate:@[facelicenSDK]
                                               apiKey:MG_LICENSE_KEY
                                            apiSecret:MG_LICENSE_SECRET
+                                             isChina:YES
                                               finish:^(BOOL License, NSError *error) {
                                                   
                                                   NSLog(@"%@", error);

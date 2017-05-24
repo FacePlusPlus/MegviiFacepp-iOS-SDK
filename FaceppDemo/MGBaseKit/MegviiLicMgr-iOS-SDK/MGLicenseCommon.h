@@ -10,8 +10,9 @@
 #define MGLicenseCommon_h
 
 
+#define MG_LICENSE_API_CN           @"https://api-cn.faceplusplus.com/sdk/v2/auth"
+#define MG_LICENSE_API_US           @"https://api-us.faceplusplus.com/sdk/v2/auth"
 
-#define MG_LICENSE_API    @"https://api-cn.faceplusplus.com/sdk/v1/auth"
 
 
 typedef NS_ENUM(NSInteger, MGLicenseDuration) {

@@ -13,11 +13,8 @@
 		1432EE1F1E24C1EB00131E39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE1D1E24C1EB00131E39 /* Main.storyboard */; };
 		1432EE211E24C1EB00131E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE201E24C1EB00131E39 /* Assets.xcassets */; };
 		1432EE241E24C1EB00131E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1432EE221E24C1EB00131E39 /* LaunchScreen.storyboard */; };
-<<<<<<< HEAD
 		144275661ECD944F00DBE954 /* 81_points_position.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 144275651ECD944F00DBE954 /* 81_points_position.jpg */; };
-=======
 		1444D1671ED411E300345ED3 /* MGFaceppSDKTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1444D1661ED411E300345ED3 /* MGFaceppSDKTestTests.m */; };
->>>>>>> dev-fix
 		14D6A9231E8BA9A700AF4B06 /* libMGFacepp-0.4.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D6A9221E8BA9A700AF4B06 /* libMGFacepp-0.4.7.a */; };
 		14D6A9251E8BAA0000AF4B06 /* megviifacepp_0_4_7_model in Resources */ = {isa = PBXBuildFile; fileRef = 14D6A9241E8BAA0000AF4B06 /* megviifacepp_0_4_7_model */; };
 		14FFF2791E24C3C600A5A7EF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FFF2781E24C3C600A5A7EF /* CoreMedia.framework */; };
@@ -47,13 +44,10 @@
 		1432EE201E24C1EB00131E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1432EE231E24C1EB00131E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1432EE251E24C1EB00131E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		144275651ECD944F00DBE954 /* 81_points_position.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 81_points_position.jpg; sourceTree = "<group>"; };
-=======
+
 		1444D1641ED411E300345ED3 /* MGFaceppSDKTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MGFaceppSDKTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1444D1661ED411E300345ED3 /* MGFaceppSDKTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGFaceppSDKTestTests.m; sourceTree = "<group>"; };
 		1444D1681ED411E300345ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
->>>>>>> dev-fix
 		14D6A9221E8BA9A700AF4B06 /* libMGFacepp-0.4.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMGFacepp-0.4.7.a"; path = "../MGFacepp/build/Debug-iphoneos/libMGFacepp-0.4.7.a"; sourceTree = "<group>"; };
 		14D6A9241E8BAA0000AF4B06 /* megviifacepp_0_4_7_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_4_7_model; sourceTree = "<group>"; };
 		14FFF2781E24C3C600A5A7EF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };

@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MGLicenseCommon.h"
 
 @interface MGLicenseManager : NSObject
 
 
-+ (NSString*)getContextWithDuration:(MGLicenseDuration)duration
-                               UUID:(NSString *)UUID
-                          candidate:(NSArray <NSNumber *>*)APIName;
++ (NSString*)getContextWithUUID:(NSString *)UUID
+                      candidate:(NSArray <NSNumber *>*)APIName;
 
 /**
  *  设置联网授权信息
@@ -30,23 +28,24 @@
 #pragma mark - 简单调用联网授权
 
 /**
-   联网获取授权信息
+ 联网获取授权信息
 
- @param duration 一次授权时长
  @param UUID UUID
  @param APIName API name
+ @param sdkType SDK 类型
  @param apiKey apiKey
  @param apiSecret apiSecret
- @param finish 授权结束回调
- @return NSURLSessionTask
+ @param isChina 是否中国区
+ @param complete 授权结束回调
+ @return SessionTask
  */
-+ (NSURLSessionTask *)takeLicenseFromNetwokrDuration:(MGLicenseDuration)duration
-                                                UUID:(NSString *)UUID
-                                           candidate:(NSArray <NSNumber *>*)APIName
-                                              apiKey:(NSString *)apiKey
-                                           apiSecret:(NSString *)apiSecret
-                                             isChina:(BOOL)isChina
-                                              finish:(void(^)(BOOL License, NSError *error))complete;
++ (NSURLSessionTask *)takeLicenseFromNetwokrUUID:(NSString *)UUID
+                                       candidate:(NSNumber *)APIName
+                                         sdkType:(NSString *)sdkType
+                                          apiKey:(NSString *)apiKey
+                                       apiSecret:(NSString *)apiSecret
+                                         isChina:(BOOL)isChina
+                                          finish:(void(^)(bool License, NSError *error))complete;
 
 
 

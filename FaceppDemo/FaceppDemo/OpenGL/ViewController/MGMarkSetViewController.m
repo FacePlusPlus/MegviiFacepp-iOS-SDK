@@ -289,9 +289,37 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
             NSIndexPath *debuPath = [NSIndexPath indexPathForRow:2 inSection:0];
             MCSetModel *debug = self.dataArray[2];
             [debug setOpen];
-            [self.collectionView reloadItemsAtIndexPaths:@[cellIndex, debuPath]];
             
-        }else{
+            NSIndexPath *indexPath12 = [NSIndexPath indexPathForRow:12 inSection:0];
+            MCSetModel *model12 = self.dataArray[12];
+            model12.boolValue = NO;
+            
+            [self.collectionView reloadItemsAtIndexPaths:@[cellIndex, debuPath, indexPath12]];
+        } else {
+            [self.collectionView reloadItemsAtIndexPaths:@[cellIndex]];
+        }
+        
+        if (cellIndex.row == 12 &&model.boolValue == YES) {
+            NSIndexPath *debuPath = [NSIndexPath indexPathForRow:2 inSection:0];
+            MCSetModel *debug = self.dataArray[2];
+            debug.boolValue = NO;
+            
+            NSIndexPath *indexPath8 = [NSIndexPath indexPathForRow:8 inSection:0];
+            MCSetModel *model8 = self.dataArray[8];
+            model8.boolValue = NO;
+            
+            [self.collectionView reloadItemsAtIndexPaths:@[cellIndex, debuPath, indexPath8]];
+        } else {
+            [self.collectionView reloadItemsAtIndexPaths:@[cellIndex]];
+        }
+        
+        if (cellIndex.row == 2 && model.boolValue == YES) {
+            NSIndexPath *indexPath12 = [NSIndexPath indexPathForRow:12 inSection:0];
+            MCSetModel *model12 = self.dataArray[12];
+            model12.boolValue = NO;
+            
+            [self.collectionView reloadItemsAtIndexPaths:@[cellIndex, indexPath12]];
+        } else {
             [self.collectionView reloadItemsAtIndexPaths:@[cellIndex]];
         }
     }

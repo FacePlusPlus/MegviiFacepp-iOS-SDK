@@ -147,6 +147,32 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
 }
 
 - (IBAction)startDetectFace:(id)sender{
+    AVAuthorizationStatus authStatus =  [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (authStatus == AVAuthorizationStatusRestricted || authStatus ==AVAuthorizationStatusDenied) {
+        [self showAVAuthorizationStatusDeniedAlert];
+    } else if (authStatus == AVAuthorizationStatusNotDetermined) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if (granted) {
+                [self showDetectViewController];
+            } else {
+                [self showAVAuthorizationStatusDeniedAlert];
+            }
+        }];
+    } else {
+        [self showDetectViewController];
+    }
+}
+
+- (void)showAVAuthorizationStatusDeniedAlert{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"alert_title_camera",nil) message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"alert_action_ok",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alertController addAction:action];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)showDetectViewController{
     MCSetModel *record = self.dataArray[0];
     MCSetModel *face3D = self.dataArray[1];
     MCSetModel *debug = self.dataArray[2];

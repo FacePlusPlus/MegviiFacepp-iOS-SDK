@@ -34,6 +34,7 @@ alert_title = "cancel";
 alert_title2 = "select";
 alert_title_input_user_name = "Input userName";
 alert_title_no_face = "Did not find face";
+alert_title_camera = "Please allow WeChat to access your device's camera in \"Settings\"->\"privacy\"->\"Camera\".";
 
 alert_action_ok = "ok";
 

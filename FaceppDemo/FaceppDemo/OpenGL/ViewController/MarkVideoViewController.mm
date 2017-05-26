@@ -457,15 +457,13 @@
 }
 
 - (void)MGCaptureOutput:(AVCaptureOutput *)captureOutput error:(NSError *)error{
-    NSLog(@"%@", error);
-    if (error.code == 101) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_message2", nil)
-                                                            message:NSLocalizedString(@"alert_message2", nil)
-                                                           delegate:nil cancelButtonTitle:NSLocalizedString(@"alert_message3", nil)
-                                                  otherButtonTitles:nil, nil];
-        [alertView show];
-    }
-    
+    UIAlertController *alertViewController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"alert_title_resolution", nil)
+                                                                                 message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"alert_action_ok", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertViewController addAction:action];
+    [self presentViewController:alertViewController animated:YES completion:nil];
 }
 
 #pragma mark-

@@ -214,7 +214,21 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                   config.interval = internal;
                                                   config.orientation = 90;
                                                   config.oneFaceTracking = tracking.boolValue;
-                                                  config.detectionMode = (trackingMode.intValue == 1 ? MGFppDetectionModeNormal : (MGFppDetectionMode)trackingMode.intValue+1);
+                                                  switch (trackingMode.intValue) {
+                                                      case 1:
+                                                          config.detectionMode = MGFppDetectionModeTrackingFast;
+                                                          break;
+                                                      case 2:
+                                                          config.detectionMode = MGFppDetectionModeNormal;
+                                                          break;
+                                                      case 3:
+                                                          config.detectionMode = MGFppDetectionModeTrackingRobust;
+                                                          break;
+                                                          
+                                                      default:
+                                                          config.detectionMode = MGFppDetectionModeTrackingFast;
+                                                          break;
+                                                  }
                                                   config.detectROI = detectROI;
                                                   config.pixelFormatType = PixelFormatTypeRGBA;
                                               }];
@@ -330,7 +344,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                        message:NSLocalizedString(@"icon_title14", nil)
                                                       delegate:self
                                              cancelButtonTitle:NSLocalizedString(@"alert_title", nil)
-                                             otherButtonTitles:NSLocalizedString(@"icon_title20", nil), NSLocalizedString(@"icon_title15", nil), NSLocalizedString(@"icon_title16", nil), nil];
+                                             otherButtonTitles:NSLocalizedString(@"icon_title15", nil), NSLocalizedString(@"icon_title20", nil), NSLocalizedString(@"icon_title16", nil), nil];
     [alertView setTag:KTrackingTag];
     [alertView show];
 }
@@ -351,10 +365,10 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     NSString *mode;
     switch (index) {
         case 1:
-            mode = NSLocalizedString(@"icon_title20", nil);
+            mode = NSLocalizedString(@"icon_title15", nil);
             break;
         case 2:
-            mode = NSLocalizedString(@"icon_title15", nil);
+            mode = NSLocalizedString(@"icon_title20", nil);
             break;
         case 3:
             mode = NSLocalizedString(@"icon_title16", nil);

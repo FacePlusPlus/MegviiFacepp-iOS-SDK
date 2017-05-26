@@ -872,6 +872,7 @@
 				PRODUCT_NAME = FaceppDemo;
 				PROVISIONING_PROFILE = "aa2b8f25-b101-4b18-bf0a-115db1a8bfd8";
 				PROVISIONING_PROFILE_SPECIFIER = Megvii_wildcard;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -897,6 +898,7 @@
 				PRODUCT_NAME = FaceppDemo;
 				PROVISIONING_PROFILE = "371dd0af-e542-4120-9ee7-d0bd9b22a8b5";
 				PROVISIONING_PROFILE_SPECIFIER = "Megvii InHouse Wildcard";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;

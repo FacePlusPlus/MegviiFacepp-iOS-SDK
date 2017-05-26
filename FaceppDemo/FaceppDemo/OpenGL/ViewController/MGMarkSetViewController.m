@@ -219,7 +219,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                           config.detectionMode = MGFppDetectionModeTrackingFast;
                                                           break;
                                                       case 2:
-                                                          config.detectionMode = MGFppDetectionModeNormal;
+                                                          config.detectionMode = MGFppDetectionModeTracking;
                                                           break;
                                                       case 3:
                                                           config.detectionMode = MGFppDetectionModeTrackingRobust;

@@ -37,7 +37,7 @@ alert_title2 = "请选择";
 alert_title_input_user_name = "输入用户名";
 alert_title_no_face = "未检测到人脸";
 alert_title_camera = "请在iPhone的“设置-隐私-相机”选项中，允许 Face++ 访问你的相机";
-alert_title_resolution = "不支持此分辨率";
+alert_title_resolution = "前置摄像头不支持此分辨率";
 
 alert_action_ok = "确定";
 

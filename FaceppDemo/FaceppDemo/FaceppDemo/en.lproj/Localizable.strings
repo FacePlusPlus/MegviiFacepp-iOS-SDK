@@ -56,5 +56,7 @@ debug_message7 = "Face Count";
 
 viewController_title_choose_face = "Choose Face";
 
+navigationBar_back = "back";
+
 button_title_cancel_all = "cancelAll";
 button_title_register = "Register";

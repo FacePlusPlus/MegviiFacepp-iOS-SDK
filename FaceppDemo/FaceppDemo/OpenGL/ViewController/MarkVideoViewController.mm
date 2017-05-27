@@ -384,12 +384,34 @@
 }
 
 - (void)setLabelCenter:(UILabel *)label faceInfo:(MGFaceInfo *)faceInfo image:(UIImage *)image{
+    float imageW = image.size.width;
+    float imageH = image.size.height;
+    float screenH = [UIScreen mainScreen].bounds.size.height;
+    float screenW = [UIScreen mainScreen].bounds.size.width;
+    
     CGPoint point19 = [faceInfo.points[19] CGPointValue];
     CGPoint point26 = [faceInfo.points[26] CGPointValue];
     
-    CGPoint center = CGPointMake((point19.y+point26.y)/2 - 1.7*([UIScreen mainScreen].bounds.size.height - image.size.height),
-                                 (point19.x+point26.x)/2 - (point19.y-point26.y)*0.8);
+    if (imageH>screenH && imageW>screenW) {
+        point19 = CGPointMake(point19.y*(screenW/imageW), point19.x*(screenH/imageH));
+        point26 = CGPointMake(point26.y*(screenW/imageW), point26.x*(screenH/imageH));
+        
+//        label.center = CGPointMake(point19.y*(screenW/imageW), point19.x*(screenH/imageH));
+    } else {
+        point19 = CGPointMake(point19.y-(imageW-screenW)/2, point19.x-(imageH-screenH)/2);
+        point26 = CGPointMake(point26.y-(imageW-screenW)/2, point26.x-(imageH-screenH)/2);
+        
+//        label.center = CGPointMake(point19.y-(imageW-screenW)/2, point19.x-(imageH-screenH)/2);
+    }
+    
+    CGPoint center = CGPointMake((point19.x+point26.x)/2,
+                                 (point19.y+point26.y)/2 - (point19.x-point26.x)*0.8);
+    
     label.center = center;
+    
+    
+//    NSLog(@"%f, %f",point19.y, point19.x);
+    
 }
 
 - (void)compareFace:(NSArray *)faceArray image:(UIImage *)image {

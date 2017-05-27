@@ -219,10 +219,10 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                           config.detectionMode = MGFppDetectionModeTrackingFast;
                                                           break;
                                                       case 2:
-                                                          config.detectionMode = MGFppDetectionModeTracking;
+                                                          config.detectionMode = MGFppDetectionModeTrackingRobust;
                                                           break;
                                                       case 3:
-                                                          config.detectionMode = MGFppDetectionModeTrackingRobust;
+                                                          config.detectionMode = MGFppDetectionModeTracking;
                                                           break;
                                                           
                                                       default:
@@ -344,7 +344,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                        message:NSLocalizedString(@"icon_title14", nil)
                                                       delegate:self
                                              cancelButtonTitle:NSLocalizedString(@"alert_title", nil)
-                                             otherButtonTitles:NSLocalizedString(@"icon_title15", nil), NSLocalizedString(@"icon_title20", nil), NSLocalizedString(@"icon_title16", nil), nil];
+                                             otherButtonTitles:NSLocalizedString(@"icon_title15", nil), NSLocalizedString(@"icon_title16", nil), NSLocalizedString(@"icon_title20", nil), nil];
     [alertView setTag:KTrackingTag];
     [alertView show];
 }
@@ -368,10 +368,10 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
             mode = NSLocalizedString(@"icon_title15", nil);
             break;
         case 2:
-            mode = NSLocalizedString(@"icon_title20", nil);
+            mode = NSLocalizedString(@"icon_title16", nil);
             break;
         case 3:
-            mode = NSLocalizedString(@"icon_title16", nil);
+            mode = NSLocalizedString(@"icon_title20", nil);
             break;
         default:
             mode = NSLocalizedString(@"icon_title15", nil);

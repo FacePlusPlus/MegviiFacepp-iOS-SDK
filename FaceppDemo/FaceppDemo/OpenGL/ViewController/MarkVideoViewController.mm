@@ -389,23 +389,31 @@
     float screenH = [UIScreen mainScreen].bounds.size.height;
     float screenW = [UIScreen mainScreen].bounds.size.width;
     
-    CGPoint point19 = [faceInfo.points[19] CGPointValue];
-    CGPoint point26 = [faceInfo.points[26] CGPointValue];
+    
+    CGPoint p19 = [faceInfo.points[19] CGPointValue];
+    CGPoint p26 = [faceInfo.points[26] CGPointValue];
+    CGPoint point19 = CGPointMake(p19.y, p19.x);;
+    CGPoint point26 = CGPointMake(p26.y, p26.x);
     
     if (imageH>screenH && imageW>screenW) {
-        point19 = CGPointMake(point19.y*(screenW/imageW), point19.x*(screenH/imageH));
-        point26 = CGPointMake(point26.y*(screenW/imageW), point26.x*(screenH/imageH));
+        point19 = CGPointMake(point19.x*(screenW/imageW), point19.y*(screenH/imageH));
+        point26 = CGPointMake(point26.x*(screenW/imageW), point26.y*(screenH/imageH));
         
 //        label.center = CGPointMake(point19.y*(screenW/imageW), point19.x*(screenH/imageH));
     } else {
-        point19 = CGPointMake(point19.y-(imageW-screenW)/2, point19.x-(imageH-screenH)/2);
-        point26 = CGPointMake(point26.y-(imageW-screenW)/2, point26.x-(imageH-screenH)/2);
+        point19 = CGPointMake(point19.x-(imageW-screenW)/2, point19.y-(imageH-screenH)/2);
+        point26 = CGPointMake(point26.x-(imageW-screenW)/2, point26.y-(imageH-screenH)/2);
         
 //        label.center = CGPointMake(point19.y-(imageW-screenW)/2, point19.x-(imageH-screenH)/2);
     }
     
+    if (AVCaptureDevicePositionBack == self.videoManager.devicePosition) {
+        point19 = CGPointMake(screenW-point19.x, point19.y);
+        point26 = CGPointMake(screenW-point26.x, point26.y);
+    }
+
     CGPoint center = CGPointMake((point19.x+point26.x)/2,
-                                 (point19.y+point26.y)/2 - (point19.x-point26.x)*0.8);
+                                 (point19.y+point26.y)/2 - fabs(point19.x-point26.x)*0.8);
     
     label.center = center;
     

@@ -36,28 +36,29 @@
     NSNumber *facelicenSDK = [NSNumber numberWithUnsignedInteger:[MGFacepp getAPIName]];
     NSString *uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     
-    
-    [MGLicenseManager takeLicenseFromNetwokrDuration:MGLicenseDuration30Days
-                                                UUID:uuid
-                                           candidate:@[facelicenSDK]
-                                              apiKey:MG_LICENSE_KEY
-                                           apiSecret:MG_LICENSE_SECRET
-                                              finish:^(BOOL License, NSError *error) {
+    [MGLicenseManager takeLicenseFromNetwokrUUID:uuid
+                                       candidate:facelicenSDK
+                                         sdkType:MG_SDK_TYPE_LANDMARK
+                                          apiKey:MG_LICENSE_KEY
+                                       apiSecret:MG_LICENSE_SECRET
+                                         isChina:YES
+                                          finish:^(bool License, NSError *error) {
+                                              
+                                              NSLog(@"%@", error);
+                                              
+                                              if (License) {
+                                                  NSDate  *nowSDKDate = [self getLicenseDate];
                                                   
-                                                  NSLog(@"%@", error);
-                                                  
-                                                  if (License) {
-                                                      NSDate  *nowSDKDate = [self getLicenseDate];
-                                                      
-                                                      if (finish) {
-                                                          finish(License, nowSDKDate);
-                                                      }
-                                                  }else{
-                                                      if (finish) {
-                                                          finish(License, licenSDKDate);
-                                                      }
+                                                  if (finish) {
+                                                      finish(License, nowSDKDate);
                                                   }
-                                              }];
+                                              }else{
+                                                  if (finish) {
+                                                      finish(License, licenSDKDate);
+                                                  }
+                                              }
+    }];
+
 }
 
 + (NSDate *)getLicenseDate{

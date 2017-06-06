@@ -178,7 +178,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                   config.interval = internal;
                                                   config.orientation = 90;
                                                   config.oneFaceTracking = tracking.boolValue;
-                                                  config.detectionMode = (trackingMode.intValue == 1 ? MGFppDetectionModeTrackingRobust : (MGFppDetectionMode)trackingMode.intValue+1);
+                                                  config.detectionMode = (trackingMode.intValue == 1 ? MGFppDetectionModeTracking : (MGFppDetectionMode)trackingMode.intValue+1);
                                                   config.detectROI = detectROI;
                                                   config.pixelFormatType = PixelFormatTypeRGBA;
                                               }];

@@ -210,7 +210,7 @@
                                                  bitsPerComponent,
                                                  bytesPerRow,
                                                  colorSpace,
-                                                 kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedLast);
+                                                 kCGBitmapByteOrder32Big | kCGImageAlphaPremultipliedLast);
     
     CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
     

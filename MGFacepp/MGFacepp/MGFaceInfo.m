@@ -98,9 +98,9 @@
     self.age = age;
     
     if (gender.female > gender.male) {
-        self.gender = gender.female;
+        self.gender = 0;
     }else{
-        self.gender = gender.male;
+        self.gender = 1;
     }
 }
 

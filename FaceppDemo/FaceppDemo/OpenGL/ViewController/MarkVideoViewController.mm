@@ -389,9 +389,16 @@
     float screenH = [UIScreen mainScreen].bounds.size.height;
     float screenW = [UIScreen mainScreen].bounds.size.width;
     
+    CGPoint p19;
+    CGPoint p26;
+    if (self.pointsNum == 81) {
+        p19 = [faceInfo.points[19] CGPointValue];
+        p26 = [faceInfo.points[26] CGPointValue];
+    } else {
+        p19 = [faceInfo.points[37] CGPointValue];
+        p26 = [faceInfo.points[38] CGPointValue];
+    }
     
-    CGPoint p19 = [faceInfo.points[19] CGPointValue];
-    CGPoint p26 = [faceInfo.points[26] CGPointValue];
     CGPoint point19 = CGPointMake(p19.y, p19.x);;
     CGPoint point26 = CGPointMake(p26.y, p26.x);
     

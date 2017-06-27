@@ -70,7 +70,8 @@
     [self.messageView setText:tempString];
 
     
-    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"navigationBar_back", nil) style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backItem;
 }
 
 - (void)didReceiveMemoryWarning {

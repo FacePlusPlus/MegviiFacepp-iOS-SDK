@@ -282,7 +282,7 @@
         [faceInfo set_feature_data:tempResult];
 
         free(tempFloat);
-        
+
         return YES;
     }
 }

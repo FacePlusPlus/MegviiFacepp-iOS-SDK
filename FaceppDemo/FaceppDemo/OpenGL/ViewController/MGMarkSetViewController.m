@@ -229,6 +229,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                           config.detectionMode = MGFppDetectionModeTrackingFast;
                                                           break;
                                                   }
+
                                                   config.detectROI = detectROI;
                                                   config.pixelFormatType = PixelFormatTypeRGBA;
                                               }];

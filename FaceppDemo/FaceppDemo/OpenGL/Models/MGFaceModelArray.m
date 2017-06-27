@@ -49,12 +49,15 @@
     
     NSMutableString *conficeString = [NSMutableString string];
 
-    if (self.count >= 1) {
+    if (self.count >= 1 ) {
         MGFaceInfo *model = [self modelWithIndex:0];
         [conficeString appendFormat:@"\n%@:%.2f", NSLocalizedString(@"debug_message6", nil), model.confidence];
-//        [conficeString appendFormat:@"\n嘴巴:%zi", model.mouseStatus];
-//        [conficeString appendFormat:@"\n眼镜:%zi", model.eyesStatus];
-
+        
+        if (self.self.getFaceInfo) {
+            [conficeString appendFormat:@"\n嘴巴:%zi", model.mouseStatus];
+            [conficeString appendFormat:@"\n年龄:%.2f", model.age];
+            [conficeString appendFormat:@"\n性别:%@", model.gender == 0 ? @"男":@"女"];
+        }
     }
 
     [tempString appendString:conficeString];

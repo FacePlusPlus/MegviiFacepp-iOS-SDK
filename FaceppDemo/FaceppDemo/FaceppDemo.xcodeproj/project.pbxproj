@@ -298,8 +298,8 @@
 		141999811D7D690D0029032F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				140604FC1D8E5EE600D71080 /* MGBaseKit.framework */,
 				140605001D8E5F1000D71080 /* MGFaceppSDK */,
+				140604FC1D8E5EE600D71080 /* MGBaseKit.framework */,
 				1432ED631E24B27500131E39 /* CoreMotion.framework */,
 				142F34231D7E97E800A05A5A /* CoreVideo.framework */,
 				142F34211D7E97E200A05A5A /* AVFoundation.framework */,

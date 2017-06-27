@@ -15,6 +15,7 @@
 		146E133C1C2924E60066616F /* MGImage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 146E133A1C2924E60066616F /* MGImage.mm */; };
 		146E133F1C2924FA0066616F /* MGLogManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 146E133D1C2924FA0066616F /* MGLogManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		146E13401C2924FA0066616F /* MGLogManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 146E133E1C2924FA0066616F /* MGLogManager.mm */; };
+		149561B11ED5A385000EC79B /* libMGLicMgrSDK-0.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 149561B01ED5A385000EC79B /* libMGLicMgrSDK-0.3.0.a */; };
 		14DC77AF1D50404000469725 /* MGAutoSessionPreset.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DC77AD1D50404000469725 /* MGAutoSessionPreset.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14DC77B01D50404000469725 /* MGAutoSessionPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DC77AE1D50404000469725 /* MGAutoSessionPreset.m */; };
 		14DC77B31D5040F600469725 /* MGAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 14DC77B11D5040F600469725 /* MGAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,6 +38,7 @@
 		146E133A1C2924E60066616F /* MGImage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGImage.mm; sourceTree = "<group>"; };
 		146E133D1C2924FA0066616F /* MGLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLogManager.h; sourceTree = "<group>"; };
 		146E133E1C2924FA0066616F /* MGLogManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGLogManager.mm; sourceTree = "<group>"; };
+		149561B01ED5A385000EC79B /* libMGLicMgrSDK-0.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGLicMgrSDK-0.3.0.a"; sourceTree = "<group>"; };
 		14ABDFB91C1FE92C00695135 /* MGBaseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MGBaseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14DC77AD1D50404000469725 /* MGAutoSessionPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAutoSessionPreset.h; sourceTree = "<group>"; };
 		14DC77AE1D50404000469725 /* MGAutoSessionPreset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGAutoSessionPreset.m; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				149561B11ED5A385000EC79B /* libMGLicMgrSDK-0.3.0.a in Frameworks */,
 				14EA456C1CAD237F00398B3B /* CoreMedia.framework in Frameworks */,
 				14EA456A1CAD237A00398B3B /* AVFoundation.framework in Frameworks */,
 			);
@@ -83,6 +86,7 @@
 		1433D0BD1E27295400814ADD /* MegviiLicMgr-iOS-SDK */ = {
 			isa = PBXGroup;
 			children = (
+				149561B01ED5A385000EC79B /* libMGLicMgrSDK-0.3.0.a */,
 				1433D0BF1E27295400814ADD /* MGLicenseCommon.h */,
 				1433D0C01E27295400814ADD /* MGLicenseManager.h */,
 			);

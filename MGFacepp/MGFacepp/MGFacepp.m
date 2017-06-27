@@ -280,7 +280,9 @@
 
         NSData *tempResult = [NSData dataWithBytes:tempFloat length:_tempLength * sizeof(float)];
         [faceInfo set_feature_data:tempResult];
+
         free(tempFloat);
+
         return YES;
     }
 }

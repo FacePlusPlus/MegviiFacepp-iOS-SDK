@@ -81,7 +81,7 @@
     double result = [sdkDate timeIntervalSinceDate:nowDate];
 
     
-    if (result >= 1*24*60*60.0) {
+    if (result >= 1*1*60*60.0) {
         return NO;
     }
     return YES;

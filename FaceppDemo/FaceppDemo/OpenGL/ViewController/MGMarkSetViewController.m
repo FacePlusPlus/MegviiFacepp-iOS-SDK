@@ -63,7 +63,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     Tracking.stringValue = @"NO";
     MCSetModel *Mode = [MCSetModel modelWithTitle:NSLocalizedString(@"icon_title14", nil) type:LogoTypeSelect status:SelectStatusSting];
     Mode.stringValue = NSLocalizedString(@"icon_title15", nil);
-    Mode.intValue = 2;
+    Mode.intValue = 1;
     
     // 人脸检测
     MCSetModel *faceCompare = [MCSetModel modelWithTitle:NSLocalizedString(@"icon_title_face_compare", nil)

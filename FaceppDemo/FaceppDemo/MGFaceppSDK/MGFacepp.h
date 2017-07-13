@@ -32,6 +32,16 @@
                 faceppSetting:(void(^)(MGFaceppConfig *config))config;
 
 /**
+ 初始化方法
+
+ @param modelData        model data
+ @param maxFaceCount     一张图像中识别的最大人脸数，设置为1即为单脸跟踪
+ @param config           设置的callback
+ @return handle
+ */
+- (instancetype)initWithModel:(NSData *)modelData maxFaceCount:(NSInteger)maxFaceCount faceppSetting:(void(^)(MGFaceppConfig *config))config;
+
+/**
  *  @param config        更新设置参数
  */
 - (BOOL)updateFaceppSetting:(void(^)(MGFaceppConfig *config))config;

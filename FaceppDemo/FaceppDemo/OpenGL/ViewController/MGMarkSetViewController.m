@@ -208,12 +208,17 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     NSString *modelPath = [[NSBundle mainBundle] pathForResource:KMGFACEMODELNAME ofType:@""];
     NSData *modelData = [NSData dataWithContentsOfFile:modelPath];
     
+    int maxFaceCount = 0;
+    if (tracking.boolValue) {
+        maxFaceCount = 1;
+    }
+    
     MGFacepp *markManager = [[MGFacepp alloc] initWithModel:modelData
+                                               maxFaceCount:maxFaceCount
                                               faceppSetting:^(MGFaceppConfig *config) {
                                                   config.minFaceSize = faceSize;
                                                   config.interval = internal;
                                                   config.orientation = 90;
-                                                  config.oneFaceTracking = tracking.boolValue;
                                                   switch (trackingMode.intValue) {
                                                       case 1:
                                                           config.detectionMode = MGFppDetectionModeTrackingFast;
@@ -229,10 +234,11 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                           config.detectionMode = MGFppDetectionModeTrackingFast;
                                                           break;
                                                   }
-
+                                                  
                                                   config.detectROI = detectROI;
                                                   config.pixelFormatType = PixelFormatTypeRGBA;
                                               }];
+
     
     AVCaptureDevicePosition device = [self getCamera:camera.boolValue];
     MGVideoManager *videoManager = [MGVideoManager videoPreset:size.videoPreset

@@ -51,12 +51,13 @@
     return self;
 }
 
-- (instancetype)initWithModel:(NSData *)modelData faceppSetting:(void(^)(MGFaceppConfig *config))config{
+- (instancetype)initWithModel:(NSData *)modelData maxFaceCount:(NSInteger)maxFaceCount faceppSetting:(void(^)(MGFaceppConfig *config))config {
     self = [super init];
     if (self) {
         if (modelData.length > 0) {
             const void *modelBytes = modelData.bytes;
-            MG_RETCODE initCode = mg_facepp.CreateApiHandle((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &_apiHandle);
+            MG_RETCODE initCode = mg_facepp.CreateApiHandleWithMaxFaceCount((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, (MG_INT32)maxFaceCount, &_apiHandle);
+//            MG_RETCODE initCode = mg_facepp.CreateApiHandle((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &_apiHandle);
             
             if (initCode != MG_RETCODE_OK) {
                 NSLog(@"[initWithModel:] 初始化失败，modelData 与 SDK 不匹配！，请检查后重试！errorCode:%zi", initCode);
@@ -77,6 +78,10 @@
         self.canDetect = NO;
     }
     return self;
+}
+
+- (instancetype)initWithModel:(NSData *)modelData faceppSetting:(void(^)(MGFaceppConfig *config))config {
+    return [self initWithModel:modelData maxFaceCount:0 faceppSetting:config];
 }
 
 - (BOOL)updateFaceppSetting:(void(^)(MGFaceppConfig *config))config{

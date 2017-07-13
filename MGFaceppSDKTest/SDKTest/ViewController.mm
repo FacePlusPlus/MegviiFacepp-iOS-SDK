@@ -47,7 +47,7 @@
 
 - (IBAction)detectAction:(id)sender {
     
-    UIImage *image = [UIImage imageNamed:@"81_points_position.jpg"];
+    UIImage *image = [UIImage imageNamed:@"3.jpg"];
     
     MGImageData *imageData = [[MGImageData alloc] initWithImage:image];
     
@@ -63,10 +63,10 @@
         
         [self.markManager GetAttributeAgeGenderStatus:face];
         
-        NSLog(@"性别：%.2f", face.age);
+        NSLog(@"年龄：%.2f", face.age);
         
     }else{
-        NSLog(@"3.jpeg 未检测到人脸");
+        NSLog(@"3.jpg 未检测到人脸");
     }
     
     [self.markManager endDetectionFrame];

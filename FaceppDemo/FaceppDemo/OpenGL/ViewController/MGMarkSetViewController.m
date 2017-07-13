@@ -196,9 +196,9 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     MGDetectROI detectROI = MGDetectROIMake(0, 0, 0, 0);
     CGRect detectRect = CGRectNull;
     if (hasDetectBox) {
-        CGFloat angeleW = size.sizeValue.width * 0.8;
-        CGFloat angeleL = size.sizeValue.width * 0.1;
-        CGFloat angeleT = (size.sizeValue.height-angeleW)*0.5;
+        CGFloat angeleW = size.sizeValue.width * 0.5;
+        CGFloat angeleL = (size.sizeValue.width - angeleW)/2;
+        CGFloat angeleT = (size.sizeValue.height-angeleW)/2;
         detectROI = MGDetectROIMake(angeleT, angeleL, angeleW+angeleT, angeleW+angeleL);
         detectRect = CGRectMake(detectROI.bottom,
                                 detectROI.right,

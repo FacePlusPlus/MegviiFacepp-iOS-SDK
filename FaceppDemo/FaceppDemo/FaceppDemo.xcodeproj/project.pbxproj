@@ -81,8 +81,6 @@
 		1494B9D11D7ED24400E00B70 /* Face3DFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 1494B9CF1D7ED24400E00B70 /* Face3DFragment.glsl */; };
 		1494B9D21D7ED24400E00B70 /* Face3DVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 1494B9D01D7ED24400E00B70 /* Face3DVertex.glsl */; };
 		14A0AACB1E9F4FEB008B9443 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 14A0AACD1E9F4FEB008B9443 /* Localizable.strings */; };
-		14D6A9331E8BAB3D00AF4B06 /* libMGFacepp-0.4.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D6A92A1E8BAB3D00AF4B06 /* libMGFacepp-0.4.7.a */; };
-		14D6A9361E8BB75000AF4B06 /* megviifacepp_0_4_7_model in Resources */ = {isa = PBXBuildFile; fileRef = 14D6A9351E8BB75000AF4B06 /* megviifacepp_0_4_7_model */; };
 		14DA53AF1E34996600EDC6CC /* 640_480.png in Resources */ = {isa = PBXBuildFile; fileRef = 14DA53A71E34996600EDC6CC /* 640_480.png */; };
 		14DA53B01E34996600EDC6CC /* 640_480@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14DA53A81E34996600EDC6CC /* 640_480@3x.png */; };
 		14DA53B11E34996600EDC6CC /* 960_540.png in Resources */ = {isa = PBXBuildFile; fileRef = 14DA53A91E34996600EDC6CC /* 960_540.png */; };
@@ -98,6 +96,8 @@
 		8E126CA71F023DE600E151E5 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E126CA11F023DE600E151E5 /* selected.png */; };
 		8E126CA81F023DE600E151E5 /* unSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E126CA21F023DE600E151E5 /* unSelected.png */; };
 		8E126CA91F023DE600E151E5 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E126CA31F023DE600E151E5 /* user.png */; };
+		8E95F10C1F17569A00689094 /* libMGFacepp-0.5.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E95F10A1F17569A00689094 /* libMGFacepp-0.5.0.a */; };
+		8E95F10D1F17569A00689094 /* megviifacepp_0_5_0_model in Resources */ = {isa = PBXBuildFile; fileRef = 8E95F10B1F17569A00689094 /* megviifacepp_0_5_0_model */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -208,7 +208,6 @@
 		14A0AAD01E9F600A008B9443 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		14A0AAD11E9F600A008B9443 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		14A0AAD31E9F60CD008B9443 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		14D6A92A1E8BAB3D00AF4B06 /* libMGFacepp-0.4.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGFacepp-0.4.7.a"; sourceTree = "<group>"; };
 		14D6A92C1E8BAB3D00AF4B06 /* MGAlgorithmInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlgorithmInfo.h; sourceTree = "<group>"; };
 		14D6A92D1E8BAB3D00AF4B06 /* MGFaceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceInfo.h; sourceTree = "<group>"; };
 		14D6A92E1E8BAB3D00AF4B06 /* MGFacepp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFacepp.h; sourceTree = "<group>"; };
@@ -216,7 +215,6 @@
 		14D6A9301E8BAB3D00AF4B06 /* MGFaceppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceppConfig.h; sourceTree = "<group>"; };
 		14D6A9311E8BAB3D00AF4B06 /* MGFaceppSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceppSet.h; sourceTree = "<group>"; };
 		14D6A9321E8BAB3D00AF4B06 /* MGImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGImageData.h; sourceTree = "<group>"; };
-		14D6A9351E8BB75000AF4B06 /* megviifacepp_0_4_7_model */ = {isa = PBXFileReference; lastKnownFileType = text; path = megviifacepp_0_4_7_model; sourceTree = "<group>"; };
 		14DA53A71E34996600EDC6CC /* 640_480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640_480.png; sourceTree = "<group>"; };
 		14DA53A81E34996600EDC6CC /* 640_480@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "640_480@3x.png"; sourceTree = "<group>"; };
 		14DA53A91E34996600EDC6CC /* 960_540.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 960_540.png; sourceTree = "<group>"; };
@@ -233,6 +231,8 @@
 		8E126CA11F023DE600E151E5 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
 		8E126CA21F023DE600E151E5 /* unSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unSelected.png; sourceTree = "<group>"; };
 		8E126CA31F023DE600E151E5 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		8E95F10A1F17569A00689094 /* libMGFacepp-0.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGFacepp-0.5.0.a"; sourceTree = "<group>"; };
+		8E95F10B1F17569A00689094 /* megviifacepp_0_5_0_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_5_0_model; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,7 +242,7 @@
 			files = (
 				1432ED641E24B27500131E39 /* CoreMotion.framework in Frameworks */,
 				140FF1191D8E602100013A3E /* AVFoundation.framework in Frameworks */,
-				14D6A9331E8BAB3D00AF4B06 /* libMGFacepp-0.4.7.a in Frameworks */,
+				8E95F10C1F17569A00689094 /* libMGFacepp-0.5.0.a in Frameworks */,
 				140FF1181D8E601D00013A3E /* CoreMedia.framework in Frameworks */,
 				140FF1161D8E601800013A3E /* MGBaseKit.framework in Frameworks */,
 			);
@@ -263,8 +263,8 @@
 		140605001D8E5F1000D71080 /* MGFaceppSDK */ = {
 			isa = PBXGroup;
 			children = (
-				14D6A9351E8BB75000AF4B06 /* megviifacepp_0_4_7_model */,
-				14D6A92A1E8BAB3D00AF4B06 /* libMGFacepp-0.4.7.a */,
+				8E95F10A1F17569A00689094 /* libMGFacepp-0.5.0.a */,
+				8E95F10B1F17569A00689094 /* megviifacepp_0_5_0_model */,
 				14D6A92C1E8BAB3D00AF4B06 /* MGAlgorithmInfo.h */,
 				14D6A92D1E8BAB3D00AF4B06 /* MGFaceInfo.h */,
 				14D6A92E1E8BAB3D00AF4B06 /* MGFacepp.h */,
@@ -661,8 +661,8 @@
 				8E126CA41F023DE600E151E5 /* faceCompare-0.png in Resources */,
 				141D0FFF1E4968CF00BC80F5 /* IMG_0003.jpg in Resources */,
 				1432EDC21E24B51B00131E39 /* 81-0.png in Resources */,
-				14D6A9361E8BB75000AF4B06 /* megviifacepp_0_4_7_model in Resources */,
 				1432EDE21E24B51B00131E39 /* textrec-1.png in Resources */,
+				8E95F10D1F17569A00689094 /* megviifacepp_0_5_0_model in Resources */,
 				8E126CA91F023DE600E151E5 /* user.png in Resources */,
 				1432EDD91E24B51B00131E39 /* record-0.png in Resources */,
 				14DA53B21E34996600EDC6CC /* 960_540@3x.png in Resources */,

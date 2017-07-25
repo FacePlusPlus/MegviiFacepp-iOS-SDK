@@ -56,7 +56,7 @@
         if (self.self.getFaceInfo) {
             [conficeString appendFormat:@"\n嘴巴:%zi", model.mouseStatus];
             [conficeString appendFormat:@"\n年龄:%.2f", model.age];
-            [conficeString appendFormat:@"\n性别:%@", model.gender == 0 ? @"男":@"女"];
+            [conficeString appendFormat:@"\n性别:%@", model.gender == 0 ? @"女":@"男"];
         }
     }
 

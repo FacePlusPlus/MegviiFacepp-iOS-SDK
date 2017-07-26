@@ -38,27 +38,24 @@
     
     [MGLicenseManager takeLicenseFromNetwokrUUID:uuid
                                        candidate:facelicenSDK
-                                         sdkType:MG_SDK_TYPE_LANDMARK
+                                         sdkType:MGSDKTypeLandmark
                                           apiKey:MG_LICENSE_KEY
                                        apiSecret:MG_LICENSE_SECRET
-                                         isChina:YES
+                                     apiDuration:MGAPIDurationDay
+                                       URLString:MGLicenseURL_CN
                                           finish:^(bool License, NSError *error) {
-                                              
                                               NSLog(@"%@", error);
-                                              
                                               if (License) {
                                                   NSDate  *nowSDKDate = [self getLicenseDate];
-                                                  
                                                   if (finish) {
                                                       finish(License, nowSDKDate);
                                                   }
-                                              }else{
+                                              } else {
                                                   if (finish) {
                                                       finish(License, licenSDKDate);
                                                   }
                                               }
-    }];
-
+                                          }];
 }
 
 + (NSDate *)getLicenseDate{

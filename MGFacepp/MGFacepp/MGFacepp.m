@@ -56,7 +56,10 @@
     if (self) {
         if (modelData.length > 0) {
             const void *modelBytes = modelData.bytes;
+            NSDate *d1 = [NSDate date];
             MG_RETCODE initCode = mg_facepp.CreateApiHandleWithMaxFaceCount((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, (MG_INT32)maxFaceCount, &_apiHandle);
+            NSDate *d2 = [NSDate date];
+            NSLog(@"init %f",[d2 timeIntervalSinceDate:d1]*1000);
 //            MG_RETCODE initCode = mg_facepp.CreateApiHandle((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &_apiHandle);
             
             if (initCode != MG_RETCODE_OK) {

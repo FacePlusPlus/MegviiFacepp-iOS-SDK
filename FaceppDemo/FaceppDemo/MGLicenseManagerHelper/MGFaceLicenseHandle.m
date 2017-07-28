@@ -33,18 +33,19 @@
         return;
     }
     
-    NSNumber *facelicenSDK = [NSNumber numberWithUnsignedInteger:[MGFacepp getAPIName]];
+//    NSNumber *facelicenSDK = [NSNumber numberWithUnsignedInteger:[MGFacepp getAPIName]];
+    NSString *version = @"";
     NSString *uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     
     [MGLicenseManager takeLicenseFromNetwokrUUID:uuid
-                                       candidate:facelicenSDK
-                                         sdkType:MG_SDK_TYPE_LANDMARK
+                                         version:version
+                                         sdkType:MGSDKTypeLandmark
                                           apiKey:MG_LICENSE_KEY
                                        apiSecret:MG_LICENSE_SECRET
-                                         isChina:YES
+                                     apiDuration:MGAPIDurationMonth
+                                       URLString:MGLicenseURL_CN
                                           finish:^(bool License, NSError *error) {
-                                              
-                                              NSLog(@"%@", error);
+                                              MG_LICENSE_LOG(@"%@", error);
                                               
                                               if (License) {
                                                   NSDate  *nowSDKDate = [self getLicenseDate];
@@ -57,11 +58,13 @@
                                                       finish(License, licenSDKDate);
                                                   }
                                               }
-    }];
+
+                                          }];
 
 }
 
 + (NSDate *)getLicenseDate{
+    [MGLicenseManager getExpiretime];
     
     NSString *modelPath = [[NSBundle mainBundle] pathForResource:KMGFACEMODELNAME ofType:@""];
     NSData *modelData = [NSData dataWithContentsOfFile:modelPath];

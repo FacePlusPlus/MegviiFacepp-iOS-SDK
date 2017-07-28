@@ -93,7 +93,7 @@
             data1 = faceInfo.featureData;
         }
     }else{
-        NSLog(@"001.jpeg 未检测到人脸");
+        NSLog(@"3.jpg 未检测到人脸");
     }
     [self.markManager endDetectionFrame];
     

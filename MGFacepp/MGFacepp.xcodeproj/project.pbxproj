@@ -53,7 +53,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		146C288C1D7E5F4D00124368 /* libMGFacepp-0.5.0.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libMGFacepp-0.5.0.a"; path = "libMGFacepp-0.5.0.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		146C288C1D7E5F4D00124368 /* libMGFacepp-0.5.0.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libMGFacepp-0.5.0.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14D6A91E1E8BA96400AF4B06 /* libMegviiFacepp-0.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMegviiFacepp-0.5.0.a"; sourceTree = "<group>"; };
 		14D6A91F1E8BA96400AF4B06 /* megviifacepp_0_5_0_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_5_0_model; sourceTree = "<group>"; };
 		14FFF2D81E24D8C400A5A7EF /* MGAlgorithmInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlgorithmInfo.h; sourceTree = "<group>"; };

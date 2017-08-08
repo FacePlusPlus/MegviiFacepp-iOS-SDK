@@ -26,15 +26,15 @@
     
     NSDate *licenSDKDate = [self getLicenseDate];
     
-    if ([self compareSDKDate:licenSDKDate] == NO) {
-        if (finish) {
-            finish(YES, [self getLicenseDate]);
-        }
-        return;
-    }
+//    if ([self compareSDKDate:licenSDKDate] == NO) {
+//        if (finish) {
+//            finish(YES, [self getLicenseDate]);
+//        }
+//        return;
+//    }
     
 //    NSNumber *facelicenSDK = [NSNumber numberWithUnsignedInteger:[MGFacepp getAPIName]];
-    NSString *version = @"";
+    NSString *version = @"Megfaceppv2";
     NSString *uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     
     [MGLicenseManager takeLicenseFromNetwokrUUID:uuid

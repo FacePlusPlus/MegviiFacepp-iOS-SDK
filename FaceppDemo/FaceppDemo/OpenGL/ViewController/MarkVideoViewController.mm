@@ -290,6 +290,7 @@
                 
                 date2 = [NSDate date];
                 double timeUsed = [date2 timeIntervalSinceDate:date1] * 1000;
+                NSLog(@"%f",timeUsed);
                 
                 MGFaceModelArray *faceModelArray = [[MGFaceModelArray alloc] init];
                 faceModelArray.getFaceInfo = self.faceInfo;

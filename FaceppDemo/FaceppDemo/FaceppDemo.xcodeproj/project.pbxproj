@@ -90,9 +90,24 @@
 		8E8943461F3C639800761FBA /* GLESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E89432D1F3C639700761FBA /* GLESUtils.m */; };
 		8E8943471F3C639800761FBA /* MGOpenGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8943311F3C639700761FBA /* MGOpenGLRenderer.m */; };
 		8E8943481F3C639800761FBA /* MGOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8943331F3C639700761FBA /* MGOpenGLView.m */; };
+		8E8943511F3D3AA600761FBA /* FaceppDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8943501F3D3AA600761FBA /* FaceppDemoTests.m */; };
+		8E8943731F3D3AED00761FBA /* VideoBufferReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E89436A1F3D3AED00761FBA /* VideoBufferReader.m */; };
+		8E8943751F3D3AED00761FBA /* MGPictureTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E89436B1F3D3AED00761FBA /* MGPictureTest.m */; };
+		8E8943771F3D3AED00761FBA /* MGVideoTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E89436D1F3D3AED00761FBA /* MGVideoTestVC.m */; };
+		8E89437D1F3D3AED00761FBA /* videoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8943711F3D3AED00761FBA /* videoTest.m */; };
 		8E95F10C1F17569A00689094 /* libMGFacepp-0.5.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E95F10A1F17569A00689094 /* libMGFacepp-0.5.0.a */; };
 		8E95F10D1F17569A00689094 /* megviifacepp_0_5_0_model in Resources */ = {isa = PBXBuildFile; fileRef = 8E95F10B1F17569A00689094 /* megviifacepp_0_5_0_model */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8E8943531F3D3AA600761FBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1419995D1D7D68270029032F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 141999641D7D68270029032F;
+			remoteInfo = FaceppDemo;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		140604FC1D8E5EE600D71080 /* MGBaseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MGBaseKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/V2SDKDemo-epjzkrsxflxuxtfbehqbuzoevuka/Build/Products/Debug-iphoneos/MGBaseKit.framework"; sourceTree = "<group>"; };
@@ -219,6 +234,15 @@
 		8E8943321F3C639700761FBA /* MGOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOpenGLView.h; sourceTree = "<group>"; };
 		8E8943331F3C639700761FBA /* MGOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOpenGLView.m; sourceTree = "<group>"; };
 		8E8943491F3C643300761FBA /* MGHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGHeader.h; sourceTree = "<group>"; };
+		8E89434E1F3D3AA600761FBA /* FaceppDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceppDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E8943501F3D3AA600761FBA /* FaceppDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceppDemoTests.m; sourceTree = "<group>"; };
+		8E8943521F3D3AA600761FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E8943691F3D3AED00761FBA /* VideoBufferReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoBufferReader.h; sourceTree = "<group>"; };
+		8E89436A1F3D3AED00761FBA /* VideoBufferReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoBufferReader.m; sourceTree = "<group>"; };
+		8E89436B1F3D3AED00761FBA /* MGPictureTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPictureTest.m; sourceTree = "<group>"; };
+		8E89436C1F3D3AED00761FBA /* MGVideoTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGVideoTestVC.h; sourceTree = "<group>"; };
+		8E89436D1F3D3AED00761FBA /* MGVideoTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGVideoTestVC.m; sourceTree = "<group>"; };
+		8E8943711F3D3AED00761FBA /* videoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = videoTest.m; sourceTree = "<group>"; };
 		8E95F10A1F17569A00689094 /* libMGFacepp-0.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGFacepp-0.5.0.a"; sourceTree = "<group>"; };
 		8E95F10B1F17569A00689094 /* megviifacepp_0_5_0_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_5_0_model; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,6 +257,13 @@
 				8E95F10C1F17569A00689094 /* libMGFacepp-0.5.0.a in Frameworks */,
 				140FF1181D8E601D00013A3E /* CoreMedia.framework in Frameworks */,
 				140FF1161D8E601800013A3E /* MGBaseKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E89434B1F3D3AA600761FBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +292,7 @@
 				1433D0CE1E275DE200814ADD /* FaceppDemo */,
 				1494B9E21D7FF4B400E00B70 /* MainClass */,
 				146C28D91D7E77CE00124368 /* Resources */,
+				8E89434F1F3D3AA600761FBA /* FaceppDemoTests */,
 				141999811D7D690D0029032F /* Frameworks */,
 				141999661D7D68270029032F /* Products */,
 			);
@@ -270,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				141999651D7D68270029032F /* FaceppDemo.app */,
+				8E89434E1F3D3AA600761FBA /* FaceppDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -541,6 +574,37 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		8E89434F1F3D3AA600761FBA /* FaceppDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				8E89437E1F3D3AFE00761FBA /* resources */,
+				8E8943681F3D3AED00761FBA /* Help */,
+				8E89436B1F3D3AED00761FBA /* MGPictureTest.m */,
+				8E89436C1F3D3AED00761FBA /* MGVideoTestVC.h */,
+				8E89436D1F3D3AED00761FBA /* MGVideoTestVC.m */,
+				8E8943711F3D3AED00761FBA /* videoTest.m */,
+				8E8943501F3D3AA600761FBA /* FaceppDemoTests.m */,
+				8E8943521F3D3AA600761FBA /* Info.plist */,
+			);
+			path = FaceppDemoTests;
+			sourceTree = "<group>";
+		};
+		8E8943681F3D3AED00761FBA /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				8E8943691F3D3AED00761FBA /* VideoBufferReader.h */,
+				8E89436A1F3D3AED00761FBA /* VideoBufferReader.m */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		8E89437E1F3D3AFE00761FBA /* resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -562,6 +626,24 @@
 			productReference = 141999651D7D68270029032F /* FaceppDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		8E89434D1F3D3AA600761FBA /* FaceppDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E8943571F3D3AA700761FBA /* Build configuration list for PBXNativeTarget "FaceppDemoTests" */;
+			buildPhases = (
+				8E89434A1F3D3AA600761FBA /* Sources */,
+				8E89434B1F3D3AA600761FBA /* Frameworks */,
+				8E89434C1F3D3AA600761FBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8E8943541F3D3AA600761FBA /* PBXTargetDependency */,
+			);
+			name = FaceppDemoTests;
+			productName = FaceppDemoTests;
+			productReference = 8E89434E1F3D3AA600761FBA /* FaceppDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -574,6 +656,11 @@
 					141999641D7D68270029032F = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = F4LXZEHY23;
+					};
+					8E89434D1F3D3AA600761FBA = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 141999641D7D68270029032F;
 					};
 				};
 			};
@@ -592,6 +679,7 @@
 			projectRoot = "";
 			targets = (
 				141999641D7D68270029032F /* FaceppDemo */,
+				8E89434D1F3D3AA600761FBA /* FaceppDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -662,6 +750,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8E89434C1F3D3AA600761FBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -710,7 +805,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8E89434A1F3D3AA600761FBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E8943731F3D3AED00761FBA /* VideoBufferReader.m in Sources */,
+				8E89437D1F3D3AED00761FBA /* videoTest.m in Sources */,
+				8E8943751F3D3AED00761FBA /* MGPictureTest.m in Sources */,
+				8E8943771F3D3AED00761FBA /* MGVideoTestVC.m in Sources */,
+				8E8943511F3D3AA600761FBA /* FaceppDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8E8943541F3D3AA600761FBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 141999641D7D68270029032F /* FaceppDemo */;
+			targetProxy = 8E8943531F3D3AA600761FBA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1433D0D21E275DE200814ADD /* LaunchScreen.storyboard */ = {
@@ -842,7 +957,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mu Yang (Z54WT4UBJV)";
 				DEVELOPMENT_TEAM = F4LXZEHY23;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = FaceppDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -868,7 +983,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Megvii Co., Ltd.";
 				DEVELOPMENT_TEAM = F4LXZEHY23;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = FaceppDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -883,6 +998,36 @@
 				PROVISIONING_PROFILE_SPECIFIER = "Megvii InHouse Wildcard";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+		8E8943551F3D3AA700761FBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = FaceppDemoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.megvii.FaceppDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FaceppDemo.app/FaceppDemo";
+			};
+			name = Debug;
+		};
+		8E8943561F3D3AA700761FBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = FaceppDemoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.megvii.FaceppDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FaceppDemo.app/FaceppDemo";
 			};
 			name = Release;
 		};
@@ -903,6 +1048,15 @@
 			buildConfigurations = (
 				1419997D1D7D68270029032F /* Debug */,
 				1419997E1D7D68270029032F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E8943571F3D3AA700761FBA /* Build configuration list for PBXNativeTarget "FaceppDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E8943551F3D3AA700761FBA /* Debug */,
+				8E8943561F3D3AA700761FBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

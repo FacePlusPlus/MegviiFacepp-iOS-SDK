@@ -7,11 +7,10 @@
 //
 
 #import "MGMarkSetViewController.h"
-#import "MarkVideoViewController.h"
-
+#import "MGVideoViewController.h"
 #import "MCSetModel.h"
 #import "MCSetCell.h"
-#import "YTMacro.h"
+#import "MGHeader.h"
 
 
 static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
@@ -246,7 +245,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                    videoRecord:recording
                                                     videoSound:NO];
     
-    MarkVideoViewController *videoController = [[MarkVideoViewController alloc] initWithNibName:nil bundle:nil];
+    MGVideoViewController *videoController = [[MGVideoViewController alloc] initWithNibName:nil bundle:nil];
     videoController.detectRect = detectRect;
     videoController.videoSize = size.sizeValue;
     videoController.videoManager = videoManager;

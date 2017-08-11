@@ -1,5 +1,5 @@
 //
-//  MarkVideoViewController.h
+//  MGVideoViewController.h
 //  Test
 //
 //  Created by 张英堂 on 16/4/20.
@@ -13,7 +13,7 @@
 /**
  *  视频流检测---OpenGLES 版本
  */
-@interface MarkVideoViewController : UIViewController
+@interface MGVideoViewController : UIViewController
 
 @property (nonatomic, strong) MGFacepp *markManager;
 

@@ -7,13 +7,10 @@
  */
 
 #import "MGOpenGLRenderer.h"
-
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
-
 #import "GLESUtils.h"
-
-#import "YTMacro.h"
+#import "MGHeader.h"
 #import "MGFaceModelArray.h"
 
 @interface MGOpenGLRenderer ()

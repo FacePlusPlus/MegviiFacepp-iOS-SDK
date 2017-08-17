@@ -1,16 +1,16 @@
 //
-//  DetectOneViewController.m
+//  MGDetectPictureVC.m
 //  FaceppDemo
 //
 //  Created by 张英堂 on 2016/11/8.
 //  Copyright © 2016年 megvii. All rights reserved.
 //
 
-#import "DetectOneViewController.h"
+#import "MGDetectPictureVC.h"
 #import "MGFacepp.h"
 #import "MGFaceInfo.h"
 
-@interface DetectOneViewController ()
+@interface MGDetectPictureVC ()
 @property (weak, nonatomic) IBOutlet UIImageView *detectImage;
 @property (weak, nonatomic) IBOutlet UILabel *messageView;
 
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation DetectOneViewController
+@implementation MGDetectPictureVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,10 +52,10 @@
 
     if (faceArray.count > 0) {
         MGFaceInfo *faceInfo = faceArray[0];
-        [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:81];
+        [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:84];
         [self.markManager GetAttribute3D:faceInfo];
 
-        NSLog(@"%d - %@", faceInfo.points.count ,faceInfo.points);
+        NSLog(@"%lu - %@", (unsigned long)faceInfo.points.count ,faceInfo.points);
         
     }else{
         NSLog(@"%@ no face", imageName);

@@ -34,8 +34,8 @@
 + (UIImage*)fixOrientationWithImage:(UIImage *)image;
 
 
-+ (UIImage*)fixOrientationWithImageOrientation:(UIImage *)image
-                                      orientation:(UIImageOrientation) orientation;
+//+ (UIImage*)fixOrientationWithImageOrientation:(UIImage *)image
+//                                   orientation:(UIImageOrientation) orientation;
 
 /**
  *  把sampleBuffer转化为图片
@@ -49,8 +49,8 @@
                          orientation:(UIImageOrientation) orientation;
 
 
-+ (UIImage*)fixOrientationFromSampleBuffer:(CMSampleBufferRef)sampleBuffer
-                                  orientation:(UIImageOrientation)orientation;
+//+ (UIImage*)fixOrientationFromSampleBuffer:(CMSampleBufferRef)sampleBuffer
+//                                  orientation:(UIImageOrientation)orientation;
 
 
 

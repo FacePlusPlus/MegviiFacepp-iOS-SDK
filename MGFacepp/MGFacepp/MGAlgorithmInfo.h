@@ -33,7 +33,7 @@
 /**
  SDK 功能列表
  */
-@property (nonatomic, strong, readonly) NSArray <NSValue *>* SDKAbility;
+@property (nonatomic, strong, readonly) NSArray *SDKAbility;
 
 
 @end

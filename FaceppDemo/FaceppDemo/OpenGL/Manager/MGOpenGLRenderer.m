@@ -7,13 +7,10 @@
  */
 
 #import "MGOpenGLRenderer.h"
-
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
-
 #import "GLESUtils.h"
-
-#import "YTMacro.h"
+#import "MGHeader.h"
 #import "MGFaceModelArray.h"
 
 @interface MGOpenGLRenderer ()
@@ -604,7 +601,18 @@ static void rotatePoint3f(float *points, int offset, float angle/*radis*/, int x
     }
 }
 
-
+- (void)setUpOutSampleBuffer:(CGSize)outSize devicePosition:(AVCaptureDevicePosition)devicePosition{
+    [EAGLContext setCurrentContext:_oglContext];
+    
+    CMVideoDimensions dimensions;
+    dimensions.width = outSize.width;
+    dimensions.height = outSize.height;
+    
+    [self deleteBuffers];
+    if ( ! [self initializeBuffersWithOutputDimensions:dimensions retainedBufferCountHint:6] ) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Problem preparing renderer." userInfo:nil];
+    }
+}
 
 
 

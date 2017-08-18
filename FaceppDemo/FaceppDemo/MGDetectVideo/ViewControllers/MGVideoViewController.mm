@@ -1,12 +1,12 @@
 //
-//  MarkVideoViewController.m
+//  MGVideoViewController.m
 //  Test
 //
 //  Created by 张英堂 on 16/4/20.
 //  Copyright © 2016年 megvii. All rights reserved.
 //
 
-#import "MarkVideoViewController.h"
+#import "MGVideoViewController.h"
 #import "MGOpenGLView.h"
 #import "MGOpenGLRenderer.h"
 #import "MGFaceModelArray.h"
@@ -18,7 +18,7 @@
 
 #define RETAINED_BUFFER_COUNT 6
 
-@interface MarkVideoViewController ()<MGVideoDelegate>
+@interface MGVideoViewController ()<MGVideoDelegate>
 {
     dispatch_queue_t _detectImageQueue;
     dispatch_queue_t _drawFaceQueue;
@@ -44,7 +44,7 @@
 @property (nonatomic, assign) NSInteger currentFaceCount;
 @end
 
-@implementation MarkVideoViewController
+@implementation MGVideoViewController
 -(void)dealloc{
     self.previewView = nil;
     self.renderer = nil;
@@ -237,7 +237,7 @@
 /** 根据人脸信息绘制，并且显示 */
 - (void)displayWithfaceModel:(MGFaceModelArray *)modelArray SampleBuffer:(CMSampleBufferRef)sampleBuffer{
     @autoreleasepool {
-        __unsafe_unretained MarkVideoViewController *weakSelf = self;
+        __unsafe_unretained MGVideoViewController *weakSelf = self;
         dispatch_async(_drawFaceQueue, ^{
             if (modelArray) {
                 CVPixelBufferRef renderedPixelBuffer = [weakSelf.renderer copyRenderedPixelBuffer:sampleBuffer faceModelArray:modelArray drawLandmark:!self.faceCompare];
@@ -290,6 +290,7 @@
                 
                 date2 = [NSDate date];
                 double timeUsed = [date2 timeIntervalSinceDate:date1] * 1000;
+                NSLog(@"%f",timeUsed);
                 
                 MGFaceModelArray *faceModelArray = [[MGFaceModelArray alloc] init];
                 faceModelArray.getFaceInfo = self.faceInfo;

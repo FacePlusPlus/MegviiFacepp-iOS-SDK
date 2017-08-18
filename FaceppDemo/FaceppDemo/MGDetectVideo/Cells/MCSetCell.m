@@ -8,7 +8,7 @@
 
 #import "MCSetCell.h"
 #import "MCSetModel.h"
-#import "YTMacro.h"
+#import "MGHeader.h"
 
 @interface MCSetCell ()
 {
@@ -123,7 +123,7 @@
         
         _lineShape.lineWidth = 2.0f;
         _lineShape.lineCap = kCALineCapRound;
-        _lineShape.strokeColor = YT_ColorWithRGB(224, 224, 224, 1).CGColor;
+        _lineShape.strokeColor = MGColorWithRGB(224, 224, 224, 1).CGColor;
         
         CGPathMoveToPoint(linepath, NULL, CGRectGetMinX(self.bounds), CGRectGetMaxY(self.bounds));
         CGPathAddLineToPoint(linepath, NULL, CGRectGetMaxX(self.bounds), CGRectGetMaxY(self.bounds));

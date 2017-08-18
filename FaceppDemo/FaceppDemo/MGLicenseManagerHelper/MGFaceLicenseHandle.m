@@ -34,7 +34,7 @@
 //    }
     
 //    NSNumber *facelicenSDK = [NSNumber numberWithUnsignedInteger:[MGFacepp getAPIName]];
-    NSString *version = @"Megfaceppv2";
+    NSString *version = @"MegviiFaceppv2";
     NSString *uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     
     [MGLicenseManager takeLicenseFromNetwokrUUID:uuid

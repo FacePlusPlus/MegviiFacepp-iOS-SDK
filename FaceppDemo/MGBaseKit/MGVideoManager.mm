@@ -295,8 +295,8 @@
             if (YES == [videoDevice lockForConfiguration:NULL])
             {
                 videoDevice.activeFormat = vFormat;
-                [videoDevice setActiveVideoMinFrameDuration:CMTimeMake(1,frame/3)];
-                [videoDevice setActiveVideoMaxFrameDuration:CMTimeMake(1,frame)];
+                [videoDevice setActiveVideoMinFrameDuration:CMTimeMake(1,(int)(frame/3))];
+                [videoDevice setActiveVideoMaxFrameDuration:CMTimeMake(1,(int)frame)];
                 [videoDevice unlockForConfiguration];
             }
         }

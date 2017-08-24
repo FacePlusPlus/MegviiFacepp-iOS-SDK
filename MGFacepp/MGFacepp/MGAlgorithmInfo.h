@@ -11,8 +11,6 @@
 
 @interface MGAlgorithmInfo : NSObject
 
-
-
 /**
  SDK 版本号
  */

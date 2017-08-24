@@ -155,8 +155,21 @@
 
 #pragma mark - 类方法，获取 SDK 相关信息
 
-/** 获取版本号 */
-+ (NSString *)getVersion;
+
+/**
+ 获取版本号
+
+ @return 版本号
+ */
++ (NSString *)getSDKVersion;
+
+
+/**
+ 获取 SDK jenkins 号
+
+ @return SDK jenkins 号
+ */
++ (NSString *)getJenkinsNumber;
 
 
 /**
@@ -174,14 +187,6 @@
  */
 + (MGAlgorithmInfo *)getSDKAlgorithmInfoWithModel:(NSData *)modelData;;
 
-
-
-/**
- 获取 SDK 联网授权所需要信息
-
- @return 联网授权信息
- */
-+ (NSUInteger)getAPIName;
 
 
 

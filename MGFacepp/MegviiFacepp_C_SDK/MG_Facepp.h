@@ -145,7 +145,14 @@ typedef struct {
      *
      * @return 返回一个字符串，表示算法版本号及相关信息
      */
-    const char* (*GetApiVersion)();
+    const char* (*GetJenkinsNumber)();
+    
+    /**
+     * @brief 获取算法版本信息
+     *
+     * @return 返回一个字符串，表示 SDK 使用的jenkins号
+     */
+    const char* (*GetSDKVersion)();
 
     /**
      * @brief 查看算法授权的过期时间

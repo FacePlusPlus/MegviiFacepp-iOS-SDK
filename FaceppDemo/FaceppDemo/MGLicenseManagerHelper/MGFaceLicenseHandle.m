@@ -33,8 +33,7 @@
 //        return;
 //    }
     
-//    NSNumber *facelicenSDK = [NSNumber numberWithUnsignedInteger:[MGFacepp getAPIName]];
-    NSString *version = @"MegviiFaceppv2";
+    NSString *version = [MGFacepp getSDKVersion];
     NSString *uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     
     [MGLicenseManager takeLicenseFromNetwokrUUID:uuid
@@ -45,7 +44,9 @@
                                      apiDuration:MGAPIDurationMonth
                                        URLString:MGLicenseURL_CN
                                           finish:^(bool License, NSError *error) {
-                                              MG_LICENSE_LOG(@"%@", error);
+                                              if (error) {
+                                                  MG_LICENSE_LOG(@"Auth error = %@", error);
+                                              }
                                               
                                               if (License) {
                                                   NSDate  *nowSDKDate = [self getLicenseDate];
@@ -63,8 +64,10 @@
 
 }
 
-+ (NSDate *)getLicenseDate{
-    [MGLicenseManager getExpiretime];
++ (NSDate *)getLicenseDate {
+    NSString *version = [MGFacepp getSDKVersion];
+    NSDate *date = [MGLicenseManager getExpiretime:version];
+    NSLog(@"过期时间 ： %@",date);
     
     NSString *modelPath = [[NSBundle mainBundle] pathForResource:KMGFACEMODELNAME ofType:@""];
     NSData *modelData = [NSData dataWithContentsOfFile:modelPath];

@@ -342,23 +342,24 @@
 }
 
 #pragma mark - get sdk info
-/** 获取API 联网授权使用 */
-+ (NSUInteger)getAPIName{
-   NSUInteger result = (NSUInteger)mg_facepp.GetApiVersion;
-    return result;
-}
 
-+ (NSDate *)getApiExpiration{
 
++ (NSDate *)getApiExpiration {
     NSUInteger result = (NSUInteger)mg_facepp.GetApiExpiration();
-    NSData *date = [NSDate dateWithTimeIntervalSince1970:result];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:result];
 
     return date;
 }
 
 /** 获取版本号 */
-+ (NSString *)getVersion{
-    const char *tempStr = mg_facepp.GetApiVersion();
++ (NSString *)getJenkinsNumber {
+    const char *tempStr = mg_facepp.GetJenkinsNumber();
+    NSString *string = [NSString stringWithCString:tempStr encoding:NSUTF8StringEncoding];
+    return string;
+}
+
++ (NSString *)getSDKVersion {
+    const char *tempStr = mg_facepp.GetSDKVersion();
     NSString *string = [NSString stringWithCString:tempStr encoding:NSUTF8StringEncoding];
     return string;
 }
@@ -377,7 +378,7 @@
         }
         
         BOOL needLicense = (info.auth_type == MG_ONLINE_AUTH? YES : NO);
-        NSString *version = [self getVersion];
+        NSString *version = [self getSDKVersion];
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:info.expire_time];
         
         [infoModel setAbility:info.ability];

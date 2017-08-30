@@ -364,19 +364,22 @@
         MGAlgorithmInfo *infoModel = [[MGAlgorithmInfo alloc] init];
         
         const void *modelBytes = modelData.bytes;
-        MG_ALGORITHMINFO info;
-        MG_RETCODE sucessCode = mg_facepp.GetAlgorithmInfo((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &info);
+        MG_ABILITY abilityInfo;
+        
+        MG_RETCODE sucessCode = mg_facepp.GetAbility((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &abilityInfo);
         
         if (sucessCode != MG_RETCODE_OK) {
             NSLog(@"[initWithModel:] 初始化失败，modelData 与 SDK 不匹配！，请检查后重试！errorCode:%zi", sucessCode);
             return nil;
         }
         
-        BOOL needLicense = (info.auth_type == MG_ONLINE_AUTH? YES : NO);
+        MG_SDKAUTHTYPE auth = mg_facepp.GetSDKAuthType();
+        BOOL needLicense = (auth == MG_ONLINE_AUTH? YES : NO);
         NSString *version = [self getVersion];
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:info.expire_time];
+        NSTimeInterval time = mg_facepp.GetApiExpiration();
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
         
-        [infoModel setAbility:info.ability];
+        [infoModel setAbility:abilityInfo.ability];
         [infoModel setDate:date];
         [infoModel setLicense:needLicense];
         [infoModel setVersionCode:version];

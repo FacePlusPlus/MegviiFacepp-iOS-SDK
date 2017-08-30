@@ -20,6 +20,7 @@ extern "C"{
 #define MG_FPP_GET_LANDMARK106 106      ///< 计算 106 个关键点
 #define MG_FPP_GET_LANDMARK101 101      ///< 计算 101 个关键点
 #define MG_FPP_GET_LANDMARK81 81        ///< 计算 81 个关键点
+#define MG_FPP_GET_LANDMARK84 84        ///< 计算 84 个关键点
 
 #define MG_FPP_ATTR_POSE3D 0x01             ///< 3dpose 的标识位
 #define MG_FPP_ATTR_EYESTATUS 0x02          ///< 眼睛状态的标识位
@@ -193,7 +194,18 @@ typedef struct {
     MG_RETCODE (*SetDetectConfig) (
         MG_FPP_APIHANDLE api_handle,
         const MG_FPP_APICONFIG *config);
-
+    
+    
+//    /**
+//     * @brief 清除当前track模式下的缓存信息
+//     *
+//     * @param[in] api_handle 算法句柄
+//     *
+//     * @return 成功则返回 MG_RETCODE_OK
+//     */
+//    MG_RETCODE (*Reset_track) (MG_FPP_APIHANDLE api_handle);
+    
+    
     /**
      * @brief 检测图像中的人脸
      * 
@@ -338,10 +350,10 @@ typedef struct {
      *
      * @return 成功则返回 MG_RETCODE_OK
      */
-    MG_RETCODE (*GetAlgorithmInfo)(
+    MG_RETCODE (*GetAbility)(
         const MG_BYTE* model_data,
         MG_INT32 model_length,
-        MG_ALGORITHMINFO *algorithm_info);
+        MG_ABILITY *ability_info);
 
     /**
      * @brief 抽取人脸特征

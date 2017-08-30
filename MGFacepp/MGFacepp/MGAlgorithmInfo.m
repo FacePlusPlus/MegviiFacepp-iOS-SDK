@@ -28,31 +28,6 @@ typedef NS_OPTIONS(NSInteger, MGFaceppAbilityType) {
 @implementation MGAlgorithmInfo
 
 - (void)setAbility:(uint64_t )ability {
-//    NSMutableArray *tempArray = [NSMutableArray array];
-//    const int functionCount = 9;
-//    
-//    int funcArray[functionCount] = {
-//        MG_FPP_TRACK,
-//        MG_FPP_DETECT,
-//        MG_FPP_ATTR_POSE3D,
-//        MG_FPP_ATTR_EYESTATUS,
-//        MG_FPP_ATTR_MOUTHSTATUS,
-//        MG_FPP_ATTR_MINORITY,
-//        MG_FPP_ATTR_BLURNESS,
-//        MG_FPP_ATTR_AGE_GENDER,
-//        MG_FPP_ATTR_EXTRACT_FEATURE
-//    };
-//    
-//    for (int i = 0; i < functionCount; i++) {
-//        int64_t temp = funcArray[i];
-//        int64_t a = ability & temp;
-//        
-//        if (a == temp) {
-//            MGFaceAbility Ability = (MGFaceAbility)i;
-//            [tempArray addObject:[NSNumber numberWithLongLong:Ability]];
-//        }
-//    }
-    
     NSDictionary *abilityName = @{@(1U<<0)  : @"pose3D",
                                   @(1U<<1)  : @"eyeStatus",
                                   @(1U<<2)  : @"mouthStatus",

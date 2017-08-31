@@ -28,21 +28,18 @@ typedef NS_OPTIONS(NSInteger, MGFaceppAbilityType) {
 @implementation MGAlgorithmInfo
 
 - (void)setAbility:(uint64_t )ability {
-    NSDictionary *abilityName = @{@(1U<<0)  : @"pose3D",
-                                  @(1U<<1)  : @"eyeStatus",
-                                  @(1U<<2)  : @"mouthStatus",
-                                  @(1U<<3)  : @"minority",
-                                  @(1U<<4)  : @"blurness",
-                                  @(1U<<5)  : @"ageGender",
-                                  @(1U<<6)  : @"extractFeature",
-                                  @(1U<<7)  : @"trackFast",
-                                  @(1U<<8)  : @"trackRobust",
-                                  @(1U<<9)  : @"",
-                                  @(1U<<10) : @"",
-                                  @(1U<<11) : @"",
-                                  @(1U<<12) : @"detect",
-                                  @(1U<<13) : @"IDCardQuality",
-                                  @(1U<<14) : @"track",};
+    NSDictionary *abilityName = @{@(1U<<0)  : MG_ABILITY_KEY_POSE3D,
+                                  @(1U<<1)  : MG_ABILITY_KEY_EYE_STATUS,
+                                  @(1U<<2)  : MG_ABILITY_KEY_MOUTH_SATUS,
+                                  @(1U<<3)  : MG_ABILITY_KEY_MINORITY,
+                                  @(1U<<4)  : MG_ABILITY_KEY_BLURNESS,
+                                  @(1U<<5)  : MG_ABILITY_KEY_AGE_GENDER,
+                                  @(1U<<6)  : MG_ABILITY_KEY_EXTRACT_FEATURE,
+                                  @(1U<<7)  : MG_ABILITY_KEY_TRACK_FAST,
+                                  @(1U<<8)  : MG_ABILITY_KEY_TRACK_ROBUST,
+                                  @(1U<<12) : MG_ABILITY_KEY_TRACK_FAST,
+                                  @(1U<<13) : MG_ABILITY_KEY_IDCARD_QUALITY,
+                                  @(1U<<14) : MG_ABILITY_KEY_TRACK};
     NSMutableArray *names = [NSMutableArray array];
     for (int i = 0; i < 15; i++) {
         if (ability & 1<<i) {

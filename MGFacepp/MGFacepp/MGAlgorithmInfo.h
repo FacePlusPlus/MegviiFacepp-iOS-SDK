@@ -9,8 +9,20 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface MGAlgorithmInfo : NSObject
+#define MG_ABILITY_KEY_POSE3D               @"pose3D"
+#define MG_ABILITY_KEY_EYE_STATUS           @"eyeStatus"
+#define MG_ABILITY_KEY_MOUTH_SATUS          @"mouthStatus"
+#define MG_ABILITY_KEY_MINORITY             @"minority"
+#define MG_ABILITY_KEY_BLURNESS             @"blurness"
+#define MG_ABILITY_KEY_AGE_GENDER           @"ageGender"
+#define MG_ABILITY_KEY_EXTRACT_FEATURE      @"extractFeature"
+#define MG_ABILITY_KEY_TRACK_FAST           @"trackFast"
+#define MG_ABILITY_KEY_TRACK_ROBUST         @"trackRobust"
+#define MG_ABILITY_KEY_DETECT               @"detect"
+#define MG_ABILITY_KEY_IDCARD_QUALITY       @"IDCardQuality"
+#define MG_ABILITY_KEY_TRACK                @"track"
 
+@interface MGAlgorithmInfo : NSObject
 
 
 /**

@@ -42,6 +42,11 @@
 @property (nonatomic, strong) NSMutableArray *labels;
 @property (nonatomic, assign) BOOL isCompareing;
 @property (nonatomic, assign) NSInteger currentFaceCount;
+
+
+@property (nonatomic, assign) double allTime;
+@property (nonatomic, assign) NSInteger count;
+
 @end
 
 @implementation MGVideoViewController
@@ -290,7 +295,10 @@
                 
                 date2 = [NSDate date];
                 double timeUsed = [date2 timeIntervalSinceDate:date1] * 1000;
-                NSLog(@"%f",timeUsed);
+                
+                _allTime += timeUsed;
+                _count ++;
+                NSLog(@"time = %f, 平均：%f, count = %ld",timeUsed, _allTime/_count, _count);
                 
                 MGFaceModelArray *faceModelArray = [[MGFaceModelArray alloc] init];
                 faceModelArray.getFaceInfo = self.faceInfo;

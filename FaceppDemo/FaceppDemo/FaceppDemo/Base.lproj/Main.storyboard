@@ -158,10 +158,10 @@
             </objects>
             <point key="canvasLocation" x="925.60000000000002" y="750.67466266866575"/>
         </scene>
-        <!--Detect One View Controller-->
+        <!--Detect PictureVC-->
         <scene sceneID="RPQ-Hw-elR">
             <objects>
-                <viewController id="1Mj-XB-sVJ" customClass="DetectOneViewController" sceneMemberID="viewController">
+                <viewController id="1Mj-XB-sVJ" customClass="MGDetectPictureVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nvN-gM-AAv"/>
                         <viewControllerLayoutGuide type="bottom" id="jXg-CX-gb2"/>
@@ -212,7 +212,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="detectImage" destination="5AJ-cg-gKx" id="CPs-gZ-jDC"/>
+                        <outlet property="detectImage" destination="5AJ-cg-gKx" id="i8Z-lK-PHA"/>
                         <outlet property="messageView" destination="IYs-8K-NTt" id="65R-2f-zGN"/>
                     </connections>
                 </viewController>

@@ -179,6 +179,22 @@
  */
 + (NSDate *)getApiExpiration;
 
+
+/**
+ 获取SDK限制的BundleId
+
+ @return SDK限制的BundleId
+ */
++ (NSString *)getSDKBundleID;
+
+
+/**
+ 判断APP的BundleId是否和SDK限制的BundleId一致
+
+ @return APP的BundleId和SDK限制的BundleId一致则返回 YES
+ */
++ (BOOL)isMapSDKBundleID;
+
 /**
  获取 SDK 相关信息
 

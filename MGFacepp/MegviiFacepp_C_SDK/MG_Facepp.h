@@ -172,6 +172,14 @@ typedef struct {
         jobject jobj
 #endif
     );
+    
+    
+    /**
+     获取SDK限制的包名
+
+     @return SDK限制的包名
+     */
+    const char * (*getSDKBundleId)();
 
     /**
      * @brief 获取当前算法的配置信息
@@ -203,14 +211,14 @@ typedef struct {
         const MG_FPP_APICONFIG *config);
     
     
-//    /**
-//     * @brief 清除当前track模式下的缓存信息
-//     *
-//     * @param[in] api_handle 算法句柄
-//     *
-//     * @return 成功则返回 MG_RETCODE_OK
-//     */
-//    MG_RETCODE (*Reset_track) (MG_FPP_APIHANDLE api_handle);
+    /**
+     * @brief 清除当前track模式下的缓存信息
+     *
+     * @param[in] api_handle 算法句柄
+     *
+     * @return 成功则返回 MG_RETCODE_OK
+     */
+    MG_RETCODE (*Reset_track) (MG_FPP_APIHANDLE api_handle);
     
     
     /**

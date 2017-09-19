@@ -342,7 +342,7 @@
 }
 
 + (NSString *)getSDKVersion {
-    const char *tempStr = mg_facepp.GetSDKVersion();
+    const char *tempStr = mg_facepp.GetAPIVersion();
     NSString *string = [NSString stringWithCString:tempStr encoding:NSUTF8StringEncoding];
     return string;
 }

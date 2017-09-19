@@ -339,8 +339,6 @@ typedef struct {
     /**
      * @brief 获取 SDK 的授权类型
      *
-     * @warning 此接口已经废弃，可以用 GetAlgorithmInfo 函数代替。
-     *
      * @return 只有联网授权和非联网授权两种类型
      */
     MG_SDKAUTHTYPE (*GetSDKAuthType)();

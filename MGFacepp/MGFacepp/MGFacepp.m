@@ -41,16 +41,8 @@
         NSAssert(modelData.length > 0, @"modelData.length == 0");
         if (modelData.length > 0) {
             const void *modelBytes = modelData.bytes;
-            NSDate *d1 = [NSDate date];
             MG_RETCODE initCode = mg_facepp.CreateApiHandleWithMaxFaceCount((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, (MG_INT32)maxFaceCount, &_apiHandle);
-<<<<<<< HEAD
-            NSDate *d2 = [NSDate date];
-            NSLog(@"init %f",[d2 timeIntervalSinceDate:d1]*1000);
-//            MG_RETCODE initCode = mg_facepp.CreateApiHandle((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &_apiHandle);
-            
-=======
             NSAssert(MG_RETCODE_OK == initCode, @"modelData 与 SDK 不匹配");
->>>>>>> dev-050-2.4
             if (initCode != MG_RETCODE_OK) {
                 NSLog(@"[initWithModel:] 初始化失败，modelData 与 SDK 不匹配！，请检查后重试！errorCode:%zi", initCode);
                 return nil;
@@ -365,14 +357,15 @@
             return nil;
         }
         
-//        BOOL needLicense = (info.auth_type == MG_ONLINE_AUTH? YES : NO);
-//        NSString *version = [self getSDKVersion];
-//        NSDate *date = [NSDate dateWithTimeIntervalSince1970:info.expire_time];
-//        
-//        [infoModel setAbility:abilityInfo.ability];
-//        [infoModel setDate:date];
-//        [infoModel setLicense:needLicense];
-//        [infoModel setVersionCode:version];
+        MG_SDKAUTHTYPE auth = mg_facepp.GetSDKAuthType;
+        BOOL needLicense = (auth == MG_ONLINE_AUTH? YES : NO);
+        NSString *version = [self getSDKVersion];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:(NSInteger)mg_facepp.GetApiExpiration];
+        
+        [infoModel setAbility:abilityInfo.ability];
+        [infoModel setDate:date];
+        [infoModel setLicense:needLicense];
+        [infoModel setVersionCode:version];
         
         return infoModel;
     }else{

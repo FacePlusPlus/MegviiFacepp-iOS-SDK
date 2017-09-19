@@ -357,10 +357,10 @@
             return nil;
         }
         
-        MG_SDKAUTHTYPE auth = mg_facepp.GetSDKAuthType;
+        MG_SDKAUTHTYPE auth = mg_facepp.GetSDKAuthType();
         BOOL needLicense = (auth == MG_ONLINE_AUTH? YES : NO);
         NSString *version = [self getSDKVersion];
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:(NSInteger)mg_facepp.GetApiExpiration];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:mg_facepp.GetApiExpiration()];
         
         [infoModel setAbility:abilityInfo.ability];
         [infoModel setDate:date];

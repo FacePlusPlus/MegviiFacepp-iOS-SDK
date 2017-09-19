@@ -26,12 +26,12 @@
     
     NSDate *licenSDKDate = [self getLicenseDate];
     
-//    if ([self compareSDKDate:licenSDKDate] == NO) {
-//        if (finish) {
-//            finish(YES, [self getLicenseDate]);
-//        }
-//        return;
-//    }
+    if ([self compareSDKDate:licenSDKDate] == NO) {
+        if (finish) {
+            finish(YES, [self getLicenseDate]);
+        }
+        return;
+    }
     
     NSString *version = [MGFacepp getSDKVersion];
     NSString *uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];

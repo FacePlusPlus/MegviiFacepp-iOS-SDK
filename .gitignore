@@ -73,5 +73,5 @@ megviifacepp*model
 MGNetAccount.h
 
 # ignore folder
-*gitignore
+# *gitignore
 

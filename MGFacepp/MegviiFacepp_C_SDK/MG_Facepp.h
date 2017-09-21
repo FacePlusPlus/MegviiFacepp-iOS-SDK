@@ -144,22 +144,19 @@ typedef struct {
     /**
      * @brief 获取算法版本信息
      *
-     * @return 返回一个字符串，表示算法版本号及相关信息
+     * @return 返回一个字符串，表示 SDK buidl时的jenkins号
      */
     const char* (*GetJenkinsNumber)();
     
     /**
      * @brief 获取算法版本信息
      *
-     * @return 返回一个字符串，表示 SDK 使用的jenkins号
+     * @return 返回一个字符串，表示算法版本号
      */
-    const char* (*GetSDKVersion)();
+    const char* (*GetAPIVersion)();
 
     /**
      * @brief 查看算法授权的过期时间
-     *
-     * @warning 此接口已经废弃，可以用 GetAlgorithmInfo 函数代替。
-     * 在初次使用 SDK 时，需要先调用 CreateApiHandle 方法才能正确返回过期时间。
      *
      * @param[in] env               Android jni 的环境变量，仅在 Android SDK 中使用
      * @param[in] jobj              Android 调用的上下文，仅在 Android SDK 中使用
@@ -180,6 +177,33 @@ typedef struct {
      @return SDK限制的包名
      */
     const char * (*getSDKBundleId)();
+    
+    
+    /**
+     * @brief 获取 SDK 的授权类型
+     *
+     * @return 只有联网授权和非联网授权两种类型
+     */
+    MG_SDKAUTHTYPE (*GetSDKAuthType)();
+    
+    
+    /**
+     * @brief 获取算法相关信息
+     *
+     * 读取模型中相关参数，返回当前SDK的所使用的算法的相关信息。
+     *
+     * @param[in] model_data 算法模型的二进制数据
+     * @param[in] model_length 算法模型的字节长度
+     *
+     * @param[out] algorithm_info 算法相关信息
+     *
+     * @return 成功则返回 MG_RETCODE_OK
+     */
+    MG_RETCODE (*GetAbility)(
+                             const MG_BYTE* model_data,
+                             MG_INT32 model_length,
+                             MG_ABILITY *ability_info);
+    
 
     /**
      * @brief 获取当前算法的配置信息
@@ -209,16 +233,6 @@ typedef struct {
     MG_RETCODE (*SetDetectConfig) (
         MG_FPP_APIHANDLE api_handle,
         const MG_FPP_APICONFIG *config);
-    
-    
-    /**
-     * @brief 清除当前track模式下的缓存信息
-     *
-     * @param[in] api_handle 算法句柄
-     *
-     * @return 成功则返回 MG_RETCODE_OK
-     */
-    MG_RETCODE (*Reset_track) (MG_FPP_APIHANDLE api_handle);
     
     
     /**
@@ -344,29 +358,6 @@ typedef struct {
     MG_RETCODE (*ReleaseImageHandle) (
         MG_FPP_IMAGEHANDLE image_handle);
 
-    /**
-     * @brief 获取 SDK 的授权类型
-     *
-     * @return 只有联网授权和非联网授权两种类型
-     */
-    MG_SDKAUTHTYPE (*GetSDKAuthType)();
-
-    /**
-     * @brief 获取算法相关信息
-     * 
-     * 读取模型中相关参数，返回当前SDK的所使用的算法的相关信息。
-     *
-     * @param[in] model_data 算法模型的二进制数据
-     * @param[in] model_length 算法模型的字节长度
-     *
-     * @param[out] algorithm_info 算法相关信息
-     *
-     * @return 成功则返回 MG_RETCODE_OK
-     */
-    MG_RETCODE (*GetAbility)(
-        const MG_BYTE* model_data,
-        MG_INT32 model_length,
-        MG_ABILITY *ability_info);
 
     /**
      * @brief 抽取人脸特征
@@ -429,6 +420,31 @@ typedef struct {
         const void* feature_data2,
         MG_INT32 feature_length,
         MG_DOUBLE _OUT *score_ptr);
+    
+    
+    /**
+     * @brief 清除当前track模式下的缓存信息
+     *
+     * @param[in] api_handle 算法句柄
+     *
+     * @return 成功则返回 MG_RETCODE_OK
+     */
+    MG_RETCODE (*Reset_track) (MG_FPP_APIHANDLE api_handle);
+    
+    
+    /**
+     * @brief 获取SDK信息
+     *
+     * 此方法已经废弃
+     * 获取 SDK 过期时间，请使用 GetApiExpiration
+     * 获取 SDK 支持的能力，请使用 GetAbility
+     * 判断 SDK 是否为联网授权版本，请使用 GetSDKAuthType
+     *
+     */
+    MG_RETCODE (*GetAlgorithmInfo)(
+        const MG_BYTE* model_data,
+        MG_INT32 model_length,
+        MG_ALGORITHMINFO *algorithm_info);
 
 } MG_FACEPP_API_FUNCTIONS_TYPE;
 

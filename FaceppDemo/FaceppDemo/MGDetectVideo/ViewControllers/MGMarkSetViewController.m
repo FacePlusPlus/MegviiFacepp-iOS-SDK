@@ -305,6 +305,13 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
             }
         }
         
+        if (cellIndex.row == 2 && model.boolValue == NO) {
+            NSIndexPath *indexPath8 = [NSIndexPath indexPathForRow:8 inSection:0];
+            MCSetModel *model = self.dataArray[8];
+            model.boolValue = NO;
+            [self.collectionView reloadItemsAtIndexPaths:@[cellIndex, indexPath8]];
+        }
+        
         if (cellIndex.row == 8 && model.boolValue == YES) {
             NSIndexPath *debuPath = [NSIndexPath indexPathForRow:2 inSection:0];
             MCSetModel *debug = self.dataArray[2];

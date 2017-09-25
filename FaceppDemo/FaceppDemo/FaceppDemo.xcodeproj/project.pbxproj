@@ -145,7 +145,6 @@
 		14D6A92E1E8BAB3D00AF4B06 /* MGFacepp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFacepp.h; sourceTree = "<group>"; };
 		14D6A92F1E8BAB3D00AF4B06 /* MGFaceppCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceppCommon.h; sourceTree = "<group>"; };
 		14D6A9301E8BAB3D00AF4B06 /* MGFaceppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceppConfig.h; sourceTree = "<group>"; };
-		14D6A9311E8BAB3D00AF4B06 /* MGFaceppSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceppSet.h; sourceTree = "<group>"; };
 		14D6A9321E8BAB3D00AF4B06 /* MGImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGImageData.h; sourceTree = "<group>"; };
 		14FFF2FF1E25FB6100A5A7EF /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		14FFF3001E25FB6100A5A7EF /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -280,7 +279,6 @@
 				14D6A92E1E8BAB3D00AF4B06 /* MGFacepp.h */,
 				14D6A92F1E8BAB3D00AF4B06 /* MGFaceppCommon.h */,
 				14D6A9301E8BAB3D00AF4B06 /* MGFaceppConfig.h */,
-				14D6A9311E8BAB3D00AF4B06 /* MGFaceppSet.h */,
 				14D6A9321E8BAB3D00AF4B06 /* MGImageData.h */,
 			);
 			path = MGFaceppSDK;

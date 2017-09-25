@@ -259,7 +259,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -323,6 +323,7 @@
 					"$(PROJECT_DIR)/FaceSDK",
 					"$(PROJECT_DIR)/MegviiFacepp_C_SDK",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)-${CURRENT_PROJECT_VERSION}";

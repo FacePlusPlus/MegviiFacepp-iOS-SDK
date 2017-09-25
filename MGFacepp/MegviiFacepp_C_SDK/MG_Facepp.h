@@ -163,12 +163,7 @@ typedef struct {
      *
      * @return 成功则返回 MG_RETCODE_OK
      */
-    MG_UINT64 (*GetApiExpiration)(
-#if MGAPI_BUILD_ON_ANDROID
-        JNIEnv* env,
-        jobject jobj
-#endif
-    );
+    MG_UINT64 (*GetApiExpiration)();
     
     
     /**

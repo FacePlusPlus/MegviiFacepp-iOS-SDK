@@ -299,6 +299,24 @@
     return -1.0;
 }
 
+#pragma mark - 人脸置信度 -
+- (float)getFaceConfidenceFilter {
+    float confidence = 0.0;
+    MG_RETCODE code = mg_facepp.getFaceConfidenceFilter(_apiHandle, &confidence);
+    if (code == MG_RETCODE_OK) {
+        return confidence;
+    }
+    return -1.0;
+}
+
+- (BOOL)setFaceConfidenceFilter:(float)filter {
+    MG_RETCODE code = mg_facepp.setFaceConfidenceFilter(_apiHandle, filter);
+    if (code == MG_RETCODE_OK) {
+        return YES;
+    }
+    return NO;
+}
+
 #pragma mark - 检测器控制方法
 - (void)beginDetectionFrame{
     @synchronized (self) {

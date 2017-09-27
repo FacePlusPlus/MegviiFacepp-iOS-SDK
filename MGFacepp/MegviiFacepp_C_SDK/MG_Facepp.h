@@ -426,6 +426,27 @@ typedef struct {
      */
     MG_RETCODE (*Reset_track) (MG_FPP_APIHANDLE api_handle);
     
+
+    /**
+     * @brief 获取人脸检测置信度过滤阈值
+     *
+     * @param[in]  api_handle 算法句柄
+     * @param[out] filter 成功则设置此值为人脸检测置信度过滤的阈值
+     *
+     * @return 成功则返回 MG_RETCODE_OK
+     */
+    MG_RETCODE (*getFaceConfidenceFilter)(MG_FPP_APIHANDLE api_handle, MG_SINGLE *filter);
+    
+    
+    /**
+     * @brief 设置人脸检测置信度过滤阈值
+     *
+     * @param[in] api_handle 算法句柄
+     * @param[in] filter 要设置的人脸检测置信度过滤阈值
+     *
+     * @return 成功则返回 MG_RETCODE_OK
+     */
+    MG_RETCODE (*setFaceConfidenceFilter)(MG_FPP_APIHANDLE api_handle, MG_SINGLE filter);
     
     /**
      * @brief 获取SDK信息

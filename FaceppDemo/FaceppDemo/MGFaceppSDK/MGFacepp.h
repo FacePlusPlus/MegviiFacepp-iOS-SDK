@@ -152,6 +152,23 @@
 - (void)endDetectionFrame;
 
 
+#pragma mark - 人脸置信度 -
+
+/**
+ 获取人脸检测置信度过滤阈值 0~1 默认为 0.1
+
+ @return 成功则返回置信度阈值，失败返回 -1.0
+ */
+- (float)getFaceConfidenceFilter;
+
+
+/**
+ 设置人脸检测置信度过滤阈值 0~1
+
+ @param filter 阈值
+ @return 成功返回 YES
+ */
+- (BOOL)setFaceConfidenceFilter:(float)filter;
 
 #pragma mark - 类方法，获取 SDK 相关信息
 

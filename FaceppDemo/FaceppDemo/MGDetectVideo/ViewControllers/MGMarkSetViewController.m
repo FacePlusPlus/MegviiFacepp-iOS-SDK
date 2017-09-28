@@ -7,11 +7,10 @@
 //
 
 #import "MGMarkSetViewController.h"
-#import "MarkVideoViewController.h"
-
+#import "MGVideoViewController.h"
 #import "MCSetModel.h"
 #import "MCSetCell.h"
-#import "YTMacro.h"
+#import "MGHeader.h"
 
 
 static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
@@ -246,7 +245,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                    videoRecord:recording
                                                     videoSound:NO];
     
-    MarkVideoViewController *videoController = [[MarkVideoViewController alloc] initWithNibName:nil bundle:nil];
+    MGVideoViewController *videoController = [[MGVideoViewController alloc] initWithNibName:nil bundle:nil];
     videoController.detectRect = detectRect;
     videoController.videoSize = size.sizeValue;
     videoController.videoManager = videoManager;
@@ -304,6 +303,13 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
             }else{
                 model.title = NSLocalizedString(@"icon_title6", nil);
             }
+        }
+        
+        if (cellIndex.row == 2 && model.boolValue == NO) {
+            NSIndexPath *indexPath8 = [NSIndexPath indexPathForRow:8 inSection:0];
+            MCSetModel *model = self.dataArray[8];
+            model.boolValue = NO;
+            [self.collectionView reloadItemsAtIndexPaths:@[cellIndex, indexPath8]];
         }
         
         if (cellIndex.row == 8 && model.boolValue == YES) {

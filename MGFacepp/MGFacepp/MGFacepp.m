@@ -2,7 +2,7 @@
 //  MGFacepp.m
 //  LandMask
 //
-//  Created by 张英堂 on 16/9/5.
+//  Created by Megvii on 16/9/5.
 //  Copyright © 2016年 megvii. All rights reserved.
 //
 
@@ -12,38 +12,22 @@
 #import "MGFaceInfo_Creat.h"
 #import "MGAlgorithmInfo_Creat.h"
 
-@interface MGFacepp ()
-{
+@interface MGFacepp () {
     MG_FPP_APIHANDLE _apiHandle;
     MG_FPP_IMAGEHANDLE _imageHandle;
-    
-    int32_t _tempLength;
 }
-@property (nonatomic, strong) MGImageData *tempImageData;
 
+@property (nonatomic, strong) MGImageData *tempImageData;
 @property (nonatomic, assign) BOOL currentFrameIsImage;
 @property (nonatomic, assign) BOOL canDetect;
-
 @property (nonatomic, strong, getter = getFaceppConfig) MGFaceppConfig *faceppConfig;
-
-/** 设置视频流格式，默认 PixelFormatTypeRGBA */
-@property (nonatomic, assign) MGPixelFormatType pixelFormatType;
+@property (nonatomic, assign) MGPixelFormatType pixelFormatType; // 设置视频流格式，默认 PixelFormatTypeRGBA
 
 @end
 
 @implementation MGFacepp
 
-- (MGFaceppConfig *)getFaceppConfig{
-    return _faceppConfig;
-}
-
--(void)dealloc{
-    mg_facepp.ReleaseApiHandle(_apiHandle);
-    mg_facepp.ReleaseImageHandle(_imageHandle);
-}
-
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         [NSException raise:@"提示！" format:@"请使用 MGFacepp initWithModel: 初始化方式！"];
@@ -52,13 +36,17 @@
 }
 
 - (instancetype)initWithModel:(NSData *)modelData maxFaceCount:(NSInteger)maxFaceCount faceppSetting:(void(^)(MGFaceppConfig *config))config {
+    if (![MGFacepp isMapSDKBundleID]) {
+        return nil;
+    }
+    
     self = [super init];
     if (self) {
+        NSAssert(modelData.length > 0, @"modelData.length == 0");
         if (modelData.length > 0) {
             const void *modelBytes = modelData.bytes;
             MG_RETCODE initCode = mg_facepp.CreateApiHandleWithMaxFaceCount((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, (MG_INT32)maxFaceCount, &_apiHandle);
-//            MG_RETCODE initCode = mg_facepp.CreateApiHandle((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &_apiHandle);
-            
+            NSAssert(MG_RETCODE_OK == initCode, @"modelData 与 SDK 不匹配");
             if (initCode != MG_RETCODE_OK) {
                 NSLog(@"[initWithModel:] 初始化失败，modelData 与 SDK 不匹配！，请检查后重试！errorCode:%zi", initCode);
                 return nil;
@@ -67,15 +55,12 @@
             self.faceppConfig = [[MGFaceppConfig alloc] init];
             [self updateFaceppSetting:config];
             
-            _tempLength = 0;
-        }else{
+        } else {
             NSLog(@"[initWithModel:] 初始化失败，无法读取 modelData，请检查！");
             return nil;
         }
         
         _status = MGMarkPrepareWork;
-        self.currentFrameIsImage = NO;
-        self.canDetect = NO;
     }
     return self;
 }
@@ -275,17 +260,19 @@
 #pragma mark - 人脸比对 相关
 - (BOOL)GetFeatureData:(MGFaceInfo *)faceInfo{
     @autoreleasepool {
-        MG_RETCODE returnCode2 = mg_facepp.ExtractFeature(_apiHandle, _imageHandle, faceInfo.index, &_tempLength);
+        int32_t featureDataLength = 0;
+        MG_RETCODE returnCode2 = mg_facepp.ExtractFeature(_apiHandle, _imageHandle, faceInfo.index, &featureDataLength);
         if (returnCode2 != MG_RETCODE_OK) return NO;
 
-        float *tempFloat = (float*)malloc(_tempLength * sizeof(float));
-        MG_RETCODE returnCode3 = mg_facepp.GetFeatureData(_apiHandle, tempFloat, _tempLength);
+        float *tempFloat = (float*)malloc(featureDataLength * sizeof(float));
+        MG_RETCODE returnCode3 = mg_facepp.GetFeatureData(_apiHandle, tempFloat, featureDataLength);
         
         if (returnCode3 != MG_RETCODE_OK) return NO;
 
-        NSData *tempResult = [NSData dataWithBytes:tempFloat length:_tempLength * sizeof(float)];
+        NSData *tempResult = [NSData dataWithBytes:tempFloat length:featureDataLength * sizeof(float)];
         [faceInfo set_feature_data:tempResult];
-
+        NSLog(@"feature length = %d",featureDataLength);
+        NSLog(@"feature length = %lu",(unsigned long)tempResult.length);
         free(tempFloat);
 
         return YES;
@@ -303,13 +290,31 @@
     
     const float *a1 = featureData.bytes;
     const float *a2 = featureData2.bytes;
-    
-    MG_RETCODE returnCode = mg_facepp.FaceCompare(_apiHandle, a1, a2, _tempLength, &like);
+    // float 占4个字节  NSData.length 为字节长度
+    MG_RETCODE returnCode = mg_facepp.FaceCompare(_apiHandle, a1, a2, (int)featureData.length/4, &like);
     
     if (returnCode == MG_RETCODE_OK) {
         return like;
     }
     return -1.0;
+}
+
+#pragma mark - 人脸置信度 -
+- (float)getFaceConfidenceFilter {
+    float confidence = 0.0;
+    MG_RETCODE code = mg_facepp.getFaceConfidenceFilter(_apiHandle, &confidence);
+    if (code == MG_RETCODE_OK) {
+        return confidence;
+    }
+    return -1.0;
+}
+
+- (BOOL)setFaceConfidenceFilter:(float)filter {
+    MG_RETCODE code = mg_facepp.setFaceConfidenceFilter(_apiHandle, filter);
+    if (code == MG_RETCODE_OK) {
+        return YES;
+    }
+    return NO;
 }
 
 #pragma mark - 检测器控制方法
@@ -339,25 +344,48 @@
 }
 
 #pragma mark - get sdk info
-/** 获取API 联网授权使用 */
-+ (NSUInteger)getAPIName{
-   NSUInteger result = (NSUInteger)mg_facepp.GetApiVersion;
-    return result;
-}
 
-+ (NSDate *)getApiExpiration{
-
++ (NSDate *)getApiExpiration {
     NSUInteger result = (NSUInteger)mg_facepp.GetApiExpiration();
-    NSData *date = [NSDate dateWithTimeIntervalSince1970:result];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:result];
 
     return date;
 }
 
 /** 获取版本号 */
-+ (NSString *)getVersion{
++ (NSString *)getJenkinsNumber {
+    const char *tempStr = mg_facepp.GetJenkinsNumber();
+    NSString *string = [NSString stringWithCString:tempStr encoding:NSUTF8StringEncoding];
+    return string;
+}
+
++ (NSString *)getSDKVersion {
     const char *tempStr = mg_facepp.GetApiVersion();
     NSString *string = [NSString stringWithCString:tempStr encoding:NSUTF8StringEncoding];
     return string;
+}
+
++ (NSString *)getSDKBundleID {
+    const char *tempStr = mg_facepp.getSDKBundleId();
+    NSString *string = [NSString stringWithCString:tempStr encoding:NSUTF8StringEncoding];
+    return string;
+}
+
++ (BOOL)isMapSDKBundleID {
+    NSString *currentBundleID = [[NSBundle mainBundle] bundleIdentifier];
+    NSString *SDKBundleID = [MGFacepp getSDKBundleID];
+    if ([SDKBundleID hasSuffix:@"."] || [SDKBundleID hasSuffix:@"*"]) {
+        if ([currentBundleID hasPrefix:SDKBundleID]) {
+            return YES;
+        }
+    } else {
+        if ([currentBundleID isEqualToString:SDKBundleID]) {
+            return YES;
+        }
+    }
+
+    NSLog(@"error: Bundle id error \r\n your APP bundle id: %@ \r\n SDK bundle id: %@",currentBundleID, SDKBundleID);
+    return NO;
 }
 
 + (MGAlgorithmInfo *)getSDKAlgorithmInfoWithModel:(NSData *)modelData{
@@ -365,19 +393,21 @@
         MGAlgorithmInfo *infoModel = [[MGAlgorithmInfo alloc] init];
         
         const void *modelBytes = modelData.bytes;
-        MG_ALGORITHMINFO info;
-        MG_RETCODE sucessCode = mg_facepp.GetAlgorithmInfo((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &info);
+        MG_ABILITY abilityInfo;
+        
+        MG_RETCODE sucessCode = mg_facepp.GetAbility((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &abilityInfo);
         
         if (sucessCode != MG_RETCODE_OK) {
             NSLog(@"[initWithModel:] 初始化失败，modelData 与 SDK 不匹配！，请检查后重试！errorCode:%zi", sucessCode);
             return nil;
         }
         
-        BOOL needLicense = (info.auth_type == MG_ONLINE_AUTH? YES : NO);
-        NSString *version = [self getVersion];
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:info.expire_time];
+        MG_SDKAUTHTYPE auth = mg_facepp.GetSDKAuthType();
+        BOOL needLicense = (auth == MG_ONLINE_AUTH? YES : NO);
+        NSString *version = [self getSDKVersion];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:mg_facepp.GetApiExpiration()];
         
-        [infoModel setAbility:info.ability];
+        [infoModel setAbility:abilityInfo.ability];
         [infoModel setDate:date];
         [infoModel setLicense:needLicense];
         [infoModel setVersionCode:version];
@@ -387,6 +417,15 @@
         NSLog(@"[initWithModel:] 初始化失败，无法读取 modelData，请检查！");
         return nil;
     }
+}
+
+- (MGFaceppConfig *)getFaceppConfig{
+    return _faceppConfig;
+}
+
+- (void)dealloc{
+    mg_facepp.ReleaseApiHandle(_apiHandle);
+    mg_facepp.ReleaseImageHandle(_imageHandle);
 }
 
 @end

@@ -152,11 +152,41 @@
 - (void)endDetectionFrame;
 
 
+#pragma mark - 人脸置信度 -
+
+/**
+ 获取人脸检测置信度过滤阈值 0~1 默认为 0.1
+
+ @return 成功则返回置信度阈值，失败返回 -1.0
+ */
+- (float)getFaceConfidenceFilter;
+
+
+/**
+ 设置人脸检测置信度过滤阈值 0~1
+
+ @param filter 阈值
+ @return 成功返回 YES
+ */
+- (BOOL)setFaceConfidenceFilter:(float)filter;
 
 #pragma mark - 类方法，获取 SDK 相关信息
 
-/** 获取版本号 */
-+ (NSString *)getVersion;
+
+/**
+ 获取版本号
+
+ @return 版本号
+ */
++ (NSString *)getSDKVersion;
+
+
+/**
+ 获取 SDK jenkins 号
+
+ @return SDK jenkins 号
+ */
++ (NSString *)getJenkinsNumber;
 
 
 /**
@@ -166,6 +196,22 @@
  */
 + (NSDate *)getApiExpiration;
 
+
+/**
+ 获取SDK限制的BundleId
+
+ @return SDK限制的BundleId
+ */
++ (NSString *)getSDKBundleID;
+
+
+/**
+ 判断APP的BundleId是否和SDK限制的BundleId一致
+
+ @return APP的BundleId和SDK限制的BundleId一致则返回 YES
+ */
++ (BOOL)isMapSDKBundleID;
+
 /**
  获取 SDK 相关信息
 
@@ -174,14 +220,6 @@
  */
 + (MGAlgorithmInfo *)getSDKAlgorithmInfoWithModel:(NSData *)modelData;;
 
-
-
-/**
- 获取 SDK 联网授权所需要信息
-
- @return 联网授权信息
- */
-+ (NSUInteger)getAPIName;
 
 
 

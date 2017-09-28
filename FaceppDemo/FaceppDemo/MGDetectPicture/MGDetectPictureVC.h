@@ -1,5 +1,5 @@
 //
-//  DetectOneViewController.h
+//  MGDetectPictureVC.h
 //  FaceppDemo
 //
 //  Created by 张英堂 on 2016/11/8.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetectOneViewController : UIViewController
+@interface MGDetectPictureVC : UIViewController
 
 @end

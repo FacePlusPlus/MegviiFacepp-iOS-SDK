@@ -153,7 +153,7 @@ typedef struct {
      *
      * @return 返回一个字符串，表示算法版本号
      */
-    const char* (*GetAPIVersion)();
+    const char* (*GetApiVersion)();
 
     /**
      * @brief 查看算法授权的过期时间

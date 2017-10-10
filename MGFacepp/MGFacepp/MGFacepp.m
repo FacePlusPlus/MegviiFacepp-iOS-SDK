@@ -302,7 +302,7 @@
 #pragma mark - 人脸置信度 -
 - (float)getFaceConfidenceFilter {
     float confidence = 0.0;
-    MG_RETCODE code = mg_facepp.getFaceConfidenceFilter(_apiHandle, &confidence);
+    MG_RETCODE code = mg_facepp.GetFaceConfidenceFilter(_apiHandle, &confidence);
     if (code == MG_RETCODE_OK) {
         return confidence;
     }
@@ -310,8 +310,16 @@
 }
 
 - (BOOL)setFaceConfidenceFilter:(float)filter {
-    MG_RETCODE code = mg_facepp.setFaceConfidenceFilter(_apiHandle, filter);
+    MG_RETCODE code = mg_facepp.SetFaceConfidenceFilter(_apiHandle, filter);
     if (code == MG_RETCODE_OK) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)shutDown {
+    MG_RETCODE code = mg_facepp.ShutDown();
+    if (MG_RETCODE_OK == code) {
         return YES;
     }
     return NO;

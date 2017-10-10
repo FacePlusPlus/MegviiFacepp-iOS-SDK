@@ -424,7 +424,7 @@ typedef struct {
      *
      * @return 成功则返回 MG_RETCODE_OK
      */
-    MG_RETCODE (*Reset_track) (MG_FPP_APIHANDLE api_handle);
+    MG_RETCODE (*ResetTrack) (MG_FPP_APIHANDLE api_handle);
     
 
     /**
@@ -435,7 +435,7 @@ typedef struct {
      *
      * @return 成功则返回 MG_RETCODE_OK
      */
-    MG_RETCODE (*getFaceConfidenceFilter)(MG_FPP_APIHANDLE api_handle, MG_SINGLE *filter);
+    MG_RETCODE (*GetFaceConfidenceFilter)(MG_FPP_APIHANDLE api_handle, MG_SINGLE *filter);
     
     
     /**
@@ -446,7 +446,15 @@ typedef struct {
      *
      * @return 成功则返回 MG_RETCODE_OK
      */
-    MG_RETCODE (*setFaceConfidenceFilter)(MG_FPP_APIHANDLE api_handle, MG_SINGLE filter);
+    MG_RETCODE (*SetFaceConfidenceFilter)(MG_FPP_APIHANDLE api_handle, MG_SINGLE filter);
+    
+    /**
+     * @breif 释放算法资源
+     *
+     * 算法在计算时需要占用一些内存资源，必须在所有算法的句柄（handle）被释放后再调用
+     * @return 成功则返回 MG_RETCODE_OK
+     */
+    MG_RETCODE (*ShutDown)();
     
     /**
      * @brief 获取SDK信息

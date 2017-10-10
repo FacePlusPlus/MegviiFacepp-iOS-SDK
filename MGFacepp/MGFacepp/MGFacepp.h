@@ -170,6 +170,14 @@
  */
 - (BOOL)setFaceConfidenceFilter:(float)filter;
 
+/**
+ 释放算法资源
+ 算法在计算时需要占用一些内存资源，必须在所有算法的句柄（handle）被释放后再调用
+ 
+ @return 成功则返回 YES
+ */
+- (BOOL)shutDown;
+
 #pragma mark - 类方法，获取 SDK 相关信息
 
 

@@ -171,7 +171,7 @@ typedef struct {
 
      @return SDK限制的包名
      */
-    const char * (*getSDKBundleId)();
+    const char * (*GetSDKBundleId)();
     
     
     /**
@@ -183,14 +183,14 @@ typedef struct {
     
     
     /**
-     * @brief 获取算法相关信息
+     * @brief 获取SDK包含能力
      *
      * 读取模型中相关参数，返回当前SDK的所使用的算法的相关信息。
      *
      * @param[in] model_data 算法模型的二进制数据
      * @param[in] model_length 算法模型的字节长度
      *
-     * @param[out] algorithm_info 算法相关信息
+     * @param[out] ability_info 算法能力
      *
      * @return 成功则返回 MG_RETCODE_OK
      */

@@ -374,7 +374,7 @@
 }
 
 + (NSString *)getSDKBundleID {
-    const char *tempStr = mg_facepp.getSDKBundleId();
+    const char *tempStr = mg_facepp.GetSDKBundleId();
     NSString *string = [NSString stringWithCString:tempStr encoding:NSUTF8StringEncoding];
     return string;
 }

@@ -89,7 +89,6 @@
         config.rotation = self.faceppConfig.orientation;
         config.detection_mode = [self getDetectModel:self.faceppConfig.detectionMode];
         config.roi = angle;
-        config.one_face_tracking = self.faceppConfig.oneFaceTracking;
         
         MG_RETCODE code = mg_facepp.SetDetectConfig(_apiHandle, &config);
         if (code == MG_RETCODE_OK) {

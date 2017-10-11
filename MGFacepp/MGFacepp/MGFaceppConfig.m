@@ -30,8 +30,6 @@
         self.pixelFormatType = PixelFormatTypeRGBA;
         
         self.detectROI = MGDetectROIMake(0, 0, 0, 0);
-        
-        self.oneFaceTracking = NO;
     }
     return self;
 }

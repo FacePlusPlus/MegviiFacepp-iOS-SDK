@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
 #import "MGFaceppCommon.h"
+
+typedef NS_ENUM(NSInteger, MGGender) {
+    MGFemale = 0,
+    MGMale = 1,
+};
 
 @interface MGFaceInfo : NSObject
 
@@ -40,7 +44,7 @@
 /** 年龄 */
 @property (nonatomic, assign) float age;
 /** 性别 */
-@property (nonatomic, assign) int gender;
+@property (nonatomic, assign) MGGender gender;
 /** blurness */
 @property (nonatomic, assign) float blurness;
 /** minority */

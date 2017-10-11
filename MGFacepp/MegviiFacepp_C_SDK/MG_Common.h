@@ -273,12 +273,8 @@ typedef enum{
 #define MG_CONTOUR_RIGHT7 78
 #define MG_CONTOUR_RIGHT8 79
 #define MG_CONTOUR_RIGHT9 80
-    
-#define MG_MOUTH_MIDDLE     81
-#define MG_LEFTEYE_CENTER   82
-#define MG_RIGHTEYE_CENTER  83
 
-#define MG_LANDMARK_NR 84                       ///< 默认的人脸关键点总数
+#define MG_LANDMARK_NR 81                       ///< 默认的人脸关键点总数
 /**
  * @}
  */

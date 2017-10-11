@@ -52,7 +52,7 @@
 
     if (faceArray.count > 0) {
         MGFaceInfo *faceInfo = faceArray[0];
-        [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:84];
+        [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:81];
         [self.markManager GetAttribute3D:faceInfo];
 
         NSLog(@"%lu - %@", (unsigned long)faceInfo.points.count ,faceInfo.points);

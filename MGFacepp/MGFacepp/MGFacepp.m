@@ -101,14 +101,11 @@
 - (MG_FPP_DETECTIONMODE)getDetectModel:(MGFppDetectionMode)detectionMode{
     MG_FPP_DETECTIONMODE model = MG_FPP_DETECTIONMODE_NORMAL;
     switch (self.faceppConfig.detectionMode) {
-        case MGFppDetectionModeNormal:
+        case MGFppDetectionModeDetect:
             model = MG_FPP_DETECTIONMODE_NORMAL;
             break;
         case MGFppDetectionModeTracking:
             model = MG_FPP_DETECTIONMODE_TRACKING;
-            break;
-        case MGFppDetectionModeTrackingSmooth:
-            model = MG_FPP_DETECTIONMODE_TRACKING_SMOOTH;
             break;
         case MGFppDetectionModeTrackingFast:
             model = MG_FPP_DETECTIONMODE_TRACKING_FAST;

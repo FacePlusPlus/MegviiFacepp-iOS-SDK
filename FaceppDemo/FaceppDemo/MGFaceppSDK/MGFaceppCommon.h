@@ -63,9 +63,8 @@ typedef NS_ENUM(NSUInteger ,MGFaceppStatus) {
 };
 
 typedef NS_ENUM(NSUInteger ,MGFppDetectionMode) {
-    MGFppDetectionModeNormal = 0,
+    MGFppDetectionModeDetect = 0,
     MGFppDetectionModeTracking,
-    MGFppDetectionModeTrackingSmooth,
     MGFppDetectionModeTrackingFast,
     MGFppDetectionModeTrackingRobust
 };

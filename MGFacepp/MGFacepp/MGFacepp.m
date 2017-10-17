@@ -378,16 +378,19 @@
 + (BOOL)isMapSDKBundleID {
     NSString *currentBundleID = [[NSBundle mainBundle] bundleIdentifier];
     NSString *SDKBundleID = [MGFacepp getSDKBundleID];
-    if ([SDKBundleID hasSuffix:@"."] || [SDKBundleID hasSuffix:@"*"]) {
-        if ([currentBundleID hasPrefix:SDKBundleID]) {
-            return YES;
-        }
-    } else {
-        if ([currentBundleID isEqualToString:SDKBundleID]) {
-            return YES;
+    NSArray *arr = [SDKBundleID componentsSeparatedByString:@","];
+    for (NSString *bundleId in arr) {
+        if ([bundleId hasSuffix:@"."] || [bundleId hasSuffix:@"*"]) {
+            if ([currentBundleID hasPrefix:bundleId]) {
+                return YES;
+            }
+        } else {
+            if ([currentBundleID isEqualToString:bundleId]) {
+                return YES;
+            }
         }
     }
-
+    
     NSLog(@"error: Bundle id error \r\n your APP bundle id: %@ \r\n SDK bundle id: %@",currentBundleID, SDKBundleID);
     return NO;
 }

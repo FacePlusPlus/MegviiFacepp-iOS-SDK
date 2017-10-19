@@ -15,6 +15,7 @@
 #import "MGFaceCompareModel.h"
 #import "MGFileManager.h"
 #import <MGBaseKit/MGImage.h>
+#import "MGDetectRectInfo.h"
 
 #define RETAINED_BUFFER_COUNT 6
 
@@ -245,7 +246,12 @@
         __unsafe_unretained MGVideoViewController *weakSelf = self;
         dispatch_async(_drawFaceQueue, ^{
             if (modelArray) {
-                CVPixelBufferRef renderedPixelBuffer = [weakSelf.renderer copyRenderedPixelBuffer:sampleBuffer faceModelArray:modelArray drawLandmark:!self.faceCompare];
+//                CVPixelBufferRef renderedPixelBuffer = [weakSelf.renderer copyRenderedPixelBuffer:sampleBuffer faceModelArray:modelArray drawLandmark:!self.faceCompare];
+                CVPixelBufferRef renderedPixelBuffer = [weakSelf.renderer drawPixelBuffer:sampleBuffer custumDrawing:^{
+                    if (!weakSelf.faceCompare) {
+                        [weakSelf.renderer drawFaceLandMark:modelArray];
+                    }
+                }];
                 
                 if (renderedPixelBuffer)
                 {
@@ -264,6 +270,33 @@
         });
     }
 }
+
+
+/** 绘制人脸框 */
+- (void)drawRects:(NSArray *)rects atSampleBuffer:(CMSampleBufferRef)sampleBuffer{
+    @autoreleasepool {
+        __unsafe_unretained MGVideoViewController *weakSelf = self;
+        dispatch_async(_drawFaceQueue, ^{
+            if (rects) {
+                CVPixelBufferRef renderedPixelBuffer = [weakSelf.renderer drawPixelBuffer:sampleBuffer custumDrawing:^{
+                    for (MGDetectRectInfo *rectInfo in rects) {
+                        [weakSelf.renderer drawRect:rectInfo.rect];
+//                        [weakSelf.renderer drawFaceWithRect:rectInfo.rect];
+                    }
+                }];
+                
+                // 显示图像
+                if (renderedPixelBuffer) {
+                    [weakSelf.previewView displayPixelBuffer:renderedPixelBuffer];
+                    
+                    CFRelease(sampleBuffer);
+                    CVBufferRelease(renderedPixelBuffer);
+                }
+            }
+        });
+    }
+}
+
 
 /** 旋转并且，并且显示 */
 - (void)rotateAndDetectSampleBuffer:(CMSampleBufferRef)sampleBuffer{
@@ -389,6 +422,57 @@
     }
 }
 
+/** 检测人脸框 */
+- (void)detectRectWithSampleBuffer:(CMSampleBufferRef)sampleBuffer {
+    if (self.markManager.status == MGMarkWorking)  return;
+        
+    CMSampleBufferRef detectSampleBufferRef = NULL;
+    CMSampleBufferCreateCopy(kCFAllocatorDefault, sampleBuffer, &detectSampleBufferRef);
+    
+    /* 进入检测人脸专用线程 */
+    dispatch_async(_detectImageQueue, ^{
+        
+        @autoreleasepool {
+            
+            if ([self.markManager getFaceppConfig].orientation != self.orientation) {
+                [self.markManager updateFaceppSetting:^(MGFaceppConfig *config) {
+                    config.orientation = self.orientation;
+                }];
+            }
+            
+            MGImageData *imageData = [[MGImageData alloc] initWithSampleBuffer:detectSampleBufferRef];
+            
+            [self.markManager beginDetectionFrame];
+            
+            NSDate *date1, *date2;
+            date1 = [NSDate date];
+            
+            NSInteger faceCount = [self.markManager getFaceNumberWithImageData:imageData];
+            
+            date2 = [NSDate date];
+            double timeUsed = [date2 timeIntervalSinceDate:date1] * 1000;
+            
+            _allTime += timeUsed;
+            _count ++;
+            //                NSLog(@"time = %f, 平均：%f, count = %ld",timeUsed, _allTime/_count, _count);
+            
+            NSMutableArray *mutableArr = [NSMutableArray array];
+            for (int i = 0; i < faceCount; i ++) {
+                MGDetectRectInfo *detectRect = [self.markManager GetRectAtIndex:i isSmooth:YES];
+                [mutableArr addObject:detectRect];
+            }
+            
+           
+            
+            [self.markManager endDetectionFrame];
+            
+            [self drawRects:mutableArr atSampleBuffer:detectSampleBufferRef];
+        }
+        
+    });
+    
+}
+
 - (void)setLabelCenter:(UILabel *)label faceInfo:(MGFaceInfo *)faceInfo image:(UIImage *)image{
     float imageW = image.size.width;
     float imageH = image.size.height;
@@ -495,7 +579,11 @@
             [self setupVideoPipelineWithInputFormatDescription:[self.videoManager formatDescription]];
         }
     
-        [self rotateAndDetectSampleBuffer:sampleBuffer];
+        if (self.detectMode == MGFppDetectionModeDetectRect) {
+            [self detectRectWithSampleBuffer:sampleBuffer];
+        } else {
+            [self rotateAndDetectSampleBuffer:sampleBuffer];
+        }
     }
 }
 

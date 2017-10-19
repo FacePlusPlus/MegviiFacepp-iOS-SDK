@@ -20,6 +20,8 @@
 		14FFF2F41E24D8E600A5A7EF /* MGFaceppCommon.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E21E24D8C400A5A7EF /* MGFaceppCommon.h */; };
 		14FFF2F51E24D8EA00A5A7EF /* MGFaceppConfig.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E31E24D8C400A5A7EF /* MGFaceppConfig.h */; };
 		14FFF2F61E24D8EB00A5A7EF /* MGImageData.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E51E24D8C400A5A7EF /* MGImageData.h */; };
+		8EB8A4F41F9759950059F421 /* MGDetectRectInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8A4F31F9759950059F421 /* MGDetectRectInfo.m */; };
+		8EB8A4F91F9775920059F421 /* MGDetectRectInfo.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8EB8A4F21F9759950059F421 /* MGDetectRectInfo.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +31,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8EB8A4F91F9775920059F421 /* MGDetectRectInfo.h in Copy Files */,
 				14FFF2F11E24D8D500A5A7EF /* MGAlgorithmInfo.h in Copy Files */,
 				14FFF2F21E24D8E100A5A7EF /* MGFaceInfo.h in Copy Files */,
 				14FFF2F41E24D8E600A5A7EF /* MGFaceppCommon.h in Copy Files */,
@@ -71,6 +74,8 @@
 		14FFF2E61E24D8C400A5A7EF /* MGImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGImageData.m; sourceTree = "<group>"; };
 		14FFF2FA1E24DFAB00A5A7EF /* MG_Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MG_Common.h; sourceTree = "<group>"; };
 		14FFF2FB1E24DFAB00A5A7EF /* MG_Facepp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MG_Facepp.h; sourceTree = "<group>"; };
+		8EB8A4F21F9759950059F421 /* MGDetectRectInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDetectRectInfo.h; sourceTree = "<group>"; };
+		8EB8A4F31F9759950059F421 /* MGDetectRectInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDetectRectInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +115,8 @@
 				14FFF2DA1E24D8C400A5A7EF /* MGAlgorithmInfo_Creat.h */,
 				14FFF2DD1E24D8C400A5A7EF /* MGFaceInfo.h */,
 				14FFF2DE1E24D8C400A5A7EF /* MGFaceInfo.m */,
+				8EB8A4F21F9759950059F421 /* MGDetectRectInfo.h */,
+				8EB8A4F31F9759950059F421 /* MGDetectRectInfo.m */,
 				14FFF2DF1E24D8C400A5A7EF /* MGFaceInfo_Creat.h */,
 				14FFF2E01E24D8C400A5A7EF /* MGFacepp.h */,
 				14FFF2E11E24D8C400A5A7EF /* MGFacepp.m */,
@@ -209,6 +216,7 @@
 			files = (
 				14FFF2EE1E24D8C400A5A7EF /* MGFacepp.m in Sources */,
 				14FFF2ED1E24D8C400A5A7EF /* MGFaceInfo.m in Sources */,
+				8EB8A4F41F9759950059F421 /* MGDetectRectInfo.m in Sources */,
 				14FFF2EF1E24D8C400A5A7EF /* MGFaceppConfig.m in Sources */,
 				14FFF2EB1E24D8C400A5A7EF /* MGAlgorithmInfo.m in Sources */,
 				14FFF2F01E24D8C400A5A7EF /* MGImageData.m in Sources */,

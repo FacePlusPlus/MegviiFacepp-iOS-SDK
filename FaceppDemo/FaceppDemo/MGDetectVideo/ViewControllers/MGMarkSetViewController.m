@@ -228,6 +228,9 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                       case 3:
                                                           config.detectionMode = MGFppDetectionModeTracking;
                                                           break;
+                                                      case 4:
+                                                          config.detectionMode = MGFppDetectionModeDetectRect;
+                                                          break;
                                                           
                                                       default:
                                                           config.detectionMode = MGFppDetectionModeTrackingFast;
@@ -255,6 +258,24 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     videoController.show3D = face3D.boolValue;
     videoController.faceInfo = info.boolValue;
     videoController.faceCompare = faceCompare.boolValue;
+    switch (trackingMode.intValue) {
+        case 1:
+            videoController.detectMode = MGFppDetectionModeTrackingFast;
+            break;
+        case 2:
+            videoController.detectMode = MGFppDetectionModeTrackingRobust;
+            break;
+        case 3:
+            videoController.detectMode = MGFppDetectionModeTracking;
+            break;
+        case 4:
+            videoController.detectMode = MGFppDetectionModeDetectRect;
+            break;
+            
+        default:
+            videoController.detectMode = MGFppDetectionModeTrackingFast;
+            break;
+    }
     
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:videoController];
     [self.navigationController presentViewController:navi animated:YES completion:nil];
@@ -357,7 +378,10 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                        message:NSLocalizedString(@"icon_title14", nil)
                                                       delegate:self
                                              cancelButtonTitle:NSLocalizedString(@"alert_title", nil)
-                                             otherButtonTitles:NSLocalizedString(@"icon_title15", nil), NSLocalizedString(@"icon_title16", nil), NSLocalizedString(@"icon_title20", nil), nil];
+                                             otherButtonTitles:NSLocalizedString(@"icon_title15", nil),
+                                                               NSLocalizedString(@"icon_title16", nil),
+                                                               NSLocalizedString(@"icon_title20", nil),
+                                                               NSLocalizedString(@"icon_title21", nil),nil];
     [alertView setTag:KTrackingTag];
     [alertView show];
 }
@@ -385,6 +409,9 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
             break;
         case 3:
             mode = NSLocalizedString(@"icon_title20", nil);
+            break;
+        case 4:
+            mode = NSLocalizedString(@"icon_title21", nil);
             break;
         default:
             mode = NSLocalizedString(@"icon_title15", nil);

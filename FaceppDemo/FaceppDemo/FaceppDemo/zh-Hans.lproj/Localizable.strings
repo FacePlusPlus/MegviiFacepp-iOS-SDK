@@ -28,6 +28,7 @@ icon_title19 = "人脸识别演示";
 icon_title15 = "Fast";
 icon_title16 = "Robust";
 icon_title20 = "Tracking";
+icon_title21 = "detect_rect";
 
 icon_title_face_compare = "人脸比对";
 

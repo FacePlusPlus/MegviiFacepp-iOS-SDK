@@ -23,6 +23,9 @@
 @property (nonatomic, strong, getter = getFaceppConfig) MGFaceppConfig *faceppConfig;
 @property (nonatomic, assign) MGPixelFormatType pixelFormatType; // 设置视频流格式，默认 PixelFormatTypeRGBA
 
+@property (nonatomic, assign) int iwidth;
+@property (nonatomic, assign) int iHeight;
+
 @end
 
 @implementation MGFacepp
@@ -113,6 +116,9 @@
         case MGFppDetectionModeTrackingRobust:
             model = MG_FPP_DETECTIONMODE_TRACKING_ROBUST;
             break;
+        case MGFppDetectionModeDetectRect:
+            model = MG_FPP_DETECTIONMODE_DETECT_RECT;
+            break;
         default:
             break;
     }
@@ -158,7 +164,7 @@
         
         if (NO == self.canDetect) {
             returnArray = nil;
-        }else{
+        } else {
             if (self.status == MGMarkWaiting || self.status == MGMarkPrepareWork) {
                 _status = MGMarkWorking;
                 
@@ -177,7 +183,7 @@
                 MG_RETCODE setimageCode = mg_facepp.SetImageData(_imageHandle, rawData, [self getImageModel]);
                 MG_RETCODE DetectCode = mg_facepp.Detect(_apiHandle, _imageHandle, &faceCount);
                 if (setimageCode == MG_RETCODE_OK || DetectCode == MG_RETCODE_OK) {
-                    NSArray *faceinfoArray = [self getFaceInfoWithFaceCount:faceCount FPPAPIHANDLE:_apiHandle];
+                    NSArray *faceinfoArray = [self getFaceInfoWithFaceCount:faceCount mgApiHandle:_apiHandle];
                     [returnArray addObjectsFromArray:faceinfoArray];
                 }
                 
@@ -191,10 +197,49 @@
     }
 }
 
+- (NSInteger)getFaceNumberWithImageData:(MGImageData *)imagedata {
+    @synchronized (self) {
+        int faceCount = 0;
+        if (nil == imagedata) return (NSInteger)faceCount;
+        
+        _iwidth = imagedata.width;
+        _iHeight = imagedata.height;
+        
+        if (YES == self.canDetect) {
+            if (self.status == MGMarkWaiting || self.status == MGMarkPrepareWork) {
+                _status = MGMarkWorking;
+                
+                void *rawData = (unsigned char*)[imagedata getData];
+                
+                if (YES == imagedata.isUIImage && NULL != _imageHandle) {
+                    mg_facepp.ReleaseImageHandle(_imageHandle);
+                    _imageHandle = NULL;
+                }
+                
+                if (_imageHandle == NULL) {
+                    mg_facepp.CreateImageHandle(_iwidth, _iHeight, &_imageHandle);
+                }
+                
+                MG_RETCODE setimageCode = mg_facepp.SetImageData(_imageHandle, rawData, [self getImageModel]);
+                MG_RETCODE DetectCode = mg_facepp.Detect(_apiHandle, _imageHandle, &faceCount);
+                if (setimageCode != MG_RETCODE_OK || DetectCode != MG_RETCODE_OK) {
+                    faceCount = 0;
+                }
+                
+            } else if(self.status == MGMarkWorking){
+                faceCount = 0;
+            } else if(self.status == MGMarkStopped){
+                faceCount = 0;
+            }
+        }
+        return (NSInteger)faceCount;
+    }
+}
+
 /* 如果人脸数量超过 1 个，进行人脸关键点检测  */
-- (NSArray <MGFaceInfo *>*)getFaceInfoWithFaceCount:(NSInteger)count FPPAPIHANDLE:(MG_FPP_APIHANDLE)apiHandle{
+- (NSArray <MGFaceInfo *>*)getFaceInfoWithFaceCount:(NSInteger)count mgApiHandle:(MG_FPP_APIHANDLE)apiHandle {
     NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:count];
-    for (int i = 0; i < count; i++){
+    for (int i = 0; i < count; i++) {
         MG_FACE face;
         mg_facepp.GetFaceInfo(apiHandle, i, &face);
         
@@ -204,9 +249,9 @@
                                                 confidence:face.confidence];
         faceModel.index = i;
         faceModel.trackID = face.track_id;
-    
+        
         [faceModel setProperty:MG_FPP_ATTR_POSE3D MGFACE:face];
-
+        
         [tempArray addObject:faceModel];
     }
     return tempArray;
@@ -223,6 +268,52 @@
         return NO;
     }
 }
+
+- (MGDetectRectInfo *)GetRectAtIndex:(int)index isSmooth:(BOOL)isSmooth {
+    @autoreleasepool {
+        MG_DETECT_RECT detectRect;
+        MG_RETCODE sucessCode = MG_RETCODE_FAILED;
+        sucessCode = mg_facepp.GetRect(_apiHandle, index, isSmooth, &detectRect);
+        if (sucessCode == MG_RETCODE_OK) {
+            MGDetectRectInfo *result = [[MGDetectRectInfo alloc] init];
+            result.angle = detectRect.angle;
+            result.confidence = detectRect.confidence;
+            
+            NSInteger x = 0;
+            NSInteger y = 0;
+            NSInteger w = 0;
+            NSInteger h = 0;
+            x = _iwidth - detectRect.rect.right;
+            y = detectRect.rect.top;
+            w = detectRect.rect.right - detectRect.rect.left;
+            h = detectRect.rect.bottom - detectRect.rect.top;
+            // SDK返回方向相对于手机方向逆时针旋转了90度
+            switch (detectRect.orient) {
+                case MG_left:
+                    result.orient = MGOrientationLeft;
+                    break;
+                case MG_Top:
+                    result.orient = MGOrientationUp;
+                    break;
+                case MG_right:
+                    result.orient = MGOrientationRight;
+                    break;
+                case MG_Bottom:
+                    result.orient = MGOrientationDown;
+                    break;
+                default:
+                    break;
+            }
+        
+            result.rect = CGRectMake(x, y, w, h);
+            return result;
+        } else {
+            NSLog(@"获取人脸框失败");
+            return nil;
+        }
+    }
+}
+
 - (BOOL)GetAttribute3D:(MGFaceInfo *)faceInfo{
     return [self getFaceAttribute:faceInfo property:MG_FPP_ATTR_POSE3D];
 }

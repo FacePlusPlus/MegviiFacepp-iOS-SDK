@@ -27,6 +27,8 @@
 @property (nonatomic, assign) BOOL faceInfo;
 @property (nonatomic, assign) BOOL faceCompare;
 
+@property (nonatomic, assign) MGFppDetectionMode detectMode;
+
 
 @property (nonatomic, assign) int pointsNum;
 

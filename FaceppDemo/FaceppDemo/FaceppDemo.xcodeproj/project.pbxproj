@@ -244,6 +244,7 @@
 		8E8943711F3D3AED00761FBA /* videoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = videoTest.m; sourceTree = "<group>"; };
 		8E95F10A1F17569A00689094 /* libMGFacepp-0.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGFacepp-0.5.0.a"; sourceTree = "<group>"; };
 		8E95F10B1F17569A00689094 /* megviifacepp_0_5_0_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_5_0_model; sourceTree = "<group>"; };
+		8EB8A4FB1F97784D0059F421 /* MGDetectRectInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDetectRectInfo.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +277,7 @@
 				8E95F10B1F17569A00689094 /* megviifacepp_0_5_0_model */,
 				14D6A92C1E8BAB3D00AF4B06 /* MGAlgorithmInfo.h */,
 				14D6A92D1E8BAB3D00AF4B06 /* MGFaceInfo.h */,
+				8EB8A4FB1F97784D0059F421 /* MGDetectRectInfo.h */,
 				14D6A92E1E8BAB3D00AF4B06 /* MGFacepp.h */,
 				14D6A92F1E8BAB3D00AF4B06 /* MGFaceppCommon.h */,
 				14D6A9301E8BAB3D00AF4B06 /* MGFaceppConfig.h */,

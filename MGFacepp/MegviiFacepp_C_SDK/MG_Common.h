@@ -273,6 +273,10 @@ typedef enum{
 #define MG_CONTOUR_RIGHT7 78
 #define MG_CONTOUR_RIGHT8 79
 #define MG_CONTOUR_RIGHT9 80
+    
+#define MG_MOUTH_MIDDLE    81
+#define MG_LEFTEYE_CENTER  82
+#define MG_RIGHTEYE_CENTER 83
 
 #define MG_LANDMARK_NR 81                       ///< 默认的人脸关键点总数
 /**
@@ -384,6 +388,26 @@ typedef struct {
 
     MG_SINGLE moutstatus[MG_MOUTHSTATUS_COUNT];     ///< 嘴部状态
 } MG_FACE;
+    
+/**
+ * @brief 检测方向
+ */
+typedef enum {
+    MG_left,
+    MG_Top,
+    MG_right,
+    MG_Bottom,
+} MG_Orientation;
+
+/**
+ * @brief 带置信度的人脸框 需要使用 detect_rect 模式检测
+ */
+typedef struct {
+    MG_SINGLE confidence;   ///< 人脸框置信度，为一个 0 ~ 1 之间的浮点数。
+    MG_Orientation orient;  ///< 人脸框方向
+    MG_RECTANGLE rect;      ///< 人脸框在图像中的位置，以一个矩形框来刻画。
+    float angle;            ///< 人脸框角度
+} MG_DETECT_RECT;
 
 /**
  * @brief 算法相关的信息
@@ -392,9 +416,6 @@ typedef struct {
  */
 typedef struct {
     MG_UINT64 ability;                              ///< 提供人脸算法的能力
-                                                    ///< 这是一些属性值的 bit 值的或和，
-                                                    ///< 可以参考以 MG_FPP_ATTR_ 开头的宏定义名。
-
 } MG_ABILITY;
     
     

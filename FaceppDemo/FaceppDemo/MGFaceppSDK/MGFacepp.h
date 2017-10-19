@@ -14,6 +14,7 @@
 #import "MGFaceppCommon.h"
 #import "MGAlgorithmInfo.h"
 #import "MGFaceInfo.h"
+#import "MGDetectRectInfo.h"
 
 @interface MGFacepp : NSObject
 
@@ -62,6 +63,14 @@
  */
 - (NSArray <MGFaceInfo *>*)detectWithImageData:(MGImageData *)imagedata;
 
+/**
+ *  检测人脸框
+ *
+ *  @param imagedata  检测的图片
+ *  @return 检测结果（如果为 nil 时候，检测器异常，检测失败，请检测代码以及设置）
+ */
+- (NSInteger)getFaceNumberWithImageData:(MGImageData *)imagedata;
+
 
 /**
  *  人脸关键点平滑
@@ -71,6 +80,15 @@
  *  @param nr       关键点个数
  */
 - (BOOL)GetGetLandmark:(MGFaceInfo *)faceInfo isSmooth:(BOOL)isSmooth pointsNumber:(int)nr;
+
+/**
+ *  获取人脸框
+ *  
+ *
+ *  @param index faceinfo model
+ *  @param isSmooth 是否关键点平滑，防止人脸抖动
+ */
+- (MGDetectRectInfo *)GetRectAtIndex:(int)index isSmooth:(BOOL)isSmooth;
 
 /**
  *  获取人脸 3D信息
@@ -169,6 +187,14 @@
  @return 成功返回 YES
  */
 - (BOOL)setFaceConfidenceFilter:(float)filter;
+
+/**
+ 释放算法资源
+ 算法在计算时需要占用一些内存资源，必须在所有算法的句柄（handle）被释放后再调用
+ 
+ @return 成功则返回 YES
+ */
+- (BOOL)shutDown;
 
 #pragma mark - 类方法，获取 SDK 相关信息
 

@@ -20,6 +20,7 @@ typedef NS_OPTIONS(NSInteger, MGFaceppAbilityType) {
     MGFaceppAbilityTypeExtractFeature   = 1U<<6,
     MGFaceppAbilityTypeTrackFast        = 1U<<7,
     MGFaceppAbilityTypeTrackRobust      = 1U<<8,
+    MGFaceppAbilityTypeDetectRect       = 1U<<9,
     MGFaceppAbilityTypeDetect           = 1U<<12,
     MGFaceppAbilityTypeIDCardQuality    = 1U<<13,
     MGFaceppAbilityTypeTrack            = 1U<<14,
@@ -38,6 +39,7 @@ typedef NS_OPTIONS(NSInteger, MGFaceppAbilityType) {
                                   @(1U<<6)  : MG_ABILITY_KEY_EXTRACT_FEATURE,
                                   @(1U<<7)  : MG_ABILITY_KEY_TRACK_FAST,
                                   @(1U<<8)  : MG_ABILITY_KEY_TRACK_ROBUST,
+                                  @(1U<<9)  : MG_ABILITY_KEY_DETECT_RECT,
                                   @(1U<<12) : MG_ABILITY_KEY_DETECT,
                                   @(1U<<13) : MG_ABILITY_KEY_IDCARD_QUALITY,
                                   @(1U<<14) : MG_ABILITY_KEY_TRACK};

@@ -466,6 +466,14 @@
     return string;
 }
 
+- (BOOL)resetTrack {
+    MG_RETCODE code = mg_facepp.ResetTrack(_apiHandle);
+    if (MG_RETCODE_OK == code) {
+        return YES;
+    }
+    return NO;
+}
+
 + (BOOL)isMapSDKBundleID {
     NSString *currentBundleID = [[NSBundle mainBundle] bundleIdentifier];
     NSString *SDKBundleID = [MGFacepp getSDKBundleID];

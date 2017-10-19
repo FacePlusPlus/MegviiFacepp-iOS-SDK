@@ -231,6 +231,15 @@
 + (NSString *)getSDKBundleID;
 
 
+
+/**
+ 清除track缓存
+
+ @return 成功则返回 YES
+ */
+- (BOOL)resetTrack;
+
+
 /**
  判断APP的BundleId是否和SDK限制的BundleId一致
 

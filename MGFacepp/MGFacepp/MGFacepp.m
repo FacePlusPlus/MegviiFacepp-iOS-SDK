@@ -108,7 +108,9 @@
             model = MG_FPP_DETECTIONMODE_NORMAL;
             break;
         case MGFppDetectionModeTracking:
-            model = MG_FPP_DETECTIONMODE_TRACKING;
+            NSLog(@"tracking 模式已经废弃，请使用 robust 模式");
+//            model = MG_FPP_DETECTIONMODE_TRACKING;
+            model = MG_FPP_DETECTIONMODE_TRACKING_ROBUST;
             break;
         case MGFppDetectionModeTrackingFast:
             model = MG_FPP_DETECTIONMODE_TRACKING_FAST;

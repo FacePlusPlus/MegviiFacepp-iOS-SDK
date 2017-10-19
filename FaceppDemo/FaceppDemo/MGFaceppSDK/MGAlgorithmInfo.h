@@ -19,6 +19,7 @@
 #define MG_ABILITY_KEY_TRACK_FAST           @"trackFast"
 #define MG_ABILITY_KEY_TRACK_ROBUST         @"trackRobust"
 #define MG_ABILITY_KEY_DETECT               @"detect"
+#define MG_ABILITY_KEY_DETECT_RECT          @"detectRect"
 #define MG_ABILITY_KEY_IDCARD_QUALITY       @"IDCardQuality"
 #define MG_ABILITY_KEY_TRACK                @"track"
 

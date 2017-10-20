@@ -44,7 +44,7 @@
                                     config.orientation = 0;
                                     config.detectROI = detectROI;
                                     config.minFaceSize = 150;
-                                    config.detectionMode = MGFppDetectionModeTracking;
+                                    config.detectionMode = MGFppDetectionModeTrackingFast;
                                 }];
 }
 

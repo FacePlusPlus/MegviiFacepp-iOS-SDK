@@ -50,7 +50,7 @@
                                 faceppSetting:^(MGFaceppConfig *config) {
                                     config.orientation = 0;
                                     config.minFaceSize = 40;
-                                    config.detectionMode = MGFppDetectionModeTracking;
+                                    config.detectionMode = MGFppDetectionModeTrackingFast;
                                 }];
     [_facepp updateFaceppSetting:^(MGFaceppConfig *config) {
         NSLog(@"track min_face_size = %d",_min_face_size);

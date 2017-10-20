@@ -39,11 +39,11 @@ extern "C"{
  * 支持对单张图片做人脸检测，也支持对视频流做人脸检测。
  */
 typedef enum {
-    MG_FPP_DETECTIONMODE_NORMAL = 0,        ///< 单张图片人脸检测模式
-    MG_FPP_DETECTIONMODE_DETECT_RECT,       ///< 只检测人脸框，并不检测landmark
-    MG_FPP_DETECTIONMODE_TRACKING,          ///< 视频人脸跟踪模式
-    MG_FPP_DETECTIONMODE_TRACKING_FAST,     ///< 牺牲了人脸关键点的贴合度，提升了人脸跟踪的速度
-    MG_FPP_DETECTIONMODE_TRACKING_ROBUST    ///< 提高了人脸关键点的贴合度，降低了人脸跟踪的速度
+    MG_FPP_DETECTIONMODE_NORMAL = 0,            ///< 单张图片人脸检测模式
+    MG_FPP_DETECTIONMODE_TRACKING = 1,          ///< 视频人脸跟踪模式
+    MG_FPP_DETECTIONMODE_TRACKING_FAST = 3,     ///< 牺牲了人脸关键点的贴合度，提升了人脸跟踪的速度
+    MG_FPP_DETECTIONMODE_TRACKING_ROBUST =4,    ///< 提高了人脸关键点的贴合度，降低了人脸跟踪的速度
+    MG_FPP_DETECTIONMODE_DETECT_RECT = 5,       ///< 只检测人脸框，并不检测landmark
 } MG_FPP_DETECTIONMODE;
 
 struct _MG_FPP_API;

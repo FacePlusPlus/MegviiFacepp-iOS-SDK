@@ -20,6 +20,7 @@
 - (void)setUp {
     [super setUp];
     
+    
     NSString *modelPath = [[NSBundle mainBundle] pathForResource:KMGFACEMODELNAME ofType:@""];
     NSData *modelData = [NSData dataWithContentsOfFile:modelPath];
     

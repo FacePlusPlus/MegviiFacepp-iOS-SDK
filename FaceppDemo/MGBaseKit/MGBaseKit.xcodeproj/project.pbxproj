@@ -24,8 +24,8 @@
 		14EA45681CAD236100398B3B /* MGMovieRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EA45661CAD236100398B3B /* MGMovieRecorder.m */; };
 		14EA456A1CAD237A00398B3B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EA45691CAD237A00398B3B /* AVFoundation.framework */; };
 		14EA456C1CAD237F00398B3B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EA456B1CAD237F00398B3B /* CoreMedia.framework */; };
-		8E3EA9701F9B6C3C00DD8801 /* MGLicenseCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E3EA96E1F9B6C3C00DD8801 /* MGLicenseCommon.h */; };
-		8E3EA9711F9B6C3C00DD8801 /* MGLicenseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E3EA96F1F9B6C3C00DD8801 /* MGLicenseManager.h */; };
+		8E3EA9701F9B6C3C00DD8801 /* MGLicenseCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E3EA96E1F9B6C3C00DD8801 /* MGLicenseCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E3EA9711F9B6C3C00DD8801 /* MGLicenseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E3EA96F1F9B6C3C00DD8801 /* MGLicenseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,14 +140,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E3EA9711F9B6C3C00DD8801 /* MGLicenseManager.h in Headers */,
 				140C47F71C2C04B600D9F9ED /* MGBaseKit.h in Headers */,
 				146E12451C27F3300066616F /* MGBaseDefine.h in Headers */,
 				146E133B1C2924E60066616F /* MGImage.h in Headers */,
-				8E3EA9701F9B6C3C00DD8801 /* MGLicenseCommon.h in Headers */,
 				146E133F1C2924FA0066616F /* MGLogManager.h in Headers */,
 				14DC77B31D5040F600469725 /* MGAnimation.h in Headers */,
 				14EA45671CAD236100398B3B /* MGMovieRecorder.h in Headers */,
+				8E3EA9711F9B6C3C00DD8801 /* MGLicenseManager.h in Headers */,
+				8E3EA9701F9B6C3C00DD8801 /* MGLicenseCommon.h in Headers */,
 				14EA45631CAD22CF00398B3B /* MGVideoManager.h in Headers */,
 				14DC77AF1D50404000469725 /* MGAutoSessionPreset.h in Headers */,
 			);

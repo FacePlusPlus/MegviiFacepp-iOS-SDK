@@ -968,7 +968,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.megvii.awesomedemo.facepp;
 				PRODUCT_NAME = FaceppDemo;
-				PROVISIONING_PROFILE = "aa2b8f25-b101-4b18-bf0a-115db1a8bfd8";
+				PROVISIONING_PROFILE = "b7506f39-7543-449d-aaa4-2dad6a725136";
 				PROVISIONING_PROFILE_SPECIFIER = Megvii_wildcard;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";

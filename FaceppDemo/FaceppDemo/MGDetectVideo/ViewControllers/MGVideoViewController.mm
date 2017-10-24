@@ -454,12 +454,14 @@
             
             _allTime += timeUsed;
             _count ++;
-                            NSLog(@"time = %f, 平均：%f, count = %ld",timeUsed, _allTime/_count, _count);
+//                            NSLog(@"time = %f, 平均：%f, count = %ld",timeUsed, _allTime/_count, _count);
             
             NSMutableArray *mutableArr = [NSMutableArray array];
             for (int i = 0; i < faceCount; i ++) {
-                MGDetectRectInfo *detectRect = [self.markManager GetRectAtIndex:i isSmooth:YES];
-                [mutableArr addObject:detectRect];
+                MGDetectRectInfo *detectRect = [self.markManager GetRectAtIndex:1000 isSmooth:YES];
+                if (detectRect) {
+                    [mutableArr addObject:detectRect];
+                }
             }
             
            

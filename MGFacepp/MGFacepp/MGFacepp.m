@@ -310,7 +310,7 @@
             result.rect = CGRectMake(x, y, w, h);
             return result;
         } else {
-            NSLog(@"获取人脸框失败");
+            NSLog(@"获取人脸框失败 error 人脸框数量越界");
             return nil;
         }
     }

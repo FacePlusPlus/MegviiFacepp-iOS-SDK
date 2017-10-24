@@ -374,7 +374,8 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                              cancelButtonTitle:NSLocalizedString(@"alert_title", nil)
                                              otherButtonTitles:NSLocalizedString(@"icon_title15", nil),
                                                                NSLocalizedString(@"icon_title16", nil),
-                                                               NSLocalizedString(@"icon_title21", nil),nil];
+//                                                               NSLocalizedString(@"icon_title21", nil),
+                                                                 nil];
     [alertView setTag:KTrackingTag];
     [alertView show];
 }
@@ -400,9 +401,9 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
         case 2:
             mode = NSLocalizedString(@"icon_title16", nil);
             break;
-        case 3:
-            mode = NSLocalizedString(@"icon_title21", nil);
-            break;
+//        case 3:
+//            mode = NSLocalizedString(@"icon_title21", nil);
+//            break;
         default:
             mode = NSLocalizedString(@"icon_title15", nil);
             break;

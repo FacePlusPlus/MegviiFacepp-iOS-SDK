@@ -251,6 +251,9 @@
                     if (!weakSelf.faceCompare) {
                         [weakSelf.renderer drawFaceLandMark:modelArray];
                     }
+                    if (!CGRectIsNull(modelArray.detectRect)) {
+                        [weakSelf.renderer drawFaceWithRect:modelArray.detectRect];
+                    }
                 }];
                 
                 if (renderedPixelBuffer)

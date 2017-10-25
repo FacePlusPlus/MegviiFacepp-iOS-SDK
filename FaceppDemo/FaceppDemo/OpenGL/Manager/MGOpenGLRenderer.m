@@ -483,7 +483,7 @@ bail:
     glActiveTexture(GL_TEXTURE2);
     glUseProgram(_faceProgram);
     
-    [self drawFaceWithRect:faces.detectRect];
+//    [self drawRect:faces.detectRect];
     for (int i =0; i < faces.count; i++) {
         MGFaceInfo *model = [faces modelWithIndex:i];
         [self drawFacePointer:model.points faceRect:model.rect];

@@ -458,7 +458,7 @@
             
             NSMutableArray *mutableArr = [NSMutableArray array];
             for (int i = 0; i < faceCount; i ++) {
-                MGDetectRectInfo *detectRect = [self.markManager GetRectAtIndex:1000 isSmooth:YES];
+                MGDetectRectInfo *detectRect = [self.markManager GetRectAtIndex:i isSmooth:YES];
                 if (detectRect) {
                     [mutableArr addObject:detectRect];
                 }

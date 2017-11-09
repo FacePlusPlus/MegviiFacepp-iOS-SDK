@@ -120,7 +120,12 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     return cell;
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // 禁用录像
+    if (indexPath.row == 0) {
+        return;
+    }
+    
     MCSetModel *model = self.dataArray[indexPath.row];
     switch (model.type) {
         case LogoTypeImage:

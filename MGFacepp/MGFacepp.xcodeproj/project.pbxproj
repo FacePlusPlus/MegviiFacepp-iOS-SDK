@@ -21,6 +21,7 @@
 		8E8434A11FB44F9500DBF731 /* libMegviiFacepp-0.5.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E8434A01FB44F9500DBF731 /* libMegviiFacepp-0.5.2.a */; };
 		8EB8A4F41F9759950059F421 /* MGDetectRectInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8A4F31F9759950059F421 /* MGDetectRectInfo.m */; };
 		8EB8A4F91F9775920059F421 /* MGDetectRectInfo.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8EB8A4F21F9759950059F421 /* MGDetectRectInfo.h */; };
+		8EDC0A8A1FB550A4006D96D5 /* megviifacepp_0_5_2_model in Copy bundle */ = {isa = PBXBuildFile; fileRef = 8E84349D1FB44F4500DBF731 /* megviifacepp_0_5_2_model */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +48,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 7;
 			files = (
+				8EDC0A8A1FB550A4006D96D5 /* megviifacepp_0_5_2_model in Copy bundle */,
 			);
 			name = "Copy bundle";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,7 +72,7 @@
 		14FFF2E61E24D8C400A5A7EF /* MGImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGImageData.m; sourceTree = "<group>"; };
 		14FFF2FA1E24DFAB00A5A7EF /* MG_Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MG_Common.h; sourceTree = "<group>"; };
 		14FFF2FB1E24DFAB00A5A7EF /* MG_Facepp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MG_Facepp.h; sourceTree = "<group>"; };
-		8E84349D1FB44F4500DBF731 /* megviifacepp_0_5_2_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_5_2_model; sourceTree = "<group>"; };
+		8E84349D1FB44F4500DBF731 /* megviifacepp_0_5_2_model */ = {isa = PBXFileReference; lastKnownFileType = text; path = megviifacepp_0_5_2_model; sourceTree = "<group>"; };
 		8E8434A01FB44F9500DBF731 /* libMegviiFacepp-0.5.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMegviiFacepp-0.5.2.a"; sourceTree = "<group>"; };
 		8EB8A4F21F9759950059F421 /* MGDetectRectInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDetectRectInfo.h; sourceTree = "<group>"; };
 		8EB8A4F31F9759950059F421 /* MGDetectRectInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDetectRectInfo.m; sourceTree = "<group>"; };

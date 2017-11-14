@@ -25,7 +25,7 @@
 + (void)licenseForNetwokrFinish:(void(^)(bool License, NSDate *sdkDate))finish{
     
     NSDate *licenSDKDate = [self getLicenseDate];
-    
+
     if ([self compareSDKDate:licenSDKDate] == NO) {
         if (finish) {
             finish(YES, [self getLicenseDate]);
@@ -65,9 +65,9 @@
 }
 
 + (NSDate *)getLicenseDate {
-    NSString *version = [MGFacepp getSDKVersion];
-    NSDate *date = [MGLicenseManager getExpiretime:version];
-    NSLog(@"过期时间 ： %@",date);
+//    NSString *version = [MGFacepp getSDKVersion];
+//    NSDate *date = [MGLicenseManager getExpiretime:version];
+//    NSLog(@"过期时间 ： %@",date);
     
     NSString *modelPath = [[NSBundle mainBundle] pathForResource:KMGFACEMODELNAME ofType:@""];
     NSData *modelData = [NSData dataWithContentsOfFile:modelPath];

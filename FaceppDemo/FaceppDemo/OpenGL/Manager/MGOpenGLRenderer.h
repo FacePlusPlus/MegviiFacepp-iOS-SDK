@@ -73,7 +73,7 @@
 // Renderers which operate out of place should create a pixel buffer to return from a pool they own.
 // When rendering to a pixel buffer with the GPU it is not necessary to block until rendering has completed before returning.
 // It is sufficient to call glFlush() to ensure that the commands have been flushed to the GPU.
-- (CVPixelBufferRef )copyRenderedPixelBuffer:(CMSampleBufferRef)sampleBufferRef faceModelArray:(MGFaceModelArray *)modelArray;
+- (CVPixelBufferRef )copyRenderedPixelBuffer:(CMSampleBufferRef)sampleBufferRef faceModelArray:(MGFaceModelArray *)modelArray drawLandmark:(BOOL)drawLandmark;
 
 @property(nonatomic, assign) BOOL show3DView;
 

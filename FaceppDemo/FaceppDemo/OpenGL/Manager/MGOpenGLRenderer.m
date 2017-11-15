@@ -142,7 +142,7 @@
 	[self deleteBuffers];
 }
 
-- (CVPixelBufferRef )copyRenderedPixelBuffer:(CMSampleBufferRef)sampleBufferRef faceModelArray:(MGFaceModelArray *)modelArray
+- (CVPixelBufferRef )copyRenderedPixelBuffer:(CMSampleBufferRef)sampleBufferRef faceModelArray:(MGFaceModelArray *)modelArray drawLandmark:(BOOL)drawLandmark
 {
     CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBufferRef);
     
@@ -267,7 +267,7 @@
     glBindTexture( CVOpenGLESTextureGetTarget( srcTexture ), 0 );
     glBindTexture( CVOpenGLESTextureGetTarget( dstTexture ), 0 );
     
-    if (modelArray){
+    if (modelArray && drawLandmark){
         /* 绘制人脸关键点 */
         glActiveTexture(GL_TEXTURE2);
         glUseProgram(_faceProgram);

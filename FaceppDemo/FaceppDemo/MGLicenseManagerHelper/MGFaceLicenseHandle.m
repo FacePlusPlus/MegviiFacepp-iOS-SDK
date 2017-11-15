@@ -22,7 +22,23 @@
 }
 
 
-+ (void)licenseForNetwokrFinish:(void(^)(bool License, NSDate *sdkDate))finish{
++ (void)licenseForNetwokrFinish:(void(^)(bool License, NSDate *sdkDate))finish {
+    // 检查 apk
+    if ([MG_LICENSE_KEY isEqualToString:@""] || [MG_LICENSE_SECRET isEqualToString:@""]) {
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"API Key 或 secret 不能为空"
+                                                                            message:@"请到官网申请 ‘https://www.faceplusplus.com.cn’"
+                                                                     preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"好"
+                                                         style:UIAlertActionStyleCancel
+                                                       handler:nil];
+        [controller addAction:action];
+        UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+        UIViewController *currentVC = [MGFaceLicenseHandle getCurrentVCFrom:rootViewController];
+        [currentVC presentViewController:controller animated:YES completion:nil];
+
+        
+        return;
+    }
     
     NSDate *licenSDKDate = [self getLicenseDate];
     
@@ -33,43 +49,48 @@
         return;
     }
     
-    NSNumber *facelicenSDK = [NSNumber numberWithUnsignedInteger:[MGFacepp getAPIName]];
     NSString *uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSString *version = [MGFacepp getVersion];
     
     [MGLicenseManager takeLicenseFromNetwokrUUID:uuid
-                                       candidate:facelicenSDK
+                                         version:version
                                          sdkType:MGSDKTypeLandmark
                                           apiKey:MG_LICENSE_KEY
                                        apiSecret:MG_LICENSE_SECRET
-                                     apiDuration:MGAPIDurationDay
+                                     apiDuration:MGAPIDurationMonth
                                        URLString:MGLicenseURL_CN
                                           finish:^(bool License, NSError *error) {
                                               NSLog(@"%@", error);
+                                              
                                               if (License) {
                                                   NSDate  *nowSDKDate = [self getLicenseDate];
+                                                  
                                                   if (finish) {
                                                       finish(License, nowSDKDate);
                                                   }
-                                              } else {
+                                              }else{
                                                   if (finish) {
                                                       finish(License, licenSDKDate);
                                                   }
                                               }
                                           }];
+
+
 }
 
-+ (NSDate *)getLicenseDate{
-    
++ (NSDate *)getLicenseDate {
     NSString *modelPath = [[NSBundle mainBundle] pathForResource:KMGFACEMODELNAME ofType:@""];
     NSData *modelData = [NSData dataWithContentsOfFile:modelPath];
-    
     MGAlgorithmInfo *sdkInfo = [MGFacepp getSDKAlgorithmInfoWithModel:modelData];
-    
     if (sdkInfo.needNetLicense) {
-        return [MGFacepp getApiExpiration];
+        NSString *version = [MGFacepp getVersion];
+        NSDate *date = [MGLicenseManager getExpiretime:version];
+        NSLog(@"过期时间 ： %@",date);
+        return date;
+    } else {
+        NSLog(@"SDK 为非联网授权版");
+        return sdkInfo.expireDate;
     }
-    
-    return sdkInfo.expireDate;
 }
 
 + (BOOL)compareSDKDate:(NSDate *)sdkDate{
@@ -78,7 +99,7 @@
     double result = [sdkDate timeIntervalSinceDate:nowDate];
 
     
-    if (result >= 1*24*60*60.0) {
+    if (result >= 1*1*60*60.0) {
         return NO;
     }
     return YES;
@@ -94,6 +115,30 @@
     
     return sdkInfo.needNetLicense;
 }
+
++ (UIViewController *)getCurrentVCFrom:(UIViewController *)rootVC
+{
+    UIViewController *currentVC;
+    
+    if ([rootVC presentedViewController]) {
+        // 视图是被presented出来的
+        rootVC = [rootVC presentedViewController];
+    }
+    
+    if ([rootVC isKindOfClass:[UITabBarController class]]) {
+        // 根视图为UITabBarController
+        currentVC = [self getCurrentVCFrom:[(UITabBarController *)rootVC selectedViewController]];
+    } else if ([rootVC isKindOfClass:[UINavigationController class]]){
+        // 根视图为UINavigationController
+        currentVC = [self getCurrentVCFrom:[(UINavigationController *)rootVC visibleViewController]];
+    } else {
+        // 根视图为非导航类
+        currentVC = rootVC;
+    }
+    
+    return currentVC;
+}
+
 
 #else
 

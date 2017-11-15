@@ -12,17 +12,13 @@
 @interface MGLicenseManager : NSObject
 
 
-+ (NSString*)getContextWithUUID:(NSString *)UUID
-                      candidate:(NSArray <NSNumber *>*)APIName;
-
 /**
- *  设置联网授权信息
- *
- *  @param license license
- *
- *  @return 成功或失败
+ 获取过期时间
+
+ @param version SDK 版本号
+ @return 过期日期
  */
-+ (BOOL)setLicense:(NSString*) license;
++ (NSDate *)getExpiretime:(NSString *)version;
 
 
 
@@ -42,7 +38,7 @@
  @return SessionTask
  */
 + (NSURLSessionTask *)takeLicenseFromNetwokrUUID:(NSString *)UUID
-                                       candidate:(NSNumber *)APIName
+                                         version:(NSString *)version
                                          sdkType:(MGSDKType)sdkType
                                           apiKey:(NSString *)apiKey
                                        apiSecret:(NSString *)apiSecret

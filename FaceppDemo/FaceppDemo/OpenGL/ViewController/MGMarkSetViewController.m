@@ -13,6 +13,7 @@
 #import "MCSetCell.h"
 #import "YTMacro.h"
 
+
 static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
 #define KTrackingTag 100
 #define KResolutionTag 101
@@ -62,8 +63,16 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     Tracking.stringValue = @"NO";
     MCSetModel *Mode = [MCSetModel modelWithTitle:NSLocalizedString(@"icon_title14", nil) type:LogoTypeSelect status:SelectStatusSting];
     Mode.stringValue = NSLocalizedString(@"icon_title15", nil);
-    Mode.intValue = 2;
-    self.dataArray = @[record, model3d, debug, rect, count, camera, minFace, time, info, size, Tracking, Mode];
+    Mode.intValue = 1;
+    
+    // 人脸检测
+    MCSetModel *faceCompare = [MCSetModel modelWithTitle:NSLocalizedString(@"icon_title_face_compare", nil)
+                                                     type:LogoTypeImage
+                                                   status:SelectStatusBool];
+    faceCompare.boolValue = NO;
+    faceCompare.imageName = @"faceCompare";
+    
+    self.dataArray = @[record, model3d, debug, rect, count, camera, minFace, time, info, size, Tracking, Mode, faceCompare];
 }
 
 - (void)viewDidLoad {
@@ -138,6 +147,32 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
 }
 
 - (IBAction)startDetectFace:(id)sender{
+    AVAuthorizationStatus authStatus =  [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (authStatus == AVAuthorizationStatusRestricted || authStatus ==AVAuthorizationStatusDenied) {
+        [self showAVAuthorizationStatusDeniedAlert];
+    } else if (authStatus == AVAuthorizationStatusNotDetermined) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if (granted) {
+                [self showDetectViewController];
+            } else {
+                [self showAVAuthorizationStatusDeniedAlert];
+            }
+        }];
+    } else {
+        [self showDetectViewController];
+    }
+}
+
+- (void)showAVAuthorizationStatusDeniedAlert{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"alert_title_camera",nil) message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:NSLocalizedString(@"alert_action_ok",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alertController addAction:action];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)showDetectViewController{
     MCSetModel *record = self.dataArray[0];
     MCSetModel *face3D = self.dataArray[1];
     MCSetModel *debug = self.dataArray[2];
@@ -150,6 +185,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     MCSetModel *size = self.dataArray[9];
     MCSetModel *tracking = self.dataArray[10];
     MCSetModel *trackingMode = self.dataArray[11];
+    MCSetModel *faceCompare = self.dataArray[12];
 
     int pointCount = count.boolValue == NO ? 81 : 106;
     int faceSize = (int)sizeModel.intValue;
@@ -178,7 +214,22 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                   config.interval = internal;
                                                   config.orientation = 90;
                                                   config.oneFaceTracking = tracking.boolValue;
-                                                  config.detectionMode = (trackingMode.intValue == 1 ? MGFppDetectionModeTracking : (MGFppDetectionMode)trackingMode.intValue+1);
+                                                  switch (trackingMode.intValue) {
+                                                      case 1:
+                                                          config.detectionMode = MGFppDetectionModeTrackingFast;
+                                                          break;
+                                                      case 2:
+                                                          config.detectionMode = MGFppDetectionModeTrackingRobust;
+                                                          break;
+                                                      case 3:
+                                                          config.detectionMode = MGFppDetectionModeTrackingSmooth;
+                                                          break;
+                                                          
+                                                      default:
+                                                          config.detectionMode = MGFppDetectionModeTrackingFast;
+                                                          break;
+                                                  }
+
                                                   config.detectROI = detectROI;
                                                   config.pixelFormatType = PixelFormatTypeRGBA;
                                               }];
@@ -198,6 +249,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     videoController.pointsNum = pointCount;
     videoController.show3D = face3D.boolValue;
     videoController.faceInfo = info.boolValue;
+    videoController.faceCompare = faceCompare.boolValue;
     
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:videoController];
     [self.navigationController presentViewController:navi animated:YES completion:nil];
@@ -252,9 +304,37 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
             NSIndexPath *debuPath = [NSIndexPath indexPathForRow:2 inSection:0];
             MCSetModel *debug = self.dataArray[2];
             [debug setOpen];
-            [self.collectionView reloadItemsAtIndexPaths:@[cellIndex, debuPath]];
             
-        }else{
+            NSIndexPath *indexPath12 = [NSIndexPath indexPathForRow:12 inSection:0];
+            MCSetModel *model12 = self.dataArray[12];
+            model12.boolValue = NO;
+            
+            [self.collectionView reloadItemsAtIndexPaths:@[cellIndex, debuPath, indexPath12]];
+        } else {
+            [self.collectionView reloadItemsAtIndexPaths:@[cellIndex]];
+        }
+        
+        if (cellIndex.row == 12 &&model.boolValue == YES) {
+            NSIndexPath *debuPath = [NSIndexPath indexPathForRow:2 inSection:0];
+            MCSetModel *debug = self.dataArray[2];
+            debug.boolValue = NO;
+            
+            NSIndexPath *indexPath8 = [NSIndexPath indexPathForRow:8 inSection:0];
+            MCSetModel *model8 = self.dataArray[8];
+            model8.boolValue = NO;
+            
+            [self.collectionView reloadItemsAtIndexPaths:@[cellIndex, debuPath, indexPath8]];
+        } else {
+            [self.collectionView reloadItemsAtIndexPaths:@[cellIndex]];
+        }
+        
+        if (cellIndex.row == 2 && model.boolValue == YES) {
+            NSIndexPath *indexPath12 = [NSIndexPath indexPathForRow:12 inSection:0];
+            MCSetModel *model12 = self.dataArray[12];
+            model12.boolValue = NO;
+            
+            [self.collectionView reloadItemsAtIndexPaths:@[cellIndex, indexPath12]];
+        } else {
             [self.collectionView reloadItemsAtIndexPaths:@[cellIndex]];
         }
     }
@@ -265,7 +345,7 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
                                                        message:NSLocalizedString(@"icon_title14", nil)
                                                       delegate:self
                                              cancelButtonTitle:NSLocalizedString(@"alert_title", nil)
-                                             otherButtonTitles:NSLocalizedString(@"icon_title20", nil), NSLocalizedString(@"icon_title15", nil), NSLocalizedString(@"icon_title16", nil), nil];
+                                             otherButtonTitles:NSLocalizedString(@"icon_title15", nil), NSLocalizedString(@"icon_title16", nil), NSLocalizedString(@"icon_title20", nil), nil];
     [alertView setTag:KTrackingTag];
     [alertView show];
 }
@@ -286,13 +366,13 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
     NSString *mode;
     switch (index) {
         case 1:
-            mode = NSLocalizedString(@"icon_title20", nil);
-            break;
-        case 2:
             mode = NSLocalizedString(@"icon_title15", nil);
             break;
-        case 3:
+        case 2:
             mode = NSLocalizedString(@"icon_title16", nil);
+            break;
+        case 3:
+            mode = NSLocalizedString(@"icon_title20", nil);
             break;
         default:
             mode = NSLocalizedString(@"icon_title15", nil);

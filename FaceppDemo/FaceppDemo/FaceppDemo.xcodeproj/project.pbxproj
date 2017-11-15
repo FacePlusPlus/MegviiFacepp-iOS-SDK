@@ -214,7 +214,6 @@
 		14D6A92E1E8BAB3D00AF4B06 /* MGFacepp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFacepp.h; sourceTree = "<group>"; };
 		14D6A92F1E8BAB3D00AF4B06 /* MGFaceppCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceppCommon.h; sourceTree = "<group>"; };
 		14D6A9301E8BAB3D00AF4B06 /* MGFaceppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceppConfig.h; sourceTree = "<group>"; };
-		14D6A9311E8BAB3D00AF4B06 /* MGFaceppSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceppSet.h; sourceTree = "<group>"; };
 		14D6A9321E8BAB3D00AF4B06 /* MGImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGImageData.h; sourceTree = "<group>"; };
 		14D6A9351E8BB75000AF4B06 /* megviifacepp_0_4_7_model */ = {isa = PBXFileReference; lastKnownFileType = text; path = megviifacepp_0_4_7_model; sourceTree = "<group>"; };
 		14DA53A71E34996600EDC6CC /* 640_480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640_480.png; sourceTree = "<group>"; };
@@ -270,7 +269,6 @@
 				14D6A92E1E8BAB3D00AF4B06 /* MGFacepp.h */,
 				14D6A92F1E8BAB3D00AF4B06 /* MGFaceppCommon.h */,
 				14D6A9301E8BAB3D00AF4B06 /* MGFaceppConfig.h */,
-				14D6A9311E8BAB3D00AF4B06 /* MGFaceppSet.h */,
 				14D6A9321E8BAB3D00AF4B06 /* MGImageData.h */,
 			);
 			path = MGFaceppSDK;

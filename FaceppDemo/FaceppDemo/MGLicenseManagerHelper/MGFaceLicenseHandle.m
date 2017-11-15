@@ -33,17 +33,17 @@
         return;
     }
     
-    NSNumber *facelicenSDK = [NSNumber numberWithUnsignedInteger:[MGFacepp getAPIName]];
     NSString *uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSString *version = [MGFacepp getVersion];
     
     [MGLicenseManager takeLicenseFromNetwokrUUID:uuid
-                                       candidate:facelicenSDK
-                                         sdkType:MG_SDK_TYPE_LANDMARK
+                                         version:version
+                                         sdkType:MGSDKTypeLandmark
                                           apiKey:MG_LICENSE_KEY
                                        apiSecret:MG_LICENSE_SECRET
-                                         isChina:YES
+                                     apiDuration:MGAPIDurationMonth
+                                       URLString:MGLicenseURL_CN
                                           finish:^(bool License, NSError *error) {
-                                              
                                               NSLog(@"%@", error);
                                               
                                               if (License) {
@@ -57,22 +57,24 @@
                                                       finish(License, licenSDKDate);
                                                   }
                                               }
-    }];
+                                          }];
+
 
 }
 
-+ (NSDate *)getLicenseDate{
-    
++ (NSDate *)getLicenseDate {
     NSString *modelPath = [[NSBundle mainBundle] pathForResource:KMGFACEMODELNAME ofType:@""];
     NSData *modelData = [NSData dataWithContentsOfFile:modelPath];
-    
     MGAlgorithmInfo *sdkInfo = [MGFacepp getSDKAlgorithmInfoWithModel:modelData];
-    
     if (sdkInfo.needNetLicense) {
-        return [MGFacepp getApiExpiration];
+        NSString *version = [MGFacepp getVersion];
+        NSDate *date = [MGLicenseManager getExpiretime:version];
+        NSLog(@"过期时间 ： %@",date);
+        return date;
+    } else {
+        NSLog(@"SDK 为非联网授权版");
+        return sdkInfo.expireDate;
     }
-    
-    return sdkInfo.expireDate;
 }
 
 + (BOOL)compareSDKDate:(NSDate *)sdkDate{
@@ -97,6 +99,7 @@
     
     return sdkInfo.needNetLicense;
 }
+
 
 #else
 

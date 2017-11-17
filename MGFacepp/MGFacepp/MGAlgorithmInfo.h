@@ -50,4 +50,10 @@
 @property (nonatomic, strong, readonly) NSArray *SDKAbility;
 
 
+/**
+ SDK 限制的bundleId
+ */
+@property (nonatomic, strong, readonly) NSString *bundleId;
+
+
 @end

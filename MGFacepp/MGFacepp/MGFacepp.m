@@ -39,17 +39,19 @@
 }
 
 - (instancetype)initWithModel:(NSData *)modelData maxFaceCount:(NSInteger)maxFaceCount faceppSetting:(void(^)(MGFaceppConfig *config))config {
-    if (![MGFacepp isMapSDKBundleID]) {
-        return nil;
-    }
-    
     self = [super init];
     if (self) {
+        MGAlgorithmInfo *info = [MGFacepp getSDKAlgorithmInfoWithModel:modelData];
+        if (![self isMapSDKBundleID:info.bundleId]) {
+            NSString *currentBundleID = [[NSBundle mainBundle] bundleIdentifier];
+            NSLog(@"error: Bundle id error \r\n your APP bundle id: %@ \r\n SDK bundle id: %@",currentBundleID, info.bundleId);
+        }
+        
         NSAssert(modelData.length > 0, @"modelData.length == 0");
         if (modelData.length > 0) {
             const void *modelBytes = modelData.bytes;
             MG_RETCODE initCode = mg_facepp.CreateApiHandleWithMaxFaceCount((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, (MG_INT32)maxFaceCount, &_apiHandle);
-            NSAssert(MG_RETCODE_OK == initCode, @"modelData 与 SDK 不匹配");
+//            NSAssert(MG_RETCODE_OK == initCode, @"modelData 与 SDK 不匹配");
             if (initCode != MG_RETCODE_OK) {
                 NSLog(@"[initWithModel:] 初始化失败，modelData 与 SDK 不匹配！，请检查后重试！errorCode:%zi", initCode);
                 return nil;
@@ -388,24 +390,6 @@
     return -1.0;
 }
 
-#pragma mark - 人脸置信度 -
-- (float)getFaceConfidenceFilter {
-    float confidence = 0.0;
-    MG_RETCODE code = mg_facepp.GetFaceConfidenceFilter(_apiHandle, &confidence);
-    if (code == MG_RETCODE_OK) {
-        return confidence;
-    }
-    return -1.0;
-}
-
-- (BOOL)setFaceConfidenceFilter:(float)filter {
-    MG_RETCODE code = mg_facepp.SetFaceConfidenceFilter(_apiHandle, filter);
-    if (code == MG_RETCODE_OK) {
-        return YES;
-    }
-    return NO;
-}
-
 - (BOOL)shutDown {
     MG_RETCODE code = mg_facepp.ShutDown();
     if (MG_RETCODE_OK == code) {
@@ -441,14 +425,6 @@
 }
 
 #pragma mark - get sdk info
-
-+ (NSDate *)getApiExpiration {
-    NSUInteger result = (NSUInteger)mg_facepp.GetApiExpiration();
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:result];
-
-    return date;
-}
-
 /** 获取版本号 */
 + (NSString *)getJenkinsNumber {
     const char *tempStr = mg_facepp.GetJenkinsNumber();
@@ -462,12 +438,6 @@
     return string;
 }
 
-+ (NSString *)getSDKBundleID {
-    const char *tempStr = mg_facepp.GetSDKBundleId();
-    NSString *string = [NSString stringWithCString:tempStr encoding:NSUTF8StringEncoding];
-    return string;
-}
-
 - (BOOL)resetTrack {
     MG_RETCODE code = mg_facepp.ResetTrack(_apiHandle);
     if (MG_RETCODE_OK == code) {
@@ -476,9 +446,8 @@
     return NO;
 }
 
-+ (BOOL)isMapSDKBundleID {
+- (BOOL)isMapSDKBundleID:(NSString *)SDKBundleID {
     NSString *currentBundleID = [[NSBundle mainBundle] bundleIdentifier];
-    NSString *SDKBundleID = [MGFacepp getSDKBundleID];
     NSArray *arr = [SDKBundleID componentsSeparatedByString:@","];
     for (NSString *bundleId in arr) {
         if ([bundleId hasSuffix:@"."] || [bundleId hasSuffix:@"*"]) {
@@ -491,34 +460,41 @@
             }
         }
     }
-    
-    NSLog(@"error: Bundle id error \r\n your APP bundle id: %@ \r\n SDK bundle id: %@",currentBundleID, SDKBundleID);
+
     return NO;
 }
 
 + (MGAlgorithmInfo *)getSDKAlgorithmInfoWithModel:(NSData *)modelData{
     if (modelData) {
         MGAlgorithmInfo *infoModel = [[MGAlgorithmInfo alloc] init];
-        
         const void *modelBytes = modelData.bytes;
-        MG_ABILITY abilityInfo;
+        MG_ALGORITHMINFO info;
         
-        MG_RETCODE sucessCode = mg_facepp.GetAbility((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &abilityInfo);
+        MG_RETCODE sucessCode = mg_facepp.GetAlgorithmInfo((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &info);
         
         if (sucessCode != MG_RETCODE_OK) {
             NSLog(@"[initWithModel:] 初始化失败，modelData 与 SDK 不匹配！，请检查后重试！errorCode:%zi", sucessCode);
             return nil;
         }
         
-        MG_SDKAUTHTYPE auth = mg_facepp.GetSDKAuthType();
+        MG_SDKAUTHTYPE auth = info.auth_type;
         BOOL needLicense = (auth == MG_ONLINE_AUTH? YES : NO);
         NSString *version = [self getSDKVersion];
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:mg_facepp.GetApiExpiration()];
+        NSDate *date;
+        if (info.expire_time == -1) { // 已授权
+            date = [NSDate new];
+        } else if (info.expire_time == 0) {// 联网版本
+            date = [NSDate new];
+        } else {
+            date = [NSDate dateWithTimeIntervalSince1970:info.expire_time];
+        }
         
-        [infoModel setAbility:abilityInfo.ability];
+        
+        [infoModel setAbility:info.ability];
         [infoModel setDate:date];
         [infoModel setLicense:needLicense];
         [infoModel setVersionCode:version];
+        [infoModel setBundleId:[NSString stringWithCString:info.bundleid encoding:kCFStringEncodingUTF8]];
         
         return infoModel;
     }else{

@@ -66,4 +66,8 @@ typedef NS_OPTIONS(NSInteger, MGFaceppAbilityType) {
     _version = version;
 }
 
+- (void)setBundleId:(NSString *)bundleId {
+    _bundleId = bundleId;
+}
+
 @end

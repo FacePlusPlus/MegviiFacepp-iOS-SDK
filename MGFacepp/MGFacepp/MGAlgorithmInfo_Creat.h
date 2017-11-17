@@ -21,4 +21,6 @@
 
 - (void)setVersionCode:(NSString *)version;
 
+- (void)setBundleId:(NSString *)bundleId;
+
 @end

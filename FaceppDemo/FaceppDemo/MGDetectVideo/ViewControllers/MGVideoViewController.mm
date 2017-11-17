@@ -334,7 +334,7 @@
                 
                 _allTime += timeUsed;
                 _count ++;
-                NSLog(@"time = %f, 平均：%f, count = %ld",timeUsed, _allTime/_count, _count);
+//                NSLog(@"time = %f, 平均：%f, count = %ld",timeUsed, _allTime/_count, _count);
                 
                 MGFaceModelArray *faceModelArray = [[MGFaceModelArray alloc] init];
                 faceModelArray.getFaceInfo = self.faceInfo;

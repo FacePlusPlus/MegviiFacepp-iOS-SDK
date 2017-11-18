@@ -158,8 +158,7 @@ typedef struct {
     /**
      * @brief 查看算法授权的过期时间
      *
-     * @param[in] env               Android jni 的环境变量，仅在 Android SDK 中使用
-     * @param[in] jobj              Android 调用的上下文，仅在 Android SDK 中使用
+     * 此接口已经废弃，只返回0， 请使用 GetAlgorithmInfo
      *
      * @return 成功则返回 MG_RETCODE_OK
      */
@@ -168,6 +167,8 @@ typedef struct {
     
     /**
      * @brief 获取 SDK 的授权类型
+     *
+     * 此接口已经废弃，只返回非联网授权， 请使用 GetAlgorithmInfo
      *
      * @return 只有联网授权和非联网授权两种类型
      */

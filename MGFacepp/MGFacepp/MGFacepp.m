@@ -94,7 +94,8 @@
         config.rotation = self.faceppConfig.orientation;
         config.detection_mode = [self getDetectModel:self.faceppConfig.detectionMode];
         config.roi = angle;
-        NSLog(@"%d",config.detection_mode);
+        config.face_confidence_filter = self.faceppConfig.faceConfidenceFilter;
+        
         MG_RETCODE code = mg_facepp.SetDetectConfig(_apiHandle, &config);
         if (code == MG_RETCODE_OK) {
             return YES;

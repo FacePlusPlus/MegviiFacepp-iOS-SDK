@@ -170,24 +170,6 @@
 - (void)endDetectionFrame;
 
 
-#pragma mark - 人脸置信度 -
-
-/**
- 获取人脸检测置信度过滤阈值 0~1 默认为 0.1
-
- @return 成功则返回置信度阈值，失败返回 -1.0
- */
-- (float)getFaceConfidenceFilter;
-
-
-/**
- 设置人脸检测置信度过滤阈值 0~1
-
- @param filter 阈值
- @return 成功返回 YES
- */
-- (BOOL)setFaceConfidenceFilter:(float)filter;
-
 /**
  释放算法资源
  算法在计算时需要占用一些内存资源，必须在所有算法的句柄（handle）被释放后再调用
@@ -216,36 +198,12 @@
 
 
 /**
- 获取SDK授权时间，只有联网授权版本，该SDK可用
-
- @return 授权时间
- */
-+ (NSDate *)getApiExpiration;
-
-
-/**
- 获取SDK限制的BundleId
-
- @return SDK限制的BundleId
- */
-+ (NSString *)getSDKBundleID;
-
-
-
-/**
  清除track缓存
 
  @return 成功则返回 YES
  */
 - (BOOL)resetTrack;
 
-
-/**
- 判断APP的BundleId是否和SDK限制的BundleId一致
-
- @return APP的BundleId和SDK限制的BundleId一致则返回 YES
- */
-+ (BOOL)isMapSDKBundleID;
 
 /**
  获取 SDK 相关信息

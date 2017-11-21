@@ -14,8 +14,6 @@
 @implementation MGFaceLicenseHandle
 
 
-#if MG_USE_ONLINE_AUTH
-
 + (BOOL)getLicense{
     NSDate *sdkDate = [self getLicenseDate];
     return [self compareSDKDate:sdkDate];
@@ -141,8 +139,5 @@
     return currentVC;
 }
 
-#else
-
-#endif
 
 @end

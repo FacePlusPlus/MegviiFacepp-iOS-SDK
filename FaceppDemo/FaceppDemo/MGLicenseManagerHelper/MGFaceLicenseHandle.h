@@ -15,7 +15,6 @@
 
 @interface MGFaceLicenseHandle : NSObject
 
-#if MG_USE_ONLINE_AUTH
 
 /**
  *  获取当前SDK是否授权--- 子类需要重写该方法，通过该类获取的 是否授权无法全部包括使用的SDK
@@ -41,9 +40,7 @@
  */
 + (BOOL)getNeedNetLicense;
 
-#else
 
-#endif
 
 
 @end

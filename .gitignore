@@ -65,12 +65,12 @@ iOSInjectionProject/
 
 # model .a
 
-megviifacepp*model
-*.a
+#megviifacepp*model
+#*.a
 
 # net account
 
-MGNetAccount.h
+#MGNetAccount.h
 
 # ignore folder
 *gitignore

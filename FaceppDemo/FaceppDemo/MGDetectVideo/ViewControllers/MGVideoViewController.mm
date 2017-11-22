@@ -246,7 +246,6 @@
         __unsafe_unretained MGVideoViewController *weakSelf = self;
         dispatch_async(_drawFaceQueue, ^{
             if (modelArray) {
-//                CVPixelBufferRef renderedPixelBuffer = [weakSelf.renderer copyRenderedPixelBuffer:sampleBuffer faceModelArray:modelArray drawLandmark:!self.faceCompare];
                 CVPixelBufferRef renderedPixelBuffer = [weakSelf.renderer drawPixelBuffer:sampleBuffer custumDrawing:^{
                     if (!weakSelf.faceCompare) {
                         [weakSelf.renderer drawFaceLandMark:modelArray];
@@ -256,8 +255,7 @@
                     }
                 }];
                 
-                if (renderedPixelBuffer)
-                {
+                if (renderedPixelBuffer) {
                     [weakSelf.previewView displayPixelBuffer:renderedPixelBuffer];
                     
                     CFRelease(sampleBuffer);
@@ -284,7 +282,6 @@
                 CVPixelBufferRef renderedPixelBuffer = [weakSelf.renderer drawPixelBuffer:sampleBuffer custumDrawing:^{
                     for (MGDetectRectInfo *rectInfo in rects) {
                         [weakSelf.renderer drawRect:rectInfo.rect];
-//                        [weakSelf.renderer drawFaceWithRect:rectInfo.rect];
                     }
                 }];
                 
@@ -305,13 +302,11 @@
 - (void)rotateAndDetectSampleBuffer:(CMSampleBufferRef)sampleBuffer{
     
     if (self.markManager.status != MGMarkWorking) {
-        
         CMSampleBufferRef detectSampleBufferRef = NULL;
         CMSampleBufferCreateCopy(kCFAllocatorDefault, sampleBuffer, &detectSampleBufferRef);
         
         /* 进入检测人脸专用线程 */
         dispatch_async(_detectImageQueue, ^{
-            
             @autoreleasepool {
                 
                 if ([self.markManager getFaceppConfig].orientation != self.orientation) {
@@ -320,162 +315,181 @@
                     }];
                 }
                 
-                MGImageData *imageData = [[MGImageData alloc] initWithSampleBuffer:detectSampleBufferRef];
-                
-                [self.markManager beginDetectionFrame];
-                
-                NSDate *date1, *date2, *date3;
-                date1 = [NSDate date];
-                
-                NSArray *tempArray = [self.markManager detectWithImageData:imageData];
-                
-                date2 = [NSDate date];
-                double timeUsed = [date2 timeIntervalSinceDate:date1] * 1000;
-                
-                _allTime += timeUsed;
-                _count ++;
-//                NSLog(@"time = %f, 平均：%f, count = %ld",timeUsed, _allTime/_count, _count);
-                
-                MGFaceModelArray *faceModelArray = [[MGFaceModelArray alloc] init];
-                faceModelArray.getFaceInfo = self.faceInfo;
-                faceModelArray.faceArray = [NSMutableArray arrayWithArray:tempArray];
-                faceModelArray.timeUsed = timeUsed;
-                faceModelArray.get3DInfo = self.show3D;
-                faceModelArray.getFaceInfo = self.faceInfo;
-                [faceModelArray setDetectRect:self.detectRect];
-                
-                _currentFaceCount = faceModelArray.count;
-                NSMutableDictionary *faces = [NSMutableDictionary dictionary];
-                for (int i = 0; i < faceModelArray.count; i ++) {
-                    MGFaceInfo *faceInfo = faceModelArray.faceArray[i];
-                    [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:self.pointsNum];
-                    
-                    if (self.show3D) {
-#warning 0.4.6 以后版本不需要单独调用该方法
-                        //                    [self.markManager GetAttribute3D:faceInfo];
-                    }
-                    if (self.faceInfo && self.debug) {
-                        [self.markManager GetAttributeAgeGenderStatus:faceInfo];
-                        [self.markManager GetAttributeMouseStatus:faceInfo];
-                        [self.markManager GetAttributeEyeStatus:faceInfo];
-                        [self.markManager GetMinorityStatus:faceInfo];
-                        [self.markManager GetBlurnessStatus:faceInfo];
-                    }
-                    
-                    if (self.faceCompare) {
-                        [faces setObject:faceInfo forKey:[NSNumber numberWithInteger:faceInfo.trackID]];
-                    }
+                if (self.detectMode == MGFppDetectionModeDetectRect) {
+                    [self detectRectWithSampleBuffer:detectSampleBufferRef];
+                } else if (self.detectMode == MGFppDetectionModeTrackingRect) {
+                    [self trackRectWithSampleBuffer:detectSampleBufferRef];
+                } else {
+                    [self trackSampleBuffer:detectSampleBufferRef];
                 }
-                
-                if (self.faceCompare && faces.count > 0) {
-                    UIImage *image = [MGImage imageFromSampleBuffer:detectSampleBufferRef orientation:UIImageOrientationRightMirrored];
-                    [self compareFace:faces.allValues image:image];
-                    
-                    dispatch_sync(dispatch_get_main_queue(), ^{
-                        NSMutableArray *oldIds = [NSMutableArray array];
-                        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-                        for (NSNumber *num in self.trackId_name.allKeys) {
-                            if ([self.trackId_label.allKeys containsObject:num]) {
-                                UILabel *label = [self.trackId_label objectForKey:num];
-                                [self setLabelCenter:label faceInfo:[faces objectForKey:num] image:image];
-                                label.text = [self.trackId_name objectForKey:num];
-                                [oldIds addObject:num];
-                                [dict setObject:[self.trackId_label objectForKey:num] forKey:num];
-                            } else {
-                                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-                                label.textAlignment = NSTextAlignmentCenter;
-                                label.textColor = [UIColor colorWithRed:0 green:181/255. blue:232/255. alpha:1];
-                                label.font = [UIFont systemFontOfSize:20];
-                                [self setLabelCenter:label faceInfo:[faces objectForKey:num] image:image];
-                                label.text = [self.trackId_name objectForKey:num];
-                                [self.view addSubview:label];
-                                [dict setObject:label forKey:num];
-                            }
-                        }
-                        
-                        for (NSNumber *num in oldIds) {
-                            [self.trackId_label removeObjectForKey:num];
-                        }
-                        for (UILabel *label in self.trackId_label.allValues) {
-                            [label removeFromSuperview];
-                        }
-                        [self.trackId_label removeAllObjects];
-                        self.trackId_label = dict;
-                    });
-                } else if (self.faceCompare) {
-                    dispatch_sync(dispatch_get_main_queue(), ^{
-                        for (UILabel *label in self.trackId_label.allValues) {
-                            [label removeFromSuperview];
-                        }
-                        [self.trackId_label removeAllObjects];
-                    });
-                }
-                
-                
-                date3 = [NSDate date];
-                double timeUsed3D = [date3 timeIntervalSinceDate:date2] * 1000;
-                faceModelArray.AttributeTimeUsed = timeUsed3D;
-                
-                [self.markManager endDetectionFrame];
-                
-                [self displayWithfaceModel:faceModelArray SampleBuffer:detectSampleBufferRef];
             }
-            
         });
     }
 }
 
-/** 检测人脸框 */
-- (void)detectRectWithSampleBuffer:(CMSampleBufferRef)sampleBuffer {
-    if (self.markManager.status == MGMarkWorking)  return;
-        
-    CMSampleBufferRef detectSampleBufferRef = NULL;
-    CMSampleBufferCreateCopy(kCFAllocatorDefault, sampleBuffer, &detectSampleBufferRef);
+- (void)trackSampleBuffer:(CMSampleBufferRef)detectSampleBufferRef {
+
+    MGImageData *imageData = [[MGImageData alloc] initWithSampleBuffer:detectSampleBufferRef];
     
-    /* 进入检测人脸专用线程 */
-    dispatch_async(_detectImageQueue, ^{
+    [self.markManager beginDetectionFrame];
+    
+    NSDate *date1, *date2, *date3;
+    date1 = [NSDate date];
+    
+    NSArray *tempArray = [self.markManager detectWithImageData:imageData];
+    
+    date2 = [NSDate date];
+    double timeUsed = [date2 timeIntervalSinceDate:date1] * 1000;
+    
+    _allTime += timeUsed;
+    _count ++;
+    NSLog(@"time = %f, 平均：%f, count = %ld",timeUsed, _allTime/_count, _count);
+    
+    MGFaceModelArray *faceModelArray = [[MGFaceModelArray alloc] init];
+    faceModelArray.getFaceInfo = self.faceInfo;
+    faceModelArray.faceArray = [NSMutableArray arrayWithArray:tempArray];
+    faceModelArray.timeUsed = timeUsed;
+    faceModelArray.get3DInfo = self.show3D;
+    faceModelArray.getFaceInfo = self.faceInfo;
+    [faceModelArray setDetectRect:self.detectRect];
+    
+    _currentFaceCount = faceModelArray.count;
+    NSMutableDictionary *faces = [NSMutableDictionary dictionary];
+    for (int i = 0; i < faceModelArray.count; i ++) {
+        MGFaceInfo *faceInfo = faceModelArray.faceArray[i];
+        [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:self.pointsNum];
         
-        @autoreleasepool {
-            
-            if ([self.markManager getFaceppConfig].orientation != self.orientation) {
-                [self.markManager updateFaceppSetting:^(MGFaceppConfig *config) {
-                    config.orientation = self.orientation;
-                }];
-            }
-            
-            MGImageData *imageData = [[MGImageData alloc] initWithSampleBuffer:detectSampleBufferRef];
-            
-            [self.markManager beginDetectionFrame];
-            
-            NSDate *date1, *date2;
-            date1 = [NSDate date];
-            
-            NSInteger faceCount = [self.markManager getFaceNumberWithImageData:imageData];
-            
-            date2 = [NSDate date];
-            double timeUsed = [date2 timeIntervalSinceDate:date1] * 1000;
-            
-            _allTime += timeUsed;
-            _count ++;
-//                            NSLog(@"time = %f, 平均：%f, count = %ld",timeUsed, _allTime/_count, _count);
-            
-            NSMutableArray *mutableArr = [NSMutableArray array];
-            for (int i = 0; i < faceCount; i ++) {
-                MGDetectRectInfo *detectRect = [self.markManager GetRectAtIndex:i isSmooth:YES];
-                if (detectRect) {
-                    [mutableArr addObject:detectRect];
+        if (self.faceInfo && self.debug) {
+            [self.markManager GetAttributeAgeGenderStatus:faceInfo];
+            [self.markManager GetAttributeMouseStatus:faceInfo];
+            [self.markManager GetAttributeEyeStatus:faceInfo];
+            [self.markManager GetMinorityStatus:faceInfo];
+            [self.markManager GetBlurnessStatus:faceInfo];
+        }
+        
+        if (self.faceCompare) {
+            [faces setObject:faceInfo forKey:[NSNumber numberWithInteger:faceInfo.trackID]];
+        }
+    }
+    
+    if (self.faceCompare && faces.count > 0) {
+        UIImage *image = [MGImage imageFromSampleBuffer:detectSampleBufferRef orientation:UIImageOrientationRightMirrored];
+        [self compareFace:faces.allValues image:image];
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            NSMutableArray *oldIds = [NSMutableArray array];
+            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+            for (NSNumber *num in self.trackId_name.allKeys) {
+                if ([self.trackId_label.allKeys containsObject:num]) {
+                    UILabel *label = [self.trackId_label objectForKey:num];
+                    [self setLabelCenter:label faceInfo:[faces objectForKey:num] image:image];
+                    label.text = [self.trackId_name objectForKey:num];
+                    [oldIds addObject:num];
+                    [dict setObject:[self.trackId_label objectForKey:num] forKey:num];
+                } else {
+                    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+                    label.textAlignment = NSTextAlignmentCenter;
+                    label.textColor = [UIColor colorWithRed:0 green:181/255. blue:232/255. alpha:1];
+                    label.font = [UIFont systemFontOfSize:20];
+                    [self setLabelCenter:label faceInfo:[faces objectForKey:num] image:image];
+                    label.text = [self.trackId_name objectForKey:num];
+                    [self.view addSubview:label];
+                    [dict setObject:label forKey:num];
                 }
             }
             
-           
-            
-            [self.markManager endDetectionFrame];
-            
-            [self drawRects:mutableArr atSampleBuffer:detectSampleBufferRef];
-        }
-        
-    });
+            for (NSNumber *num in oldIds) {
+                [self.trackId_label removeObjectForKey:num];
+            }
+            for (UILabel *label in self.trackId_label.allValues) {
+                [label removeFromSuperview];
+            }
+            [self.trackId_label removeAllObjects];
+            self.trackId_label = dict;
+        });
+    } else if (self.faceCompare) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            for (UILabel *label in self.trackId_label.allValues) {
+                [label removeFromSuperview];
+            }
+            [self.trackId_label removeAllObjects];
+        });
+    }
     
+    
+    date3 = [NSDate date];
+    double timeUsed3D = [date3 timeIntervalSinceDate:date2] * 1000;
+    faceModelArray.AttributeTimeUsed = timeUsed3D;
+    
+    [self.markManager endDetectionFrame];
+    
+    [self displayWithfaceModel:faceModelArray SampleBuffer:detectSampleBufferRef];
+}
+
+- (void)trackRectWithSampleBuffer:(CMSampleBufferRef)detectSampleBufferRef {
+    MGImageData *imageData = [[MGImageData alloc] initWithSampleBuffer:detectSampleBufferRef];
+    
+    [self.markManager beginDetectionFrame];
+    
+    NSDate *date1, *date2;
+    date1 = [NSDate date];
+    
+    NSArray *tempArray = [self.markManager detectWithImageData:imageData];
+    
+    date2 = [NSDate date];
+    double timeUsed = [date2 timeIntervalSinceDate:date1] * 1000;
+    
+    _allTime += timeUsed;
+    _count ++;
+//    NSLog(@"time = %f, 平均：%f, count = %ld",timeUsed, _allTime/_count, _count);
+    
+    
+    NSMutableArray *mutableArr = [NSMutableArray array];
+    for (int i = 0; i < tempArray.count; i ++) {
+        MGDetectRectInfo *detectRect = [self.markManager GetRectAtIndex:i isSmooth:YES];
+        if (detectRect) {
+            [mutableArr addObject:detectRect];
+        }
+    }
+
+    
+    [self.markManager endDetectionFrame];
+    
+    [self drawRects:mutableArr atSampleBuffer:detectSampleBufferRef];
+}
+
+/** 检测人脸框 */
+- (void)detectRectWithSampleBuffer:(CMSampleBufferRef)detectSampleBufferRef {
+
+        MGImageData *imageData = [[MGImageData alloc] initWithSampleBuffer:detectSampleBufferRef];
+    
+        [self.markManager beginDetectionFrame];
+    
+        NSDate *date1, *date2;
+        date1 = [NSDate date];
+    
+        NSInteger faceCount = [self.markManager getFaceNumberWithImageData:imageData];
+    
+        date2 = [NSDate date];
+        double timeUsed = [date2 timeIntervalSinceDate:date1] * 1000;
+    
+        _allTime += timeUsed;
+        _count ++;
+//        NSLog(@"time = %f, 平均：%f, count = %ld",timeUsed, _allTime/_count, _count);
+    
+        NSMutableArray *mutableArr = [NSMutableArray array];
+        for (int i = 0; i < faceCount; i ++) {
+            MGDetectRectInfo *detectRect = [self.markManager GetRectAtIndex:i isSmooth:NO];
+            if (detectRect) {
+                [mutableArr addObject:detectRect];
+            }
+        }
+    
+    
+    
+        [self.markManager endDetectionFrame];
+    
+        [self drawRects:mutableArr atSampleBuffer:detectSampleBufferRef];
 }
 
 - (void)setLabelCenter:(UILabel *)label faceInfo:(MGFaceInfo *)faceInfo image:(UIImage *)image{
@@ -583,12 +597,8 @@
         if (self.hasVideoFormatDescription == NO) {
             [self setupVideoPipelineWithInputFormatDescription:[self.videoManager formatDescription]];
         }
-    
-        if (self.detectMode == MGFppDetectionModeDetectRect) {
-            [self detectRectWithSampleBuffer:sampleBuffer];
-        } else {
-            [self rotateAndDetectSampleBuffer:sampleBuffer];
-        }
+        
+        [self rotateAndDetectSampleBuffer:sampleBuffer];
     }
 }
 

@@ -40,12 +40,19 @@ typedef NS_OPTIONS(NSInteger, MGFaceppAbilityType) {
                                   @(1U<<7)  : MG_ABILITY_KEY_TRACK_FAST,
                                   @(1U<<8)  : MG_ABILITY_KEY_TRACK_ROBUST,
                                   @(1U<<9)  : MG_ABILITY_KEY_DETECT_RECT,
+//                                  10
+//                                  11
                                   @(1U<<12) : MG_ABILITY_KEY_DETECT,
                                   @(1U<<13) : MG_ABILITY_KEY_IDCARD_QUALITY,
-                                  @(1U<<14) : MG_ABILITY_KEY_TRACK};
+                                  @(1U<<14) : MG_ABILITY_KEY_TRACK,
+                                  @(1U<<15) : MG_ABILITY_KEY_TRACK_RECT,
+                                  };
 
     NSMutableArray *names = [NSMutableArray array];
-    for (int i = 0; i < 15; i++) {
+    for (int i = 0; i < 16; i++) {
+        if (i==10 || i==11) {
+            continue;
+        }
         if (ability & 1<<i) {
             [names addObject:abilityName[@(1<<i)]];
         }

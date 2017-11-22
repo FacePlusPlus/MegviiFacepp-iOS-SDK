@@ -441,7 +441,7 @@
     
     _allTime += timeUsed;
     _count ++;
-//    NSLog(@"time = %f, 平均：%f, count = %ld",timeUsed, _allTime/_count, _count);
+    NSLog(@"time = %f, 平均：%f, count = %ld",timeUsed, _allTime/_count, _count);
     
     
     NSMutableArray *mutableArr = [NSMutableArray array];

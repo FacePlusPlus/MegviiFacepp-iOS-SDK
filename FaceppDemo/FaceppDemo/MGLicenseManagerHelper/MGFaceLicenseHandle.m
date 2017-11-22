@@ -55,7 +55,7 @@
                                          sdkType:MGSDKTypeLandmark
                                           apiKey:MG_LICENSE_KEY
                                        apiSecret:MG_LICENSE_SECRET
-                                     apiDuration:MGAPIDurationMonth
+                                     apiDuration:MGAPIDurationDay
                                        URLString:MGLicenseURL_CN
                                           finish:^(bool License, NSError *error) {
                                               if (error) {

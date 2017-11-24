@@ -7,13 +7,10 @@
  */
 
 #import "MGOpenGLRenderer.h"
-
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
-
 #import "GLESUtils.h"
-
-#import "YTMacro.h"
+#import "MGHeader.h"
 #import "MGFaceModelArray.h"
 
 @interface MGOpenGLRenderer ()
@@ -142,91 +139,258 @@
 	[self deleteBuffers];
 }
 
-- (CVPixelBufferRef )copyRenderedPixelBuffer:(CMSampleBufferRef)sampleBufferRef faceModelArray:(MGFaceModelArray *)modelArray drawLandmark:(BOOL)drawLandmark
+//- (CVPixelBufferRef )copyRenderedPixelBuffer:(CMSampleBufferRef)sampleBufferRef faceModelArray:(MGFaceModelArray *)modelArray drawLandmark:(BOOL)drawLandmark
+//{
+//    CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBufferRef);
+//
+//    if ( _offscreenBufferHandle == 0 ) {
+//        @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Unintialized buffer" userInfo:nil];
+//        return nil;
+//    }
+//
+//    if ( pixelBuffer == NULL ) {
+//        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"NULL pixel buffer" userInfo:nil];
+//        return nil;
+//    }
+//
+//    const CMVideoDimensions srcDimensions = { (int32_t)CVPixelBufferGetWidth(pixelBuffer), (int32_t)CVPixelBufferGetHeight(pixelBuffer) };
+//    const CMVideoDimensions dstDimensions = CMVideoFormatDescriptionGetDimensions( _outputFormatDescription );
+//
+//    _videoFrameW = dstDimensions.width;
+//    _videoFrameH = dstDimensions.height;
+//
+//    if ( _videoFrameW != _videoFrameW || _videoFrameH != _videoFrameH ) {
+//        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Invalid pixel buffer dimensions" userInfo:nil];
+//        return nil;
+//    }
+//
+//    if ( CVPixelBufferGetPixelFormatType( pixelBuffer ) != kCVPixelFormatType_32BGRA ) {
+//        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Invalid pixel buffer format" userInfo:nil];
+//        return nil;
+//    }
+//
+//    EAGLContext *oldContext = [EAGLContext currentContext];
+//    if ( oldContext != _oglContext ) {
+//        if ( ! [EAGLContext setCurrentContext:_oglContext] ) {
+//            @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Problem with OpenGL context" userInfo:nil];
+//            return nil;
+//        }
+//    }
+//
+//    CVReturn err = noErr;
+//    CVOpenGLESTextureRef srcTexture = NULL, dstTexture = NULL;
+//    CVPixelBufferRef dstPixelBuffer = NULL;
+//
+//    err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
+//                                                       _textureCache,
+//                                                       pixelBuffer,
+//                                                       NULL,
+//                                                       GL_TEXTURE_2D,
+//                                                       GL_RGBA,
+//                                                       _videoFrameW, _videoFrameH,
+//                                                       GL_BGRA,
+//                                                       GL_UNSIGNED_BYTE,
+//                                                       0,
+//                                                       &srcTexture );
+//    if ( ! srcTexture || err ) {
+//        NSLog( @"Error at CVOpenGLESTextureCacheCreateTextureFromImage %d", err );
+//        goto bail;
+//    }
+//
+//    err = CVPixelBufferPoolCreatePixelBufferWithAuxAttributes( kCFAllocatorDefault, _bufferPool, _bufferPoolAuxAttributes, &dstPixelBuffer );
+//    if ( err == kCVReturnWouldExceedAllocationThreshold ) {
+//        // Flush the texture cache to potentially release the retained buffers and try again to create a pixel buffer
+//        CVOpenGLESTextureCacheFlush( _renderTextureCache, 0 );
+//        err = CVPixelBufferPoolCreatePixelBufferWithAuxAttributes( kCFAllocatorDefault, _bufferPool, _bufferPoolAuxAttributes, &dstPixelBuffer );
+//    }
+//    if ( err ) {
+//        if ( err == kCVReturnWouldExceedAllocationThreshold ) {
+//            NSLog( @"Pool is out of buffers, dropping frame" );
+//        }
+//        else {
+//            NSLog( @"Error at CVPixelBufferPoolCreatePixelBuffer %d", err );
+//        }
+//        goto bail;
+//    }
+//
+//    err = CVOpenGLESTextureCacheCreateTextureFromImage( kCFAllocatorDefault,
+//                                                       _renderTextureCache,
+//                                                       dstPixelBuffer,
+//                                                       NULL,
+//                                                       GL_TEXTURE_2D,
+//                                                       GL_RGBA,
+//                                                       _videoFrameW, _videoFrameH,
+//                                                       GL_BGRA,
+//                                                       GL_UNSIGNED_BYTE,
+//                                                       0,
+//                                                       &dstTexture );
+//
+//    if ( ! dstTexture || err ) {
+//        NSLog( @"Error at CVOpenGLESTextureCacheCreateTextureFromImage %d", err );
+//        goto bail;
+//    }
+//
+//    glBindFramebuffer( GL_FRAMEBUFFER, _offscreenBufferHandle );
+//    glViewport( 0, 0, srcDimensions.width, srcDimensions.height );
+//    glUseProgram( _videoProgram );
+//
+//    // Set up our destination pixel buffer as the framebuffer's render target.
+//    glActiveTexture( GL_TEXTURE0 );
+//    glBindTexture( CVOpenGLESTextureGetTarget( dstTexture ), CVOpenGLESTextureGetName( dstTexture ) );
+//    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+//    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+//    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE );
+//    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE );
+//
+//    glFramebufferTexture2D( GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, CVOpenGLESTextureGetTarget( dstTexture ), CVOpenGLESTextureGetName( dstTexture ), 0 );
+//
+//    // Render our source pixel buffer.
+//    glActiveTexture( GL_TEXTURE1 );
+//    glBindTexture( CVOpenGLESTextureGetTarget( srcTexture ), CVOpenGLESTextureGetName( srcTexture ) );
+//    glUniform1i(_frame, 1 );
+//
+//    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+//    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+//    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+//
+//    glVertexAttribPointer(ATTRIB_VERTEX, 2, GL_FLOAT, 0, 0, squareVertices);
+//    glEnableVertexAttribArray( ATTRIB_VERTEX );
+//
+//    glVertexAttribPointer(ATTRIB_TEXTUREPOSITON, 2, GL_FLOAT, 0, 0, textureVertices);
+//    glEnableVertexAttribArray(ATTRIB_TEXTUREPOSITON );
+//    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+//
+//    glBindTexture( CVOpenGLESTextureGetTarget( srcTexture ), 0 );
+//    glBindTexture( CVOpenGLESTextureGetTarget( dstTexture ), 0 );
+//
+//    if (modelArray && drawLandmark){
+//        /* 绘制人脸关键点 */
+//        glActiveTexture(GL_TEXTURE2);
+//        glUseProgram(_faceProgram);
+//
+//        [self drawFaceWithRect:modelArray.detectRect];
+//        for (int i =0; i < modelArray.count; i++) {
+//            MGFaceInfo *model = [modelArray modelWithIndex:i];
+//            [self drawFacePointer:model.points faceRect:model.rect];
+//        }
+//
+//
+//        if (self.show3DView == YES) {
+//            if (modelArray.count >= 1) {
+//                /* 绘制人脸 3D 图层 */
+//                glActiveTexture(GL_TEXTURE3);
+//                glUseProgram(_face3DProgram);
+//
+//                MGFaceInfo *firstInfo = [modelArray modelWithIndex:0];
+//                [self drawTriConeX:-firstInfo.pitch Y:-firstInfo.yaw Z:-firstInfo.roll];
+//            }
+//        }
+//    }
+//
+//    // Make sure that outstanding GL commands which render to the destination pixel buffer have been submitted.
+//    // AVAssetWriter, AVSampleBufferDisplayLayer, and GL will block until the rendering is complete when sourcing from this pixel buffer.
+//    glFlush();
+//
+//bail:
+//    if ( oldContext != _oglContext ) {
+//        [EAGLContext setCurrentContext:oldContext];
+//    }
+//    if ( srcTexture ) {
+//        CFRelease( srcTexture );
+//    }
+//    if ( dstTexture ) {
+//        CFRelease( dstTexture );
+//    }
+//
+//    return dstPixelBuffer;
+//}
+
+- (CVPixelBufferRef )drawPixelBuffer:(CMSampleBufferRef)sampleBufferRef custumDrawing:(void (^)(void))draw
 {
     CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBufferRef);
     
-	if ( _offscreenBufferHandle == 0 ) {
-		@throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Unintialized buffer" userInfo:nil];
-		return nil;
-	}
-	
-	if ( pixelBuffer == NULL ) {
-		@throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"NULL pixel buffer" userInfo:nil];
-		return nil;
-	}
-	
-	const CMVideoDimensions srcDimensions = { (int32_t)CVPixelBufferGetWidth(pixelBuffer), (int32_t)CVPixelBufferGetHeight(pixelBuffer) };
-	const CMVideoDimensions dstDimensions = CMVideoFormatDescriptionGetDimensions( _outputFormatDescription );
+    if ( _offscreenBufferHandle == 0 ) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Unintialized buffer" userInfo:nil];
+        return nil;
+    }
+    
+    if ( pixelBuffer == NULL ) {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"NULL pixel buffer" userInfo:nil];
+        return nil;
+    }
+    
+    const CMVideoDimensions srcDimensions = { (int32_t)CVPixelBufferGetWidth(pixelBuffer), (int32_t)CVPixelBufferGetHeight(pixelBuffer) };
+    const CMVideoDimensions dstDimensions = CMVideoFormatDescriptionGetDimensions( _outputFormatDescription );
     
     _videoFrameW = dstDimensions.width;
     _videoFrameH = dstDimensions.height;
     
-	if ( _videoFrameW != _videoFrameW || _videoFrameH != _videoFrameH ) {
-		@throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Invalid pixel buffer dimensions" userInfo:nil];
-		return nil;
-	}
-	
-	if ( CVPixelBufferGetPixelFormatType( pixelBuffer ) != kCVPixelFormatType_32BGRA ) {
-		@throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Invalid pixel buffer format" userInfo:nil];
-		return nil;
-	}
-	
-	EAGLContext *oldContext = [EAGLContext currentContext];
-	if ( oldContext != _oglContext ) {
-		if ( ! [EAGLContext setCurrentContext:_oglContext] ) {
-			@throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Problem with OpenGL context" userInfo:nil];
-			return nil;
-		}
-	}
-	
-	CVReturn err = noErr;
+    if ( _videoFrameW != _videoFrameW || _videoFrameH != _videoFrameH ) {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Invalid pixel buffer dimensions" userInfo:nil];
+        return nil;
+    }
+    
+    if ( CVPixelBufferGetPixelFormatType( pixelBuffer ) != kCVPixelFormatType_32BGRA ) {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Invalid pixel buffer format" userInfo:nil];
+        return nil;
+    }
+    
+    EAGLContext *oldContext = [EAGLContext currentContext];
+    if ( oldContext != _oglContext ) {
+        if ( ! [EAGLContext setCurrentContext:_oglContext] ) {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Problem with OpenGL context" userInfo:nil];
+            return nil;
+        }
+    }
+    
+    CVReturn err = noErr;
     CVOpenGLESTextureRef srcTexture = NULL, dstTexture = NULL;
-	CVPixelBufferRef dstPixelBuffer = NULL;
-	
-	err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
-													   _textureCache,
-													   pixelBuffer,
-													   NULL,
-													   GL_TEXTURE_2D,
-													   GL_RGBA,
-													   _videoFrameW, _videoFrameH,
-													   GL_BGRA,
-													   GL_UNSIGNED_BYTE,
-													   0,
-													   &srcTexture );
+    CVPixelBufferRef dstPixelBuffer = NULL;
+    
+    err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
+                                                       _textureCache,
+                                                       pixelBuffer,
+                                                       NULL,
+                                                       GL_TEXTURE_2D,
+                                                       GL_RGBA,
+                                                       _videoFrameW, _videoFrameH,
+                                                       GL_BGRA,
+                                                       GL_UNSIGNED_BYTE,
+                                                       0,
+                                                       &srcTexture );
     if ( ! srcTexture || err ) {
         NSLog( @"Error at CVOpenGLESTextureCacheCreateTextureFromImage %d", err );
         goto bail;
     }
     
-	err = CVPixelBufferPoolCreatePixelBufferWithAuxAttributes( kCFAllocatorDefault, _bufferPool, _bufferPoolAuxAttributes, &dstPixelBuffer );
-	if ( err == kCVReturnWouldExceedAllocationThreshold ) {
-		// Flush the texture cache to potentially release the retained buffers and try again to create a pixel buffer
-		CVOpenGLESTextureCacheFlush( _renderTextureCache, 0 );
-		err = CVPixelBufferPoolCreatePixelBufferWithAuxAttributes( kCFAllocatorDefault, _bufferPool, _bufferPoolAuxAttributes, &dstPixelBuffer );
-	}
-	if ( err ) {
-		if ( err == kCVReturnWouldExceedAllocationThreshold ) {
-			NSLog( @"Pool is out of buffers, dropping frame" );
-		}
-		else {
-			NSLog( @"Error at CVPixelBufferPoolCreatePixelBuffer %d", err );
-		}
-		goto bail;
-	}
-
-	err = CVOpenGLESTextureCacheCreateTextureFromImage( kCFAllocatorDefault,
-													   _renderTextureCache,
-													   dstPixelBuffer,
-													   NULL,
-													   GL_TEXTURE_2D,
-													   GL_RGBA,
-													   _videoFrameW, _videoFrameH,
-													   GL_BGRA,
-													   GL_UNSIGNED_BYTE,
-													   0,
-													   &dstTexture );
+    err = CVPixelBufferPoolCreatePixelBufferWithAuxAttributes( kCFAllocatorDefault, _bufferPool, _bufferPoolAuxAttributes, &dstPixelBuffer );
+    if ( err == kCVReturnWouldExceedAllocationThreshold ) {
+        // Flush the texture cache to potentially release the retained buffers and try again to create a pixel buffer
+        CVOpenGLESTextureCacheFlush( _renderTextureCache, 0 );
+        err = CVPixelBufferPoolCreatePixelBufferWithAuxAttributes( kCFAllocatorDefault, _bufferPool, _bufferPoolAuxAttributes, &dstPixelBuffer );
+    }
+    if ( err ) {
+        if ( err == kCVReturnWouldExceedAllocationThreshold ) {
+            NSLog( @"Pool is out of buffers, dropping frame" );
+        }
+        else {
+            NSLog( @"Error at CVPixelBufferPoolCreatePixelBuffer %d", err );
+        }
+        goto bail;
+    }
+    
+    err = CVOpenGLESTextureCacheCreateTextureFromImage( kCFAllocatorDefault,
+                                                       _renderTextureCache,
+                                                       dstPixelBuffer,
+                                                       NULL,
+                                                       GL_TEXTURE_2D,
+                                                       GL_RGBA,
+                                                       _videoFrameW, _videoFrameH,
+                                                       GL_BGRA,
+                                                       GL_UNSIGNED_BYTE,
+                                                       0,
+                                                       &dstTexture );
     
     if ( ! dstTexture || err ) {
         NSLog( @"Error at CVOpenGLESTextureCacheCreateTextureFromImage %d", err );
@@ -234,11 +398,11 @@
     }
     
     glBindFramebuffer( GL_FRAMEBUFFER, _offscreenBufferHandle );
-	glViewport( 0, 0, srcDimensions.width, srcDimensions.height );
-	glUseProgram( _videoProgram );
-	
-	// Set up our destination pixel buffer as the framebuffer's render target.
-	glActiveTexture( GL_TEXTURE0 );
+    glViewport( 0, 0, srcDimensions.width, srcDimensions.height );
+    glUseProgram( _videoProgram );
+    
+    // Set up our destination pixel buffer as the framebuffer's render target.
+    glActiveTexture( GL_TEXTURE0 );
     glBindTexture( CVOpenGLESTextureGetTarget( dstTexture ), CVOpenGLESTextureGetName( dstTexture ) );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
@@ -246,59 +410,63 @@
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE );
     
     glFramebufferTexture2D( GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, CVOpenGLESTextureGetTarget( dstTexture ), CVOpenGLESTextureGetName( dstTexture ), 0 );
-
-	// Render our source pixel buffer.
+    
+    // Render our source pixel buffer.
     glActiveTexture( GL_TEXTURE1 );
-	glBindTexture( CVOpenGLESTextureGetTarget( srcTexture ), CVOpenGLESTextureGetName( srcTexture ) );
+    glBindTexture( CVOpenGLESTextureGetTarget( srcTexture ), CVOpenGLESTextureGetName( srcTexture ) );
     glUniform1i(_frame, 1 );
-	
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     
-	glVertexAttribPointer(ATTRIB_VERTEX, 2, GL_FLOAT, 0, 0, squareVertices);
-	glEnableVertexAttribArray( ATTRIB_VERTEX );
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     
-	glVertexAttribPointer(ATTRIB_TEXTUREPOSITON, 2, GL_FLOAT, 0, 0, textureVertices);
-	glEnableVertexAttribArray(ATTRIB_TEXTUREPOSITON );
+    glVertexAttribPointer(ATTRIB_VERTEX, 2, GL_FLOAT, 0, 0, squareVertices);
+    glEnableVertexAttribArray( ATTRIB_VERTEX );
+    
+    glVertexAttribPointer(ATTRIB_TEXTUREPOSITON, 2, GL_FLOAT, 0, 0, textureVertices);
+    glEnableVertexAttribArray(ATTRIB_TEXTUREPOSITON );
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     
     glBindTexture( CVOpenGLESTextureGetTarget( srcTexture ), 0 );
     glBindTexture( CVOpenGLESTextureGetTarget( dstTexture ), 0 );
     
-    if (modelArray && drawLandmark){
-        /* 绘制人脸关键点 */
-        glActiveTexture(GL_TEXTURE2);
-        glUseProgram(_faceProgram);
-        
-        [self drawFaceWithRect:modelArray.detectRect];
-        for (int i =0; i < modelArray.count; i++) {
-            MGFaceInfo *model = [modelArray modelWithIndex:i];
-            [self drawFacePointer:model.points faceRect:model.rect];
-        }
-        
-        
-        if (self.show3DView == YES) {
-            if (modelArray.count >= 1) {
-                /* 绘制人脸 3D 图层 */
-                glActiveTexture(GL_TEXTURE3);
-                glUseProgram(_face3DProgram);
-                
-                MGFaceInfo *firstInfo = [modelArray modelWithIndex:0];
-                [self drawTriConeX:-firstInfo.pitch Y:-firstInfo.yaw Z:-firstInfo.roll];
-            }
-        }
+    if (draw != nil) {
+        draw();
     }
-
-	// Make sure that outstanding GL commands which render to the destination pixel buffer have been submitted.
-	// AVAssetWriter, AVSampleBufferDisplayLayer, and GL will block until the rendering is complete when sourcing from this pixel buffer.
-	glFlush();
+    
+//    if (modelArray && drawLandmark){
+//        /* 绘制人脸关键点 */
+//        glActiveTexture(GL_TEXTURE2);
+//        glUseProgram(_faceProgram);
+//
+//        [self drawFaceWithRect:modelArray.detectRect];
+//        for (int i =0; i < modelArray.count; i++) {
+//            MGFaceInfo *model = [modelArray modelWithIndex:i];
+//            [self drawFacePointer:model.points faceRect:model.rect];
+//        }
+//
+//
+//        if (self.show3DView == YES) {
+//            if (modelArray.count >= 1) {
+//                /* 绘制人脸 3D 图层 */
+//                glActiveTexture(GL_TEXTURE3);
+//                glUseProgram(_face3DProgram);
+//
+//                MGFaceInfo *firstInfo = [modelArray modelWithIndex:0];
+//                [self drawTriConeX:-firstInfo.pitch Y:-firstInfo.yaw Z:-firstInfo.roll];
+//            }
+//        }
+//    }
+    
+    // Make sure that outstanding GL commands which render to the destination pixel buffer have been submitted.
+    // AVAssetWriter, AVSampleBufferDisplayLayer, and GL will block until the rendering is complete when sourcing from this pixel buffer.
+    glFlush();
     
 bail:
-	if ( oldContext != _oglContext ) {
-		[EAGLContext setCurrentContext:oldContext];
-	}
+    if ( oldContext != _oglContext ) {
+        [EAGLContext setCurrentContext:oldContext];
+    }
     if ( srcTexture ) {
         CFRelease( srcTexture );
     }
@@ -306,7 +474,32 @@ bail:
         CFRelease( dstTexture );
     }
     
-	return dstPixelBuffer;
+    return dstPixelBuffer;
+}
+
+- (void)drawFaceLandMark:(MGFaceModelArray *)faces {
+    if (!faces || faces.count == 0) return;
+    
+    glActiveTexture(GL_TEXTURE2);
+    glUseProgram(_faceProgram);
+    
+//    [self drawRect:faces.detectRect];
+    for (int i =0; i < faces.count; i++) {
+        MGFaceInfo *model = [faces modelWithIndex:i];
+        [self drawFacePointer:model.points faceRect:model.rect];
+    }
+    
+    
+    if (self.show3DView == YES) {
+        if (faces.count >= 1) {
+            /* 绘制人脸 3D 图层 */
+            glActiveTexture(GL_TEXTURE3);
+            glUseProgram(_face3DProgram);
+            
+            MGFaceInfo *firstInfo = [faces modelWithIndex:0];
+            [self drawTriConeX:-firstInfo.pitch Y:-firstInfo.yaw Z:-firstInfo.roll];
+        }
+    }
 }
 
 - (CMFormatDescriptionRef)outputFormatDescription
@@ -485,8 +678,36 @@ static void preallocatePixelBuffersInPool( CVPixelBufferPoolRef pool, CFDictiona
 	}
 }
 
+
 #pragma mark - 绘制矩形
--(void)drawFaceWithRect:(CGRect )rect{
+- (void)drawRect:(CGRect )rect {
+    if (CGRectIsNull(rect))  return;
+    
+    GLfloat lineWidth = _videoFrameH/480.0 * 3.0;
+    glLineWidth(lineWidth);
+    
+    GLfloat top = (rect.origin.y - _videoFrameH/2) / (_videoFrameH/2);
+    GLfloat left = (_videoFrameW/2 - rect.origin.x) / (_videoFrameW/2);
+    GLfloat right = (_videoFrameW/2 - (rect.origin.x+rect.size.width)) / (_videoFrameW/2);
+    GLfloat bottom = ((rect.origin.y + rect.size.height) - _videoFrameH/2) / (_videoFrameH/2);
+    
+    GLfloat tempFace[]= {
+        right, top, 0.0f, // right  top
+        left, top, 0.0f, // left  top
+        left,  bottom, 0.0f, // left bottom
+        right,  bottom, 0.0f, // right Bottom
+    };
+    GLubyte indices[] = {
+        0, 1, 1, 2, 2, 3, 3, 0
+    };
+    
+    glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 0, tempFace );
+    glEnableVertexAttribArray(0 );
+    glDrawElements(GL_LINES, sizeof(indices)/sizeof(GLubyte), GL_UNSIGNED_BYTE, indices);
+}
+
+#pragma mark - 绘制关键点
+- (void)drawFaceWithRect:(CGRect)rect {
     if (CGRectIsNull(rect))  return;
     
     GLfloat lineWidth = _videoFrameH/480.0 * 3.0;
@@ -604,7 +825,18 @@ static void rotatePoint3f(float *points, int offset, float angle/*radis*/, int x
     }
 }
 
-
+- (void)setUpOutSampleBuffer:(CGSize)outSize devicePosition:(AVCaptureDevicePosition)devicePosition{
+    [EAGLContext setCurrentContext:_oglContext];
+    
+    CMVideoDimensions dimensions;
+    dimensions.width = outSize.width;
+    dimensions.height = outSize.height;
+    
+    [self deleteBuffers];
+    if ( ! [self initializeBuffersWithOutputDimensions:dimensions retainedBufferCountHint:6] ) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Problem preparing renderer." userInfo:nil];
+    }
+}
 
 
 

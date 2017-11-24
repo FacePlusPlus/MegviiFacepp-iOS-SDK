@@ -2,7 +2,7 @@
 //  MGFacepp.m
 //  LandMask
 //
-//  Created by 张英堂 on 16/9/5.
+//  Created by Megvii on 16/9/5.
 //  Copyright © 2016年 megvii. All rights reserved.
 //
 
@@ -12,38 +12,25 @@
 #import "MGFaceInfo_Creat.h"
 #import "MGAlgorithmInfo_Creat.h"
 
-@interface MGFacepp ()
-{
+@interface MGFacepp () {
     MG_FPP_APIHANDLE _apiHandle;
     MG_FPP_IMAGEHANDLE _imageHandle;
-    
-    int32_t _tempLength;
 }
-@property (nonatomic, strong) MGImageData *tempImageData;
 
+@property (nonatomic, strong) MGImageData *tempImageData;
 @property (nonatomic, assign) BOOL currentFrameIsImage;
 @property (nonatomic, assign) BOOL canDetect;
-
 @property (nonatomic, strong, getter = getFaceppConfig) MGFaceppConfig *faceppConfig;
+@property (nonatomic, assign) MGPixelFormatType pixelFormatType; // 设置视频流格式，默认 PixelFormatTypeRGBA
 
-/** 设置视频流格式，默认 PixelFormatTypeRGBA */
-@property (nonatomic, assign) MGPixelFormatType pixelFormatType;
+@property (nonatomic, assign) int iwidth;
+@property (nonatomic, assign) int iHeight;
 
 @end
 
 @implementation MGFacepp
 
-- (MGFaceppConfig *)getFaceppConfig{
-    return _faceppConfig;
-}
-
--(void)dealloc{
-    mg_facepp.ReleaseApiHandle(_apiHandle);
-    mg_facepp.ReleaseImageHandle(_imageHandle);
-}
-
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         [NSException raise:@"提示！" format:@"请使用 MGFacepp initWithModel: 初始化方式！"];
@@ -51,13 +38,20 @@
     return self;
 }
 
-- (instancetype)initWithModel:(NSData *)modelData faceppSetting:(void(^)(MGFaceppConfig *config))config{
+- (instancetype)initWithModel:(NSData *)modelData maxFaceCount:(NSInteger)maxFaceCount faceppSetting:(void(^)(MGFaceppConfig *config))config {
     self = [super init];
     if (self) {
+        MGAlgorithmInfo *info = [MGFacepp getSDKAlgorithmInfoWithModel:modelData];
+        if (![self isMapSDKBundleID:info.bundleId]) {
+            NSString *currentBundleID = [[NSBundle mainBundle] bundleIdentifier];
+            NSLog(@"error: Bundle id error \r\n your APP bundle id: %@ \r\n SDK bundle id: %@",currentBundleID, info.bundleId);
+        }
+        
+        NSAssert(modelData.length > 0, @"modelData.length == 0");
         if (modelData.length > 0) {
             const void *modelBytes = modelData.bytes;
-            MG_RETCODE initCode = mg_facepp.CreateApiHandle((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &_apiHandle);
-            
+            MG_RETCODE initCode = mg_facepp.CreateApiHandleWithMaxFaceCount((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, (MG_INT32)maxFaceCount, &_apiHandle);
+//            NSAssert(MG_RETCODE_OK == initCode, @"modelData 与 SDK 不匹配");
             if (initCode != MG_RETCODE_OK) {
                 NSLog(@"[initWithModel:] 初始化失败，modelData 与 SDK 不匹配！，请检查后重试！errorCode:%zi", initCode);
                 return nil;
@@ -66,17 +60,18 @@
             self.faceppConfig = [[MGFaceppConfig alloc] init];
             [self updateFaceppSetting:config];
             
-            _tempLength = 0;
-        }else{
+        } else {
             NSLog(@"[initWithModel:] 初始化失败，无法读取 modelData，请检查！");
             return nil;
         }
         
         _status = MGMarkPrepareWork;
-        self.currentFrameIsImage = NO;
-        self.canDetect = NO;
     }
     return self;
+}
+
+- (instancetype)initWithModel:(NSData *)modelData faceppSetting:(void(^)(MGFaceppConfig *config))config {
+    return [self initWithModel:modelData maxFaceCount:0 faceppSetting:config];
 }
 
 - (BOOL)updateFaceppSetting:(void(^)(MGFaceppConfig *config))config{
@@ -99,7 +94,7 @@
         config.rotation = self.faceppConfig.orientation;
         config.detection_mode = [self getDetectModel:self.faceppConfig.detectionMode];
         config.roi = angle;
-        config.one_face_tracking = self.faceppConfig.oneFaceTracking;
+        config.face_confidence_filter = self.faceppConfig.faceConfidenceFilter;
         
         MG_RETCODE code = mg_facepp.SetDetectConfig(_apiHandle, &config);
         if (code == MG_RETCODE_OK) {
@@ -112,20 +107,22 @@
 - (MG_FPP_DETECTIONMODE)getDetectModel:(MGFppDetectionMode)detectionMode{
     MG_FPP_DETECTIONMODE model = MG_FPP_DETECTIONMODE_NORMAL;
     switch (self.faceppConfig.detectionMode) {
-        case MGFppDetectionModeNormal:
+        case MGFppDetectionModeDetect:
             model = MG_FPP_DETECTIONMODE_NORMAL;
             break;
         case MGFppDetectionModeTracking:
-            model = MG_FPP_DETECTIONMODE_TRACKING;
-            break;
-        case MGFppDetectionModeTrackingSmooth:
-            model = MG_FPP_DETECTIONMODE_TRACKING_SMOOTH;
+            NSLog(@"tracking 模式已经废弃，请使用 robust 模式");
+//            model = MG_FPP_DETECTIONMODE_TRACKING;
+            model = MG_FPP_DETECTIONMODE_TRACKING_ROBUST;
             break;
         case MGFppDetectionModeTrackingFast:
             model = MG_FPP_DETECTIONMODE_TRACKING_FAST;
             break;
         case MGFppDetectionModeTrackingRobust:
             model = MG_FPP_DETECTIONMODE_TRACKING_ROBUST;
+            break;
+        case MGFppDetectionModeDetectRect:
+            model = MG_FPP_DETECTIONMODE_DETECT_RECT;
             break;
         default:
             break;
@@ -172,7 +169,7 @@
         
         if (NO == self.canDetect) {
             returnArray = nil;
-        }else{
+        } else {
             if (self.status == MGMarkWaiting || self.status == MGMarkPrepareWork) {
                 _status = MGMarkWorking;
                 
@@ -191,7 +188,7 @@
                 MG_RETCODE setimageCode = mg_facepp.SetImageData(_imageHandle, rawData, [self getImageModel]);
                 MG_RETCODE DetectCode = mg_facepp.Detect(_apiHandle, _imageHandle, &faceCount);
                 if (setimageCode == MG_RETCODE_OK || DetectCode == MG_RETCODE_OK) {
-                    NSArray *faceinfoArray = [self getFaceInfoWithFaceCount:faceCount FPPAPIHANDLE:_apiHandle];
+                    NSArray *faceinfoArray = [self getFaceInfoWithFaceCount:faceCount mgApiHandle:_apiHandle];
                     [returnArray addObjectsFromArray:faceinfoArray];
                 }
                 
@@ -205,10 +202,49 @@
     }
 }
 
+- (NSInteger)getFaceNumberWithImageData:(MGImageData *)imagedata {
+    @synchronized (self) {
+        int faceCount = 0;
+        if (nil == imagedata) return (NSInteger)faceCount;
+        
+        _iwidth = imagedata.width;
+        _iHeight = imagedata.height;
+        
+        if (YES == self.canDetect) {
+            if (self.status == MGMarkWaiting || self.status == MGMarkPrepareWork) {
+                _status = MGMarkWorking;
+                
+                void *rawData = (unsigned char*)[imagedata getData];
+                
+                if (YES == imagedata.isUIImage && NULL != _imageHandle) {
+                    mg_facepp.ReleaseImageHandle(_imageHandle);
+                    _imageHandle = NULL;
+                }
+                
+                if (_imageHandle == NULL) {
+                    mg_facepp.CreateImageHandle(_iwidth, _iHeight, &_imageHandle);
+                }
+                
+                MG_RETCODE setimageCode = mg_facepp.SetImageData(_imageHandle, rawData, [self getImageModel]);
+                MG_RETCODE DetectCode = mg_facepp.Detect(_apiHandle, _imageHandle, &faceCount);
+                if (setimageCode != MG_RETCODE_OK || DetectCode != MG_RETCODE_OK) {
+                    faceCount = 0;
+                }
+                
+            } else if(self.status == MGMarkWorking){
+                faceCount = 0;
+            } else if(self.status == MGMarkStopped){
+                faceCount = 0;
+            }
+        }
+        return (NSInteger)faceCount;
+    }
+}
+
 /* 如果人脸数量超过 1 个，进行人脸关键点检测  */
-- (NSArray <MGFaceInfo *>*)getFaceInfoWithFaceCount:(NSInteger)count FPPAPIHANDLE:(MG_FPP_APIHANDLE)apiHandle{
+- (NSArray <MGFaceInfo *>*)getFaceInfoWithFaceCount:(NSInteger)count mgApiHandle:(MG_FPP_APIHANDLE)apiHandle {
     NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:count];
-    for (int i = 0; i < count; i++){
+    for (int i = 0; i < count; i++) {
         MG_FACE face;
         mg_facepp.GetFaceInfo(apiHandle, i, &face);
         
@@ -218,9 +254,9 @@
                                                 confidence:face.confidence];
         faceModel.index = i;
         faceModel.trackID = face.track_id;
-    
+        
         [faceModel setProperty:MG_FPP_ATTR_POSE3D MGFACE:face];
-
+        
         [tempArray addObject:faceModel];
     }
     return tempArray;
@@ -237,6 +273,52 @@
         return NO;
     }
 }
+
+- (MGDetectRectInfo *)GetRectAtIndex:(int)index isSmooth:(BOOL)isSmooth {
+    @autoreleasepool {
+        MG_DETECT_RECT detectRect;
+        MG_RETCODE sucessCode = MG_RETCODE_FAILED;
+        sucessCode = mg_facepp.GetRect(_apiHandle, index, isSmooth, &detectRect);
+        if (sucessCode == MG_RETCODE_OK) {
+            MGDetectRectInfo *result = [[MGDetectRectInfo alloc] init];
+            result.angle = detectRect.angle;
+            result.confidence = detectRect.confidence;
+            
+            NSInteger x = 0;
+            NSInteger y = 0;
+            NSInteger w = 0;
+            NSInteger h = 0;
+            x = _iwidth - detectRect.rect.right;
+            y = detectRect.rect.top;
+            w = detectRect.rect.right - detectRect.rect.left;
+            h = detectRect.rect.bottom - detectRect.rect.top;
+            // SDK返回方向相对于手机方向逆时针旋转了90度
+            switch (detectRect.orient) {
+                case MG_left:
+                    result.orient = MGOrientationLeft;
+                    break;
+                case MG_Top:
+                    result.orient = MGOrientationUp;
+                    break;
+                case MG_right:
+                    result.orient = MGOrientationRight;
+                    break;
+                case MG_Bottom:
+                    result.orient = MGOrientationDown;
+                    break;
+                default:
+                    break;
+            }
+        
+            result.rect = CGRectMake(x, y, w, h);
+            return result;
+        } else {
+            NSLog(@"获取人脸框失败 error 人脸框数量越界");
+            return nil;
+        }
+    }
+}
+
 - (BOOL)GetAttribute3D:(MGFaceInfo *)faceInfo{
     return [self getFaceAttribute:faceInfo property:MG_FPP_ATTR_POSE3D];
 }
@@ -270,17 +352,19 @@
 #pragma mark - 人脸比对 相关
 - (BOOL)GetFeatureData:(MGFaceInfo *)faceInfo{
     @autoreleasepool {
-        MG_RETCODE returnCode2 = mg_facepp.ExtractFeature(_apiHandle, _imageHandle, faceInfo.index, &_tempLength);
+        int32_t featureDataLength = 0;
+        MG_RETCODE returnCode2 = mg_facepp.ExtractFeature(_apiHandle, _imageHandle, faceInfo.index, &featureDataLength);
         if (returnCode2 != MG_RETCODE_OK) return NO;
 
-        float *tempFloat = (float*)malloc(_tempLength * sizeof(float));
-        MG_RETCODE returnCode3 = mg_facepp.GetFeatureData(_apiHandle, tempFloat, _tempLength);
+        float *tempFloat = (float*)malloc(featureDataLength * sizeof(float));
+        MG_RETCODE returnCode3 = mg_facepp.GetFeatureData(_apiHandle, tempFloat, featureDataLength);
         
         if (returnCode3 != MG_RETCODE_OK) return NO;
 
-        NSData *tempResult = [NSData dataWithBytes:tempFloat length:_tempLength * sizeof(float)];
+        NSData *tempResult = [NSData dataWithBytes:tempFloat length:featureDataLength * sizeof(float)];
         [faceInfo set_feature_data:tempResult];
-
+        NSLog(@"feature length = %d",featureDataLength);
+        NSLog(@"feature length = %lu",(unsigned long)tempResult.length);
         free(tempFloat);
 
         return YES;
@@ -298,13 +382,21 @@
     
     const float *a1 = featureData.bytes;
     const float *a2 = featureData2.bytes;
-    
-    MG_RETCODE returnCode = mg_facepp.FaceCompare(_apiHandle, a1, a2, _tempLength, &like);
+    // float 占4个字节  NSData.length 为字节长度
+    MG_RETCODE returnCode = mg_facepp.FaceCompare(_apiHandle, a1, a2, (int)featureData.length/4, &like);
     
     if (returnCode == MG_RETCODE_OK) {
         return like;
     }
     return -1.0;
+}
+
+- (BOOL)shutDown {
+    MG_RETCODE code = mg_facepp.ShutDown();
+    if (MG_RETCODE_OK == code) {
+        return YES;
+    }
+    return NO;
 }
 
 #pragma mark - 检测器控制方法
@@ -334,33 +426,51 @@
 }
 
 #pragma mark - get sdk info
-/** 获取API 联网授权使用 */
-+ (NSUInteger)getAPIName{
-   NSUInteger result = (NSUInteger)mg_facepp.GetApiVersion;
-    return result;
-}
-
-+ (NSDate *)getApiExpiration{
-
-    NSUInteger result = (NSUInteger)mg_facepp.GetApiExpiration();
-    NSData *date = [NSDate dateWithTimeIntervalSince1970:result];
-
-    return date;
-}
-
 /** 获取版本号 */
-+ (NSString *)getVersion{
++ (NSString *)getJenkinsNumber {
+    const char *tempStr = mg_facepp.GetJenkinsNumber();
+    NSString *string = [NSString stringWithCString:tempStr encoding:NSUTF8StringEncoding];
+    return string;
+}
+
++ (NSString *)getSDKVersion {
     const char *tempStr = mg_facepp.GetApiVersion();
     NSString *string = [NSString stringWithCString:tempStr encoding:NSUTF8StringEncoding];
     return string;
 }
 
+- (BOOL)resetTrack {
+    MG_RETCODE code = mg_facepp.ResetTrack(_apiHandle);
+    if (MG_RETCODE_OK == code) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)isMapSDKBundleID:(NSString *)SDKBundleID {
+    NSString *currentBundleID = [[NSBundle mainBundle] bundleIdentifier];
+    NSArray *arr = [SDKBundleID componentsSeparatedByString:@","];
+    for (NSString *bundleId in arr) {
+        if ([bundleId hasSuffix:@"."] || [bundleId hasSuffix:@"*"]) {
+            if ([currentBundleID hasPrefix:bundleId]) {
+                return YES;
+            }
+        } else {
+            if ([currentBundleID isEqualToString:bundleId]) {
+                return YES;
+            }
+        }
+    }
+
+    return NO;
+}
+
 + (MGAlgorithmInfo *)getSDKAlgorithmInfoWithModel:(NSData *)modelData{
     if (modelData) {
         MGAlgorithmInfo *infoModel = [[MGAlgorithmInfo alloc] init];
-        
         const void *modelBytes = modelData.bytes;
         MG_ALGORITHMINFO info;
+        
         MG_RETCODE sucessCode = mg_facepp.GetAlgorithmInfo((MG_BYTE *)modelBytes, (MG_INT32)modelData.length, &info);
         
         if (sucessCode != MG_RETCODE_OK) {
@@ -368,20 +478,39 @@
             return nil;
         }
         
-        BOOL needLicense = (info.auth_type == MG_ONLINE_AUTH? YES : NO);
-        NSString *version = [self getVersion];
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:info.expire_time];
+        MG_SDKAUTHTYPE auth = info.auth_type;
+        BOOL needLicense = (auth == MG_ONLINE_AUTH? YES : NO);
+        NSString *version = [self getSDKVersion];
+        NSDate *date;
+        if (info.expire_time == -1) { // 已授权
+            date = [NSDate new];
+        } else if (info.expire_time == 0) {// 联网版本
+            date = [NSDate new];
+        } else {
+            date = [NSDate dateWithTimeIntervalSince1970:info.expire_time];
+        }
+        
         
         [infoModel setAbility:info.ability];
         [infoModel setDate:date];
         [infoModel setLicense:needLicense];
         [infoModel setVersionCode:version];
+        [infoModel setBundleId:[NSString stringWithCString:info.bundleid encoding:kCFStringEncodingUTF8]];
         
         return infoModel;
     }else{
         NSLog(@"[initWithModel:] 初始化失败，无法读取 modelData，请检查！");
         return nil;
     }
+}
+
+- (MGFaceppConfig *)getFaceppConfig{
+    return _faceppConfig;
+}
+
+- (void)dealloc{
+    mg_facepp.ReleaseApiHandle(_apiHandle);
+    mg_facepp.ReleaseImageHandle(_imageHandle);
 }
 
 @end

@@ -23,15 +23,13 @@
     self = [super init];
     if (self) {
         
-        self.detectionMode = MGFppDetectionModeNormal;
+        self.detectionMode = MGFppDetectionModeDetect;
         self.minFaceSize = 100;
         self.interval = 40;
         self.orientation = 0;
         self.pixelFormatType = PixelFormatTypeRGBA;
         
         self.detectROI = MGDetectROIMake(0, 0, 0, 0);
-        
-        self.oneFaceTracking = NO;
     }
     return self;
 }

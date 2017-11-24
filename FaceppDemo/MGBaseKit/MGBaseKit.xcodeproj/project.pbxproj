@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		140C47F71C2C04B600D9F9ED /* MGBaseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 140C47F61C2C03CF00D9F9ED /* MGBaseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1433D0C21E27295400814ADD /* MGLicenseCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 1433D0BF1E27295400814ADD /* MGLicenseCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1433D0C31E27295400814ADD /* MGLicenseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1433D0C01E27295400814ADD /* MGLicenseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		146E12451C27F3300066616F /* MGBaseDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 146E12441C27F3300066616F /* MGBaseDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		146E133B1C2924E60066616F /* MGImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 146E13391C2924E60066616F /* MGImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		146E133C1C2924E60066616F /* MGImage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 146E133A1C2924E60066616F /* MGImage.mm */; };
@@ -26,13 +24,13 @@
 		14EA45681CAD236100398B3B /* MGMovieRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EA45661CAD236100398B3B /* MGMovieRecorder.m */; };
 		14EA456A1CAD237A00398B3B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EA45691CAD237A00398B3B /* AVFoundation.framework */; };
 		14EA456C1CAD237F00398B3B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EA456B1CAD237F00398B3B /* CoreMedia.framework */; };
+		8E3EA9701F9B6C3C00DD8801 /* MGLicenseCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E3EA96E1F9B6C3C00DD8801 /* MGLicenseCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E3EA9711F9B6C3C00DD8801 /* MGLicenseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E3EA96F1F9B6C3C00DD8801 /* MGLicenseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		140C47F61C2C03CF00D9F9ED /* MGBaseKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGBaseKit.h; sourceTree = "<group>"; };
 		141913111D012531007B7E89 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1433D0BF1E27295400814ADD /* MGLicenseCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLicenseCommon.h; sourceTree = "<group>"; };
-		1433D0C01E27295400814ADD /* MGLicenseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLicenseManager.h; sourceTree = "<group>"; };
 		146E12441C27F3300066616F /* MGBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBaseDefine.h; sourceTree = "<group>"; };
 		146E13391C2924E60066616F /* MGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGImage.h; sourceTree = "<group>"; };
 		146E133A1C2924E60066616F /* MGImage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MGImage.mm; sourceTree = "<group>"; };
@@ -50,6 +48,8 @@
 		14EA45661CAD236100398B3B /* MGMovieRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMovieRecorder.m; sourceTree = "<group>"; };
 		14EA45691CAD237A00398B3B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		14EA456B1CAD237F00398B3B /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		8E3EA96E1F9B6C3C00DD8801 /* MGLicenseCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLicenseCommon.h; sourceTree = "<group>"; };
+		8E3EA96F1F9B6C3C00DD8801 /* MGLicenseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLicenseManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				149561B01ED5A385000EC79B /* libMGLicMgrSDK-0.3.0.a */,
-				1433D0BF1E27295400814ADD /* MGLicenseCommon.h */,
-				1433D0C01E27295400814ADD /* MGLicenseManager.h */,
+				8E3EA96E1F9B6C3C00DD8801 /* MGLicenseCommon.h */,
+				8E3EA96F1F9B6C3C00DD8801 /* MGLicenseManager.h */,
 			);
 			path = "MegviiLicMgr-iOS-SDK";
 			sourceTree = "<group>";
@@ -146,8 +146,8 @@
 				146E133F1C2924FA0066616F /* MGLogManager.h in Headers */,
 				14DC77B31D5040F600469725 /* MGAnimation.h in Headers */,
 				14EA45671CAD236100398B3B /* MGMovieRecorder.h in Headers */,
-				1433D0C31E27295400814ADD /* MGLicenseManager.h in Headers */,
-				1433D0C21E27295400814ADD /* MGLicenseCommon.h in Headers */,
+				8E3EA9711F9B6C3C00DD8801 /* MGLicenseManager.h in Headers */,
+				8E3EA9701F9B6C3C00DD8801 /* MGLicenseCommon.h in Headers */,
 				14EA45631CAD22CF00398B3B /* MGVideoManager.h in Headers */,
 				14DC77AF1D50404000469725 /* MGAutoSessionPreset.h in Headers */,
 			);

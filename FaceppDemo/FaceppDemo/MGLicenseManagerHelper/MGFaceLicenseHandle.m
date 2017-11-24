@@ -14,8 +14,6 @@
 @implementation MGFaceLicenseHandle
 
 
-#if MG_USE_ONLINE_AUTH
-
 + (BOOL)getLicense{
     NSDate *sdkDate = [self getLicenseDate];
     return [self compareSDKDate:sdkDate];
@@ -35,13 +33,11 @@
         UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
         UIViewController *currentVC = [MGFaceLicenseHandle getCurrentVCFrom:rootViewController];
         [currentVC presentViewController:controller animated:YES completion:nil];
-
-        
         return;
     }
     
     NSDate *licenSDKDate = [self getLicenseDate];
-    
+
     if ([self compareSDKDate:licenSDKDate] == NO) {
         if (finish) {
             finish(YES, [self getLicenseDate]);
@@ -49,18 +45,20 @@
         return;
     }
     
+    NSString *version = [MGFacepp getSDKVersion];
     NSString *uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    NSString *version = [MGFacepp getVersion];
     
     [MGLicenseManager takeLicenseFromNetwokrUUID:uuid
                                          version:version
                                          sdkType:MGSDKTypeLandmark
                                           apiKey:MG_LICENSE_KEY
                                        apiSecret:MG_LICENSE_SECRET
-                                     apiDuration:MGAPIDurationMonth
+                                     apiDuration:MGAPIDurationDay
                                        URLString:MGLicenseURL_CN
                                           finish:^(bool License, NSError *error) {
-                                              NSLog(@"%@", error);
+                                              if (error) {
+                                                  MG_LICENSE_LOG(@"Auth error = %@", error);
+                                              }
                                               
                                               if (License) {
                                                   NSDate  *nowSDKDate = [self getLicenseDate];
@@ -68,13 +66,12 @@
                                                   if (finish) {
                                                       finish(License, nowSDKDate);
                                                   }
-                                              }else{
+                                              } else {
                                                   if (finish) {
                                                       finish(License, licenSDKDate);
                                                   }
                                               }
                                           }];
-
 
 }
 
@@ -83,7 +80,7 @@
     NSData *modelData = [NSData dataWithContentsOfFile:modelPath];
     MGAlgorithmInfo *sdkInfo = [MGFacepp getSDKAlgorithmInfoWithModel:modelData];
     if (sdkInfo.needNetLicense) {
-        NSString *version = [MGFacepp getVersion];
+        NSString *version = [MGFacepp getSDKVersion];
         NSDate *date = [MGLicenseManager getExpiretime:version];
         NSLog(@"过期时间 ： %@",date);
         return date;
@@ -139,9 +136,5 @@
     return currentVC;
 }
 
-
-#else
-
-#endif
 
 @end

@@ -47,6 +47,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 #import "MGOpenGLConfig.h"
 
 @class MGFaceModelArray;
@@ -73,12 +74,23 @@
 // Renderers which operate out of place should create a pixel buffer to return from a pool they own.
 // When rendering to a pixel buffer with the GPU it is not necessary to block until rendering has completed before returning.
 // It is sufficient to call glFlush() to ensure that the commands have been flushed to the GPU.
-- (CVPixelBufferRef )copyRenderedPixelBuffer:(CMSampleBufferRef)sampleBufferRef faceModelArray:(MGFaceModelArray *)modelArray drawLandmark:(BOOL)drawLandmark;
+//- (CVPixelBufferRef )copyRenderedPixelBuffer:(CMSampleBufferRef)sampleBufferRef faceModelArray:(MGFaceModelArray *)modelArray drawLandmark:(BOOL)drawLandmark;
 
 @property(nonatomic, assign) BOOL show3DView;
 
 // This property must be implemented if operatesInPlace is NO and the output pixel buffers have a different format description than the input.
 // If implemented a non-NULL value must be returned once the renderer has been prepared (can be NULL after being reset).
 @property(nonatomic, readonly) CMFormatDescriptionRef __attribute__((NSObject)) outputFormatDescription;
+
+- (void)setUpOutSampleBuffer:(CGSize)outSize devicePosition:(AVCaptureDevicePosition)devicePosition;
+
+
+- (CVPixelBufferRef )drawPixelBuffer:(CMSampleBufferRef)sampleBufferRef custumDrawing:(void (^)(void))draw;
+
+- (void)drawFaceLandMark:(MGFaceModelArray *)faces;
+
+- (void)drawRect:(CGRect)rect;
+
+- (void)drawFaceWithRect:(CGRect)rect;
 
 @end

@@ -10,47 +10,64 @@
 #import "MG_Facepp.h"
 #import "MGFaceppCommon.h"
 
+typedef NS_OPTIONS(NSInteger, MGFaceppAbilityType) {
+    MGFaceppAbilityTypePose3D           = 1U<<0,
+    MGFaceppAbilityTypeEyeStatus        = 1U<<1,
+    MGFaceppAbilityTypeMouthStatus      = 1U<<2,
+    MGFaceppAbilityTypeMinority         = 1U<<3,
+    MGFaceppAbilityTypeBlurness         = 1U<<4,
+    MGFaceppAbilityTypeAgeGender        = 1U<<5,
+    MGFaceppAbilityTypeExtractFeature   = 1U<<6,
+    MGFaceppAbilityTypeTrackFast        = 1U<<7,
+    MGFaceppAbilityTypeTrackRobust      = 1U<<8,
+    MGFaceppAbilityTypeDetectRect       = 1U<<9,
+    MGFaceppAbilityTypeDetect           = 1U<<12,
+    MGFaceppAbilityTypeIDCardQuality    = 1U<<13,
+    MGFaceppAbilityTypeTrack            = 1U<<14,
+};
+
 @implementation MGAlgorithmInfo
 
-- (void)setAbility:(uint64_t )ability{
-    
-    NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:3];
+- (void)setAbility:(uint64_t )ability {
 
-    const int functionCount = 9;
-    
-    int funcArray[functionCount] = {
-        MG_FPP_TRACK, MG_FPP_DETECT,
-        MG_FPP_ATTR_POSE3D, MG_FPP_ATTR_EYESTATUS,
-        MG_FPP_ATTR_MOUTHSTATUS, MG_FPP_ATTR_MINORITY,
-        MG_FPP_ATTR_BLURNESS, MG_FPP_ATTR_AGE_GENDER,
-        MG_FPP_ATTR_EXTRACT_FEATURE
-    };
-    
-    for (int i = 0; i < functionCount; i++) {
-        int64_t temp = funcArray[i];
-        int64_t a = ability & temp;
-        
-        if (a == temp) {
-            MGFaceAbility Ability = (MGFaceAbility)i;
-            [tempArray addObject:[NSNumber numberWithLongLong:Ability]];
+    NSDictionary *abilityName = @{@(1U<<0)  : MG_ABILITY_KEY_POSE3D,
+                                  @(1U<<1)  : MG_ABILITY_KEY_EYE_STATUS,
+                                  @(1U<<2)  : MG_ABILITY_KEY_MOUTH_SATUS,
+                                  @(1U<<3)  : MG_ABILITY_KEY_MINORITY,
+                                  @(1U<<4)  : MG_ABILITY_KEY_BLURNESS,
+                                  @(1U<<5)  : MG_ABILITY_KEY_AGE_GENDER,
+                                  @(1U<<6)  : MG_ABILITY_KEY_EXTRACT_FEATURE,
+                                  @(1U<<7)  : MG_ABILITY_KEY_TRACK_FAST,
+                                  @(1U<<8)  : MG_ABILITY_KEY_TRACK_ROBUST,
+                                  @(1U<<9)  : MG_ABILITY_KEY_DETECT_RECT,
+                                  @(1U<<12) : MG_ABILITY_KEY_DETECT,
+                                  @(1U<<13) : MG_ABILITY_KEY_IDCARD_QUALITY,
+                                  @(1U<<14) : MG_ABILITY_KEY_TRACK};
+
+    NSMutableArray *names = [NSMutableArray array];
+    for (int i = 0; i < 15; i++) {
+        if (ability & 1<<i) {
+            [names addObject:abilityName[@(1<<i)]];
         }
     }
-    
-    _SDKAbility = tempArray;
-    
+
+    _SDKAbility = [NSArray arrayWithArray:names];
 }
 
--(void)setDate:(NSDate *)date{
+- (void)setDate:(NSDate *)date {
     _expireDate = date;
 }
 
-
-- (void)setLicense:(BOOL)license{
+- (void)setLicense:(BOOL)license {
     _needNetLicense = license;
 }
 
-- (void)setVersionCode:(NSString *)version{
+- (void)setVersionCode:(NSString *)version {
     _version = version;
+}
+
+- (void)setBundleId:(NSString *)bundleId {
+    _bundleId = bundleId;
 }
 
 @end

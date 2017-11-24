@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define KMGFACEMODELNAME @"megviifacepp_0_4_7_model"
+#define KMGFACEMODELNAME @"megviifacepp_0_5_2_model"
 #define KMGFACEMODELTYPE @""
 
 
@@ -63,11 +63,11 @@ typedef NS_ENUM(NSUInteger ,MGFaceppStatus) {
 };
 
 typedef NS_ENUM(NSUInteger ,MGFppDetectionMode) {
-    MGFppDetectionModeNormal = 0,
-    MGFppDetectionModeTracking,
-    MGFppDetectionModeTrackingSmooth,
-    MGFppDetectionModeTrackingFast,
-    MGFppDetectionModeTrackingRobust
+    MGFppDetectionModeDetect = 0,
+    MGFppDetectionModeTracking = 1, // 此模式已经废弃，请使用 robust 模式
+    MGFppDetectionModeTrackingFast = 3,
+    MGFppDetectionModeTrackingRobust = 4,
+    MGFppDetectionModeDetectRect = 5,
 };
 
 

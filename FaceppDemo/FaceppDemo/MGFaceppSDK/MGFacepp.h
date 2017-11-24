@@ -14,6 +14,7 @@
 #import "MGFaceppCommon.h"
 #import "MGAlgorithmInfo.h"
 #import "MGFaceInfo.h"
+#import "MGDetectRectInfo.h"
 
 @interface MGFacepp : NSObject
 
@@ -30,6 +31,16 @@
  */
 - (instancetype)initWithModel:(NSData *)modelData
                 faceppSetting:(void(^)(MGFaceppConfig *config))config;
+
+/**
+ 初始化方法
+
+ @param modelData        model data
+ @param maxFaceCount     一张图像中识别的最大人脸数，设置为1即为单脸跟踪
+ @param config           设置的callback
+ @return handle
+ */
+- (instancetype)initWithModel:(NSData *)modelData maxFaceCount:(NSInteger)maxFaceCount faceppSetting:(void(^)(MGFaceppConfig *config))config;
 
 /**
  *  @param config        更新设置参数
@@ -52,6 +63,14 @@
  */
 - (NSArray <MGFaceInfo *>*)detectWithImageData:(MGImageData *)imagedata;
 
+/**
+ *  检测人脸框
+ *
+ *  @param imagedata  检测的图片
+ *  @return 检测结果（如果为 nil 时候，检测器异常，检测失败，请检测代码以及设置）
+ */
+- (NSInteger)getFaceNumberWithImageData:(MGImageData *)imagedata;
+
 
 /**
  *  人脸关键点平滑
@@ -61,6 +80,15 @@
  *  @param nr       关键点个数
  */
 - (BOOL)GetGetLandmark:(MGFaceInfo *)faceInfo isSmooth:(BOOL)isSmooth pointsNumber:(int)nr;
+
+/**
+ *  获取人脸框
+ *  
+ *
+ *  @param index faceinfo model
+ *  @param isSmooth 是否关键点平滑，防止人脸抖动
+ */
+- (MGDetectRectInfo *)GetRectAtIndex:(int)index isSmooth:(BOOL)isSmooth;
 
 /**
  *  获取人脸 3D信息
@@ -142,19 +170,40 @@
 - (void)endDetectionFrame;
 
 
+/**
+ 释放算法资源
+ 算法在计算时需要占用一些内存资源，必须在所有算法的句柄（handle）被释放后再调用
+ 
+ @return 成功则返回 YES
+ */
+- (BOOL)shutDown;
 
 #pragma mark - 类方法，获取 SDK 相关信息
 
-/** 获取版本号 */
-+ (NSString *)getVersion;
+
+/**
+ 获取版本号
+
+ @return 版本号
+ */
++ (NSString *)getSDKVersion;
 
 
 /**
- 获取SDK授权时间，只有联网授权版本，该SDK可用
+ 获取 SDK jenkins 号
 
- @return 授权时间
+ @return SDK jenkins 号
  */
-+ (NSDate *)getApiExpiration;
++ (NSString *)getJenkinsNumber;
+
+
+/**
+ 清除track缓存
+
+ @return 成功则返回 YES
+ */
+- (BOOL)resetTrack;
+
 
 /**
  获取 SDK 相关信息
@@ -164,14 +213,6 @@
  */
 + (MGAlgorithmInfo *)getSDKAlgorithmInfoWithModel:(NSData *)modelData;;
 
-
-
-/**
- 获取 SDK 联网授权所需要信息
-
- @return 联网授权信息
- */
-+ (NSUInteger)getAPIName;
 
 
 

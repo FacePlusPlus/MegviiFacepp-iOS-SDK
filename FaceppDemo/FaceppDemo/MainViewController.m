@@ -12,6 +12,8 @@
 
 @interface MainViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *messageView;
+@property (weak, nonatomic) IBOutlet UIButton *videoBtn;
+
 @end
 
 @implementation MainViewController
@@ -23,8 +25,14 @@
     BOOL needLicense = [MGFaceLicenseHandle getNeedNetLicense];
     
     if (needLicense) {
+        self.videoBtn.userInteractionEnabled = NO;
         [MGFaceLicenseHandle licenseForNetwokrFinish:^(bool License, NSDate *sdkDate) {
-            NSLog(@"本次联网授权是否成功 %d, SDK 过期时间：%@", License, sdkDate);
+            if (!License) {
+                NSLog(@"联网授权失败 ！！！");
+            } else {
+                NSLog(@"联网授权成功");
+                self.videoBtn.userInteractionEnabled = YES;
+            }
         }];
     } else {
         NSLog(@"SDK 为非联网授权版本！");

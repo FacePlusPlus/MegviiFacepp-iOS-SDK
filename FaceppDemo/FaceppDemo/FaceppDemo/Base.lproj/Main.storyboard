@@ -152,6 +152,7 @@
                     <navigationItem key="navigationItem" title="FACE ++" id="Ccd-Xh-4w0"/>
                     <connections>
                         <outlet property="messageView" destination="LgV-yD-fyP" id="aZu-ZV-GWd"/>
+                        <outlet property="videoBtn" destination="z0F-tg-AZW" id="fxY-pl-Wut"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzs-hF-DQv" userLabel="First Responder" sceneMemberID="firstResponder"/>

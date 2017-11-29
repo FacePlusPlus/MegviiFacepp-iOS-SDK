@@ -21,6 +21,9 @@
 
 
 + (void)licenseForNetwokrFinish:(void(^)(bool License, NSDate *sdkDate))finish {
+    
+
+    
     // 检查 apk
     if ([MG_LICENSE_KEY isEqualToString:@""] || [MG_LICENSE_SECRET isEqualToString:@""]) {
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"API Key 或 secret 不能为空"
@@ -34,7 +37,9 @@
         UIViewController *currentVC = [MGFaceLicenseHandle getCurrentVCFrom:rootViewController];
         [currentVC presentViewController:controller animated:YES completion:nil];
         
-        
+        if (finish) {
+            finish(NO, nil);
+        }
         return;
     }
     
@@ -81,12 +86,8 @@
     NSData *modelData = [NSData dataWithContentsOfFile:modelPath];
     MGAlgorithmInfo *sdkInfo = [MGFacepp getSDKAlgorithmInfoWithModel:modelData];
     if (sdkInfo.needNetLicense) {
-        NSString *version = [MGFacepp getSDKVersion];
-        NSDate *date = [MGLicenseManager getExpiretime:version];
-        NSLog(@"过期时间 ： %@",date);
-        return date;
+        return nil;
     } else {
-        NSLog(@"SDK 为非联网授权版");
         return sdkInfo.expireDate;
     }
 }

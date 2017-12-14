@@ -15,9 +15,9 @@
 		14FFF2F11E24D8D500A5A7EF /* MGAlgorithmInfo.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2D81E24D8C400A5A7EF /* MGAlgorithmInfo.h */; };
 		14FFF2F21E24D8E100A5A7EF /* MGFaceInfo.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2DD1E24D8C400A5A7EF /* MGFaceInfo.h */; };
 		14FFF2F31E24D8E300A5A7EF /* MGFacepp.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E01E24D8C400A5A7EF /* MGFacepp.h */; };
-		14FFF2F41E24D8E600A5A7EF /* MGFaceppCommon.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E21E24D8C400A5A7EF /* MGFaceppCommon.h */; };
 		14FFF2F51E24D8EA00A5A7EF /* MGFaceppConfig.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E31E24D8C400A5A7EF /* MGFaceppConfig.h */; };
 		14FFF2F61E24D8EB00A5A7EF /* MGImageData.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E51E24D8C400A5A7EF /* MGImageData.h */; };
+		8E1FF9891FC6A385002C29EA /* MGFaceppCommon.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 14FFF2E21E24D8C400A5A7EF /* MGFaceppCommon.h */; };
 		8E8434A11FB44F9500DBF731 /* libMegviiFacepp-0.5.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E8434A01FB44F9500DBF731 /* libMegviiFacepp-0.5.2.a */; };
 		8EB8A4F41F9759950059F421 /* MGDetectRectInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8A4F31F9759950059F421 /* MGDetectRectInfo.m */; };
 		8EB8A4F91F9775920059F421 /* MGDetectRectInfo.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8EB8A4F21F9759950059F421 /* MGDetectRectInfo.h */; };
@@ -31,10 +31,10 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8E1FF9891FC6A385002C29EA /* MGFaceppCommon.h in Copy Files */,
 				8EB8A4F91F9775920059F421 /* MGDetectRectInfo.h in Copy Files */,
 				14FFF2F11E24D8D500A5A7EF /* MGAlgorithmInfo.h in Copy Files */,
 				14FFF2F21E24D8E100A5A7EF /* MGFaceInfo.h in Copy Files */,
-				14FFF2F41E24D8E600A5A7EF /* MGFaceppCommon.h in Copy Files */,
 				14FFF2F61E24D8EB00A5A7EF /* MGImageData.h in Copy Files */,
 				14FFF2F31E24D8E300A5A7EF /* MGFacepp.h in Copy Files */,
 				14FFF2F51E24D8EA00A5A7EF /* MGFaceppConfig.h in Copy Files */,

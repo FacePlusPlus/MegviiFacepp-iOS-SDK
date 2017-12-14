@@ -68,6 +68,7 @@ typedef NS_ENUM(NSUInteger ,MGFppDetectionMode) {
     MGFppDetectionModeTrackingFast = 3,
     MGFppDetectionModeTrackingRobust = 4,
     MGFppDetectionModeDetectRect = 5,
+    MGFppDetectionModeTrackingRect = 6,
 };
 
 

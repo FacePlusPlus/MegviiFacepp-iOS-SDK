@@ -124,6 +124,9 @@
         case MGFppDetectionModeDetectRect:
             model = MG_FPP_DETECTIONMODE_DETECT_RECT;
             break;
+        case MGFppDetectionModeTrackingRect:
+            model = MG_FPP_DETECTIONMODE_TRACK_RECT;
+            break;
         default:
             break;
     }
@@ -164,8 +167,8 @@
             return returnArray;
         }
         
-        int width = imagedata.width;
-        int height = imagedata.height;
+        _iwidth = imagedata.width;
+        _iHeight = imagedata.height;
         
         if (NO == self.canDetect) {
             returnArray = nil;
@@ -181,7 +184,7 @@
                 }
                 
                 if (_imageHandle == NULL) {
-                    mg_facepp.CreateImageHandle(width, height, &_imageHandle);
+                    mg_facepp.CreateImageHandle(_iwidth, _iHeight, &_imageHandle);
                 }
                 int faceCount = 0;
                 
@@ -309,7 +312,7 @@
                 default:
                     break;
             }
-        
+
             result.rect = CGRectMake(x, y, w, h);
             return result;
         } else {

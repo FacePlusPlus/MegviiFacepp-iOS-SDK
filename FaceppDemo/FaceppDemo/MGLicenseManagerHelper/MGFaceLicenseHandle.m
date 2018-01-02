@@ -87,7 +87,10 @@
     NSData *modelData = [NSData dataWithContentsOfFile:modelPath];
     MGAlgorithmInfo *sdkInfo = [MGFacepp getSDKAlgorithmInfoWithModel:modelData];
     if (sdkInfo.needNetLicense) {
-        return nil;
+        NSString *version = [MGFacepp getSDKVersion];
+        NSDate *date = [MGLicenseManager getExpiretime:version];
+        NSLog(@"过期时间 ： %@",date);
+        return date;
     } else {
         return sdkInfo.expireDate;
     }

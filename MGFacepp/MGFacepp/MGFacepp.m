@@ -42,10 +42,13 @@
     self = [super init];
     if (self) {
         MGAlgorithmInfo *info = [MGFacepp getSDKAlgorithmInfoWithModel:modelData];
-        if (![self isMapSDKBundleID:info.bundleId]) {
-            NSString *currentBundleID = [[NSBundle mainBundle] bundleIdentifier];
-            NSLog(@"error: Bundle id error \r\n your APP bundle id: %@ \r\n SDK bundle id: %@",currentBundleID, info.bundleId);
+        if (!info.needNetLicense) {
+            if (![self isMapSDKBundleID:info.bundleId]) {
+                NSString *currentBundleID = [[NSBundle mainBundle] bundleIdentifier];
+                NSLog(@"error: Bundle id error \r\n your APP bundle id: %@ \r\n SDK bundle id: %@",currentBundleID, info.bundleId);
+            }
         }
+        
         
         NSAssert(modelData.length > 0, @"modelData.length == 0");
         if (modelData.length > 0) {

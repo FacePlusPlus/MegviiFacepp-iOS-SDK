@@ -156,11 +156,13 @@ static NSString *const cellIdentifier = @"com.megvii.funcVC.cell";
         [self showAVAuthorizationStatusDeniedAlert];
     } else if (authStatus == AVAuthorizationStatusNotDetermined) {
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
-            if (granted) {
-                [self showDetectViewController];
-            } else {
-                [self showAVAuthorizationStatusDeniedAlert];
-            }
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                if (granted) {
+                    [self showDetectViewController];
+                } else {
+                    [self showAVAuthorizationStatusDeniedAlert];
+                }
+            });
         }];
     } else {
         [self showDetectViewController];

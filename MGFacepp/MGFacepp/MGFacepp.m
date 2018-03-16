@@ -41,11 +41,6 @@
 - (instancetype)initWithModel:(NSData *)modelData maxFaceCount:(NSInteger)maxFaceCount faceppSetting:(void(^)(MGFaceppConfig *config))config {
     self = [super init];
     if (self) {
-        MGAlgorithmInfo *info = [MGFacepp getSDKAlgorithmInfoWithModel:modelData];
-        if (![self isMapSDKBundleID:info.bundleId]) {
-            NSString *currentBundleID = [[NSBundle mainBundle] bundleIdentifier];
-            NSLog(@"error: Bundle id error \r\n your APP bundle id: %@ \r\n SDK bundle id: %@",currentBundleID, info.bundleId);
-        }
         
         NSAssert(modelData.length > 0, @"modelData.length == 0");
         if (modelData.length > 0) {
@@ -450,23 +445,6 @@
     return NO;
 }
 
-- (BOOL)isMapSDKBundleID:(NSString *)SDKBundleID {
-    NSString *currentBundleID = [[NSBundle mainBundle] bundleIdentifier];
-    NSArray *arr = [SDKBundleID componentsSeparatedByString:@","];
-    for (NSString *bundleId in arr) {
-        if ([bundleId hasSuffix:@"."] || [bundleId hasSuffix:@"*"]) {
-            if ([currentBundleID hasPrefix:bundleId]) {
-                return YES;
-            }
-        } else {
-            if ([currentBundleID isEqualToString:bundleId]) {
-                return YES;
-            }
-        }
-    }
-
-    return NO;
-}
 
 + (MGAlgorithmInfo *)getSDKAlgorithmInfoWithModel:(NSData *)modelData{
     if (modelData) {

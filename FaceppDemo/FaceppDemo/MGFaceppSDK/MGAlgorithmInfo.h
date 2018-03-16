@@ -22,6 +22,7 @@
 #define MG_ABILITY_KEY_DETECT_RECT          @"detectRect"
 #define MG_ABILITY_KEY_IDCARD_QUALITY       @"IDCardQuality"
 #define MG_ABILITY_KEY_TRACK                @"track"
+#define MG_ABILITY_KEY_TRACK_RECT           @"track_rect"
 
 
 @interface MGAlgorithmInfo : NSObject

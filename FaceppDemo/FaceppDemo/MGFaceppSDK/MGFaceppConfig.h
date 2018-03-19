@@ -35,7 +35,7 @@
 @property (nonatomic, assign) MGPixelFormatType pixelFormatType;
 
 
-
+@property (nonatomic, assign) float faceConfidenceFilter;
 
 
 

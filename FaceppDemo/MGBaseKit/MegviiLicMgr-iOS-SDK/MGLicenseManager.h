@@ -28,23 +28,21 @@
  联网获取授权信息
  
  @param UUID UUID
- @param APIName API name
- @param sdkType SDK 类型
+ @param version 通过SDK获取
  @param apiKey apiKey
  @param apiSecret apiSecret
- @param duration appKey有效期类型
+ @param duration appKey有效期
  @param url
  @param complete 授权结束回调
  @return SessionTask
  */
-+ (NSURLSessionTask *)takeLicenseFromNetwokrUUID:(NSString *)UUID
-                                         version:(NSString *)version
-                                         sdkType:(MGSDKType)sdkType
-                                          apiKey:(NSString *)apiKey
-                                       apiSecret:(NSString *)apiSecret
-                                     apiDuration:(MGAPIDuration)duration
-                                       URLString:(NSString *)url
-                                          finish:(void(^)(bool License, NSError *error))complete;
++ (NSURLSessionTask *)getLicenseWithUUID:(NSString *)UUID
+                                 version:(NSString *)version
+                                  apiKey:(NSString *)apiKey
+                               apiSecret:(NSString *)apiSecret
+                             apiDuration:(NSInteger)duration
+                               URLString:(NSString *)url
+                                  finish:(void(^)(bool License, NSError *error))complete;
 
 
 

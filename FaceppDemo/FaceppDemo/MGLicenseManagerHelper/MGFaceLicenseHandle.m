@@ -50,31 +50,29 @@
     NSString *version = [MGFacepp getSDKVersion];
     NSString *uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     
-    [MGLicenseManager takeLicenseFromNetwokrUUID:uuid
-                                         version:version
-                                         sdkType:MGSDKTypeLandmark
-                                          apiKey:MG_LICENSE_KEY
-                                       apiSecret:MG_LICENSE_SECRET
-                                     apiDuration:MGAPIDurationMonth
-                                       URLString:MGLicenseURL_CN
-                                          finish:^(bool License, NSError *error) {
-                                              if (error) {
-                                                  MG_LICENSE_LOG(@"Auth error = %@", error);
-                                              }
-                                              
-                                              if (License) {
-                                                  NSDate  *nowSDKDate = [self getLicenseDate];
-                                                  
-                                                  if (finish) {
-                                                      finish(License, nowSDKDate);
-                                                  }
-                                              }else{
-                                                  if (finish) {
-                                                      finish(License, licenSDKDate);
-                                                  }
-                                              }
-
-                                          }];
+    [MGLicenseManager getLicenseWithUUID:uuid
+                                 version:version
+                                  apiKey:MG_LICENSE_KEY
+                               apiSecret:MG_LICENSE_SECRET
+                             apiDuration:1
+                               URLString:MGLicenseURL_CN
+                                  finish:^(bool License, NSError *error) {
+                                      if (error) {
+                                          NSLog(@"Auth error = %@", error);
+                                      }
+                                      
+                                      if (License) {
+                                          NSDate  *nowSDKDate = [self getLicenseDate];
+                                          
+                                          if (finish) {
+                                              finish(License, nowSDKDate);
+                                          }
+                                      }else{
+                                          if (finish) {
+                                              finish(License, licenSDKDate);
+                                          }
+                                      }
+                                  }];
 
 }
 
